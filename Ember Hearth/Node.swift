@@ -60,23 +60,10 @@ class Node {
         
         var installNode = NSTask()
         installNode.launchPath = "/bin/bash"
-        installNode.arguments  = ["-l", "-c", scriptPath!]
-        
-        // Log to file
-        var output = NSFileHandle.fileHandleWithStandardOutput()
-        installNode.standardOutput = output
-        
+        installNode.arguments  = ["-l", "-c", "\"\(scriptPath!)\""]
         
         installNode.launch()
         installNode.terminationHandler = { (task: NSTask!) -> Void in
-            let data = output.readDataToEndOfFile()
-            let log = NSString(data: data, encoding: NSASCIIStringEncoding)
-            let paths = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)
-            let path = paths.first!.stringByAppendingPathComponent("logs/node-install.log")
-            NSFileManager.defaultManager().createFileAtPath(path, contents: data, attributes: nil)
-            
-            println("Installed node. Log at \(path)")
-            
             completion(success: task.terminationStatus == 0)
         }
         
