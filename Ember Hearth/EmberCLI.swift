@@ -14,55 +14,19 @@ class EmberCLI {
     }
     
     class func path() -> String? {
-        var findNodeTask = NSTask()
-        findNodeTask.launchPath = "/bin/bash"
-        findNodeTask.arguments = ["-l", "-c", "which ember"]
-        
-        var findOut = NSPipe()
-        findNodeTask.standardOutput = findOut
-        
-        findNodeTask.launch()
-        findNodeTask.waitUntilExit()
-        
-        let outData = findOut.fileHandleForReading.readDataToEndOfFile()
-        let path = NSString(data: outData, encoding: NSASCIIStringEncoding)
-        
-        println("Path: \(path)")
-        
-        return path
+        var term = Terminal()
+        return term.runTerminalCommandSync("which ember")
     }
     
     class func version () -> String? {
-        var checkNodeVersion = NSTask()
-        checkNodeVersion.launchPath = "/bin/bash"
-        checkNodeVersion.arguments = ["-l", "-c", "ember -v"]
-        
-        var checkOut = NSPipe()
-        checkNodeVersion.standardOutput = checkOut
-        
-        checkNodeVersion.launch()
-        checkNodeVersion.waitUntilExit()
-        
-        let checkData = checkOut.fileHandleForReading.readDataToEndOfFile()
-        
-        let version = NSString(data: checkData, encoding: NSUTF8StringEncoding)
-        
-        println("Version: \(version)")
-        
-        if version?.length > 0 {
-            return version
-        }
-        return nil
+        var term = Terminal()
+        return term.runTerminalCommandSync("ember -v")
     }
     
-    class func install (completion: (success: Bool) -> ()) {
-        var installNode = NSTask()
-        installNode.launchPath = "/bin/bash"
-        installNode.arguments  = ["-l", "-c", "npm install -g ember-cli"]
-        
-        installNode.launch()
-        installNode.terminationHandler = { (task: NSTask!) -> Void in
-            completion(success: task.terminationStatus == 0)
-        }
+    func install (completion: (success: Bool) -> ()) {
+        var term = Terminal()
+        term.runTerminalCommandAsync("npm install -g ember-cli", completion: { (result) -> () in
+            completion(success:result != nil)
+        })
     }
 }
