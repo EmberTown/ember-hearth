@@ -14,7 +14,7 @@ class Terminal {
     
     init() { }
     
-    private func taskForCommand (command: String) -> NSTask {
+    func taskForCommand (command: String) -> NSTask {
         var task = NSTask()
         task.launchPath = "/bin/bash"
         task.arguments = ["-l", "-c", command]

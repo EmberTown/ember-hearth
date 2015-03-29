@@ -13,7 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var activeProject: Dictionary<String, AnyObject>?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-//        NSUserDefaults.standardUserDefaults().removeObjectForKey("projects")
+        //TODO: Remove this debug thing
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("projects")
+        
+        
 //        var testProject: Dictionary<String, AnyObject> = Dictionary()
 //        testProject["usesPodStructure"] = true
 //        NSUserDefaults.standardUserDefaults().setObject([testProject], forKey: "projects")
@@ -39,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         panel.allowsMultipleSelection = false
         panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {[weak self] (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
+                let path = (panel.URLs.first! as NSURL).path!
+                println("Picked project path \(path)")
                 // Create project with new folder
                 self?.setupDependencies {[weak self] (success) -> () in
                     if !success {
@@ -46,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         return
                     }
                     
-                    self?.activeProject = self?.createProject(panel.URLs.first!.path!!, name: "")
+                    self?.activeProject = self?.createProject(path, name: "")
                 }
             }
         })
@@ -120,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                             Int64(0.5 * Double(NSEC_PER_SEC)))
                                         dispatch_after(delayTime, dispatch_get_main_queue()) {
                                             sheet.window!.orderOut(nil)
-                                            completion(success: false)
+                                            completion(success: true)
                                         }
                                     })
                                 })

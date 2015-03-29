@@ -434,7 +434,7 @@
                 <splitViewController id="17w-JS-V2c" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="eA0-Eq-CQG"/>
-                        <splitViewItem id="JXq-4T-vnG"/>
+                        <splitViewItem id="w53-jO-lAh"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="8NL-sU-oNd">
                         <rect key="frame" x="0.0" y="6" width="647" height="495"/>
@@ -445,7 +445,7 @@
                     </splitView>
                     <connections>
                         <segue destination="dot-n3-klN" kind="relationship" relationship="splitItems" id="UP1-02-fkq"/>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="e5B-SJ-Zwx"/>
+                        <segue destination="8xq-VQ-oTB" kind="relationship" relationship="splitItems" id="L1i-tH-2Dx"/>
                     </connections>
                 </splitViewController>
                 <customObject id="AuX-5g-dHp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -467,7 +467,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" id="YLp-mT-Gy8">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -492,7 +492,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ncG-0c-dTR">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="ncG-0c-dTR">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -526,6 +526,61 @@
             </objects>
             <point key="canvasLocation" x="1572" y="410"/>
         </scene>
+        <!--Split View Controller-->
+        <scene sceneID="xgT-Pt-Raf">
+            <objects>
+                <splitViewController id="8xq-VQ-oTB" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="kjE-jc-WXs"/>
+                        <splitViewItem id="KTt-9J-Wsp"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </splitView>
+                    <connections>
+                        <segue destination="bXs-Kf-6T4" kind="relationship" relationship="splitItems" id="Kes-I1-NeD"/>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="YvL-dK-cja"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="9bD-gc-C7c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1572" y="804"/>
+        </scene>
+        <!--Project View Controller-->
+        <scene sceneID="t1k-0q-fHT">
+            <objects>
+                <viewController id="bXs-Kf-6T4" customClass="ProjectViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="GSX-7Z-XIl">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="122"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
+                                <rect key="frame" x="150" y="44" width="151" height="32"/>
+                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="runServer:" target="bXs-Kf-6T4" id="vAr-2y-kq2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="4v2-lA-E5P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="50" id="7y8-Tx-PGa"/>
+                            <constraint firstAttribute="centerY" secondItem="4v2-lA-E5P" secondAttribute="centerY" constant="0.5" id="Qfr-8i-R1z"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4v2-lA-E5P" secondAttribute="bottom" constant="50" id="WRd-0Y-RGm"/>
+                            <constraint firstAttribute="centerX" secondItem="4v2-lA-E5P" secondAttribute="centerX" constant="-0.5" id="oPT-Xh-W2p"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="runButton" destination="4v2-lA-E5P" id="1tS-m3-Muu"/>
+                    </connections>
+                </viewController>
+                <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="490"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
@@ -536,7 +591,7 @@
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-l0-KPP">
                                 <rect key="frame" x="14" y="222" width="212" height="32"/>
-                                <buttonCell key="cell" type="push" title="Force install node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lw9-iZ-iip">
+                                <buttonCell key="cell" type="push" title="Force install node" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lw9-iZ-iip">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -623,6 +678,7 @@
                             <constraint firstItem="tQN-rT-sbr" firstAttribute="top" secondItem="cK1-zV-wLd" secondAttribute="bottom" constant="12" id="K2J-os-NhD"/>
                             <constraint firstItem="mIx-xp-wqN" firstAttribute="leading" secondItem="tQN-rT-sbr" secondAttribute="trailing" constant="40" id="L8r-MC-TKh"/>
                             <constraint firstItem="9kG-0d-kMI" firstAttribute="width" secondItem="zgD-W2-c2f" secondAttribute="width" id="Nfo-wy-Wrt"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zgD-W2-c2f" secondAttribute="bottom" constant="20" id="OeP-7t-gOa"/>
                             <constraint firstItem="XP2-OW-pJp" firstAttribute="width" secondItem="q1o-l0-KPP" secondAttribute="width" id="PJ9-Md-M00"/>
                             <constraint firstItem="9kG-0d-kMI" firstAttribute="top" secondItem="mIx-xp-wqN" secondAttribute="bottom" constant="12" id="RfZ-pJ-6Ly"/>
                             <constraint firstItem="mIx-xp-wqN" firstAttribute="top" secondItem="eiM-P1-64a" secondAttribute="bottom" constant="12" id="RmA-rl-O8l"/>
@@ -645,7 +701,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="970"/>
+            <point key="canvasLocation" x="2282" y="869"/>
         </scene>
     </scenes>
 </document>
