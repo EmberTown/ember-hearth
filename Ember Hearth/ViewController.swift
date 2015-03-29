@@ -27,5 +27,11 @@ class ViewController: NSViewController {
             println("Installed node with success: \(success)")
         }
     }
+    
+    @IBAction func installNPM (sender: AnyObject) {
+        NPM.install { (success) -> () in
+            println("Installed npm with success: \(success)")
+        }
+    }
 }
 

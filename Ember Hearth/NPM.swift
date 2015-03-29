@@ -55,7 +55,16 @@ class NPM {
         return nil
     }
     
-    class func install ((success: Bool) -> ()) {
+    class func install (completion: (success: Bool) -> ()) {
+        let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
         
+        var installNode = NSTask()
+        installNode.launchPath = "/bin/bash"
+        installNode.arguments  = ["-l", "-c", "\"\(scriptPath!)\""]
+        
+        installNode.launch()
+        installNode.terminationHandler = { (task: NSTask!) -> Void in
+            completion(success: task.terminationStatus == 0)
+        }
     }
 }

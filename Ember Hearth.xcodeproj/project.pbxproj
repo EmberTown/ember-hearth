@@ -16,6 +16,7 @@
 		E9BC4E0B1AC8093A00A747EC /* Ember_HearthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */; };
 		E9D4361B1AC840170020E123 /* install-npm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E9D4361A1AC840170020E123 /* install-npm.sh */; };
 		E9D4361D1AC840300020E123 /* NPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361C1AC840300020E123 /* NPM.swift */; };
+		E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361E1AC842C00020E123 /* EmberCLI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ember_HearthTests.swift; sourceTree = "<group>"; };
 		E9D4361A1AC840170020E123 /* install-npm.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-npm.sh"; sourceTree = "<group>"; };
 		E9D4361C1AC840300020E123 /* NPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPM.swift; sourceTree = "<group>"; };
+		E9D4361E1AC842C00020E123 /* EmberCLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmberCLI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +94,13 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9D436201AC842C50020E123 /* External tools */,
 				E90598391AC825010034AA22 /* Scripts */,
 				E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */,
 				E9BC4DF91AC8093A00A747EC /* ViewController.swift */,
 				E9BC4DFB1AC8093A00A747EC /* Images.xcassets */,
 				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
 				E9BC4DF51AC8093A00A747EC /* Supporting Files */,
-				E905983C1AC827340034AA22 /* Node.swift */,
-				E9D4361C1AC840300020E123 /* NPM.swift */,
 			);
 			path = "Ember Hearth";
 			sourceTree = "<group>";
@@ -127,6 +128,16 @@
 				E9BC4E091AC8093A00A747EC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9D436201AC842C50020E123 /* External tools */ = {
+			isa = PBXGroup;
+			children = (
+				E905983C1AC827340034AA22 /* Node.swift */,
+				E9D4361C1AC840300020E123 /* NPM.swift */,
+				E9D4361E1AC842C00020E123 /* EmberCLI.swift */,
+			);
+			name = "External tools";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
