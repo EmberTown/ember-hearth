@@ -14,6 +14,8 @@
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
 		E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFD1AC8093A00A747EC /* Main.storyboard */; };
 		E9BC4E0B1AC8093A00A747EC /* Ember_HearthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */; };
+		E9D4361B1AC840170020E123 /* install-npm.sh in Resources */ = {isa = PBXBuildFile; fileRef = E9D4361A1AC840170020E123 /* install-npm.sh */; };
+		E9D4361D1AC840300020E123 /* NPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361C1AC840300020E123 /* NPM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		E9BC4E041AC8093A00A747EC /* Ember HearthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ember HearthTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4E091AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ember_HearthTests.swift; sourceTree = "<group>"; };
+		E9D4361A1AC840170020E123 /* install-npm.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-npm.sh"; sourceTree = "<group>"; };
+		E9D4361C1AC840300020E123 /* NPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 		E90598391AC825010034AA22 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				E9D4361A1AC840170020E123 /* install-npm.sh */,
 				E90598371AC824FF0034AA22 /* install-node.sh */,
 			);
 			name = Scripts;
@@ -94,6 +99,7 @@
 				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
 				E9BC4DF51AC8093A00A747EC /* Supporting Files */,
 				E905983C1AC827340034AA22 /* Node.swift */,
+				E9D4361C1AC840300020E123 /* NPM.swift */,
 			);
 			path = "Ember Hearth";
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 			files = (
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
+				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +234,7 @@
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
+				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
