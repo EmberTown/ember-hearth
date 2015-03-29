@@ -438,7 +438,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-l0-KPP">
-                                <rect key="frame" x="14" y="222" width="150" height="32"/>
+                                <rect key="frame" x="14" y="222" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lw9-iZ-iip">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -448,12 +448,22 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cK1-zV-wLd">
-                                <rect key="frame" x="14" y="189" width="150" height="32"/>
+                                <rect key="frame" x="14" y="189" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install NPM" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wCj-C3-UO2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <connections>
                                         <action selector="installNPM:" target="XfG-lQ-9wD" id="O9F-Yo-uWk"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQN-rT-sbr">
+                                <rect key="frame" x="14" y="156" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Force install Ember CLI" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="80Z-sX-h1H">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="installEmberCLI:" target="XfG-lQ-9wD" id="svl-9b-7Qa"/>
                                     </connections>
                                 </buttonCell>
                             </button>

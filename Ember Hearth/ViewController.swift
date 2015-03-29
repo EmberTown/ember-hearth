@@ -33,5 +33,11 @@ class ViewController: NSViewController {
             println("Installed npm with success: \(success)")
         }
     }
+    
+    @IBAction func installEmberCLI (sender: AnyObject) {
+        EmberCLI.install { (success) -> () in
+            println("Installed Ember CLI with success: \(success)")
+        }
+    }
 }
 
