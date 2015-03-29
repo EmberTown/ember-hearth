@@ -22,6 +22,10 @@ class ViewController: NSViewController {
         }
     }
 
-
+    @IBAction func installNode (sender: AnyObject) {
+        Node.install { (success) -> () in
+            println("Installed node with success: \(success)")
+        }
+    }
 }
 
