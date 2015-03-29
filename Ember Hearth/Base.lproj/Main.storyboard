@@ -404,17 +404,11 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="DFA1C434-781B-4F84-A4D6-FD9005D4E595" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="eMP-z0-rmJ">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="6h9-8b-Gfm"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="lp6-eI-JuT"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="ZtI-bo-gId"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="ahd-PK-qWF"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ruC-Mk-0YC"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="6h9-8b-Gfm"/>
-                                <toolbarItem reference="lp6-eI-JuT"/>
                                 <toolbarItem reference="ruC-Mk-0YC"/>
-                                <toolbarItem reference="ZtI-bo-gId"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
