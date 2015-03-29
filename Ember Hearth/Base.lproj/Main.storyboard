@@ -422,12 +422,67 @@
                         </toolbar>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="17w-JS-V2c" kind="relationship" relationship="window.shadowedContentViewController" id="cyJ-Op-Awi"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="7t4-4i-twX">
+            <objects>
+                <splitViewController id="17w-JS-V2c" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="oET-oX-BeW"/>
+                        <splitViewItem id="5qc-vy-eoD"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="8NL-sU-oNd">
+                        <rect key="frame" x="0.0" y="6" width="647" height="495"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="17w-JS-V2c" id="2py-e6-O0g"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="OfM-ki-CEj"/>
+                        <segue destination="GAX-Qf-ax1" kind="relationship" relationship="splitItems" id="KJj-TX-22i"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="AuX-5g-dHp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758.5" y="445.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TTi-uY-U9F">
+            <objects>
+                <viewController id="GAX-Qf-ax1" sceneMemberID="viewController">
+                    <view key="view" id="zEA-wW-faO">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="byh-ef-sJg">
+                                <rect key="frame" x="198" y="142" width="54" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6IV-wM-hnB"/>
+                                    <constraint firstAttribute="height" constant="17" id="90a-fM-wpY"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Content" id="h45-7X-8PY">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="byh-ef-sJg" secondAttribute="centerY" constant="0.5" id="3HT-KP-tcF"/>
+                            <constraint firstAttribute="centerX" secondItem="byh-ef-sJg" secondAttribute="centerX" id="SwW-bP-NbR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="XU0-Gq-847" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1330" y="161"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -437,7 +492,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-l0-KPP">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-l0-KPP">
                                 <rect key="frame" x="14" y="222" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install node" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lw9-iZ-iip">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -447,7 +502,7 @@
                                     <action selector="installNode:" target="XfG-lQ-9wD" id="pKu-dl-O2v"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cK1-zV-wLd">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cK1-zV-wLd">
                                 <rect key="frame" x="14" y="189" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install NPM" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wCj-C3-UO2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -457,7 +512,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQN-rT-sbr">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tQN-rT-sbr">
                                 <rect key="frame" x="14" y="156" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install Ember CLI" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="80Z-sX-h1H">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -467,7 +522,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgD-W2-c2f">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zgD-W2-c2f">
                                 <rect key="frame" x="14" y="123" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Force install Bower" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oZg-XR-Xzc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -477,7 +532,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XP2-OW-pJp">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XP2-OW-pJp">
                                 <rect key="frame" x="254" y="222" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Node version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNx-Ry-9U9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -487,7 +542,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eiM-P1-64a">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eiM-P1-64a">
                                 <rect key="frame" x="254" y="189" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="NPM version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S9v-V7-9rg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -497,7 +552,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-xp-wqN">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-xp-wqN">
                                 <rect key="frame" x="254" y="156" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Ember CLI version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aNG-dH-BDX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -507,7 +562,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kG-0d-kMI">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9kG-0d-kMI">
                                 <rect key="frame" x="254" y="123" width="212" height="32"/>
                                 <buttonCell key="cell" type="push" title="Bower version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aqh-j5-SEf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -518,11 +573,37 @@
                                 </buttonCell>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XP2-OW-pJp" secondAttribute="trailing" constant="20" id="CsD-7Y-nh3"/>
+                            <constraint firstItem="eiM-P1-64a" firstAttribute="top" secondItem="XP2-OW-pJp" secondAttribute="bottom" constant="12" id="Cxr-7h-tQM"/>
+                            <constraint firstItem="9kG-0d-kMI" firstAttribute="leading" secondItem="zgD-W2-c2f" secondAttribute="trailing" constant="40" id="D3H-kg-4E5"/>
+                            <constraint firstAttribute="trailing" secondItem="eiM-P1-64a" secondAttribute="trailing" constant="20" id="EkS-va-soR"/>
+                            <constraint firstItem="tQN-rT-sbr" firstAttribute="top" secondItem="cK1-zV-wLd" secondAttribute="bottom" constant="12" id="K2J-os-NhD"/>
+                            <constraint firstItem="mIx-xp-wqN" firstAttribute="leading" secondItem="tQN-rT-sbr" secondAttribute="trailing" constant="40" id="L8r-MC-TKh"/>
+                            <constraint firstItem="9kG-0d-kMI" firstAttribute="width" secondItem="zgD-W2-c2f" secondAttribute="width" id="Nfo-wy-Wrt"/>
+                            <constraint firstItem="XP2-OW-pJp" firstAttribute="width" secondItem="q1o-l0-KPP" secondAttribute="width" id="PJ9-Md-M00"/>
+                            <constraint firstItem="9kG-0d-kMI" firstAttribute="top" secondItem="mIx-xp-wqN" secondAttribute="bottom" constant="12" id="RfZ-pJ-6Ly"/>
+                            <constraint firstItem="mIx-xp-wqN" firstAttribute="top" secondItem="eiM-P1-64a" secondAttribute="bottom" constant="12" id="RmA-rl-O8l"/>
+                            <constraint firstItem="q1o-l0-KPP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="XCl-KE-wLz"/>
+                            <constraint firstAttribute="trailing" secondItem="9kG-0d-kMI" secondAttribute="trailing" constant="20" id="ajC-xK-l0R"/>
+                            <constraint firstItem="XP2-OW-pJp" firstAttribute="leading" secondItem="q1o-l0-KPP" secondAttribute="trailing" constant="40" id="bwb-BX-hPf"/>
+                            <constraint firstItem="q1o-l0-KPP" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="gxz-E9-RCF"/>
+                            <constraint firstItem="mIx-xp-wqN" firstAttribute="width" secondItem="tQN-rT-sbr" secondAttribute="width" id="h1m-fO-IS4"/>
+                            <constraint firstItem="cK1-zV-wLd" firstAttribute="top" secondItem="q1o-l0-KPP" secondAttribute="bottom" constant="12" id="mIc-S2-xoj"/>
+                            <constraint firstItem="zgD-W2-c2f" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="nli-1U-ujj"/>
+                            <constraint firstItem="zgD-W2-c2f" firstAttribute="top" secondItem="tQN-rT-sbr" secondAttribute="bottom" constant="12" id="pii-aW-wF4"/>
+                            <constraint firstItem="cK1-zV-wLd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="q0w-cj-a2K"/>
+                            <constraint firstItem="XP2-OW-pJp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="qu7-G7-rEW"/>
+                            <constraint firstItem="cK1-zV-wLd" firstAttribute="width" secondItem="eiM-P1-64a" secondAttribute="width" id="rUh-oX-Ux3"/>
+                            <constraint firstItem="eiM-P1-64a" firstAttribute="leading" secondItem="cK1-zV-wLd" secondAttribute="trailing" constant="40" id="t6n-I4-HLc"/>
+                            <constraint firstAttribute="trailing" secondItem="mIx-xp-wqN" secondAttribute="trailing" constant="20" id="tQ9-1b-yYl"/>
+                            <constraint firstItem="tQN-rT-sbr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="yxy-Y8-P5F"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="117" y="970"/>
         </scene>
     </scenes>
 </document>
