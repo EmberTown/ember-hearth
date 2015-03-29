@@ -41,6 +41,14 @@ class EmberCLI {
         }
     }
     
+    func createProject(path: String, name: String, completion: (success:Bool) -> ()) {
+        var term = Terminal()
+        term.workingDirectory = path
+        term.runTerminalCommandAsync("ember new \(name)", completion: { (result) -> () in
+            completion(success: result != nil)
+        })
+    }
+    
     func runServer(path:String) -> NSTask {
         var term = Terminal()
         var task = term.taskForCommand("ember serve")

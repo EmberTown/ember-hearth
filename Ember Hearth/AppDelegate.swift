@@ -15,16 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         //TODO: Remove this debug thing
         NSUserDefaults.standardUserDefaults().removeObjectForKey("projects")
-        
-        
-//        var testProject: Dictionary<String, AnyObject> = Dictionary()
-//        testProject["usesPodStructure"] = true
-//        NSUserDefaults.standardUserDefaults().setObject([testProject], forKey: "projects")
-//        
-//        var projects = NSUserDefaults.standardUserDefaults().objectForKey("projects") as NSArray
-//        var firstProject = projects.firstObject as Dictionary<String, AnyObject>!
-//        let usesPods = firstProject["usesPodStructure"] as Bool
-//        println("pods? \(usesPods)")
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -51,7 +41,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         return
                     }
                     
-                    self?.activeProject = self?.createProject(path, name: "")
+                    self?.activeProject = self?.createProject(path, name: "TestProject", runEmberInstall:true)
+                }
+            }
+        })
+    }
+    
+    @IBAction func openExistingProject (sender: AnyObject) {
+        var panel = NSOpenPanel()
+        panel.canCreateDirectories = false
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = false
+        panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {[weak self] (result: Int) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                let path = (panel.URLs.first! as NSURL).path!
+                println("Picked project path \(path)")
+                // Create project with new folder
+                self?.setupDependencies {[weak self] (success) -> () in
+                    if !success {
+                        println("Could not set up dependencies.")
+                        return
+                    }
+                    
+                    self?.activeProject = self?.createProject(path, name: "", runEmberInstall:false)
                 }
             }
         })
@@ -136,44 +149,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         })
     }
-
-    @IBAction func openExistingProject (sender: AnyObject) {
-        var panel = NSOpenPanel()
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-        panel.beginWithCompletionHandler { (result: Int) -> Void in
-            if result == NSFileHandlingPanelOKButton {
-                let path: NSURL? = panel.URLs.first as? NSURL
-                var projects: Array<Dictionary<String, AnyObject>> = []
-                if NSUserDefaults.standardUserDefaults().objectForKey("projects") != nil {
-                    projects = NSUserDefaults.standardUserDefaults().objectForKey("projects")! as Array<Dictionary<String, AnyObject>>
-                }
-                
-                if path != nil {
-                    // Check if project is an ember CLI projects
-                    if NSFileManager.defaultManager().fileExistsAtPath(path!.URLByAppendingPathComponent(".ember-cli").path!) {
-                        println("Adding ember-cli project from \(path!.path!)")
-                        var project = ["path":path!.path!]
-                        projects.append(project)
-                    } else {
-                        let filePath = path!.URLByAppendingPathComponent(".ember-cli").path!
-                        println("Not an ember-cli project! (\(filePath))")
-                    }
-                }
-                
-                NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
-            }
-        }
-    }
     
-    func createProject(path: String, name: String) -> Dictionary<String, AnyObject> {
+    func createProject(path: String, name: String, runEmberInstall: Bool) -> Dictionary<String, AnyObject> {
         var project = ["path":path, "name":name]
+        if runEmberInstall {
+            project = ["path":"\(path)/\(name)", "name":name]
+        }
         var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
         if projects == nil {
             projects = []
         }
         projects!.append(project)
         NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
+        
+        if runEmberInstall {
+            var ember = EmberCLI()
+            ember.createProject(path, name: name, completion: { (success) -> () in
+                if !success {
+                    println("Error creating ember project!")
+                }
+            })
+        }
         return project
     }
 }

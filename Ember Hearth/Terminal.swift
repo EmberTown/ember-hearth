@@ -11,6 +11,7 @@ import Cocoa
 class Terminal {
     private var task: NSTask?
     private var output: NSPipe?
+    var workingDirectory: String?
     
     init() { }
     
@@ -37,6 +38,9 @@ class Terminal {
     
     func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) {
         self.task = taskForCommand(command)
+        if self.workingDirectory != nil {
+            self.task?.currentDirectoryPath = self.workingDirectory!
+        }
         self.output = NSPipe()
         self.task?.standardOutput = self.output!
         
