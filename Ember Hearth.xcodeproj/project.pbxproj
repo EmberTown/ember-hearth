@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C3DF01AC86F8900444710 /* NewProjectTitle.xib */; };
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		188C3DF01AC86F8900444710 /* NewProjectTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTitle.xib; sourceTree = "<group>"; };
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */,
 				E9BC4DFB1AC8093A00A747EC /* Images.xcassets */,
 				E9BC4DF51AC8093A00A747EC /* Supporting Files */,
+				188C3DF01AC86F8900444710 /* NewProjectTitle.xib */,
 			);
 			path = "Ember Hearth";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
+				188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
