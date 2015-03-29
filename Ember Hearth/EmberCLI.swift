@@ -29,4 +29,15 @@ class EmberCLI {
             completion(success:result != nil)
         })
     }
+    
+    func installIfNeeded(completion:(success:Bool) -> ()) {
+        if EmberCLI.isInstalled() {
+            completion(success: true)
+        } else {
+            var ember = EmberCLI()
+            ember.install({ (success) -> () in
+                completion(success: success)
+            })
+        }
+    }
 }

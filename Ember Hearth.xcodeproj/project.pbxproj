@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
+		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
+		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
+		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
 		E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */; };
 		E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF91AC8093A00A747EC /* ViewController.swift */; };
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
@@ -34,6 +37,9 @@
 /* Begin PBXFileReference section */
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
+		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
+		E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
 		E9BC4DF21AC8093A00A747EC /* Ember Hearth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ember Hearth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4DF61AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,15 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
+		E9735F911AC863C60068F3A3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
+				E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		E9BC4DE91AC8093A00A747EC = {
 			isa = PBXGroup;
 			children = (
@@ -98,13 +113,15 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9735F911AC863C60068F3A3 /* UI */,
 				E9D436201AC842C50020E123 /* External tools */,
 				E90598391AC825010034AA22 /* Scripts */,
 				E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */,
 				E9BC4DF91AC8093A00A747EC /* ViewController.swift */,
 				E9BC4DFB1AC8093A00A747EC /* Images.xcassets */,
-				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
 				E9BC4DF51AC8093A00A747EC /* Supporting Files */,
+				E9735F8F1AC859660068F3A3 /* ProjectListController.swift */,
+				E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */,
 			);
 			path = "Ember Hearth";
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */,
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
@@ -249,10 +267,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
+				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
+				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
 				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 			);

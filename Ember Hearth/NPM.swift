@@ -31,4 +31,15 @@ class NPM {
             completion(success: result != nil)
         })
     }
+    
+    func installIfNeeded(completion:(success:Bool) -> ()) {
+        if NPM.isInstalled() {
+            completion(success: true)
+        } else {
+            var npm = NPM()
+            npm.install({ (success) -> () in
+                completion(success: success)
+            })
+        }
+    }
 }

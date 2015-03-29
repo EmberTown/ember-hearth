@@ -31,4 +31,15 @@ class Node {
             completion(success: result != nil)
         })
     }
+    
+    func installIfNeeded(completion:(success:Bool) -> ()) {
+        if Node.isInstalled() {
+            completion(success: true)
+        } else {
+            var node = Node()
+            node.install({ (success) -> () in
+                completion(success: success)
+            })
+        }
+    }
 }

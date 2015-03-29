@@ -29,4 +29,15 @@ class Bower {
             completion(success:result != nil)
         })
     }
+    
+    func installIfNeeded(completion:(success:Bool) -> ()) {
+        if Bower.isInstalled() {
+            completion(success: true)
+        } else {
+            var bower = Bower()
+            bower.install({ (success) -> () in
+                completion(success: success)
+            })
+        }
+    }
 }
