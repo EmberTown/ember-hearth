@@ -39,5 +39,11 @@ class ViewController: NSViewController {
             println("Installed Ember CLI with success: \(success)")
         }
     }
+    
+    @IBAction func installBower (sender: AnyObject) {
+        Bower.install { (success) -> () in
+            println("Installed Ember CLI with success: \(success)")
+        }
+    }
 }
 

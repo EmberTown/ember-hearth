@@ -467,6 +467,16 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgD-W2-c2f">
+                                <rect key="frame" x="14" y="123" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Force install Bower" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oZg-XR-Xzc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="installBower:" target="XfG-lQ-9wD" id="A24-Qk-sbv"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>
