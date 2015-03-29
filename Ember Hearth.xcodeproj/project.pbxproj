@@ -90,6 +90,7 @@
 		E9735F911AC863C60068F3A3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				188C3DF01AC86F8900444710 /* NewProjectTitle.xib */,
 				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
 				E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */,
 			);
@@ -135,7 +136,6 @@
 				E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */,
 				E9BC4DFB1AC8093A00A747EC /* Images.xcassets */,
 				E9BC4DF51AC8093A00A747EC /* Supporting Files */,
-				188C3DF01AC86F8900444710 /* NewProjectTitle.xib */,
 			);
 			path = "Ember Hearth";
 			sourceTree = "<group>";
