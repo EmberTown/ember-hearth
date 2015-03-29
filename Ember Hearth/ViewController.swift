@@ -23,27 +23,55 @@ class ViewController: NSViewController {
     }
 
     @IBAction func installNode (sender: AnyObject) {
-        Node.install { (success) -> () in
+        var node = Node()
+        node.install { (success) -> () in
             println("Installed node with success: \(success)")
         }
     }
     
     @IBAction func installNPM (sender: AnyObject) {
-        NPM.install { (success) -> () in
+        var npm = NPM()
+        npm.install { (success) -> () in
             println("Installed npm with success: \(success)")
         }
     }
     
     @IBAction func installEmberCLI (sender: AnyObject) {
-        EmberCLI.install { (success) -> () in
+        var ember = EmberCLI()
+        ember.install { (success) -> () in
             println("Installed Ember CLI with success: \(success)")
         }
     }
     
     @IBAction func installBower (sender: AnyObject) {
-        Bower.install { (success) -> () in
+        var bower = Bower()
+        bower.install { (success) -> () in
             println("Installed Ember CLI with success: \(success)")
         }
+    }
+    
+    @IBAction func nodeVersion (sender: AnyObject) {
+        let alert = NSAlert()
+        alert.messageText = Node.version()
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+    
+    @IBAction func npmVersion (sender: AnyObject) {
+        let alert = NSAlert()
+        alert.messageText = NPM.version()
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+    
+    @IBAction func bowerVersion (sender: AnyObject) {
+        let alert = NSAlert()
+        alert.messageText = Bower.version()
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+    
+    @IBAction func emberCLIVersion (sender: AnyObject) {
+        let alert = NSAlert()
+        alert.messageText = EmberCLI.version()
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
     }
 }
 

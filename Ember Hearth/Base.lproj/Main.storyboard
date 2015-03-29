@@ -477,6 +477,46 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XP2-OW-pJp">
+                                <rect key="frame" x="254" y="222" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Node version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BNx-Ry-9U9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="nodeVersion:" target="XfG-lQ-9wD" id="s9u-Pj-Udd"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eiM-P1-64a">
+                                <rect key="frame" x="254" y="189" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="NPM version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S9v-V7-9rg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="npmVersion:" target="XfG-lQ-9wD" id="kEz-Qk-7ig"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-xp-wqN">
+                                <rect key="frame" x="254" y="156" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ember CLI version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aNG-dH-BDX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="emberCLIVersion:" target="XfG-lQ-9wD" id="tJn-fI-tnv"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kG-0d-kMI">
+                                <rect key="frame" x="254" y="123" width="212" height="32"/>
+                                <buttonCell key="cell" type="push" title="Bower version" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aqh-j5-SEf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="bowerVersion:" target="XfG-lQ-9wD" id="VfC-gS-8sc"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>
