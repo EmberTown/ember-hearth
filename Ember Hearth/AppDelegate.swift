@@ -9,8 +9,9 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     var activeProject: Dictionary<String, AnyObject>?
+    var projectNameController: ProjectNameWindowController?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         //TODO: Remove this debug thing
@@ -24,27 +25,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func createNewProject (sender: AnyObject) {
         println("Show new project dialog")
         
+        projectNameController = ProjectNameWindowController()
+        projectNameController?.delegate = self
+        NSBundle.mainBundle().loadNibNamed("NewProjectTitle", owner: projectNameController, topLevelObjects: nil)
+        NSApp.beginSheet(projectNameController!.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+    }
+    
+    func nameSet(name: String) {
+        println("Name set to \(name)")
+        self.projectNameController?.cancel(nil)
+        self.projectNameController = nil
         
-        var panel = NSOpenPanel()
-        panel.canCreateDirectories = true
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-        panel.allowsMultipleSelection = false
-        panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {[weak self] (result: Int) -> Void in
-            if result == NSFileHandlingPanelOKButton {
-                let path = (panel.URLs.first! as NSURL).path!
-                println("Picked project path \(path)")
-                // Create project with new folder
-                self?.setupDependencies {[weak self] (success) -> () in
-                    if !success {
-                        println("Could not set up dependencies.")
-                        return
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(0.5 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            var panel = NSOpenPanel()
+            panel.canCreateDirectories = true
+            panel.canChooseDirectories = true
+            panel.canChooseFiles = false
+            panel.allowsMultipleSelection = false
+            weak var weakself = self
+            panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {(result: Int) -> Void in
+                if result == NSFileHandlingPanelOKButton {
+                    let path = (panel.URLs.first! as NSURL).path!
+                    println("Picked project path \(path)")
+                    // Create project with new folder
+                    weakself?.setupDependencies {(success) -> () in
+                        if !success {
+                            println("Could not set up dependencies.")
+                            return
+                        }
+                        
+                        weakself?.activeProject = weakself?.createProject(path, name: name, runEmberInstall:true)
                     }
-                    
-                    self?.activeProject = self?.createProject(path, name: "TestProject", runEmberInstall:true)
                 }
-            }
-        })
+            })
+        }
     }
     
     @IBAction func openExistingProject (sender: AnyObject) {
@@ -138,6 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                             Int64(0.5 * Double(NSEC_PER_SEC)))
                                         dispatch_after(delayTime, dispatch_get_main_queue()) {
                                             sheet.window!.orderOut(nil)
+                                            NSApp.endSheet(sheet.window!)
                                             completion(success: true)
                                         }
                                     })

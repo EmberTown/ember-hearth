@@ -511,13 +511,25 @@
                                     <action selector="createNewProject:" target="dot-n3-klN" id="Z0D-oc-pTg"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38D-SR-eaM">
+                                <rect key="frame" x="158" y="92" width="136" height="32"/>
+                                <buttonCell key="cell" type="push" title="Existing project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o5C-60-b8g">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openExistingProject:" target="dot-n3-klN" id="IWd-qC-rZ5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="L9g-Vh-e5B" secondAttribute="bottom" id="AMD-hR-ieU"/>
                             <constraint firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" constant="-0.5" id="I7i-hI-Rff"/>
+                            <constraint firstItem="38D-SR-eaM" firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" id="Nba-cQ-ONe"/>
                             <constraint firstItem="L9g-Vh-e5B" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="QJd-7p-rNA"/>
                             <constraint firstAttribute="trailing" secondItem="L9g-Vh-e5B" secondAttribute="trailing" id="Sbs-ic-bp1"/>
                             <constraint firstItem="L9g-Vh-e5B" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="XJD-a4-87Q"/>
+                            <constraint firstItem="38D-SR-eaM" firstAttribute="top" secondItem="t4I-5a-yyf" secondAttribute="bottom" constant="20" id="YrQ-lT-HLf"/>
                             <constraint firstAttribute="centerY" secondItem="t4I-5a-yyf" secondAttribute="centerY" constant="0.5" id="gHl-uG-dix"/>
                         </constraints>
                     </view>

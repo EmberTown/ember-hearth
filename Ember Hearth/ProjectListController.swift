@@ -20,4 +20,8 @@ class ProjectListController: NSViewController {
         appDelegate.createNewProject(sender)
     }
     
+    @IBAction func openExistingProject(sender: AnyObject) {
+        var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+        appDelegate.openExistingProject(sender)
+    }
 }

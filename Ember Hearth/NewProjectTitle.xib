@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="ProjectNameWindowController" customModule="Ember_Hearth" customModuleProvider="target">
+            <connections>
+                <outlet property="textField" destination="JYt-fN-zVP" id="TuP-nA-E74"/>
+                <outlet property="window" destination="bw2-en-aHY" id="Gwx-Cc-k6L"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="bw2-en-aHY" customClass="NSPanel">
-            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bw2-en-aHY" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="272" y="172" width="276" height="150"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="276" height="148"/>
             <value key="maxSize" type="size" width="276" height="148"/>
             <view key="contentView" id="ikB-rG-89T">
@@ -32,17 +36,23 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="save:" target="-2" id="ZYD-Bn-uyk"/>
+                        </connections>
                     </button>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JYt-fN-zVP">
                         <rect key="frame" x="20" y="66" width="236" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="PAi-p2-iE5"/>
                         </constraints>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="wRD-Ua-BIm">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="wRD-Ua-BIm">
                             <font key="font" metaFont="system" size="24"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <action selector="save:" target="-2" id="eMN-ch-9mf"/>
+                        </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D7L-dV-eon">
                         <rect key="frame" x="38" y="19" width="83" height="32"/>
@@ -53,6 +63,9 @@
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="0S0-1y-mDI"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -69,6 +82,9 @@ Gw
                     <constraint firstItem="D7L-dV-eon" firstAttribute="leading" secondItem="ikB-rG-89T" secondAttribute="leading" constant="44" id="m1D-zz-lXD"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="vQd-4m-gOf"/>
+            </connections>
             <point key="canvasLocation" x="904" y="560"/>
         </window>
         <textFieldCell scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Project name:" id="rnV-7J-W2S">

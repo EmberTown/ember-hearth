@@ -45,6 +45,7 @@ class EmberCLI {
         var term = Terminal()
         term.workingDirectory = path
         term.runTerminalCommandAsync("ember new \(name)", completion: { (result) -> () in
+            println("Attempted to create ember project: \(result)")
             completion(success: result != nil)
         })
     }
