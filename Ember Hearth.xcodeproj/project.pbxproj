@@ -18,6 +18,7 @@
 		E9D4361D1AC840300020E123 /* NPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361C1AC840300020E123 /* NPM.swift */; };
 		E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361E1AC842C00020E123 /* EmberCLI.swift */; };
 		E9D436221AC843E90020E123 /* Bower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D436211AC843E90020E123 /* Bower.swift */; };
+		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		E9D4361C1AC840300020E123 /* NPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPM.swift; sourceTree = "<group>"; };
 		E9D4361E1AC842C00020E123 /* EmberCLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmberCLI.swift; sourceTree = "<group>"; };
 		E9D436211AC843E90020E123 /* Bower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bower.swift; sourceTree = "<group>"; };
+		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				E9D4361C1AC840300020E123 /* NPM.swift */,
 				E9D4361E1AC842C00020E123 /* EmberCLI.swift */,
 				E9D436211AC843E90020E123 /* Bower.swift */,
+				E9E989011AC84A090053763E /* Terminal.swift */,
 			);
 			name = "External tools";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
+				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
