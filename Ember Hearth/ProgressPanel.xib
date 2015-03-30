@@ -23,12 +23,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <progressIndicator maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="es8-l9-7bc">
-                        <rect key="frame" x="20" y="19" width="623" height="52"/>
+                        <rect key="frame" x="20" y="19" width="623" height="42"/>
                     </progressIndicator>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Gc-Bb-4g0">
-                        <rect key="frame" x="18" y="70" width="627" height="20"/>
+                        <rect key="frame" x="18" y="60" width="627" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="qOe-0z-D8u"/>
+                            <constraint firstAttribute="height" constant="30" id="qOe-0z-D8u"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="qec-OE-WYb">
                             <font key="font" size="16" name="HelveticaNeue-Light"/>
