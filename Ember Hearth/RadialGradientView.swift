@@ -27,7 +27,7 @@ class RadialGradientView: NSView {
         var gradient = NSGradient(startingColor: startingColor, endingColor: endingColor)
         let center = NSPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
         let maxSize = max(self.bounds.size.height, self.bounds.size.width)
-        gradient.drawFromCenter(center, radius: 0, toCenter: center, radius: maxSize, options: 0)
+        gradient.drawInRect(self.bounds, relativeCenterPosition: NSPoint(x: 0, y: 0))
     }
     
 }
