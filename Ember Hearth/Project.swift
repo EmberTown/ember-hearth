@@ -47,7 +47,6 @@ class Project {
             return nil
         }
         let packagejson = NSData(contentsOfURL: NSURL(fileURLWithPath: pathToFile)!)
-        print("Loaded package.json from \(pathToFile), found \(packagejson)")
         if packagejson != nil {
             package = NSJSONSerialization.JSONObjectWithData(packagejson!, options: nil, error: nil) as? NSDictionary
         }
