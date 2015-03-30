@@ -10,7 +10,11 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
-    var activeProject: Dictionary<String, AnyObject>?
+    var activeProject: Dictionary<String, AnyObject>? {
+        didSet {
+            NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: nil)
+        }
+    }
     var projectNameController: ProjectNameWindowController?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {

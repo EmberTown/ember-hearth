@@ -11,6 +11,11 @@ import Cocoa
 class ProjectViewController: NSViewController {
     var serverTask: NSTask?
     @IBOutlet var runButton: NSButton!
+    @IBOutlet var titleLabel: NSTextField!
+    
+    override func viewDidLoad() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setTitle:", name: "activeProjectSet", object: nil)
+    }
     
     @IBAction func runServer (sender: AnyObject) {
         if serverTask != nil {
@@ -27,6 +32,11 @@ class ProjectViewController: NSViewController {
                 serverTask = ember.runServer(path)
             }
         }
+    }
+    
+    func setTitle(notification: NSNotification) {
+        var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+        self.titleLabel.stringValue = appDelegate.activeProject?["name"] as String
     }
     
     override func viewWillDisappear() {
