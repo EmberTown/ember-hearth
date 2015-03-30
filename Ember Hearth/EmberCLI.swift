@@ -8,6 +8,11 @@
 
 import Cocoa
 
+enum EmberBuildType {
+    case development
+    case production
+}
+
 class EmberCLI {
     class func isInstalled () -> Bool {
         return version() != nil
@@ -56,5 +61,20 @@ class EmberCLI {
         task.currentDirectoryPath = path
         task.launch()
         return task
+    }
+    
+    func build(path:String, type:EmberBuildType, completion: (result:String?) -> ()) {
+        var term = Terminal()
+        term.workingDirectory = path
+        var command = "ember build"
+        switch type {
+        case .development:
+            command += " -dev"
+        case .production:
+            command += " -prod"
+        }
+        term.runTerminalCommandAsync(command, completion: { (result) -> () in
+            completion(result: result)
+        })
     }
 }

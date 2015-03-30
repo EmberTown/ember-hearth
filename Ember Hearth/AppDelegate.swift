@@ -189,5 +189,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
         return project
     }
+    
+    @IBAction func buildDev(sender: AnyObject?) {
+        if self.activeProject != nil {
+            var ember = EmberCLI()
+            let path = self.activeProject!["path"] as String
+            ember.build(path, type: .development, completion: { (result: String?) -> () in
+                println("Built ember: \(result)")
+            })
+        }
+    }
+    
+    @IBAction func buildProd(sender: AnyObject?) {
+        if self.activeProject != nil {
+            var ember = EmberCLI()
+            let path = self.activeProject!["path"] as String
+            ember.build(path, type: .development, completion: { (result: String?) -> () in
+                println("Built ember: \(result)")
+            })
+        }
+    }
 }
 
