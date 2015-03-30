@@ -475,7 +475,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" id="YLp-mT-Gy8">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="248" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -535,10 +535,18 @@
                                             <action selector="openExistingProject:" target="dot-n3-klN" id="IWd-qC-rZ5"/>
                                         </connections>
                                     </button>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="bhg-eg-t3g" firstAttribute="top" secondItem="iqB-3M-Pi0" secondAttribute="top" id="6VC-fZ-DTz"/>
                                     <constraint firstAttribute="centerX" secondItem="38D-SR-eaM" secondAttribute="centerX" id="JuA-KF-hzS"/>
+                                    <constraint firstItem="bhg-eg-t3g" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="OSq-aE-nB9"/>
+                                    <constraint firstAttribute="bottom" secondItem="bhg-eg-t3g" secondAttribute="bottom" id="bpI-Lq-amY"/>
                                     <constraint firstItem="38D-SR-eaM" firstAttribute="top" secondItem="t4I-5a-yyf" secondAttribute="bottom" constant="20" id="eNe-wo-VBp"/>
+                                    <constraint firstAttribute="trailing" secondItem="bhg-eg-t3g" secondAttribute="trailing" id="fF8-2M-KAC"/>
                                     <constraint firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" constant="-0.5" id="g34-yl-Pd9"/>
                                     <constraint firstAttribute="centerY" secondItem="t4I-5a-yyf" secondAttribute="centerY" constant="0.5" id="y6L-1m-7av"/>
                                 </constraints>
@@ -738,4 +746,7 @@
             <point key="canvasLocation" x="2282" y="869"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ProjectListNewBackground" width="197" height="197"/>
+    </resources>
 </document>
