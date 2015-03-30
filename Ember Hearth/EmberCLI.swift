@@ -55,11 +55,10 @@ class EmberCLI {
         })
     }
     
-    func runServer(path:String) -> NSTask {
+    func runServerTask(path:String) -> NSTask {
         var term = Terminal()
         var task = term.taskForCommand("ember serve")
         task.currentDirectoryPath = path
-        task.launch()
         return task
     }
     
