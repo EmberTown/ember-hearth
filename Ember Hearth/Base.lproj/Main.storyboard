@@ -348,8 +348,16 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Build" id="crM-db-gk4">
                                     <items>
-                                        <menuItem title="Debug build" keyEquivalent="d" id="9gk-gp-uCJ"/>
-                                        <menuItem title="Production build" keyEquivalent="p" id="IsX-1e-NB7"/>
+                                        <menuItem title="Debug build" keyEquivalent="d" id="9gk-gp-uCJ">
+                                            <connections>
+                                                <action selector="buildDev:" target="Voe-Tx-rLC" id="3fx-mx-icl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Production build" keyEquivalent="p" id="IsX-1e-NB7">
+                                            <connections>
+                                                <action selector="buildProd:" target="Voe-Tx-rLC" id="O5m-X8-LfL"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
