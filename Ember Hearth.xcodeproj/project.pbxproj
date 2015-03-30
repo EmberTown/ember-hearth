@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C3DF01AC86F8900444710 /* NewProjectTitle.xib */; };
+		18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7B8511AC93926008D2E25 /* PhantomJS.swift */; };
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		188C3DF01AC86F8900444710 /* NewProjectTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTitle.xib; sourceTree = "<group>"; };
+		18E7B8511AC93926008D2E25 /* PhantomJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomJS.swift; sourceTree = "<group>"; };
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E9D4361E1AC842C00020E123 /* EmberCLI.swift */,
 				E9D436211AC843E90020E123 /* Bower.swift */,
 				E9E989011AC84A090053763E /* Terminal.swift */,
+				18E7B8511AC93926008D2E25 /* PhantomJS.swift */,
 			);
 			name = "External tools";
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
 				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
+				18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */,
 				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
