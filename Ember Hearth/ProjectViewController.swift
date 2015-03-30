@@ -12,11 +12,11 @@ class ProjectViewController: NSViewController {
     var serverTask: NSTask?
     @IBOutlet var runButton: NSButton!
     @IBOutlet var titleLabel: NSTextField!
-    
+
     override func viewDidLoad() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setTitle:", name: "activeProjectSet", object: nil)
     }
-    
+
     @IBAction func runServer (sender: AnyObject) {
         if serverTask != nil {
             stopServer()
@@ -53,13 +53,13 @@ class ProjectViewController: NSViewController {
             }
         }
     }
-    
+
     func stopServer() {
         serverTask?.terminate()
         serverTask = nil
         runButton.title = "Run Ember server"
     }
-    
+
     func setTitle(notification: NSNotification) {
         var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
         let project = appDelegate.activeProject
@@ -68,7 +68,7 @@ class ProjectViewController: NSViewController {
             self.titleLabel.stringValue = name!
         }
     }
-    
+
     override func viewWillDisappear() {
         println("Closing server")
         serverTask?.terminate()

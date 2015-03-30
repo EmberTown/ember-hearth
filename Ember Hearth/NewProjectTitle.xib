@@ -15,9 +15,9 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bw2-en-aHY" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="272" y="172" width="276" height="150"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-            <value key="minSize" type="size" width="276" height="148"/>
-            <value key="maxSize" type="size" width="276" height="148"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <value key="minSize" type="size" width="276" height="150"/>
+            <value key="maxSize" type="size" width="276" height="150"/>
             <view key="contentView" id="ikB-rG-89T">
                 <rect key="frame" x="0.0" y="0.0" width="276" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>

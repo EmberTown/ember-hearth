@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
     }
     var projectNameController: ProjectNameWindowController?
-    
+
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         //TODO: Remove this debug thing
         NSUserDefaults.standardUserDefaults().removeObjectForKey("projects")
@@ -32,12 +32,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         NSBundle.mainBundle().loadNibNamed("NewProjectTitle", owner: projectNameController, topLevelObjects: nil)
         NSApp.beginSheet(projectNameController!.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
     }
-    
+
     func nameSet(name: String) {
         println("Name set to \(name)")
         self.projectNameController?.cancel(nil)
         self.projectNameController = nil
-        
+
         let delayTime = dispatch_time(DISPATCH_TIME_NOW,
             Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -58,14 +58,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                             println("Could not set up dependencies.")
                             return
                         }
-                        
+
                         weakself?.activeProject = weakself?.createProject(path, name: name, runEmberInstall:true)
                     }
                 }
             })
         }
     }
-    
+
     @IBAction func openExistingProject (sender: AnyObject) {
         var panel = NSOpenPanel()
         panel.canCreateDirectories = false
@@ -84,13 +84,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                         println("Could not set up dependencies.")
                         return
                     }
-                    
+
                     weakself?.activeProject = weakself?.createProject(path, name: nil, runEmberInstall:false)
                 }
             }
         })
     }
-    
+
     func createProject(path: String, name: String?, runEmberInstall: Bool) -> Project {
         var project = Project(name: name, path: path)
         if runEmberInstall && name != nil {
@@ -104,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
         projects!.append(project.dictionaryRepresentation())
         NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
-        
+
         if runEmberInstall {
             var sheet = ProgressWindowController()
             NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
@@ -112,7 +112,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             sheet.progressIndicator.startAnimation(nil)
             sheet.label.stringValue = "Setting up ember project files…"
             NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
-            
+
             var ember = EmberCLI()
             ember.createProject(path, name: name!, completion: { (success) -> () in
                 if !success {
@@ -132,7 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
         return project
     }
-    
+
     @IBAction func buildDev(sender: AnyObject?) {
         if self.activeProject != nil {
             var ember = EmberCLI()
@@ -142,7 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             })
         }
     }
-    
+
     @IBAction func buildProd(sender: AnyObject?) {
         if self.activeProject != nil {
             var ember = EmberCLI()
@@ -153,4 +153,3 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
     }
 }
-
