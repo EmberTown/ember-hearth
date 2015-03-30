@@ -51,7 +51,7 @@ class DependencyManager {
                         }
                         
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sheet.progressIndicator.doubleValue = 0.25
+                            sheet.progressIndicator.doubleValue = 0.2
                             sheet.label.stringValue = "Installing NPM…"
                         })
                         var npm = NPM()
@@ -62,7 +62,7 @@ class DependencyManager {
                             }
                             
                             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                sheet.progressIndicator.doubleValue = 0.5
+                                sheet.progressIndicator.doubleValue = 0.4
                                 sheet.label.stringValue = "Installing Bower…"
                             })
                             var bower = Bower()
@@ -73,26 +73,38 @@ class DependencyManager {
                                 }
                                 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    sheet.progressIndicator.doubleValue = 0.75
-                                    sheet.label.stringValue = "Installing Ember CLI…"
+                                    sheet.progressIndicator.doubleValue = 0.6
+                                    sheet.label.stringValue = "Installing PhantomJS…"
                                 })
-                                var ember = EmberCLI()
-                                ember.installIfNeeded({ (success) -> () in
+                                var phantom = PhantomJS()
+                                phantom.installIfNeeded({ (success) -> () in
                                     if !success {
                                         completion(success: false)
                                         return
                                     }
-                                    
+                                
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        sheet.progressIndicator.doubleValue = 1
-                                        sheet.label.stringValue = "Success!"
-                                        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-                                            Int64(0.5 * Double(NSEC_PER_SEC)))
-                                        dispatch_after(delayTime, dispatch_get_main_queue()) {
-                                            sheet.window!.orderOut(nil)
-                                            NSApp.endSheet(sheet.window!)
-                                            completion(success: true)
+                                        sheet.progressIndicator.doubleValue = 0.8
+                                        sheet.label.stringValue = "Installing Ember CLI…"
+                                    })
+                                    var ember = EmberCLI()
+                                    ember.installIfNeeded({ (success) -> () in
+                                        if !success {
+                                            completion(success: false)
+                                            return
                                         }
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            sheet.progressIndicator.doubleValue = 1
+                                            sheet.label.stringValue = "Success!"
+                                            let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                                                Int64(0.5 * Double(NSEC_PER_SEC)))
+                                            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                                                sheet.window!.orderOut(nil)
+                                                NSApp.endSheet(sheet.window!)
+                                                completion(success: true)
+                                            }
+                                        })
                                     })
                                 })
                             })

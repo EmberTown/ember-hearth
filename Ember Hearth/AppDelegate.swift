@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
         weak var weakself = self
-        panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {[weak self] (result: Int) -> Void in
+        panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 let path = (panel.URLs.first! as NSURL).path!
                 println("Picked project path \(path)")

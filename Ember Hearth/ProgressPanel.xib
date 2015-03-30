@@ -26,9 +26,6 @@
                         <rect key="frame" x="20" y="19" width="623" height="42"/>
                     </progressIndicator>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Gc-Bb-4g0">
-                        <rect key="frame" x="18" y="60" width="627" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="30" id="qOe-0z-D8u"/>
                         <rect key="frame" x="18" y="62" width="627" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="qOe-0z-D8u"/>

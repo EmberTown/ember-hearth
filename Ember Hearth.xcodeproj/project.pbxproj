@@ -324,7 +324,6 @@
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
-				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
