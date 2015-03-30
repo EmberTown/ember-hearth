@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1952" y="313" width="663" height="110"/>
-            <rect key="screenRect" x="1680" y="141" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="RKS-zr-BeC">
                 <rect key="frame" x="0.0" y="0.0" width="663" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -26,9 +26,9 @@
                         <rect key="frame" x="20" y="19" width="623" height="52"/>
                     </progressIndicator>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Gc-Bb-4g0">
-                        <rect key="frame" x="18" y="70" width="627" height="20"/>
+                        <rect key="frame" x="18" y="62" width="627" height="28"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="qOe-0z-D8u"/>
+                            <constraint firstAttribute="height" constant="28" id="qOe-0z-D8u"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="qec-OE-WYb">
                             <font key="font" size="16" name="HelveticaNeue-Light"/>
@@ -41,7 +41,7 @@
                     <constraint firstItem="1Gc-Bb-4g0" firstAttribute="top" secondItem="RKS-zr-BeC" secondAttribute="top" constant="20" id="8mF-eb-QQV"/>
                     <constraint firstItem="es8-l9-7bc" firstAttribute="leading" secondItem="RKS-zr-BeC" secondAttribute="leading" constant="20" id="TuH-uC-XwV"/>
                     <constraint firstAttribute="trailing" secondItem="1Gc-Bb-4g0" secondAttribute="trailing" constant="20" id="aPs-ry-bt6"/>
-                    <constraint firstItem="es8-l9-7bc" firstAttribute="top" secondItem="1Gc-Bb-4g0" secondAttribute="bottom" id="dKh-i1-Ik1"/>
+                    <constraint firstItem="es8-l9-7bc" firstAttribute="top" secondItem="1Gc-Bb-4g0" secondAttribute="bottom" constant="-8" id="dKh-i1-Ik1"/>
                     <constraint firstAttribute="bottom" secondItem="es8-l9-7bc" secondAttribute="bottom" constant="20" id="uGg-RH-5LF"/>
                     <constraint firstItem="1Gc-Bb-4g0" firstAttribute="leading" secondItem="RKS-zr-BeC" secondAttribute="leading" constant="20" id="y31-q9-YiW"/>
                     <constraint firstAttribute="trailing" secondItem="es8-l9-7bc" secondAttribute="trailing" constant="20" id="zM6-Je-hNe"/>
