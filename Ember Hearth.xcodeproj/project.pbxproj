@@ -11,6 +11,7 @@
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
+		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
 		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
@@ -44,6 +45,7 @@
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
+		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
 		E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				E9D4361E1AC842C00020E123 /* EmberCLI.swift */,
 				E9D436211AC843E90020E123 /* Bower.swift */,
 				E9E989011AC84A090053763E /* Terminal.swift */,
+				E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */,
 			);
 			name = "External tools";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
 				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
+				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,

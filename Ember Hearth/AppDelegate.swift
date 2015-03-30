@@ -52,7 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                     let path = (panel.URLs.first! as NSURL).path!
                     println("Picked project path \(path)")
                     // Create project with new folder
-                    weakself?.setupDependencies {(success) -> () in
+                    var dependencyManager = DependencyManager()
+                    dependencyManager.setupDependencies {(success) -> () in
                         if !success {
                             println("Could not set up dependencies.")
                             return
@@ -71,98 +72,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
+        weak var weakself = self
         panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {[weak self] (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 let path = (panel.URLs.first! as NSURL).path!
                 println("Picked project path \(path)")
                 // Create project with new folder
-                self?.setupDependencies {[weak self] (success) -> () in
+                var dependencyManager = DependencyManager()
+                dependencyManager.setupDependencies { (success) -> () in
                     if !success {
                         println("Could not set up dependencies.")
                         return
                     }
                     
-                    self?.activeProject = self?.createProject(path, name: "", runEmberInstall:false)
-                }
-            }
-        })
-    }
-    
-    func setupDependencies(completion:(success:Bool) -> ()) {
-        
-        // Fetching node…
-        
-        var alert = NSAlert()
-        alert.messageText = "This will install the following tools:"
-        alert.informativeText = "* node\n* NPM\n* Bower\n* Phantom.js\n* Ember-CLI"
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (response: NSModalResponse) -> Void in
-            
-            
-            println("Response: \(response)")
-            if response == 1000 { // OK
-                var sheet = ProgressWindowController()
-                NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
-                sheet.label.stringValue = "Installing Node.js…"
-                NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
-                
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                    var node = Node()
-                    node.installIfNeeded({ (success) -> () in
-                        if !success {
-                            completion(success: false)
-                            return
-                        }
-                        
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            sheet.progressIndicator.doubleValue = 0.25
-                            sheet.label.stringValue = "Installing NPM…"
-                        })
-                        var npm = NPM()
-                        npm.installIfNeeded({ (success) -> () in
-                            if !success {
-                                completion(success: false)
-                                return
-                            }
-                            
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                sheet.progressIndicator.doubleValue = 0.5
-                                sheet.label.stringValue = "Installing Bower…"
-                            })
-                            var bower = Bower()
-                            bower.installIfNeeded({ (success) -> () in
-                                if !success {
-                                    completion(success: false)
-                                    return
-                                }
-                                
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    sheet.progressIndicator.doubleValue = 0.75
-                                    sheet.label.stringValue = "Installing Ember CLI…"
-                                })
-                                var ember = EmberCLI()
-                                ember.installIfNeeded({ (success) -> () in
-                                    if !success {
-                                        completion(success: false)
-                                        return
-                                    }
-                                    
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        sheet.progressIndicator.doubleValue = 1
-                                        sheet.label.stringValue = "Success!"
-                                        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-                                            Int64(0.5 * Double(NSEC_PER_SEC)))
-                                        dispatch_after(delayTime, dispatch_get_main_queue()) {
-                                            sheet.window!.orderOut(nil)
-                                            NSApp.endSheet(sheet.window!)
-                                            completion(success: true)
-                                        }
-                                    })
-                                })
-                            })
-                        })
-                    })
+                    weakself?.activeProject = weakself?.createProject(path, name: "", runEmberInstall:false)
                 }
             }
         })
