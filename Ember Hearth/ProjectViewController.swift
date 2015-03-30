@@ -26,7 +26,7 @@ class ProjectViewController: NSViewController {
                 runButton.title = "Stop Ember server"
                 var ember = EmberCLI()
                 let project = appDelegate.activeProject!
-                let path: String = project["path"] as String
+                let path: String = project.path!
                 serverTask = ember.runServerTask(path)
                 var pipe = NSPipe()
                 serverTask?.standardOutput = pipe
@@ -62,7 +62,11 @@ class ProjectViewController: NSViewController {
     
     func setTitle(notification: NSNotification) {
         var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
-        self.titleLabel.stringValue = appDelegate.activeProject?["name"] as String
+        let project = appDelegate.activeProject
+        let name = project?.name
+        if name != nil {
+            self.titleLabel.stringValue = name!
+        }
     }
     
     override func viewWillDisappear() {

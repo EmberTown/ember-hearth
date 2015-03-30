@@ -10,7 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
-    var activeProject: Dictionary<String, AnyObject>? {
+    var activeProject: Project? {
         didSet {
             NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: nil)
         }
@@ -85,39 +85,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                         return
                     }
                     
-                    weakself?.activeProject = weakself?.createProject(path, name: "", runEmberInstall:false)
+                    weakself?.activeProject = weakself?.createProject(path, name: nil, runEmberInstall:false)
                 }
             }
         })
     }
     
-    func createProject(path: String, name: String, runEmberInstall: Bool) -> Dictionary<String, AnyObject> {
-        var project = ["path":path, "name":name]
-        if runEmberInstall {
-            project = ["path":"\(path)/\(name)", "name":name]
+    func createProject(path: String, name: String?, runEmberInstall: Bool) -> Project {
+        var project = Project(name: name, path: path)
+        if runEmberInstall && name != nil {
+            project.path = project.path?.stringByAppendingPathComponent(name!)
+        } else if name == nil {
+            project.loadNameFromPath()
         }
         var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
         if projects == nil {
             projects = []
         }
-        projects!.append(project)
+        projects!.append(project.dictionaryRepresentation())
         NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
         
-        let projectPath = project["path"]!
-        println("Created project \(name) at \(projectPath)")
-        
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-            Int64(0.5 * Double(NSEC_PER_SEC)))
-        var sheet = ProgressWindowController()
-        NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
-        sheet.progressIndicator.indeterminate = true
-        sheet.progressIndicator.startAnimation(nil)
-        sheet.label.stringValue = "Setting up ember project files…"
-        NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
-        
         if runEmberInstall {
+            var sheet = ProgressWindowController()
+            NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
+            sheet.progressIndicator.indeterminate = true
+            sheet.progressIndicator.startAnimation(nil)
+            sheet.label.stringValue = "Setting up ember project files…"
+            NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+            
             var ember = EmberCLI()
-            ember.createProject(path, name: name, completion: { (success) -> () in
+            ember.createProject(path, name: name!, completion: { (success) -> () in
                 if !success {
                     println("Error creating ember project!")
                     sheet.label.stringValue = "Install failed."
@@ -139,7 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     @IBAction func buildDev(sender: AnyObject?) {
         if self.activeProject != nil {
             var ember = EmberCLI()
-            let path = self.activeProject!["path"] as String
+            let path = self.activeProject!.path!
             ember.build(path, type: .development, completion: { (result: String?) -> () in
                 println("Built ember: \(result)")
             })
@@ -149,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     @IBAction func buildProd(sender: AnyObject?) {
         if self.activeProject != nil {
             var ember = EmberCLI()
-            let path = self.activeProject!["path"] as String
+            let path = self.activeProject!.path!
             ember.build(path, type: .development, completion: { (result: String?) -> () in
                 println("Built ember: \(result)")
             })
