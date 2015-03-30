@@ -27,8 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     }
 
     @IBAction func createNewProject (sender: AnyObject) {
-        println("Show new project dialog")
-        
         projectNameController = ProjectNameWindowController()
         projectNameController?.delegate = self
         NSBundle.mainBundle().loadNibNamed("NewProjectTitle", owner: projectNameController, topLevelObjects: nil)
@@ -105,8 +103,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             println("Response: \(response)")
             if response == 1000 { // OK
                 var sheet = ProgressWindowController()
-                let result = NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
-                println("Result: \(result)")
+                NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
                 sheet.label.stringValue = "Installing Node.js…"
                 NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
                 
@@ -183,12 +180,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         projects!.append(project)
         NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
         
+        let projectPath = project["path"]!
+        println("Created project \(name) at \(projectPath)")
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(0.5 * Double(NSEC_PER_SEC)))
+        var sheet = ProgressWindowController()
+        NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
+        sheet.progressIndicator.indeterminate = true
+        sheet.progressIndicator.startAnimation(nil)
+        sheet.label.stringValue = "Setting up ember project files…"
+        NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+        
         if runEmberInstall {
             var ember = EmberCLI()
             ember.createProject(path, name: name, completion: { (success) -> () in
                 if !success {
                     println("Error creating ember project!")
+                    sheet.label.stringValue = "Install failed."
+                } else {
+                    sheet.label.stringValue = "Success!"
                 }
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(0.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    sheet.window!.orderOut(nil)
+                    NSApp.endSheet(sheet.window!)
+                }
+
             })
         }
         return project
