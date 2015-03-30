@@ -19,9 +19,7 @@ class ProjectViewController: NSViewController {
     
     @IBAction func runServer (sender: AnyObject) {
         if serverTask != nil {
-            serverTask!.terminate()
-            serverTask = nil
-            runButton.title = "Run Ember server"
+            stopServer()
         } else {
             var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
             if appDelegate.activeProject != nil {
@@ -36,21 +34,30 @@ class ProjectViewController: NSViewController {
                     if task.terminationStatus > 0 {
                         let result = pipe.fileHandleForReading.readDataToEndOfFile()
                         if result.length > 0 {
-                            var alert = NSAlert()
-                            let string = NSString(data: result, encoding:NSASCIIStringEncoding)
-                            alert.messageText = "Error starting server"
-                            if string?.length > 400 {
-                                alert.informativeText = "\(string!.substringToIndex(400))…"
-                            } else {
-                                alert.informativeText = string?
-                            }
-                            alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                var alert = NSAlert()
+                                let string = NSString(data: result, encoding:NSASCIIStringEncoding)
+                                alert.messageText = "Error starting server"
+                                if string?.length > 400 {
+                                    alert.informativeText = "\(string!.substringToIndex(400))…"
+                                } else {
+                                    alert.informativeText = string?
+                                }
+                                alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
+                                self.stopServer()
+                            })
                         }
                     }
                 }
                 serverTask?.launch()
             }
         }
+    }
+    
+    func stopServer() {
+        serverTask?.terminate()
+        serverTask = nil
+        runButton.title = "Run Ember server"
     }
     
     func setTitle(notification: NSNotification) {
