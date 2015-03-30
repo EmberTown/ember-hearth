@@ -571,12 +571,15 @@
         <scene sceneID="t1k-0q-fHT">
             <objects>
                 <viewController id="bXs-Kf-6T4" customClass="ProjectViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="GSX-7Z-XIl">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="122"/>
+                    <view key="view" id="GSX-7Z-XIl" customClass="BGColorView" customModule="Ember_Hearth" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="150" y="44" width="151" height="32"/>
+                                <rect key="frame" x="284" y="22" width="152" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -585,16 +588,30 @@
                                     <action selector="runServer:" target="bXs-Kf-6T4" id="vAr-2y-kq2"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
+                                <rect key="frame" x="18" y="20" width="266" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WL5-f9-i6C"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Project name" id="rrh-09-P4T">
+                                    <font key="font" size="20" name="HelveticaNeue-Light"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="4v2-lA-E5P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="50" id="7y8-Tx-PGa"/>
-                            <constraint firstAttribute="centerY" secondItem="4v2-lA-E5P" secondAttribute="centerY" constant="0.5" id="Qfr-8i-R1z"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4v2-lA-E5P" secondAttribute="bottom" constant="50" id="WRd-0Y-RGm"/>
-                            <constraint firstAttribute="centerX" secondItem="4v2-lA-E5P" secondAttribute="centerX" constant="-0.5" id="oPT-Xh-W2p"/>
+                            <constraint firstAttribute="trailing" secondItem="4v2-lA-E5P" secondAttribute="trailing" constant="20" id="JRA-dm-BLX"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jnP-bm-eUb" secondAttribute="bottom" constant="20" id="Wq4-ps-cRx"/>
+                            <constraint firstItem="4v2-lA-E5P" firstAttribute="leading" secondItem="jnP-bm-eUb" secondAttribute="trailing" constant="8" id="icS-L7-Z2k"/>
+                            <constraint firstItem="jnP-bm-eUb" firstAttribute="top" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="20" id="lgw-jH-t7F"/>
+                            <constraint firstItem="jnP-bm-eUb" firstAttribute="leading" secondItem="GSX-7Z-XIl" secondAttribute="leading" constant="20" id="ow3-qb-WPK"/>
+                            <constraint firstItem="4v2-lA-E5P" firstAttribute="top" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="20" id="uDy-Vx-IWo"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="runButton" destination="4v2-lA-E5P" id="1tS-m3-Muu"/>
+                        <outlet property="titleLabel" destination="jnP-bm-eUb" id="OLa-LK-zeL"/>
                     </connections>
                 </viewController>
                 <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
