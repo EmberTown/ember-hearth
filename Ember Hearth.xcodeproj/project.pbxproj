@@ -26,6 +26,7 @@
 		E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361E1AC842C00020E123 /* EmberCLI.swift */; };
 		E9D436221AC843E90020E123 /* Bower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D436211AC843E90020E123 /* Bower.swift */; };
 		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
+		E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		E9D4361E1AC842C00020E123 /* EmberCLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmberCLI.swift; sourceTree = "<group>"; };
 		E9D436211AC843E90020E123 /* Bower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bower.swift; sourceTree = "<group>"; };
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
+		E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9F34BE41AC94CE300E4875E /* View */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
 				E9D436201AC842C50020E123 /* External tools */,
@@ -181,6 +184,14 @@
 				18E7B8511AC93926008D2E25 /* PhantomJS.swift */,
 			);
 			name = "External tools";
+			sourceTree = "<group>";
+		};
+		E9F34BE41AC94CE300E4875E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */,
+				E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */,
 				E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */,
 				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
 				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
