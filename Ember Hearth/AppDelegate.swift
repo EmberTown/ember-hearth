@@ -79,6 +79,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             var panel = NSOpenPanel()
+            panel.message = "Select a location for the project folder (the folder \(name) will be created)"
+            panel.maxSize = CGSize(width: 500.0, height: 500.0)
             panel.canCreateDirectories = true
             panel.canChooseDirectories = true
             panel.canChooseFiles = false
