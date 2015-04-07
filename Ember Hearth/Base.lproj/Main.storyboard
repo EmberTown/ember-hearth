@@ -475,7 +475,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" id="YLp-mT-Gy8">
-                                            <rect key="frame" x="0.0" y="0.0" width="248" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -544,28 +544,28 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
                                     </imageView>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="IXu-BC-kHq">
-                                        <rect key="frame" x="-2" y="-3" width="34" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="XLg-N7-aFk"/>
                                             <constraint firstAttribute="width" constant="30" id="gG1-a3-1bR"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="+" bezelStyle="regularSquare" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
+                                        <buttonCell key="cell" type="bevel" title="+" bezelStyle="regularSquare" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" size="20" name="DINCondensed-Bold"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="createNewProject:" target="dot-n3-klN" id="6PO-4g-Gz5"/>
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="QFy-aH-rED">
-                                        <rect key="frame" x="28" y="-3" width="34" height="35"/>
+                                        <rect key="frame" x="30" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="9pI-sS-zja"/>
                                             <constraint firstAttribute="width" constant="30" id="koT-Zh-vi1"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="📁" bezelStyle="regularSquare" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XVZ-c4-Dwq">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFolder" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XVZ-c4-Dwq">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="openExistingProject:" target="dot-n3-klN" id="DVz-Ji-5sR"/>
@@ -811,6 +811,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSFolder" width="32" height="32"/>
         <image name="ProjectListNewBackground" width="197" height="197"/>
     </resources>
 </document>
