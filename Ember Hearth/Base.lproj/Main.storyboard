@@ -469,7 +469,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-Vh-e5B">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                <rect key="frame" x="0.0" y="30" width="250" height="270"/>
                                 <clipView key="contentView" id="Q4v-oy-51r">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,6 +496,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="dot-n3-klN" id="gFA-Um-8ew"/>
+                                                <outlet property="delegate" destination="dot-n3-klN" id="iaO-Dj-Wed"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -536,15 +540,47 @@
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                        <rect key="frame" x="0.0" y="30" width="250" height="270"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
                                     </imageView>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="IXu-BC-kHq">
+                                        <rect key="frame" x="-2" y="-3" width="34" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="XLg-N7-aFk"/>
+                                            <constraint firstAttribute="width" constant="30" id="gG1-a3-1bR"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="+" bezelStyle="regularSquare" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="createNewProject:" target="dot-n3-klN" id="6PO-4g-Gz5"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="QFy-aH-rED">
+                                        <rect key="frame" x="28" y="-3" width="34" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="9pI-sS-zja"/>
+                                            <constraint firstAttribute="width" constant="30" id="koT-Zh-vi1"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="bevel" title="📁" bezelStyle="regularSquare" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XVZ-c4-Dwq">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openExistingProject:" target="dot-n3-klN" id="DVz-Ji-5sR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="top" secondItem="iqB-3M-Pi0" secondAttribute="top" id="6VC-fZ-DTz"/>
+                                    <constraint firstItem="IXu-BC-kHq" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="85K-7b-rWT"/>
+                                    <constraint firstAttribute="bottom" secondItem="IXu-BC-kHq" secondAttribute="bottom" id="FF9-cp-RK3"/>
                                     <constraint firstAttribute="centerX" secondItem="38D-SR-eaM" secondAttribute="centerX" id="JuA-KF-hzS"/>
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="OSq-aE-nB9"/>
-                                    <constraint firstAttribute="bottom" secondItem="bhg-eg-t3g" secondAttribute="bottom" id="bpI-Lq-amY"/>
+                                    <constraint firstItem="QFy-aH-rED" firstAttribute="leading" secondItem="IXu-BC-kHq" secondAttribute="trailing" id="Xeg-hy-gHb"/>
+                                    <constraint firstAttribute="bottom" secondItem="bhg-eg-t3g" secondAttribute="bottom" constant="30" id="bpI-Lq-amY"/>
+                                    <constraint firstAttribute="bottom" secondItem="QFy-aH-rED" secondAttribute="bottom" id="dU2-UY-lcH"/>
                                     <constraint firstItem="38D-SR-eaM" firstAttribute="top" secondItem="t4I-5a-yyf" secondAttribute="bottom" constant="20" id="eNe-wo-VBp"/>
                                     <constraint firstAttribute="trailing" secondItem="bhg-eg-t3g" secondAttribute="trailing" id="fF8-2M-KAC"/>
                                     <constraint firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" constant="-0.5" id="g34-yl-Pd9"/>
@@ -555,7 +591,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="iqB-3M-Pi0" secondAttribute="bottom" id="0Ji-Ly-qEl"/>
                             <constraint firstAttribute="trailing" secondItem="iqB-3M-Pi0" secondAttribute="trailing" id="60G-xK-k46"/>
-                            <constraint firstAttribute="bottom" secondItem="L9g-Vh-e5B" secondAttribute="bottom" id="AMD-hR-ieU"/>
+                            <constraint firstAttribute="bottom" secondItem="L9g-Vh-e5B" secondAttribute="bottom" constant="30" id="AMD-hR-ieU"/>
                             <constraint firstItem="L9g-Vh-e5B" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="QJd-7p-rNA"/>
                             <constraint firstAttribute="trailing" secondItem="L9g-Vh-e5B" secondAttribute="trailing" id="Sbs-ic-bp1"/>
                             <constraint firstItem="L9g-Vh-e5B" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="XJD-a4-87Q"/>
@@ -563,6 +599,12 @@
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="vYq-1T-VmQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createProjectButton" destination="t4I-5a-yyf" id="qgb-B2-AWS"/>
+                        <outlet property="openProjectButton" destination="38D-SR-eaM" id="lcd-5z-SIG"/>
+                        <outlet property="overlay" destination="bhg-eg-t3g" id="o0B-db-ndN"/>
+                        <outlet property="tableView" destination="YLp-mT-Gy8" id="zfs-Fn-XiG"/>
+                    </connections>
                 </viewController>
                 <customObject id="aJU-MU-whI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
