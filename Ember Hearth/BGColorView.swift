@@ -23,4 +23,8 @@ class BGColorView: NSView {
         super.drawRect(dirtyRect)
     }
     
+    convenience init(backgroundColor:NSColor) {
+        self.init()
+        self.backgroundColor = backgroundColor
+    }
 }

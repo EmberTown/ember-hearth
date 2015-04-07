@@ -22,6 +22,12 @@ class ProjectTabViewController: NSTabViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTopConstraintConstant(topSpacing)
+        
+        var bgView = BGColorView(backgroundColor: NSColor.whiteColor())
+        bgView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(bgView)
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[bgView]-0-|", options: nil, metrics: nil, views: ["bgView":bgView]))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[bgView]-0-|", options: nil, metrics: nil, views: ["bgView":bgView]))
     }
     
     override func viewWillAppear() {
