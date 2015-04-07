@@ -67,6 +67,9 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     }
     
     func tableViewSelectionDidChange(notification: NSNotification) {
+        if projects == nil || projects?.count == 0 {
+            return
+        }
         var project = projects?[tableView.selectedRow]
         if project != nil {
             var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate

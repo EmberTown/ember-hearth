@@ -11,6 +11,7 @@
 		18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7B8511AC93926008D2E25 /* PhantomJS.swift */; };
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
+		E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */; };
 		E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */; };
 		E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
@@ -48,6 +49,7 @@
 		18E7B8511AC93926008D2E25 /* PhantomJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomJS.swift; sourceTree = "<group>"; };
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedTextFieldCell.swift; sourceTree = "<group>"; };
 		E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotImplementedViewController.swift; sourceTree = "<group>"; };
 		E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabViewController.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */,
 				E9F34BE71AC95CE900E4875E /* BGColorView.swift */,
+				E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
+				E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */,
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
