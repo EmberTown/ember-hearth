@@ -11,25 +11,43 @@ import Cocoa
 class DependencyManager {
     func listNeededInstalls () -> Array<String> {
         var needed: Array<String> = []
-        if !Node.isInstalled() {
-            needed.append("Node.js")
+        switch Node.isInstalled() {
+        case true: needed.append("✅ Node.js")
+        default: needed.append("❌ Node.js")
         }
-        if !NPM.isInstalled() {
-            needed.append("NPM")
+        
+        switch NPM.isInstalled() {
+        case true: needed.append("✅ NPM")
+        default: needed.append("❌ NPM")
         }
-        if !Bower.isInstalled() {
-            needed.append("Bower")
+        
+        switch Bower.isInstalled() {
+        case true: needed.append("✅ Bower")
+        default: needed.append("❌ Bower")
         }
-        if !EmberCLI.isInstalled() {
-            needed.append("Ember-CLI")
+        
+        switch PhantomJS.isInstalled() {
+        case true: needed.append("✅ PhantomJS")
+        default: needed.append("❌ PhantomJS")
+        }
+        
+        switch EmberCLI.isInstalled() {
+        case true: needed.append("✅ Ember-CLI")
+        default: needed.append("❌ Ember-CLI")
         }
         return needed
     }
     
     func setupDependencies(completion:(success:Bool) -> ()) {
         var alert = NSAlert()
-        alert.messageText = "This will install the following tools:"
-        alert.informativeText = "* node\n* NPM\n* Bower\n* Phantom.js\n* Ember-CLI"
+        alert.messageText = "Dependencies:"
+        let needed = listNeededInstalls()
+        var neededString = ""
+        for string in needed {
+            neededString += "\(string)\n"
+        }
+        neededString += "\nEmber Hearth will install any missing dependencies automatically."
+        alert.informativeText = neededString
         alert.addButtonWithTitle("OK")
         alert.addButtonWithTitle("Cancel")
         alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (response: NSModalResponse) -> Void in
