@@ -464,11 +464,11 @@
         <scene sceneID="DTO-1f-AVK">
             <objects>
                 <viewController id="dot-n3-klN" customClass="ProjectListController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="M8V-hn-6mb">
+                    <view key="view" id="M8V-hn-6mb" customClass="BGColorView" customModule="Ember_Hearth" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-Vh-e5B">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-Vh-e5B">
                                 <rect key="frame" x="0.0" y="30" width="250" height="270"/>
                                 <clipView key="contentView" id="Q4v-oy-51r">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
@@ -482,7 +482,7 @@
                                             <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" red="0.93250274658203125" green="0.93247491121292114" blue="0.93249070644378662" alpha="1" colorSpace="calibratedRGB"/>
                                             <tableColumns>
-                                                <tableColumn width="245" minWidth="40" maxWidth="1000" id="6QF-pY-DMm">
+                                                <tableColumn width="247" minWidth="40" maxWidth="1000" id="6QF-pY-DMm">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -598,6 +598,11 @@
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="Zbb-2E-Htz"/>
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="vYq-1T-VmQ"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="createProjectButton" destination="t4I-5a-yyf" id="qgb-B2-AWS"/>
