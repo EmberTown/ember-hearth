@@ -574,7 +574,7 @@
                 <splitViewController id="8xq-VQ-oTB" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="kjE-jc-WXs"/>
-                        <splitViewItem id="KTt-9J-Wsp"/>
+                        <splitViewItem id="FU3-OS-j9U"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -582,7 +582,7 @@
                     </splitView>
                     <connections>
                         <segue destination="bXs-Kf-6T4" kind="relationship" relationship="splitItems" id="Kes-I1-NeD"/>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="YvL-dK-cja"/>
+                        <segue destination="73e-FV-9jW" kind="relationship" relationship="splitItems" id="e21-Z1-9tv"/>
                     </connections>
                 </splitViewController>
                 <customObject id="9bD-gc-C7c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -640,18 +640,122 @@
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Tab View Controller-->
+        <scene sceneID="iJk-c0-W5a">
             <objects>
-                <viewController id="XfG-lQ-9wD" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="OUq-rC-E9K"/>
+                        <tabViewItem identifier="" id="CFj-Cx-siu"/>
+                    </tabViewItems>
+                    <tabView key="tabView" id="XcE-S1-ZJK">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="h2M-5e-dFV" kind="relationship" relationship="tabItems" id="zWk-4f-SqV"/>
+                        <segue destination="bh2-Vd-SRI" kind="relationship" relationship="tabItems" id="brK-W8-dw5"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="9CE-7Y-Jen" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="804"/>
+        </scene>
+        <!--Addons-->
+        <scene sceneID="WNq-MN-Nlo">
+            <objects>
+                <viewController title="Addons" id="h2M-5e-dFV" customClass="NotImplementedViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DFs-Yl-J2W">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="t2Y-bs-RKh">
+                                <rect key="frame" x="148" y="131" width="154" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="XIP-Nm-Ibx"/>
+                                    <constraint firstAttribute="height" constant="33" id="bYG-aU-qyx"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" title="Contribute" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="clh-yW-tDx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openGithubProject:" target="h2M-5e-dFV" id="Fnm-PN-oiR"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGs-1K-21o">
+                                <rect key="frame" x="106" y="175" width="239" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="235" id="Avj-Fw-SgW"/>
+                                    <constraint firstAttribute="height" constant="81" id="ijW-Xn-iwS"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Installing addons through Ember Hearth is not yet implemented. Do you want to help? Contribute on GitHub." id="ent-dR-j9d">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="t2Y-bs-RKh" firstAttribute="top" secondItem="fGs-1K-21o" secondAttribute="bottom" constant="8" id="57M-j4-BJi"/>
+                            <constraint firstAttribute="centerY" secondItem="t2Y-bs-RKh" secondAttribute="centerY" constant="0.5" id="8C8-bf-gmm"/>
+                            <constraint firstAttribute="centerX" secondItem="t2Y-bs-RKh" secondAttribute="centerX" id="YkM-og-HDx"/>
+                            <constraint firstAttribute="centerX" secondItem="fGs-1K-21o" secondAttribute="centerX" constant="-0.5" id="ggW-cA-M7G"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="mCt-kA-5Gr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2282" y="869"/>
+            <point key="canvasLocation" x="2835" y="625"/>
+        </scene>
+        <!--Project settings-->
+        <scene sceneID="Wmp-Vy-83i">
+            <objects>
+                <viewController title="Project settings" id="bh2-Vd-SRI" customClass="NotImplementedViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="lMu-7q-la1">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="yj1-JE-RON">
+                                <rect key="frame" x="148" y="131" width="154" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="gBr-qE-UJE"/>
+                                    <constraint firstAttribute="width" constant="150" id="hJk-cT-uGq"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" title="Contribute" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nWZ-vZ-Kmw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openGithubProject:" target="bh2-Vd-SRI" id="0zv-zW-tAL"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zen-Rk-ozr">
+                                <rect key="frame" x="106" y="175" width="239" height="81"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="235" id="YNv-yn-tzC"/>
+                                    <constraint firstAttribute="height" constant="81" id="pQL-wl-8Lc"/>
+                                </constraints>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Editing project settings through Ember Hearth is not yet implemented. Do you want to help? Contribute on GitHub." id="JSc-2F-fkN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="zen-Rk-ozr" secondAttribute="centerX" constant="-0.5" id="AMc-7m-32J"/>
+                            <constraint firstItem="yj1-JE-RON" firstAttribute="top" secondItem="zen-Rk-ozr" secondAttribute="bottom" constant="8" id="bIs-8V-YBg"/>
+                            <constraint firstAttribute="centerX" secondItem="yj1-JE-RON" secondAttribute="centerX" id="naA-8k-XAO"/>
+                            <constraint firstAttribute="centerY" secondItem="yj1-JE-RON" secondAttribute="centerY" constant="0.5" id="tot-MN-gBx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="NS0-nK-Llz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835" y="1082"/>
         </scene>
     </scenes>
     <resources>
