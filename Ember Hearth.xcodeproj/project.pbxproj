@@ -19,7 +19,6 @@
 		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
 		E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97E798B1AC874B00080BB66 /* ProjectViewController.swift */; };
 		E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */; };
-		E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF91AC8093A00A747EC /* ViewController.swift */; };
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
 		E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFD1AC8093A00A747EC /* Main.storyboard */; };
 		E9BC4E0B1AC8093A00A747EC /* Ember_HearthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */; };
@@ -57,7 +56,6 @@
 		E9BC4DF21AC8093A00A747EC /* Ember Hearth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ember Hearth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4DF61AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9BC4DF91AC8093A00A747EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9BC4DFB1AC8093A00A747EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E9BC4DFE1AC8093A00A747EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9BC4E041AC8093A00A747EC /* Ember HearthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ember HearthTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +118,6 @@
 		E97E798A1AC874950080BB66 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E9BC4DF91AC8093A00A747EC /* ViewController.swift */,
 				E9735F8F1AC859660068F3A3 /* ProjectListController.swift */,
 				E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */,
 				E97E798B1AC874B00080BB66 /* ProjectViewController.swift */,
@@ -324,7 +321,6 @@
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
-				E9BC4DFA1AC8093A00A747EC /* ViewController.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
 				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
@@ -450,6 +446,7 @@
 				INFOPLIST_FILE = "Ember Hearth/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -463,6 +460,7 @@
 				INFOPLIST_FILE = "Ember Hearth/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
