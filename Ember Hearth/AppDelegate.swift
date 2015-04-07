@@ -19,8 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     var projectNameController: ProjectNameWindowController?
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        //TODO: Remove this debug thing
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("projects")
         
 #if DEBUG
         addDebugMenu()
