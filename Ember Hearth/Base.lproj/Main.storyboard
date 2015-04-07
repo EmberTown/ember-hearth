@@ -549,9 +549,9 @@
                                             <constraint firstAttribute="height" constant="30" id="XLg-N7-aFk"/>
                                             <constraint firstAttribute="width" constant="30" id="gG1-a3-1bR"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" title="+" bezelStyle="regularSquare" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="20" name="DINCondensed-Bold"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="createNewProject:" target="dot-n3-klN" id="6PO-4g-Gz5"/>
@@ -811,6 +811,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSFolder" width="32" height="32"/>
         <image name="ProjectListNewBackground" width="197" height="197"/>
     </resources>
