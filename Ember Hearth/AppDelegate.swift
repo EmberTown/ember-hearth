@@ -12,8 +12,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     var activeProject: Project? {
         didSet {
-            NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: nil)
-            enableProjectMenus()
+            NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: activeProject)
+            toggleProjectMenus()
         }
     }
     var projectNameController: ProjectNameWindowController?
@@ -27,10 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
 #endif
     }
     
-    func enableProjectMenus() {
+    func toggleProjectMenus() {
         var mainMenu = NSApplication.sharedApplication().mainMenu
+        let projectActive = activeProject != nil
         for item in mainMenu!.itemArray as [NSMenuItem] {
-            item.enabled = true
+            if item.tag == 1 { // 1 is set for menus reqiring an active project
+                item.enabled = projectActive
+            }
         }
     }
     

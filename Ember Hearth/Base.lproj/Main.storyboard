@@ -344,7 +344,7 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Build" enabled="NO" id="Hzh-34-Ooa">
+                            <menuItem title="Build" tag="1" enabled="NO" id="Hzh-34-Ooa">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Build" id="crM-db-gk4">
                                     <items>
