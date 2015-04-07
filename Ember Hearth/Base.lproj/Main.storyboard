@@ -640,10 +640,10 @@
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Project Tab View Controller-->
         <scene sceneID="iJk-c0-W5a">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="OUq-rC-E9K"/>
                         <tabViewItem identifier="" id="CFj-Cx-siu"/>
@@ -651,9 +651,14 @@
                     <tabView key="tabView" id="XcE-S1-ZJK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
+                        <font key="font" metaFont="system"/>
                         <tabViewItems/>
                     </tabView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="topSpacing">
+                            <real key="value" value="120"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="h2M-5e-dFV" kind="relationship" relationship="tabItems" id="zWk-4f-SqV"/>
                         <segue destination="bh2-Vd-SRI" kind="relationship" relationship="tabItems" id="brK-W8-dw5"/>

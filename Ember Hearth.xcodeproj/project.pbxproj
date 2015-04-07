@@ -12,6 +12,7 @@
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */; };
+		E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
 		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
 		E95EE93F1AC9AD4700609327 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93E1AC9AD4700609327 /* Project.swift */; };
@@ -48,6 +49,7 @@
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotImplementedViewController.swift; sourceTree = "<group>"; };
+		E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabViewController.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
 		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		E95EE93E1AC9AD4700609327 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				E97E798B1AC874B00080BB66 /* ProjectViewController.swift */,
 				E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */,
 				E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */,
+				E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
 				18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */,
+				E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */,
 				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
