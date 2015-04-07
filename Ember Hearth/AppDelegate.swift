@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     var activeProject: Project? {
         didSet {
             NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: nil)
+            enableProjectMenus()
         }
     }
     var projectNameController: ProjectNameWindowController?
@@ -24,6 +25,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
 #if DEBUG
         addDebugMenu()
 #endif
+    }
+    
+    func enableProjectMenus() {
+        var mainMenu = NSApplication.sharedApplication().mainMenu
+        for item in mainMenu!.itemArray as [NSMenuItem] {
+            item.enabled = true
+        }
     }
     
     func addDebugMenu() {
