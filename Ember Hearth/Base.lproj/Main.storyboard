@@ -543,44 +543,40 @@
                                         <rect key="frame" x="0.0" y="30" width="250" height="270"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
                                     </imageView>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="IXu-BC-kHq">
+                                    <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="MkI-7X-BTb">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="XLg-N7-aFk"/>
-                                            <constraint firstAttribute="width" constant="30" id="gG1-a3-1bR"/>
+                                            <constraint firstAttribute="height" constant="30" id="L4D-nc-Hvq"/>
+                                            <constraint firstAttribute="width" constant="30" id="sNK-L9-O3L"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" controlSize="small" imageScaling="proportionallyDown" inset="2" id="PDl-4s-3sJ">
+                                        <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="vl9-vA-3oW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="createNewProject:" target="dot-n3-klN" id="6PO-4g-Gz5"/>
-                                        </connections>
-                                    </button>
-                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="QFy-aH-rED">
-                                        <rect key="frame" x="30" y="0.0" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="9pI-sS-zja"/>
-                                            <constraint firstAttribute="width" constant="30" id="koT-Zh-vi1"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFolder" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XVZ-c4-Dwq">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="openExistingProject:" target="dot-n3-klN" id="DVz-Ji-5sR"/>
-                                        </connections>
-                                    </button>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" autoenablesItems="NO" id="JSO-O6-del">
+                                                <items>
+                                                    <menuItem image="NSAddTemplate" id="10V-t3-xan"/>
+                                                    <menuItem title="Create project" id="zHb-gX-Lzr">
+                                                        <connections>
+                                                            <action selector="createNewProject:" target="dot-n3-klN" id="Jr4-KT-KGc"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Open Project" id="jHO-qa-Dmp">
+                                                        <connections>
+                                                            <action selector="openExistingProject:" target="dot-n3-klN" id="rHB-Y7-Pz8"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="MkI-7X-BTb" secondAttribute="bottom" id="15I-V0-tCk"/>
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="top" secondItem="iqB-3M-Pi0" secondAttribute="top" id="6VC-fZ-DTz"/>
-                                    <constraint firstItem="IXu-BC-kHq" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="85K-7b-rWT"/>
-                                    <constraint firstAttribute="bottom" secondItem="IXu-BC-kHq" secondAttribute="bottom" id="FF9-cp-RK3"/>
                                     <constraint firstAttribute="centerX" secondItem="38D-SR-eaM" secondAttribute="centerX" id="JuA-KF-hzS"/>
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="OSq-aE-nB9"/>
-                                    <constraint firstItem="QFy-aH-rED" firstAttribute="leading" secondItem="IXu-BC-kHq" secondAttribute="trailing" id="Xeg-hy-gHb"/>
+                                    <constraint firstItem="MkI-7X-BTb" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="XrQ-ic-k7M"/>
                                     <constraint firstAttribute="bottom" secondItem="bhg-eg-t3g" secondAttribute="bottom" constant="30" id="bpI-Lq-amY"/>
-                                    <constraint firstAttribute="bottom" secondItem="QFy-aH-rED" secondAttribute="bottom" id="dU2-UY-lcH"/>
                                     <constraint firstItem="38D-SR-eaM" firstAttribute="top" secondItem="t4I-5a-yyf" secondAttribute="bottom" constant="20" id="eNe-wo-VBp"/>
                                     <constraint firstAttribute="trailing" secondItem="bhg-eg-t3g" secondAttribute="trailing" id="fF8-2M-KAC"/>
                                     <constraint firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" constant="-0.5" id="g34-yl-Pd9"/>
@@ -812,7 +808,6 @@
     </scenes>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSFolder" width="32" height="32"/>
         <image name="ProjectListNewBackground" width="197" height="197"/>
     </resources>
 </document>
