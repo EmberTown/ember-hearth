@@ -25,6 +25,7 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "activeProjectSet", object: nil)
         refreshList(nil)
     }

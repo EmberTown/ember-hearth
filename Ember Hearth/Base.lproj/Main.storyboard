@@ -543,18 +543,21 @@
                                         <rect key="frame" x="0.0" y="30" width="250" height="270"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
                                     </imageView>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-ji-dQg" userLabel="Hacky button icon">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAddTemplate" id="0TT-ZE-Phe"/>
+                                    </imageView>
                                     <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="MkI-7X-BTb">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="L4D-nc-Hvq"/>
                                             <constraint firstAttribute="width" constant="30" id="sNK-L9-O3L"/>
                                         </constraints>
-                                        <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="vl9-vA-3oW">
+                                        <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" imageScaling="proportionallyDown" inset="2" arrowPosition="noArrow" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="vl9-vA-3oW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" autoenablesItems="NO" id="JSO-O6-del">
                                                 <items>
-                                                    <menuItem image="NSAddTemplate" id="10V-t3-xan"/>
                                                     <menuItem title="Create project" id="zHb-gX-Lzr">
                                                         <connections>
                                                             <action selector="createNewProject:" target="dot-n3-klN" id="Jr4-KT-KGc"/>
@@ -575,12 +578,16 @@
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="top" secondItem="iqB-3M-Pi0" secondAttribute="top" id="6VC-fZ-DTz"/>
                                     <constraint firstAttribute="centerX" secondItem="38D-SR-eaM" secondAttribute="centerX" id="JuA-KF-hzS"/>
                                     <constraint firstItem="bhg-eg-t3g" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="OSq-aE-nB9"/>
+                                    <constraint firstItem="MkI-7X-BTb" firstAttribute="trailing" secondItem="xdS-ji-dQg" secondAttribute="trailing" id="Rc1-xl-HwR"/>
                                     <constraint firstItem="MkI-7X-BTb" firstAttribute="leading" secondItem="iqB-3M-Pi0" secondAttribute="leading" id="XrQ-ic-k7M"/>
                                     <constraint firstAttribute="bottom" secondItem="bhg-eg-t3g" secondAttribute="bottom" constant="30" id="bpI-Lq-amY"/>
                                     <constraint firstItem="38D-SR-eaM" firstAttribute="top" secondItem="t4I-5a-yyf" secondAttribute="bottom" constant="20" id="eNe-wo-VBp"/>
+                                    <constraint firstItem="MkI-7X-BTb" firstAttribute="bottom" secondItem="xdS-ji-dQg" secondAttribute="bottom" id="exf-w7-LeP"/>
                                     <constraint firstAttribute="trailing" secondItem="bhg-eg-t3g" secondAttribute="trailing" id="fF8-2M-KAC"/>
                                     <constraint firstAttribute="centerX" secondItem="t4I-5a-yyf" secondAttribute="centerX" constant="-0.5" id="g34-yl-Pd9"/>
+                                    <constraint firstItem="MkI-7X-BTb" firstAttribute="top" secondItem="xdS-ji-dQg" secondAttribute="top" id="otd-Ot-vCs"/>
                                     <constraint firstAttribute="centerY" secondItem="t4I-5a-yyf" secondAttribute="centerY" constant="0.5" id="y6L-1m-7av"/>
+                                    <constraint firstItem="MkI-7X-BTb" firstAttribute="leading" secondItem="xdS-ji-dQg" secondAttribute="leading" id="ysL-Uj-Ube"/>
                                 </constraints>
                             </customView>
                         </subviews>
