@@ -464,32 +464,30 @@
         <scene sceneID="DTO-1f-AVK">
             <objects>
                 <viewController id="dot-n3-klN" customClass="ProjectListController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="M8V-hn-6mb" customClass="BGColorView" customModule="Ember_Hearth" customModuleProvider="target">
+                    <view key="view" id="M8V-hn-6mb">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="62" horizontalPageScroll="10" verticalLineScroll="62" verticalPageScroll="10" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-Vh-e5B">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLo-87-omS">
                                 <rect key="frame" x="0.0" y="30" width="250" height="270"/>
-                                <clipView key="contentView" id="Q4v-oy-51r">
+                                <clipView key="contentView" drawsBackground="NO" id="gJ4-Rc-T2g">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="60" id="YLp-mT-Gy8">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="62"/>
+                                        <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" selectionHighlightStyle="sourceList" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="qnU-Py-fF8">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
-                                            <color key="gridColor" red="0.93250274658203125" green="0.93247491121292114" blue="0.93249070644378662" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="247" minWidth="40" maxWidth="1000" id="6QF-pY-DMm">
+                                                <tableColumn width="247" minWidth="40" maxWidth="1000" id="D49-pm-E7k">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" allowsUndo="NO" alignment="left" title="Text Cell" id="p6a-m4-LSN" customClass="PaddedTextFieldCell" customModule="Ember_Hearth" customModuleProvider="target">
-                                                        <font key="font" metaFont="system" size="24"/>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="vDX-xp-ONg">
+                                                        <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -497,21 +495,18 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="dot-n3-klN" id="gFA-Um-8ew"/>
-                                                <outlet property="delegate" destination="dot-n3-klN" id="iaO-Dj-Wed"/>
+                                                <outlet property="dataSource" destination="dot-n3-klN" id="UJj-e9-luh"/>
+                                                <outlet property="delegate" destination="dot-n3-klN" id="a21-rV-xwg"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="k3F-kY-wmE"/>
-                                </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="ncG-0c-dTR">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Zu8-DZ-FyI">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="NV7-JX-76G">
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="uPx-C7-O3J">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -539,10 +534,6 @@
                                             <action selector="openExistingProject:" target="dot-n3-klN" id="IWd-qC-rZ5"/>
                                         </connections>
                                     </button>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g">
-                                        <rect key="frame" x="0.0" y="30" width="250" height="270"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
-                                    </imageView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-ji-dQg" userLabel="Hacky button icon">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAddTemplate" id="0TT-ZE-Phe"/>
@@ -572,6 +563,10 @@
                                             </menu>
                                         </popUpButtonCell>
                                     </popUpButton>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g">
+                                        <rect key="frame" x="0.0" y="30" width="250" height="270"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MkI-7X-BTb" secondAttribute="bottom" id="15I-V0-tCk"/>
@@ -593,17 +588,17 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="iqB-3M-Pi0" secondAttribute="bottom" id="0Ji-Ly-qEl"/>
+                            <constraint firstAttribute="trailing" secondItem="tLo-87-omS" secondAttribute="trailing" id="1kX-rY-Y3Z"/>
                             <constraint firstAttribute="trailing" secondItem="iqB-3M-Pi0" secondAttribute="trailing" id="60G-xK-k46"/>
-                            <constraint firstAttribute="bottom" secondItem="L9g-Vh-e5B" secondAttribute="bottom" constant="30" id="AMD-hR-ieU"/>
-                            <constraint firstItem="L9g-Vh-e5B" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="QJd-7p-rNA"/>
-                            <constraint firstAttribute="trailing" secondItem="L9g-Vh-e5B" secondAttribute="trailing" id="Sbs-ic-bp1"/>
-                            <constraint firstItem="L9g-Vh-e5B" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="XJD-a4-87Q"/>
+                            <constraint firstItem="tLo-87-omS" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="K0Q-MH-yhB"/>
+                            <constraint firstItem="tLo-87-omS" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="OHt-N9-yJ1"/>
+                            <constraint firstAttribute="bottom" secondItem="tLo-87-omS" secondAttribute="bottom" constant="30" id="PNJ-D1-AJO"/>
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="Zbb-2E-Htz"/>
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="vYq-1T-VmQ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -611,7 +606,7 @@
                         <outlet property="createProjectButton" destination="t4I-5a-yyf" id="qgb-B2-AWS"/>
                         <outlet property="openProjectButton" destination="38D-SR-eaM" id="lcd-5z-SIG"/>
                         <outlet property="overlay" destination="bhg-eg-t3g" id="o0B-db-ndN"/>
-                        <outlet property="tableView" destination="YLp-mT-Gy8" id="zfs-Fn-XiG"/>
+                        <outlet property="tableView" destination="qnU-Py-fF8" id="pYy-Us-xCX"/>
                     </connections>
                 </viewController>
                 <customObject id="aJU-MU-whI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -741,9 +736,9 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGs-1K-21o">
-                                <rect key="frame" x="106" y="175" width="239" height="81"/>
+                                <rect key="frame" x="98" y="175" width="254" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="235" id="Avj-Fw-SgW"/>
+                                    <constraint firstAttribute="width" constant="250" id="Avj-Fw-SgW"/>
                                     <constraint firstAttribute="height" constant="81" id="ijW-Xn-iwS"/>
                                 </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Installing addons through Ember Hearth is not yet implemented. Do you want to help? Contribute on GitHub." id="ent-dR-j9d">
@@ -755,9 +750,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="t2Y-bs-RKh" firstAttribute="top" secondItem="fGs-1K-21o" secondAttribute="bottom" constant="8" id="57M-j4-BJi"/>
-                            <constraint firstAttribute="centerY" secondItem="t2Y-bs-RKh" secondAttribute="centerY" constant="0.5" id="8C8-bf-gmm"/>
+                            <constraint firstAttribute="centerY" secondItem="t2Y-bs-RKh" secondAttribute="centerY" id="8C8-bf-gmm"/>
                             <constraint firstAttribute="centerX" secondItem="t2Y-bs-RKh" secondAttribute="centerX" id="YkM-og-HDx"/>
-                            <constraint firstAttribute="centerX" secondItem="fGs-1K-21o" secondAttribute="centerX" constant="-0.5" id="ggW-cA-M7G"/>
+                            <constraint firstAttribute="centerX" secondItem="fGs-1K-21o" secondAttribute="centerX" id="ggW-cA-M7G"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -788,9 +783,9 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zen-Rk-ozr">
-                                <rect key="frame" x="106" y="175" width="239" height="81"/>
+                                <rect key="frame" x="98" y="175" width="254" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="235" id="YNv-yn-tzC"/>
+                                    <constraint firstAttribute="width" constant="250" id="YNv-yn-tzC"/>
                                     <constraint firstAttribute="height" constant="81" id="pQL-wl-8Lc"/>
                                 </constraints>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Editing project settings through Ember Hearth is not yet implemented. Do you want to help? Contribute on GitHub." id="JSc-2F-fkN">
@@ -801,10 +796,10 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="zen-Rk-ozr" secondAttribute="centerX" constant="-0.5" id="AMc-7m-32J"/>
+                            <constraint firstAttribute="centerX" secondItem="zen-Rk-ozr" secondAttribute="centerX" id="AMc-7m-32J"/>
                             <constraint firstItem="yj1-JE-RON" firstAttribute="top" secondItem="zen-Rk-ozr" secondAttribute="bottom" constant="8" id="bIs-8V-YBg"/>
                             <constraint firstAttribute="centerX" secondItem="yj1-JE-RON" secondAttribute="centerX" id="naA-8k-XAO"/>
-                            <constraint firstAttribute="centerY" secondItem="yj1-JE-RON" secondAttribute="centerY" constant="0.5" id="tot-MN-gBx"/>
+                            <constraint firstAttribute="centerY" secondItem="yj1-JE-RON" secondAttribute="centerY" id="tot-MN-gBx"/>
                         </constraints>
                     </view>
                 </viewController>

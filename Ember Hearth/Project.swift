@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Project {
+class Project: Equatable {
     var name: String?
     var path: String?
     var package: NSDictionary?
@@ -60,4 +60,8 @@ class Project {
         name = package?["name"] as? String
         return name
     }
+}
+
+func ==(left: Project, right: Project) -> Bool {
+    return left.path == right.path
 }

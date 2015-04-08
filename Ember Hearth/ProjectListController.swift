@@ -49,8 +49,20 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
                 tempArray.append(project)
             }
         }
+        if self.projects != nil && tempArray == self.projects! {
+            return
+        }
         self.projects = tempArray
         self.tableView.reloadData()
+
+        var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+        let activeProject = appDelegate.activeProject
+        if activeProject != nil {
+            let indexOfActiveProject = find(self.projects!, activeProject!)
+            if indexOfActiveProject != nil {
+                self.tableView.selectRowIndexes(NSIndexSet(index: indexOfActiveProject!), byExtendingSelection: false)
+            }
+        }
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -61,10 +73,34 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         return count
     }
     
-    func tableView(tableView: NSTableView!, objectValueForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject!
-    {
+    var rowHeight: CGFloat = 50.0
+    var textSize: CGFloat = 20.0
+    
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        var label = NSTextField()
+        label.bezeled = false
+        label.editable = false
+        label.selectable = false
+        label.backgroundColor = NSColor.clearColor()
         var project: Project = projects![row]
-        return project.name;
+        label.stringValue = project.name!
+        label.font = NSFont.systemFontOfSize(textSize)
+        let labelHeight = textSize + textSize * 0.2
+        label.frame = NSMakeRect(0, 0, self.tableView.frame.size.width, labelHeight)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        var wrapper = NSTableRowView()
+        wrapper.backgroundColor = NSColor.clearColor()
+        wrapper.addSubview(label)
+        
+        let margin = (rowHeight - labelHeight) / 2
+        wrapper.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-15-[label]-15-|", options: nil, metrics: nil, views: ["label":label]))
+        wrapper.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin-[label]-margin-|", options: nil, metrics: ["margin":margin], views: ["label":label]))
+        return wrapper
+    }
+
+    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return rowHeight
     }
     
     func tableViewSelectionDidChange(notification: NSNotification) {
@@ -74,7 +110,9 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         var project = projects?[tableView.selectedRow]
         if project != nil {
             var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
-            appDelegate.activeProject = project!
+            if appDelegate.activeProject != project {
+                appDelegate.activeProject = project!
+            }
         }
     }
 }
