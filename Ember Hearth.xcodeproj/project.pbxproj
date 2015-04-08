@@ -20,6 +20,7 @@
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
 		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
+		E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979AEB41AD537850013F10E /* DebugMenu.swift */; };
 		E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97E798B1AC874B00080BB66 /* ProjectViewController.swift */; };
 		E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */; };
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
@@ -58,6 +59,7 @@
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
 		E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
+		E979AEB41AD537850013F10E /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		E97E798B1AC874B00080BB66 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E9BC4DF21AC8093A00A747EC /* Ember Hearth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ember Hearth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4DF61AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +123,14 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		E979AEB31AD5375A0013F10E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E979AEB41AD537850013F10E /* DebugMenu.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		E97E798A1AC874950080BB66 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
@@ -327,6 +338,7 @@
 				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
 				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
+				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,

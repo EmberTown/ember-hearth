@@ -17,12 +17,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
     }
     var projectNameController: ProjectNameWindowController?
+    
+    #if DEBUG
+    var debugMenu = DebugMenu(title: "Debug")
+    #endif
+    
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
-#if DEBUG
+        #if DEBUG
         addDebugMenu()
-#endif
+        #endif
     }
     
     func toggleProjectMenus() {
@@ -37,24 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     
     func addDebugMenu() {
         var mainMenu = NSApplication.sharedApplication().mainMenu
-        var debugMenu = NSMenu(title: "Debug")
-
-        debugMenu.addItem(NSMenuItem(title: "Install node.js", action: "installNode:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Install NPM", action: "installNPM:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Install Ember CLI", action: "installEmberCLI:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Install Bower", action: "installBower:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Install Phantom.js", action: "installPhantomjs:", keyEquivalent: ""))
-        
-        debugMenu.addItem(NSMenuItem(title: "Node.js version", action: "nodeVersion:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "NPM version", action: "npmVersion:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Bower version", action: "bowerVersion:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Ember CLI version", action: "emberCLIVersion:", keyEquivalent: ""))
-        debugMenu.addItem(NSMenuItem(title: "Phantom.js version", action: "phantomJSVersion:", keyEquivalent: ""))
-        
-        
-        let debugMenuItem = NSMenuItem(title: "Debug", action: nil, keyEquivalent: "")
-        mainMenu?.insertItem(debugMenuItem, atIndex: 5)
-        mainMenu?.setSubmenu(debugMenu, forItem: debugMenuItem)
+        if mainMenu != nil {
+            mainMenu!.insertItem(DebugMenu.debugItem(forMenu: mainMenu!), atIndex: 5)
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -188,71 +178,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                 println("Built ember: \(result)")
             })
         }
-    }
-    
-    //MARK: Debug menu
-    func installNode (sender: AnyObject) {
-        var node = Node()
-        node.install { (success) -> () in
-            println("Installed node with success: \(success)")
-        }
-    }
-    
-    func installNPM (sender: AnyObject) {
-        var npm = NPM()
-        npm.install { (success) -> () in
-            println("Installed npm with success: \(success)")
-        }
-    }
-    
-    func installEmberCLI (sender: AnyObject) {
-        var ember = EmberCLI()
-        ember.install { (success) -> () in
-            println("Installed Ember CLI with success: \(success)")
-        }
-    }
-    
-    func installBower (sender: AnyObject) {
-        var bower = Bower()
-        bower.install { (success) -> () in
-            println("Installed Bower with success: \(success)")
-        }
-    }
-    
-    func installPhantomjs (sender: AnyObject) {
-        var phantom = PhantomJS()
-        phantom.install { (success) -> () in
-            println("Installed Phantom JS with success: \(success)")
-        }
-    }
-    
-    func nodeVersion (sender: AnyObject) {
-        let alert = NSAlert()
-        alert.messageText = "Node.js version: \(Node.version()!)"
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
-    }
-    
-    func npmVersion (sender: AnyObject) {
-        let alert = NSAlert()
-        alert.messageText = "NPM version: \(NPM.version()!)"
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
-    }
-    
-    func bowerVersion (sender: AnyObject) {
-        let alert = NSAlert()
-        alert.messageText = "Bower version: \(Bower.version()!)"
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
-    }
-    
-    func emberCLIVersion (sender: AnyObject) {
-        let alert = NSAlert()
-        alert.messageText = "Ember CLI version: \(EmberCLI.version()!)"
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
-    }
-    
-    func phantomJSVersion (sender: AnyObject) {
-        let alert = NSAlert()
-        alert.messageText = "Phantom.js version: \(PhantomJS.version()!)"
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
     }
 }
