@@ -17,6 +17,7 @@
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
 		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
 		E95EE93F1AC9AD4700609327 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93E1AC9AD4700609327 /* Project.swift */; };
+		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
 		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
@@ -56,6 +57,7 @@
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
 		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		E95EE93E1AC9AD4700609327 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
 		E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				E9E989011AC84A090053763E /* Terminal.swift */,
 				E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */,
 				18E7B8511AC93926008D2E25 /* PhantomJS.swift */,
+				E96E8D341AD585DB00C2D1A3 /* Brew.swift */,
 			);
 			name = "External tools";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */,
 				E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */,
 				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
+				E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */,
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,

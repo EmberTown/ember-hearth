@@ -8,6 +8,15 @@
 
 import Cocoa
 
+enum InstallMethod: String {
+    case Hearth = "Hearth"
+    case NPM = "NPM"
+    case Bower = "Bower"
+    case Brew = "Homebrew"
+    case Unknown = "Unknown"
+    case NotInstalled = "Not installed"
+}
+
 class Terminal {
     private var task: NSTask?
     private var output: NSPipe?

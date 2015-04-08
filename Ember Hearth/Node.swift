@@ -9,6 +9,15 @@
 import Cocoa
 
 class Node {
+    class func installationMethod() -> InstallMethod {
+        if Brew.isInstalled("node") {
+            return InstallMethod.Brew
+        } else if !Node.isInstalled() {
+            return InstallMethod.NotInstalled
+        }
+        return InstallMethod.Unknown
+    }
+    
     class func isInstalled() -> Bool {
         return Node.version() != nil
     }
