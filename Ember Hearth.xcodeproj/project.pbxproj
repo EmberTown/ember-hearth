@@ -23,6 +23,8 @@
 		E9735F991AC8661E0068F3A3 /* ProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */; };
 		E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979AEB41AD537850013F10E /* DebugMenu.swift */; };
 		E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97E798B1AC874B00080BB66 /* ProjectViewController.swift */; };
+		E997C3111AD58B790097499E /* TerminalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3101AD58B790097499E /* TerminalTests.swift */; };
+		E99E712A1AD58D3200993E36 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
 		E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */; };
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
 		E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFD1AC8093A00A747EC /* Main.storyboard */; };
@@ -63,6 +65,7 @@
 		E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressPanel.xib; sourceTree = "<group>"; };
 		E979AEB41AD537850013F10E /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		E97E798B1AC874B00080BB66 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		E997C3101AD58B790097499E /* TerminalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalTests.swift; sourceTree = "<group>"; };
 		E9BC4DF21AC8093A00A747EC /* Ember Hearth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ember Hearth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4DF61AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 			children = (
 				E9BC4E0A1AC8093A00A747EC /* Ember_HearthTests.swift */,
 				E9BC4E081AC8093A00A747EC /* Supporting Files */,
+				E997C3101AD58B790097499E /* TerminalTests.swift */,
 			);
 			path = "Ember HearthTests";
 			sourceTree = "<group>";
@@ -362,7 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99E712A1AD58D3200993E36 /* Terminal.swift in Sources */,
 				E9BC4E0B1AC8093A00A747EC /* Ember_HearthTests.swift in Sources */,
+				E997C3111AD58B790097499E /* TerminalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

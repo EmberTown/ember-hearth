@@ -17,12 +17,12 @@ enum InstallMethod: String {
     case NotInstalled = "Not installed"
 }
 
-class Terminal {
+public class Terminal {
     private var task: NSTask?
     private var output: NSPipe?
-    var workingDirectory: String?
+    public var workingDirectory: String?
     
-    init() { }
+    public init() { }
     
     func taskForCommand (command: String) -> NSTask {
         var task = NSTask()
@@ -31,7 +31,7 @@ class Terminal {
         return task
     }
     
-    func runTerminalCommandSync (command: String) -> String? {
+    public func runTerminalCommandSync (command: String) -> String? {
         var task = taskForCommand(command)
         
         var findOut = NSPipe()
@@ -42,10 +42,15 @@ class Terminal {
         
         let outData = findOut.fileHandleForReading.readDataToEndOfFile()
         let result = NSString(data: outData, encoding: NSASCIIStringEncoding)
-        return result
+        
+        if task.terminationStatus == 0 {
+            return result
+        }
+        
+        return nil
     }
     
-    func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) {
+    public func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) {
         self.task = taskForCommand(command)
         if self.workingDirectory != nil {
             self.task?.currentDirectoryPath = self.workingDirectory!
