@@ -28,15 +28,18 @@ class ProjectViewController: NSViewController {
             }
         } else {
             if appDelegate.activeProject != nil {
-                appDelegate.activeProject!.serverRunning = true
                 runButton.title = "Stop Ember server"
                 var ember = EmberCLI()
                 let project = appDelegate.activeProject!
                 let path: String = project.path!
                 serverTask = ember.runServerTask(path)
                 var pipe = NSPipe()
-                serverTask?.standardOutput = pipe 
+                serverTask?.standardOutput = pipe
+                pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedData:", name:NSFileHandleDataAvailableNotification, object: pipe.fileHandleForReading)
+                
                 serverTask?.terminationHandler = { (task: NSTask!) in
+                    NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
                     if task.terminationStatus > 0 {
                         let result = pipe.fileHandleForReading.readDataToEndOfFile()
                         if result.length > 0 && project.serverRunning {
@@ -57,8 +60,27 @@ class ProjectViewController: NSViewController {
                         }
                     }
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
                 serverTask?.launch()
+            }
+        }
+    }
+    
+    
+    func receivedData(notification: NSNotification?) {
+        var fileHandle = notification?.object as? NSFileHandle
+        if let data = fileHandle?.availableData {
+            if data.length > 0 {
+                fileHandle?.waitForDataInBackgroundAndNotify()
+                if let string = NSString(data: data, encoding:NSUTF8StringEncoding) {
+                    let range = string.rangeOfString("Serving on ")
+                    if range.location != NSNotFound {
+                        var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+                        appDelegate.activeProject!.serverRunning = true
+                        NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
+                    }
+                }
+            } else { // End of file
+                NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
             }
         }
     }
@@ -84,4 +106,6 @@ class ProjectViewController: NSViewController {
         println("Closing server")
         serverTask?.terminate()
     }
+    
+    
 }
