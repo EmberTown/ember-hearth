@@ -67,7 +67,7 @@ class ProjectViewController: NSViewController {
         if name != nil {
             self.titleLabel.stringValue = name!
         }
-        NSApplication.sharedApplication().mainWindow!.firstResponder.resignFirstResponder()
+        NSApplication.sharedApplication().mainWindow!.makeFirstResponder(self.view)
     }
 
     override func viewWillDisappear() {
