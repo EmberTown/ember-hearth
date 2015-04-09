@@ -14,6 +14,7 @@ class ProjectViewController: NSViewController {
     @IBOutlet var titleLabel: NSTextField!
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setProjectTitle:", name: "activeProjectSet", object: nil)
     }
 
