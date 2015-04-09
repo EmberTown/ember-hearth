@@ -27,6 +27,8 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         refreshList(nil)
     }
     
@@ -40,6 +42,7 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         appDelegate.openExistingProject(sender)
     }
     
+    //MARK: Data updating
     func refreshList(notification: NSNotification?) {
         var projectDicts = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? [Dictionary<String, AnyObject>]
         var tempArray: [Project] = []
@@ -49,10 +52,10 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
                 tempArray.append(project)
             }
         }
-        if self.projects != nil && tempArray == self.projects! {
-            return
+        if self.projects == nil || tempArray != self.projects! {
+            self.projects = tempArray
         }
-        self.projects = tempArray
+        
         self.tableView.reloadData()
 
         var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
@@ -76,7 +79,12 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view: NSTableCellView = tableView.makeViewWithIdentifier("projectCell", owner: tableView) as! NSTableCellView
         var project: Project = projects![row]
-        view.textField!.stringValue = project.name!
+        if project.serverRunning {
+            view.textField!.stringValue = "✅ \(project.name!)"
+        } else {
+            view.textField!.stringValue = "❌ \(project.name!)"
+        }
+        
         return view
     }
 
@@ -91,5 +99,14 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
                 appDelegate.activeProject = project!
             }
         }
+    }
+    
+    //MARK: project state
+    func serverStarted(notification: NSNotification?) {
+        self.refreshList(notification)
+    }
+    
+    func serverStopped(notification: NSNotification?) {
+        self.refreshList(notification)
     }
 }
