@@ -13,6 +13,7 @@
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */; };
 		E9286B931AD7030100719335 /* ProjectStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9286B921AD7030100719335 /* ProjectStatisticsViewController.swift */; };
+		E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9286B941AD70F5B00719335 /* Settings.storyboard */; };
 		E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */; };
 		E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
@@ -56,6 +57,7 @@
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedTextFieldCell.swift; sourceTree = "<group>"; };
 		E9286B921AD7030100719335 /* ProjectStatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectStatisticsViewController.swift; sourceTree = "<group>"; };
+		E9286B941AD70F5B00719335 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotImplementedViewController.swift; sourceTree = "<group>"; };
 		E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabViewController.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				188C3DF01AC86F8900444710 /* NewProjectTitle.xib */,
 				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
 				E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */,
+				E9286B941AD70F5B00719335 /* Settings.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
 				188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
+				E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

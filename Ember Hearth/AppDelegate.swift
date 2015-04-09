@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
     }
     var projectNameController: ProjectNameWindowController?
+    var preferensesWindowController: NSWindowController?
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
@@ -178,5 +179,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                 println("Built ember: \(result)")
             })
         }
+    }
+    
+    @IBAction func showSettings(sender: AnyObject?) {
+        preferensesWindowController = NSStoryboard(name: "Settings", bundle: nil)?.instantiateInitialController() as? NSWindowController
+        preferensesWindowController?.showWindow(nil)
     }
 }

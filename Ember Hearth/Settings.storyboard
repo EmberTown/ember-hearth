@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Cbp-aM-8ZX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="sc0-ZD-lFH">
+            <objects>
+                <windowController id="Cbp-aM-8ZX" sceneMemberID="viewController">
+                    <window key="window" title="Ember Hearth Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bA1-pv-Cjm">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="362" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <toolbar key="toolbar" implicitIdentifier="260F0E5F-A21B-44D0-A465-A12430DB3B1B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="QAQ-pr-GKa">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ayf-mR-0FO"/>
+                                <toolbarItem implicitItemIdentifier="537AF465-9561-468E-BD9C-D63CCA832BDC" label="Paths" paletteLabel="Paths" tag="-1" image="TerminalIcon" id="Bn7-IR-0Qr"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cBm-8i-HhE"/>
+                                <toolbarItem implicitItemIdentifier="2C74798E-4D9C-40CE-8D2E-8EABBBD32A90" label="General" paletteLabel="General" tag="-1" image="NSPreferencesGeneral" id="MIS-jv-Oym"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="MIS-jv-Oym"/>
+                                <toolbarItem reference="Bn7-IR-0Qr"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                    </window>
+                    <connections>
+                        <segue destination="SY7-Sb-cIw" kind="relationship" relationship="window.shadowedContentViewController" id="QgN-AZ-Y0y"/>
+                    </connections>
+                </windowController>
+                <customObject id="tO4-i3-rg1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="466"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="s8D-1q-F1E">
+            <objects>
+                <viewController id="SY7-Sb-cIw" sceneMemberID="viewController">
+                    <view key="view" id="wRi-1b-8IK">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MMG-BD-yq8">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAdvanced" id="SCQ-ZC-5yb"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="MMG-BD-yq8" secondAttribute="bottom" id="4sL-Gx-x6U"/>
+                            <constraint firstItem="MMG-BD-yq8" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" id="d8S-Os-JQG"/>
+                            <constraint firstAttribute="trailing" secondItem="MMG-BD-yq8" secondAttribute="trailing" id="j2A-3W-3t7"/>
+                            <constraint firstItem="MMG-BD-yq8" firstAttribute="top" secondItem="wRi-1b-8IK" secondAttribute="top" id="yZV-ML-PST"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="8YP-cY-WSO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="530" y="928"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="TerminalIcon" width="128" height="128"/>
+    </resources>
+</document>
