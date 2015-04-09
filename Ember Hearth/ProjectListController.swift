@@ -65,6 +65,8 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             if indexOfActiveProject != nil {
                 self.tableView.selectRowIndexes(NSIndexSet(index: indexOfActiveProject!), byExtendingSelection: false)
             }
+        } else {
+            appDelegate.activeProject = projects?.first
         }
     }
     
