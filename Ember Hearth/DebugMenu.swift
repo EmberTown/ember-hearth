@@ -9,11 +9,6 @@
 import Cocoa
 
 class DebugMenu: NSMenu {
-    override init () {
-        super.init()
-        self.configure()
-    }
-
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
@@ -46,7 +41,7 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Phantom.js version", action: "phantomJSVersion", keyEquivalent: ""))
 
         // For some reason, the default target of NSMenuItem isn't self.
-        for item in self.itemArray as [NSMenuItem] {
+        for item in self.itemArray as! [NSMenuItem] {
             item.target = self
         }
     }

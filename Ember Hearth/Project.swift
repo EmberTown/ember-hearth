@@ -15,14 +15,14 @@ class Project: Equatable {
     
     convenience init(dict: Dictionary<String, Any>) {
         self.init()
-        name = dict["name"] as String?
-        path = dict["path"] as String?
+        name = dict["name"] as! String?
+        path = dict["path"] as! String?
     }
     
     convenience init(dict: Dictionary<String, AnyObject>) {
         self.init()
-        name = dict["name"] as String?
-        path = dict["path"] as String?
+        name = dict["name"] as! String?
+        path = dict["path"] as! String?
     }
     
     convenience init(name: String?, path: String?) {

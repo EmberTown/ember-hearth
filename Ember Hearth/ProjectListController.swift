@@ -31,12 +31,12 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     }
     
     @IBAction func createNewProject(sender: AnyObject) {
-        var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+        var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
         appDelegate.createNewProject(sender)
     }
     
     @IBAction func openExistingProject(sender: AnyObject) {
-        var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+        var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
         appDelegate.openExistingProject(sender)
     }
     
@@ -55,7 +55,7 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         self.projects = tempArray
         self.tableView.reloadData()
 
-        var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+        var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
         let activeProject = appDelegate.activeProject
         if activeProject != nil {
             let indexOfActiveProject = find(self.projects!, activeProject!)
@@ -109,7 +109,7 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         }
         var project = projects?[tableView.selectedRow]
         if project != nil {
-            var appDelegate = NSApplication.sharedApplication().delegate! as AppDelegate
+            var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
             if appDelegate.activeProject != project {
                 appDelegate.activeProject = project!
             }

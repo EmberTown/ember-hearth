@@ -58,7 +58,7 @@ class DependencyManager {
                 var sheet = ProgressWindowController()
                 NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
                 sheet.label.stringValue = "Installing Node.js…"
-                NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+                NSApp.beginSheet(sheet.window!, completionHandler: nil)
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
                     var node = Node()
@@ -119,7 +119,7 @@ class DependencyManager {
                                                 Int64(0.5 * Double(NSEC_PER_SEC)))
                                             dispatch_after(delayTime, dispatch_get_main_queue()) {
                                                 sheet.window!.orderOut(nil)
-                                                NSApp.endSheet(sheet.window!)
+                                                sheet.window!.endSheet(sheet.window!)
                                                 completion(success: true)
                                             }
                                         })

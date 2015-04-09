@@ -14,14 +14,14 @@ class ProjectViewController: NSViewController {
     @IBOutlet var titleLabel: NSTextField!
 
     override func viewDidLoad() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setTitle:", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setProjectTitle:", name: "activeProjectSet", object: nil)
     }
 
     @IBAction func runServer (sender: AnyObject) {
         if serverTask != nil {
             stopServer()
         } else {
-            var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+            var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
             if appDelegate.activeProject != nil {
                 runButton.title = "Stop Ember server"
                 var ember = EmberCLI()
@@ -41,7 +41,7 @@ class ProjectViewController: NSViewController {
                                 if string?.length > 400 {
                                     alert.informativeText = "\(string!.substringToIndex(400))…"
                                 } else {
-                                    alert.informativeText = string?
+                                    alert.informativeText = string as? String
                                 }
                                 alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
                                 self.stopServer()
@@ -60,13 +60,14 @@ class ProjectViewController: NSViewController {
         runButton.title = "Run Ember server"
     }
 
-    func setTitle(notification: NSNotification) {
-        var appDelegate = NSApplication.sharedApplication().delegate as AppDelegate
+    func setProjectTitle(notification: NSNotification) {
+        var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         let project = appDelegate.activeProject
         let name = project?.name
         if name != nil {
             self.titleLabel.stringValue = name!
         }
+        NSApplication.sharedApplication().mainWindow!.firstResponder.resignFirstResponder()
     }
 
     override func viewWillDisappear() {

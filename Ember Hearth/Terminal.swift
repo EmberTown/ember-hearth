@@ -44,7 +44,7 @@ public class Terminal {
         let result = NSString(data: outData, encoding: NSASCIIStringEncoding)
         
         if task.terminationStatus == 0 {
-            return result
+            return result as? String
         }
         
         return nil
@@ -68,7 +68,7 @@ public class Terminal {
                 if outData != nil {
                     result = NSString(data: outData!, encoding: NSASCIIStringEncoding)
                 }
-                completion(result: result)
+                completion(result: result as? String)
             }
             
             self.task = nil

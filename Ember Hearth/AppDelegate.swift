@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     func toggleProjectMenus() {
         var mainMenu = NSApplication.sharedApplication().mainMenu
         let projectActive = activeProject != nil
-        for item in mainMenu!.itemArray as [NSMenuItem] {
+        for item in mainMenu!.itemArray as! [NSMenuItem] {
             if item.tag == 1 { // 1 is set for menus reqiring an active project
                 item.enabled = projectActive
             }
@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         projectNameController = ProjectNameWindowController()
         projectNameController?.delegate = self
         NSBundle.mainBundle().loadNibNamed("NewProjectTitle", owner: projectNameController, topLevelObjects: nil)
-        NSApp.beginSheet(projectNameController!.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: self, didEndSelector: nil, contextInfo: nil)
+        NSApp.beginSheet(projectNameController!.window!, completionHandler: nil)
     }
 
     func nameSet(name: String) {
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             weak var weakself = self
             panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {(result: Int) -> Void in
                 if result == NSFileHandlingPanelOKButton {
-                    let path = (panel.URLs.first! as NSURL).path!
+                    let path = (panel.URLs.first! as! NSURL).path!
                     println("Picked project path \(path)")
                     // Create project with new folder
                     var dependencyManager = DependencyManager()
@@ -102,7 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         weak var weakself = self
         panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                let path = (panel.URLs.first! as NSURL).path!
+                let path = (panel.URLs.first! as! NSURL).path!
                 println("Picked project path \(path)")
                 // Create project with new folder
                 var dependencyManager = DependencyManager()
@@ -138,7 +138,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             sheet.progressIndicator.indeterminate = true
             sheet.progressIndicator.startAnimation(nil)
             sheet.label.stringValue = "Setting up ember project files…"
-            NSApp.beginSheet(sheet.window!, modalForWindow: NSApplication.sharedApplication().mainWindow!, modalDelegate: nil, didEndSelector: nil, contextInfo: nil)
+            NSApp.beginSheet(sheet.window!, completionHandler: nil)
 
             var ember = EmberCLI()
             ember.createProject(path, name: name!, completion: { (success) -> () in
@@ -152,7 +152,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                     Int64(0.5 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
                     sheet.window!.orderOut(nil)
-                    NSApp.endSheet(sheet.window!)
+                    sheet.window!.endSheet(sheet.window!)
                 }
 
             })
