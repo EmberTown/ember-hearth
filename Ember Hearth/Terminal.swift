@@ -68,7 +68,9 @@ public class Terminal {
                 if outData != nil {
                     result = NSString(data: outData!, encoding: NSASCIIStringEncoding)
                 }
-                completion(result: result as? String)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(result: result as? String)
+                })
             }
             
             self.task = nil

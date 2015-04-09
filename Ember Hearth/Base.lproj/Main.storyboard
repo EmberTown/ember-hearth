@@ -528,6 +528,9 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="tVg-mx-q7W"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Zu8-DZ-FyI">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -665,11 +668,11 @@
             <objects>
                 <viewController id="bXs-Kf-6T4" customClass="ProjectViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GSX-7Z-XIl" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="72"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="284" y="19" width="152" height="32"/>
+                                <rect key="frame" x="284" y="18" width="152" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
                                 </constraints>
@@ -682,7 +685,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
-                                <rect key="frame" x="18" y="22" width="266" height="30"/>
+                                <rect key="frame" x="18" y="20" width="266" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WL5-f9-i6C"/>
                                 </constraints>
@@ -716,8 +719,9 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem identifier="" id="OUq-rC-E9K"/>
-                        <tabViewItem identifier="" id="CFj-Cx-siu"/>
+                        <tabViewItem id="Sqm-8k-6wl"/>
+                        <tabViewItem id="tPy-ZL-Tew"/>
+                        <tabViewItem id="ydP-Xu-Rmf"/>
                     </tabViewItems>
                     <tabView key="tabView" id="XcE-S1-ZJK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -731,13 +735,46 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="h2M-5e-dFV" kind="relationship" relationship="tabItems" id="zWk-4f-SqV"/>
-                        <segue destination="bh2-Vd-SRI" kind="relationship" relationship="tabItems" id="brK-W8-dw5"/>
+                        <segue destination="P0g-J5-fTw" kind="relationship" relationship="tabItems" id="Rdm-yu-7gz"/>
+                        <segue destination="h2M-5e-dFV" kind="relationship" relationship="tabItems" id="mZ9-mz-ftg"/>
+                        <segue destination="bh2-Vd-SRI" kind="relationship" relationship="tabItems" id="9Ka-J4-LBc"/>
                     </connections>
                 </tabViewController>
                 <customObject id="9CE-7Y-Jen" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2272" y="804"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="ShC-cf-vzC">
+            <objects>
+                <viewController title="Statistics" id="P0g-J5-fTw" customClass="ProjectStatisticsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="0KX-MH-9cg">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmY-Qp-f3E">
+                                <rect key="frame" x="18" y="20" width="414" height="160"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Loading project statistics…" id="s8A-ab-uaw">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dmY-Qp-f3E" secondAttribute="trailing" constant="20" id="7Lf-dZ-ybt"/>
+                            <constraint firstItem="dmY-Qp-f3E" firstAttribute="top" secondItem="0KX-MH-9cg" secondAttribute="top" constant="20" id="JHg-YC-1sb"/>
+                            <constraint firstItem="dmY-Qp-f3E" firstAttribute="leading" secondItem="0KX-MH-9cg" secondAttribute="leading" constant="20" id="Wvs-fd-qIq"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dmY-Qp-f3E" secondAttribute="bottom" constant="20" id="yPn-8k-K2O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="dmY-Qp-f3E" id="ulJ-EO-isw"/>
+                    </connections>
+                </viewController>
+                <customObject id="oGQ-cd-Wch" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2835" y="265"/>
         </scene>
         <!--Addons-->
         <scene sceneID="WNq-MN-Nlo">
