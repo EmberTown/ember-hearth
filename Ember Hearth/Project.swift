@@ -11,6 +11,8 @@ import Cocoa
 class Project: Equatable {
     var name: String?
     var path: String?
+    var serverRunning = false
+    
     var package: NSDictionary?
     
     convenience init(dict: Dictionary<String, Any>) {
