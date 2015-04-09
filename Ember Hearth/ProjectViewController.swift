@@ -39,32 +39,36 @@ class ProjectViewController: NSViewController {
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedData:", name:NSFileHandleDataAvailableNotification, object: pipe.fileHandleForReading)
                 
                 serverTask?.terminationHandler = { (task: NSTask!) in
-                    NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
-                    if task.terminationStatus > 0 {
-                        let result = pipe.fileHandleForReading.readDataToEndOfFile()
-                        if result.length > 0 && project.serverRunning {
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                project.serverRunning = false
-                                NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
-                                var alert = NSAlert()
-                                let string = NSString(data: result, encoding:NSASCIIStringEncoding)
-                                alert.messageText = "Error starting server"
-                                if string?.length > 400 {
-                                    alert.informativeText = "\(string!.substringToIndex(400))…"
-                                } else {
-                                    alert.informativeText = string as? String
-                                }
-                                alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
-                                self.stopServer()
-                            })
-                        }
-                    }
+                    self.serverTerminated(task, project: project)
                 }
                 serverTask?.launch()
             }
         }
     }
     
+    func serverTerminated(task: NSTask, project: Project) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
+        let pipe = task.standardOutput as! NSPipe
+        if task.terminationStatus > 0 {
+            let result = pipe.fileHandleForReading.readDataToEndOfFile()
+            if result.length > 0 && project.serverRunning {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    project.serverRunning = false
+                    NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
+                    var alert = NSAlert()
+                    let string = NSString(data: result, encoding:NSASCIIStringEncoding)
+                    alert.messageText = "Error starting server"
+                    if string?.length > 400 {
+                        alert.informativeText = "\(string!.substringToIndex(400))…"
+                    } else {
+                        alert.informativeText = string as? String
+                    }
+                    alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
+                    self.stopServer()
+                })
+            }
+        }
+    }
     
     func receivedData(notification: NSNotification?) {
         var fileHandle = notification?.object as? NSFileHandle
