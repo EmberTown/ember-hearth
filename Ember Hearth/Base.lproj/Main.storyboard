@@ -773,26 +773,12 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zaa-Pk-mIQ">
-                                <rect key="frame" x="177" y="75" width="96" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="TVF-nc-c3S"/>
-                                    <constraint firstAttribute="height" constant="22" id="eL2-Al-CjA"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ibd-Ow-Xx6">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="t2Y-bs-RKh" firstAttribute="top" secondItem="fGs-1K-21o" secondAttribute="bottom" constant="8" id="57M-j4-BJi"/>
                             <constraint firstAttribute="centerY" secondItem="t2Y-bs-RKh" secondAttribute="centerY" id="8C8-bf-gmm"/>
-                            <constraint firstAttribute="centerX" secondItem="Zaa-Pk-mIQ" secondAttribute="centerX" id="Iv8-wC-OCv"/>
                             <constraint firstAttribute="centerX" secondItem="t2Y-bs-RKh" secondAttribute="centerX" id="YkM-og-HDx"/>
                             <constraint firstAttribute="centerX" secondItem="fGs-1K-21o" secondAttribute="centerX" id="ggW-cA-M7G"/>
-                            <constraint firstItem="Zaa-Pk-mIQ" firstAttribute="top" secondItem="t2Y-bs-RKh" secondAttribute="bottom" constant="37" id="yCH-os-nSM"/>
                         </constraints>
                     </view>
                 </viewController>
