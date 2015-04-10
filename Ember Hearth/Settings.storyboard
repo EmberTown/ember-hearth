@@ -39,7 +39,7 @@
             <objects>
                 <viewController id="SY7-Sb-cIw" customClass="PathSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wRi-1b-8IK" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="182"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Jh-N6g">
@@ -138,23 +138,33 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-ai-EhS">
+                                <rect key="frame" x="18" y="182" width="414" height="51"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="6iI-9A-6ir">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">These paths are fetched from your Bash shell settings (~/.bashrc). If you use another shell, make sure that the install locations you want to use are added to your bash path.</string>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="k9g-Jh-N6g" firstAttribute="top" secondItem="wRi-1b-8IK" secondAttribute="top" constant="20" id="28i-h6-nm0"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="height" secondItem="D38-YA-u3k" secondAttribute="height" id="42W-ug-A1x"/>
+                            <constraint firstItem="Z0v-ai-EhS" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="4kV-ZS-hsG"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="leading" secondItem="xfd-vu-eLN" secondAttribute="trailing" constant="8" id="6Au-3L-bP4"/>
                             <constraint firstItem="cR2-cw-RoI" firstAttribute="height" secondItem="dzZ-MO-6QQ" secondAttribute="height" id="8sp-NW-0OY"/>
                             <constraint firstItem="Ugs-UQ-xzS" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="CMA-kF-YIN"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="width" secondItem="xfd-vu-eLN" secondAttribute="width" id="D1w-9N-BHe"/>
                             <constraint firstItem="CWn-pW-I71" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="DaC-C7-65x"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="width" secondItem="D38-YA-u3k" secondAttribute="width" id="Eu0-5R-RUW"/>
+                            <constraint firstItem="k9g-Jh-N6g" firstAttribute="top" secondItem="xfd-vu-eLN" secondAttribute="top" id="FT4-ed-bEH"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="width" secondItem="Ugs-UQ-xzS" secondAttribute="width" id="Hhk-Y3-cQR"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="height" secondItem="Ugs-UQ-xzS" secondAttribute="height" id="I2v-zc-LPg"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="leading" secondItem="Ugs-UQ-xzS" secondAttribute="trailing" constant="8" id="JT6-w7-hIs"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="top" secondItem="cR2-cw-RoI" secondAttribute="bottom" constant="8" id="JxB-Pq-zdI"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="top" secondItem="nnD-0Q-Q1I" secondAttribute="bottom" constant="8" id="KIR-fa-Lkp"/>
-                            <constraint firstItem="xfd-vu-eLN" firstAttribute="top" secondItem="wRi-1b-8IK" secondAttribute="top" constant="20" id="M6S-4x-RDb"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="height" secondItem="CWn-pW-I71" secondAttribute="height" id="N6C-2m-z1e"/>
+                            <constraint firstItem="xfd-vu-eLN" firstAttribute="top" secondItem="Z0v-ai-EhS" secondAttribute="bottom" constant="20" id="Qjb-wR-72Q"/>
                             <constraint firstAttribute="trailing" secondItem="cR2-cw-RoI" secondAttribute="trailing" constant="20" id="Qmd-OL-4cp"/>
                             <constraint firstAttribute="bottom" secondItem="frX-s0-gkX" secondAttribute="bottom" constant="20" id="U1h-bv-z7Y"/>
                             <constraint firstAttribute="trailing" secondItem="9li-Ya-oLz" secondAttribute="trailing" constant="20" id="VIL-73-WrM"/>
@@ -170,8 +180,10 @@
                             <constraint firstItem="D38-YA-u3k" firstAttribute="top" secondItem="dzZ-MO-6QQ" secondAttribute="bottom" constant="8" id="hnG-Yl-Wrf"/>
                             <constraint firstItem="dzZ-MO-6QQ" firstAttribute="top" secondItem="xfd-vu-eLN" secondAttribute="bottom" constant="8" id="jBW-Vv-40M"/>
                             <constraint firstAttribute="trailing" secondItem="nnD-0Q-Q1I" secondAttribute="trailing" constant="20" id="juu-fW-fh7"/>
+                            <constraint firstItem="Z0v-ai-EhS" firstAttribute="top" secondItem="wRi-1b-8IK" secondAttribute="top" constant="20" id="kWM-ih-awu"/>
                             <constraint firstItem="CWn-pW-I71" firstAttribute="top" secondItem="Ugs-UQ-xzS" secondAttribute="bottom" constant="8" id="lKK-ik-JIl"/>
                             <constraint firstItem="xfd-vu-eLN" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="map-BK-D4n"/>
+                            <constraint firstAttribute="trailing" secondItem="Z0v-ai-EhS" secondAttribute="trailing" constant="20" id="nzY-Cq-19V"/>
                             <constraint firstAttribute="trailing" secondItem="k9g-Jh-N6g" secondAttribute="trailing" constant="20" id="oBZ-6i-gaS"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="top" secondItem="9li-Ya-oLz" secondAttribute="bottom" constant="8" id="sJp-vT-DIz"/>
                             <constraint firstItem="cR2-cw-RoI" firstAttribute="width" secondItem="dzZ-MO-6QQ" secondAttribute="width" id="whj-ly-EzC"/>
