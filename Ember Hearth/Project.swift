@@ -11,6 +11,7 @@ import Cocoa
 class Project: Equatable {
     var name: String?
     var path: String?
+    var serverTask: NSTask?
     var serverRunning = false
     
     var package: NSDictionary?

@@ -9,7 +9,6 @@
 import Cocoa
 
 class ProjectViewController: NSViewController {
-    var serverTask: NSTask?
     @IBOutlet var runButton: NSButton!
     @IBOutlet var titleLabel: NSTextField!
 
@@ -20,34 +19,32 @@ class ProjectViewController: NSViewController {
 
     @IBAction func runServer (sender: AnyObject) {
         var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-        if serverTask != nil {
+        if appDelegate.activeProject != nil && appDelegate.activeProject!.serverTask != nil {
             stopServer()
-            if appDelegate.activeProject != nil {
-                appDelegate.activeProject!.serverRunning = false
-                NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
-            }
+            appDelegate.activeProject!.serverRunning = false
+            NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
         } else {
             if appDelegate.activeProject != nil {
                 runButton.title = "Stop Ember server"
                 var ember = EmberCLI()
                 let project = appDelegate.activeProject!
                 let path: String = project.path!
-                serverTask = ember.runServerTask(path)
+                project.serverTask = ember.runServerTask(path)
                 var pipe = NSPipe()
-                serverTask?.standardOutput = pipe
+                project.serverTask?.standardOutput = pipe
                 pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedData:", name:NSFileHandleDataAvailableNotification, object: pipe.fileHandleForReading)
                 
-                serverTask?.terminationHandler = { (task: NSTask!) in
+                project.serverTask?.terminationHandler = { (task: NSTask!) in
                     self.serverTerminated(task, project: project)
                 }
-                serverTask?.launch()
+                project.serverTask?.launch()
             }
         }
     }
     
     func serverTerminated(task: NSTask, project: Project) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: task)
         let pipe = task.standardOutput as! NSPipe
         if task.terminationStatus > 0 {
             let result = pipe.fileHandleForReading.readDataToEndOfFile()
@@ -71,6 +68,7 @@ class ProjectViewController: NSViewController {
     }
     
     func receivedData(notification: NSNotification?) {
+        var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         var fileHandle = notification?.object as? NSFileHandle
         if let data = fileHandle?.availableData {
             if data.length > 0 {
@@ -78,20 +76,20 @@ class ProjectViewController: NSViewController {
                 if let string = NSString(data: data, encoding:NSUTF8StringEncoding) {
                     let range = string.rangeOfString("Serving on ")
                     if range.location != NSNotFound {
-                        var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
                         appDelegate.activeProject!.serverRunning = true
                         NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
                     }
                 }
             } else { // End of file
-                NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: self.serverTask)
+                NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: appDelegate.activeProject?.serverTask)
             }
         }
     }
 
     func stopServer() {
-        serverTask?.terminate()
-        serverTask = nil
+        var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.activeProject?.serverTask?.terminate()
+        appDelegate.activeProject?.serverTask = nil
         runButton.title = "Run Ember server"
     }
 
@@ -108,7 +106,7 @@ class ProjectViewController: NSViewController {
 
     override func viewWillDisappear() {
         println("Closing server")
-        serverTask?.terminate()
+        stopServer()
     }
     
     
