@@ -11,6 +11,7 @@ import Cocoa
 class ProjectViewController: NSViewController {
     @IBOutlet var runButton: NSButton!
     @IBOutlet var titleLabel: NSTextField!
+    @IBOutlet var progressIndicator: NSProgressIndicator!
     
     let runServerString = "Run Ember server"
     let stopServerString = "Stop Ember server"
@@ -37,7 +38,11 @@ class ProjectViewController: NSViewController {
             var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.stopAllServers()
             
+            runButton.enabled = false
+            progressIndicator.startAnimation(self)
+            progressIndicator.hidden = false
             runButton.title = stopServerString
+            
             var ember = EmberCLI()
             let path: String = project!.path!
             project?.serverTask = ember.runServerTask(path)
@@ -85,8 +90,7 @@ class ProjectViewController: NSViewController {
                 if let string = NSString(data: data, encoding:NSUTF8StringEncoding) {
                     let range = string.rangeOfString("Serving on ")
                     if range.location != NSNotFound {
-                        project?.serverRunning = true
-                        NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
+                        serverStarted()
                     }
                 }
             } else { // End of file
@@ -94,8 +98,19 @@ class ProjectViewController: NSViewController {
             }
         }
     }
+    
+    func serverStarted() {
+        runButton.enabled = true
+        progressIndicator.hidden = true
+        progressIndicator.stopAnimation(self)
+        project?.serverRunning = true
+        NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
+    }
 
     func stopServer() {
+        runButton.enabled = true
+        progressIndicator.hidden = true
+        progressIndicator.stopAnimation(self)
         project?.stopServer()
         runButton.title = "Run Ember server"
     }
