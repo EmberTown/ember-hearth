@@ -63,6 +63,11 @@ class Project: Equatable {
         name = package?["name"] as? String
         return name
     }
+    
+    func stopServer() {
+        serverTask?.terminate()
+        serverTask = nil
+    }
 }
 
 func ==(left: Project, right: Project) -> Bool {
