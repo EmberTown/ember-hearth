@@ -12,6 +12,9 @@ class ProjectViewController: NSViewController {
     @IBOutlet var runButton: NSButton!
     @IBOutlet var titleLabel: NSTextField!
     
+    let runServerString = "Run Ember server"
+    let stopServerString = "Stop Ember server"
+    
     var project: Project? {
         get {
             var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
@@ -21,7 +24,7 @@ class ProjectViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setProjectTitle:", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "projectChanged:", name: "activeProjectSet", object: nil)
     }
 
     @IBAction func runServer (sender: AnyObject) {
@@ -30,7 +33,11 @@ class ProjectViewController: NSViewController {
             project?.serverRunning = false
             NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
         } else if project != nil {
-            runButton.title = "Stop Ember server"
+            // Stop all servers
+            var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.stopAllServers()
+            
+            runButton.title = stopServerString
             var ember = EmberCLI()
             let path: String = project!.path!
             project?.serverTask = ember.runServerTask(path)
@@ -93,6 +100,15 @@ class ProjectViewController: NSViewController {
         runButton.title = "Run Ember server"
     }
 
+    func projectChanged(notification: NSNotification) {
+        setProjectTitle(notification)
+        if project != nil && project!.serverRunning {
+            runButton.title = stopServerString
+        } else {
+            runButton.title = runServerString
+        }
+    }
+    
     func setProjectTitle(notification: NSNotification) {
         if let name = project?.name {
             self.titleLabel.stringValue = name

@@ -65,6 +65,10 @@ class Project: Equatable {
     }
     
     func stopServer() {
+        if serverRunning {
+            NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
+        }
+        serverRunning = false
         serverTask?.terminate()
         serverTask = nil
     }

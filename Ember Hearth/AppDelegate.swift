@@ -161,6 +161,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         }
         return project
     }
+    
+    func stopAllServers() {
+        if projects != nil {
+            for project in projects! {
+                project.stopServer()
+            }
+        }
+    }
 
     @IBAction func buildDev(sender: AnyObject?) {
         if self.activeProject != nil {
