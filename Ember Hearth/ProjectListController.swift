@@ -16,10 +16,16 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     @IBOutlet var openProjectButton: NSButton!
     
     var projects: Array<Project>? {
-        didSet {
-            overlay.hidden = projects != nil && projects!.count > 0
+        set {
+            var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
+            appDelegate.projects = newValue
+            overlay.hidden = projects != nil && appDelegate.projects?.count > 0
             createProjectButton.hidden = overlay.hidden
             openProjectButton.hidden = overlay.hidden
+        }
+        get {
+            var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
+            return appDelegate.projects
         }
     }
     

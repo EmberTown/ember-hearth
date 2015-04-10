@@ -10,6 +10,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
+    var projects: [Project]?
     var activeProject: Project? {
         didSet {
             NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: activeProject)
