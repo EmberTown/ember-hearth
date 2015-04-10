@@ -144,15 +144,47 @@
 		E97E798A1AC874950080BB66 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E99D97DE1AD86B0E00009524 /* Project views */,
+				E99D97DD1AD86B0700009524 /* Settings */,
+				E99D97DF1AD86B2600009524 /* Modals */,
+				E99D97E01AD86B3600009524 /* Placeholders */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E99D97DD1AD86B0700009524 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E99D97DE1AD86B0E00009524 /* Project views */ = {
+			isa = PBXGroup;
+			children = (
 				E9735F8F1AC859660068F3A3 /* ProjectListController.swift */,
-				E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */,
 				E97E798B1AC874B00080BB66 /* ProjectViewController.swift */,
 				E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */,
-				E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */,
 				E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */,
 				E9286B921AD7030100719335 /* ProjectStatisticsViewController.swift */,
 			);
-			name = ViewControllers;
+			name = "Project views";
+			sourceTree = "<group>";
+		};
+		E99D97DF1AD86B2600009524 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
+		E99D97E01AD86B3600009524 /* Placeholders */ = {
+			isa = PBXGroup;
+			children = (
+				E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */,
+			);
+			name = Placeholders;
 			sourceTree = "<group>";
 		};
 		E9BC4DE91AC8093A00A747EC = {
