@@ -57,7 +57,7 @@ class EmberCLI: CLITool {
     
     func runServerTask(path:String) -> NSTask {
         var term = Terminal()
-        var task = term.taskForCommand("ember serve")
+        var task = term.taskForCommand("npm install && bower install && ember serve")
         task.currentDirectoryPath = path
         return task
     }
@@ -65,7 +65,7 @@ class EmberCLI: CLITool {
     func build(path:String, type:EmberBuildType, completion: (result:String?) -> ()) {
         var term = Terminal()
         term.workingDirectory = path
-        var command = "ember build"
+        var command = "npm install && bower install && ember build"
         switch type {
         case .development:
             command += " -dev"
