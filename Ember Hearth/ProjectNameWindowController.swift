@@ -23,7 +23,7 @@ class ProjectNameWindowController: NSWindowController {
 
     @IBAction func cancel(sender: AnyObject?) {
         self.window?.orderOut(nil)
-        NSApp.endSheet(self.window!)
+        self.window!.endSheet(self.window!)
     }
     
     @IBAction func save(sender: AnyObject?) {

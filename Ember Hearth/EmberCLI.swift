@@ -13,7 +13,7 @@ enum EmberBuildType {
     case production
 }
 
-class EmberCLI {
+class EmberCLI: CLITool {
     class func isInstalled () -> Bool {
         return version() != nil
     }

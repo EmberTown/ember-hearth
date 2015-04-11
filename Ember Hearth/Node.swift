@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Node {
+class Node: CLITool {
     class func installationMethod() -> InstallMethod {
         if Brew.isInstalled("node") {
             return InstallMethod.Brew

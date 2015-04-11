@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NPM {
+class NPM: CLITool {
     class func isInstalled () -> Bool {
         return version() != nil
     }

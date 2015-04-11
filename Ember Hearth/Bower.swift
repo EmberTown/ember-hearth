@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Bower {
+class Bower: CLITool {
     class func isInstalled () -> Bool {
         return version() != nil
     }

@@ -57,16 +57,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         projectNameController = ProjectNameWindowController()
         projectNameController?.delegate = self
         NSBundle.mainBundle().loadNibNamed("NewProjectTitle", owner: projectNameController, topLevelObjects: nil)
-        NSApp.beginSheet(projectNameController!.window!, completionHandler: nil)
+        NSApplication.sharedApplication().mainWindow!.beginSheet(projectNameController!.window!, completionHandler: nil)
     }
 
     func nameSet(name: String) {
-        println("Name set to \(name)")
+        if let projectNameWindow = projectNameController?.window {
+            projectNameWindow.orderOut(self)
+            NSApplication.sharedApplication().mainWindow!.endSheet(projectNameWindow)
+        }
         self.projectNameController?.cancel(nil)
         self.projectNameController = nil
 
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-            Int64(0.5 * Double(NSEC_PER_SEC)))
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             var panel = NSOpenPanel()
             panel.message = "Select a location for the project folder (the folder \(name) will be created)"
@@ -82,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                     println("Picked project path \(path)")
                     // Create project with new folder
                     var dependencyManager = DependencyManager()
-                    dependencyManager.setupDependencies {(success) -> () in
+                    dependencyManager.installDependencies {(success) -> () in
                         if !success {
                             println("Could not set up dependencies.")
                             return
@@ -108,7 +110,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                 println("Picked project path \(path)")
                 // Create project with new folder
                 var dependencyManager = DependencyManager()
-                dependencyManager.setupDependencies { (success) -> () in
+                dependencyManager.installDependencies { (success) -> () in
                     if !success {
                         println("Could not set up dependencies.")
                         return
@@ -140,7 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             sheet.progressIndicator.indeterminate = true
             sheet.progressIndicator.startAnimation(nil)
             sheet.label.stringValue = "Setting up ember project files…"
-            NSApp.beginSheet(sheet.window!, completionHandler: nil)
+            NSApplication.sharedApplication().mainWindow!.beginSheet(sheet.window!, completionHandler: nil)
 
             var ember = EmberCLI()
             ember.createProject(path, name: name!, completion: { (success) -> () in

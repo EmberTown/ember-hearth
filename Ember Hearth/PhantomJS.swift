@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PhantomJS {
+class PhantomJS: CLITool {
     class func isInstalled() -> Bool {
         return PhantomJS.version() != nil
     }
