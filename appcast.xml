@@ -5,7 +5,7 @@ layout: null
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>{{site.app_name | xml_escape}} Changelog</title>
-        <link>http://you.com/app/appcast.xml</link>
+        <link>{{site.url}}{{site.baseurl}}/appcast.xml</link>
         <description>Most recent changes for {{site.app_name | xml_escape}}</description>
         <language>en</language>
         {% for release in site.releases limit:10 %}
