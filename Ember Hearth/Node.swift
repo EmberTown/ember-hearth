@@ -36,7 +36,8 @@ class Node: CLITool {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-node", ofType: "sh")
         
         var term = Terminal()
-        term.runTerminalCommandAsync("\"\(scriptPath!)\"", completion: { (result) -> () in
+        term.workingDirectory = "~"
+        term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
             completion(success: result != nil)
         })
     }

@@ -27,7 +27,7 @@ class NPM: CLITool {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
         
         var term = Terminal()
-        term.runTerminalCommandAsync("\"\(scriptPath!)\"", completion: { (result) -> () in
+        term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
             completion(success: result != nil)
         })
     }
