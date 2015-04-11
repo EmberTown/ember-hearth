@@ -93,6 +93,8 @@ class DependencyManager {
         }
         if dependencies.count == 1 {
             neededString += "\nEmber Hearth will install \(dependencies[0].rawValue) automatically."
+        } else if dependencies.count == 1 {
+            neededString += "\nEmber Hearth will install \(dependencies.count) missing dependency automatically."
         } else if dependencies.count > 0 {
             neededString += "\nEmber Hearth will install \(dependencies.count) missing dependencies automatically."
         } else {
