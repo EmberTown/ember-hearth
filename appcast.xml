@@ -15,7 +15,7 @@ layout: null
                 {{site.url}}{{site.baseurl}}{{release.url}}
             </sparkle:releaseNotesLink>
             <pubDate>{{release.date | date_to_rfc822}}</pubDate>
-            <enclosure url="{{release.package_url | cgi_escape}}" sparkle:version="{{release.version}}" length="{{release.package_length}}" type="application/octet-stream" sparkle:dsaSignature="{{release.dsa_signature}}" />
+            <enclosure url="{{release.package_url | cgi_escape}}" sparkle:version="{{release.version}}" length="{{release.package_length}}" type="application/octet-stream" {%if release.dsa_signature%}sparkle:dsaSignature="{{release.dsa_signature}}"{% endif %} />
             <sparkle:minimumSystemVersion>{{release.minimum_system_version}}</sparkle:minimumSystemVersion>
         </item>
         {% endfor %}
