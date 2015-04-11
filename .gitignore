@@ -165,3 +165,8 @@ Pods/*/*/*/*
 ###
 # Custom icon for the folder
 Icon
+
+###
+# From Jekyll
+/_site
+/.sass-cache
