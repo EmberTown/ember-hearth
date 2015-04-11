@@ -12,7 +12,7 @@ layout: null
         <item>
             <title>{{release.title | xml_escape}}</title>
             <sparkle:releaseNotesLink>
-                {{site.url}}{{site.base_url}}{{release.url}}
+                {{site.url}}{{site.baseurl}}{{release.url}}
             </sparkle:releaseNotesLink>
             <pubDate>{{release.date | date_to_rfc822}}</pubDate>
             <enclosure url="{{release.package_url | cgi_escape}}" sparkle:version="{{release.version}}" length="{{release.package_length}}" type="application/octet-stream" sparkle:dsaSignature="{{release.dsa_signature}}" />
