@@ -1,18 +1,25 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
+title: Ember Hearth
 app_name: Ember Hearth
+email: kim@kimroen.com
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-twitter_username: jekyllrb
-github_username:  jekyll
 baseurl: "/ember-hearth" # the subpath of your site, e.g. /blog/
 url: "http://embertown.github.io" # the base hostname & protocol for your site
+twitter_username: embertown
+github_username:  embertown
 
 # Build settings
 markdown: kramdown
+
+# Github defaults
+highlighter: pygments
+
+# github: is also available, with this:
+# https://help.github.com/articles/repository-metadata-on-github-pages/
+
 defaults:
   -
     scope:
