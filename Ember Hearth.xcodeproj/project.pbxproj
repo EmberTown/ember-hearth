@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C3DF01AC86F8900444710 /* NewProjectTitle.xib */; };
 		18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7B8511AC93926008D2E25 /* PhantomJS.swift */; };
+		62DD0F542FA65A4690494A52 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0704C35A143EC7EF69BF2D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E90598381AC824FF0034AA22 /* install-node.sh in Resources */ = {isa = PBXBuildFile; fileRef = E90598371AC824FF0034AA22 /* install-node.sh */; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		188C3DF01AC86F8900444710 /* NewProjectTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTitle.xib; sourceTree = "<group>"; };
 		18E7B8511AC93926008D2E25 /* PhantomJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomJS.swift; sourceTree = "<group>"; };
+		7C0704C35A143EC7EF69BF2D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFEFDB98E16C5AB4F92C604A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E90598371AC824FF0034AA22 /* install-node.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "install-node.sh"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedTextFieldCell.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 		E9F34BE71AC95CE900E4875E /* BGColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGColorView.swift; sourceTree = "<group>"; };
+		F20620C2CBB14CB208066B88 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62DD0F542FA65A4690494A52 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +112,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31BFB74772AEB72384167970 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F20620C2CBB14CB208066B88 /* Pods.debug.xcconfig */,
+				CFEFDB98E16C5AB4F92C604A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		937C11D4E6E91C2025433932 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C0704C35A143EC7EF69BF2D /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E90598391AC825010034AA22 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +218,8 @@
 				E9BC4DF41AC8093A00A747EC /* Ember Hearth */,
 				E9BC4E071AC8093A00A747EC /* Ember HearthTests */,
 				E9BC4DF31AC8093A00A747EC /* Products */,
+				31BFB74772AEB72384167970 /* Pods */,
+				937C11D4E6E91C2025433932 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,9 +307,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9BC4E0E1AC8093A00A747EC /* Build configuration list for PBXNativeTarget "Ember Hearth" */;
 			buildPhases = (
+				89A3DA9488EF5585B8D2847A /* Check Pods Manifest.lock */,
 				E9BC4DEE1AC8093A00A747EC /* Sources */,
 				E9BC4DEF1AC8093A00A747EC /* Frameworks */,
 				E9BC4DF01AC8093A00A747EC /* Resources */,
+				934E119C370C82CDEBC4A098 /* Embed Pods Frameworks */,
+				1745C18C36575BBD4942B2CC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -375,6 +402,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1745C18C36575BBD4942B2CC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89A3DA9488EF5585B8D2847A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		934E119C370C82CDEBC4A098 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E9BC4DEE1AC8093A00A747EC /* Sources */ = {
@@ -517,10 +592,15 @@
 		};
 		E9BC4E0F1AC8093A00A747EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F20620C2CBB14CB208066B88 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Ember Hearth/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -531,10 +611,15 @@
 		};
 		E9BC4E101AC8093A00A747EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFEFDB98E16C5AB4F92C604A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Ember Hearth/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
