@@ -51,12 +51,19 @@ public class Terminal {
     }
     
     public func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) {
+        self.runTerminalCommandAsync(command, showOutput: true, completion: completion)
+    }
+    
+    public func runTerminalCommandAsync (command: String, showOutput:Bool, completion: (result: String?) -> ()) {
         self.task = taskForCommand(command)
         if self.workingDirectory != nil {
             self.task?.currentDirectoryPath = self.workingDirectory!
         }
-        self.output = NSPipe()
-        self.task?.standardOutput = self.output!
+        
+        if showOutput {
+            self.output = NSPipe()
+            self.task?.standardOutput = self.output!
+        }
         
         self.task?.terminationHandler = { (task: NSTask!) in
             
@@ -64,12 +71,14 @@ public class Terminal {
                 completion(result: nil)
             } else {
                 let outData = self.output?.fileHandleForReading.readDataToEndOfFile()
-                var result: NSString?
+                var result: NSString = ""
                 if outData != nil {
-                    result = NSString(data: outData!, encoding: NSASCIIStringEncoding)
+                    if let string = NSString(data: outData!, encoding: NSASCIIStringEncoding) {
+                        result = string
+                    }
                 }
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(result: result as? String)
+                    completion(result: result as String)
                 })
             }
             
