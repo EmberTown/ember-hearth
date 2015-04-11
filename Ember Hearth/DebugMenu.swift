@@ -34,11 +34,17 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Install Bower", action: "installBower", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Install Phantom.js", action: "installPhantomjs", keyEquivalent: ""))
         
+        self.addItem(NSMenuItem.separatorItem())
+        
         self.addItem(NSMenuItem(title: "Node.js version", action: "nodeVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "NPM version", action: "npmVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Bower version", action: "bowerVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Ember CLI version", action: "emberCLIVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Phantom.js version", action: "phantomJSVersion", keyEquivalent: ""))
+        
+        self.addItem(NSMenuItem.separatorItem())
+        
+        self.addItem(NSMenuItem(title: "Show dependency status", action: "dependencyStatus", keyEquivalent: ""))
 
         // For some reason, the default target of NSMenuItem isn't self.
         for item in self.itemArray as! [NSMenuItem] {
@@ -109,5 +115,10 @@ class DebugMenu: NSMenu {
         let alert = NSAlert()
         alert.messageText = "Phantom.js version: \(PhantomJS.version()!)"
         alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+    
+    func dependencyStatus() {
+        var dpManager = DependencyManager()
+        dpManager.showDependencyStatus()
     }
 }

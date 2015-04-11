@@ -64,13 +64,36 @@ class DependencyManager {
         return (needed, dependencies)
     }
     
+    func showDependencyStatus() {
+        let (needed, dependencies) = listNeededInstalls()
+        var neededString = ""
+        for string in needed {
+            neededString += "\(string)\n"
+        }
+        if dependencies.count == 1 {
+            neededString += "\n\(dependencies.count) dependency missing."
+        } else if dependencies.count > 0 {
+            neededString += "\n\(dependencies.count) dependencies missing."
+        } else {
+            neededString += "\nAll dependencies installed."
+        }
+        
+        var alert = NSAlert()
+        alert.messageText = "Dependencies:"
+        alert.informativeText = neededString
+        alert.addButtonWithTitle("OK")
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+    
     func installDependencies(completion:(success:Bool) -> ()) {
         let (needed, dependencies) = listNeededInstalls()
         var neededString = ""
         for string in needed {
             neededString += "\(string)\n"
         }
-        if dependencies.count > 0 {
+        if dependencies.count == 1 {
+            neededString += "\nEmber Hearth will install \(dependencies[0].rawValue) automatically."
+        } else if dependencies.count > 0 {
             neededString += "\nEmber Hearth will install \(dependencies.count) missing dependencies automatically."
         } else {
             completion(success: true)
@@ -95,13 +118,21 @@ class DependencyManager {
         let dependency = dependencies[0]
         var tool = initializedToolForDependency(dependency)
         self.progressBar?.label.stringValue = "Installing \(dependency.rawValue)…"
+        if dependency == Dependency.Node {
+            self.progressBar?.label.stringValue += " This may take up to 15 minutes."
+        }
+        println("\(self.progressBar?.label.stringValue)")
+        NSApplication.sharedApplication().mainWindow!.beginSheet(self.progressBar!.window!, completionHandler: nil)
         tool.installIfNeeded { (success) -> () in
             var reducedArray = Array<Dependency>(dependencies)
             reducedArray.removeAtIndex(0)
+            println("Installed \(dependency.rawValue), \(reducedArray.count) dependencies left")
             if success && reducedArray.count > 0 {
+                println("Proceeding to next dependency")
                 self.progressBar?.progressIndicator.doubleValue = Double(totalCount - reducedArray.count) / Double(totalCount)
                 self.installDependeniesInOrder(reducedArray, totalCount: totalCount, completion: completion)
             } else {
+                println("Done installing dependencies with success? \(success) still missing: \(reducedArray.count)")
                 if let progressBar = self.progressBar {
                     if success {
                         progressBar.progressIndicator.doubleValue = 1
