@@ -20,10 +20,16 @@ highlighter: pygments
 # github: is also available, with this:
 # https://help.github.com/articles/repository-metadata-on-github-pages/
 
+collections:
+  releases:
+    output: true
+    permalink: /releases/:path/
+
 defaults:
   -
     scope:
       path: ""
-      type: "posts"
+      type: "releases"
     values:
+      layout: null
       minimum_system_version: "10.10"
