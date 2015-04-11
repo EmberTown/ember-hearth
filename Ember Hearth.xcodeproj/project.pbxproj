@@ -313,6 +313,7 @@
 				E9BC4DF01AC8093A00A747EC /* Resources */,
 				934E119C370C82CDEBC4A098 /* Embed Pods Frameworks */,
 				1745C18C36575BBD4942B2CC /* Copy Pods Resources */,
+				E95F0E461AD9806600183AD6 /* Sparkle */,
 			);
 			buildRules = (
 			);
@@ -448,6 +449,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E95F0E461AD9806600183AD6 /* Sparkle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Sparkle;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n    IDENTITY=\"Developer ID Application: Thomas Sunde Nielsen\"\n    codesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

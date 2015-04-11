@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     }
     var projectNameController: ProjectNameWindowController?
     var preferensesWindowController: NSWindowController?
+    var updater: SUUpdater?
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
@@ -29,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         
         #if DEBUG
         addDebugMenu()
+        #else
+        updater = SUUpdater()
         #endif
     }
     
@@ -142,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             sheet.progressIndicator.indeterminate = true
             sheet.progressIndicator.startAnimation(nil)
             sheet.label.stringValue = "Setting up ember project files…"
-            NSApplication.sharedApplication().mainWindow!.beginSheet(sheet.window!, completionHandler: nil)
+            NSApplication.sharedApplication().mainWindow?.beginSheet(sheet.window!, completionHandler: nil)
 
             var ember = EmberCLI()
             ember.createProject(path, name: name!, completion: { (success) -> () in
@@ -195,5 +199,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     @IBAction func showSettings(sender: AnyObject?) {
         preferensesWindowController = NSStoryboard(name: "Settings", bundle: nil)?.instantiateInitialController() as? NSWindowController
         preferensesWindowController?.showWindow(nil)
+    }
+    
+    @IBAction func checkForUpdates(sender: AnyObject?) {
+        if let updater = self.updater {
+            updater.checkForUpdates(sender)
+        }
     }
 }
