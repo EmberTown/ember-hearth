@@ -1,0 +1,23 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>{{site.app_name | xml_escape}} Changelog</title>
+        <link>http://you.com/app/appcast.xml</link>
+        <description>Most recent changes for {{site.app_name | xml_escape}}</description>
+        <language>en</language>
+        {% for release in site.posts limit:10 %}
+        <item>
+            <title>{{release.title | xml_escape}}</title>
+            <sparkle:releaseNotesLink>
+                {{site.url}}{{site.base_url}}{{release.url}}
+            </sparkle:releaseNotesLink>
+            <pubDate>{{release.date | date_to_rfc822}}</pubDate>
+            <enclosure url="{{release.package_url | cgi_escape}}" sparkle:version="{{release.version}}" length="{{release.package_length}}" type="application/octet-stream" sparkle:dsaSignature="{{release.dsa_signature}}" />
+            <sparkle:minimumSystemVersion>{{release.minimum_system_version}}</sparkle:minimumSystemVersion>
+        </item>
+        {% endfor %}
+    </channel>
+</rss>
