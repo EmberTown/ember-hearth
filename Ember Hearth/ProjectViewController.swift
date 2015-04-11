@@ -129,7 +129,7 @@ class ProjectViewController: NSViewController {
             self.titleLabel.stringValue = name
         }
         
-        NSApplication.sharedApplication().mainWindow!.makeFirstResponder(self.view)
+        NSApplication.sharedApplication().mainWindow?.makeFirstResponder(self.view)
     }
 
     override func viewWillDisappear() {
