@@ -25,7 +25,7 @@ permalink: none
 defaults:
   -
     scope:
-      path: "releases"
+      path: ""
       type: "posts"
     values:
       minimum_system_version: "10.10"
