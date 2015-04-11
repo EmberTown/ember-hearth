@@ -8,7 +8,7 @@ layout: null
         <link>{{site.url}}{{site.baseurl}}/appcast.xml</link>
         <description>Most recent changes for {{site.app_name | xml_escape}}</description>
         <language>en</language>
-        {% for release in site.releases limit:10 %}
+        {% for release in site.releases reversed limit:10 %}
         <item>
             <title>{{release.title | xml_escape}}</title>
             <sparkle:releaseNotesLink>
