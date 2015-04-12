@@ -77,11 +77,11 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-        var count = 0
-        if projects != nil {
-            count = projects!.count
+        if let projects = self.projects {
+            return projects.count
+        } else {
+            return 0
         }
-        return count
     }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
