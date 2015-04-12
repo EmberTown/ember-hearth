@@ -12,6 +12,7 @@ class MainSplitViewController: NSSplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "toggleSecondPane", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "toggleSecondPane", name: "noActiveProject", object: nil)
         self.view.window?.setAnchorAttribute(.Leading, forOrientation: .Horizontal)
         toggleSecondPane()
     }

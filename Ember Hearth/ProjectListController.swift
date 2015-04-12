@@ -61,6 +61,14 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     
     @IBAction func delete(sender: AnyObject?) {
         let project = self.projects![tableView.clickedRow]
+        
+        // Deselect active project if needed
+        let delegate = NSApplication.sharedApplication().delegate! as! AppDelegate
+        if delegate.activeProject == project {
+            self.tableView.deselectAll(sender)
+            delegate.activeProject = nil
+        }
+        
         var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
         if let projects = projects {
             var index: Int? = nil

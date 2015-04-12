@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         didSet {
             if activeProject != nil {
                 NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: activeProject)
+            } else {
+                NSNotificationCenter.defaultCenter().postNotificationName("noActiveProject", object: activeProject)
             }
             toggleProjectMenus()
         }
@@ -90,7 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
             panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: {(result: Int) -> Void in
                 if result == NSFileHandlingPanelOKButton {
                     let path = (panel.URLs.first! as! NSURL).path!
-                    println("Picked project path \(path)")
                     // Create project with new folder
                     var dependencyManager = DependencyManager()
                     dependencyManager.installDependencies {(success) -> () in
@@ -116,7 +117,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         panel.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 let path = (panel.URLs.first! as! NSURL).path!
-                println("Picked project path \(path)")
                 // Create project with new folder
                 var dependencyManager = DependencyManager()
                 dependencyManager.installDependencies { (success) -> () in
