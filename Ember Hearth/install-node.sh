@@ -1,6 +1,10 @@
 # via https://gist.github.com/isaacs/579814
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bash_profile
+if ! grep "PATH=\$HOME/local/bin:\$PATH" ~/.bashrc ; then
+ echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
+fi
+if ! grep "PATH=\$HOME/local/bin:\$PATH" ~/.bash_profile ; then
+    echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bash_profile
+fi
 . ~/.bashrc
 . ~/.bash_profile
 mkdir ~/local
