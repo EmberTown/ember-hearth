@@ -35,12 +35,13 @@ class ProjectViewController: NSViewController {
     @IBAction func runServer (sender: AnyObject) {
         if project?.serverTask != nil {
             stopServer()
-            project?.serverRunning = false
-            NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
+            project?.serverStatus = .stopped
         } else if project != nil {
             // Stop all servers
             var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.stopAllServers()
+            
+            project?.serverStatus = .booting
             
             runButton.enabled = false
             progressIndicator.startAnimation(self)
@@ -68,8 +69,7 @@ class ProjectViewController: NSViewController {
         if task.terminationStatus > 0 {
             if project != nil && !runButton.enabled { // Ad hoc check for if server was interupted before it started
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    project?.serverRunning = false
-                    NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
+                    project?.serverStatus = .errored
                     var alert = NSAlert()
                     alert.messageText = "Error starting server"
                     var info = self.serverOutput as NSString
@@ -106,8 +106,7 @@ class ProjectViewController: NSViewController {
         runButton.enabled = true
         progressIndicator.hidden = true
         progressIndicator.stopAnimation(self)
-        project?.serverRunning = true
-        NSNotificationCenter.defaultCenter().postNotificationName("serverStarted", object: nil)
+        project?.serverStatus = .running
     }
 
     func stopServer() {
@@ -121,7 +120,7 @@ class ProjectViewController: NSViewController {
 
     func projectChanged(notification: NSNotification?) {
         setProjectTitle(notification)
-        if project != nil && project!.serverRunning {
+        if project != nil && project!.serverStatus == .running {
             runButton.title = stopServerString
         } else {
             runButton.title = runServerString

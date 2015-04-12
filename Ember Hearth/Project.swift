@@ -8,11 +8,29 @@
 
 import Cocoa
 
+enum ServerStatus {
+    case running
+    case stopped
+    case booting
+    case errored
+}
+
 class Project: Equatable {
     var name: String?
     var path: String?
     var serverTask: NSTask?
-    var serverRunning = false
+    var serverStatus = ServerStatus.stopped {
+        didSet {
+            let name: String
+            switch serverStatus {
+            case .booting: name = "serverStarting"
+            case .running: name = "serverStarted"
+            case .stopped: name = "serverStopped"
+            case .errored: name = "serverStoppedWithError"
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName(name, object: self)
+        }
+    }
     
     var package: NSDictionary?
     
@@ -65,11 +83,13 @@ class Project: Equatable {
     }
     
     func stopServer() {
-        if serverRunning {
+        if serverStatus == .running {
             NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
         }
-        serverRunning = false
         serverTask?.terminate()
+        if serverStatus != .errored {
+            serverStatus = .stopped
+        }
         serverTask = nil
     }
 }

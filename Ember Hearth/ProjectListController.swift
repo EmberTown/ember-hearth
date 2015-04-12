@@ -34,8 +34,10 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "activeProjectSet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "projectRemoved", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarting", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
         refreshList(nil)
     }
     
@@ -160,11 +162,17 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         var project: Project = projects![row]
         if let name = project.name {
             let statusImageName: String
-            if project.serverRunning {
+            switch project.serverStatus {
+            case .running:
                 statusImageName = "NSStatusAvailable"
-            } else {
+            case .stopped:
                 statusImageName = "NSStatusNone"
+            case .errored:
+                statusImageName = "NSStatusUnavailable"
+            case .booting:
+                statusImageName = "NSStatusPartiallyAvailable"
             }
+
             view.textField!.stringValue = name
             view.imageView?.image = NSImage(named: statusImageName)
         }

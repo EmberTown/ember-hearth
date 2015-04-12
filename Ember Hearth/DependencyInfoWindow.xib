@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="cancelButton" destination="xE8-5I-n51" id="9iX-Ns-E1j"/>
                 <outlet property="infoLabel" destination="26J-md-2nc" id="vax-bn-ZKL"/>
-                <outlet property="issueButton" destination="OFQ-fi-BhN" id="rJ0-Gf-mGB"/>
                 <outlet property="okButton" destination="Jjt-Wc-f7J" id="WuN-2L-AX6"/>
                 <outlet property="tableView" destination="odj-BI-grA" id="c6t-73-BU2"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -159,9 +158,6 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="makeIssue:" target="-2" id="cht-oD-ONt"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
