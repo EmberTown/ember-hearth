@@ -28,6 +28,8 @@ class ProjectTabViewController: NSTabViewController {
         self.view.addSubview(bgView)
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[bgView]-0-|", options: nil, metrics: nil, views: ["bgView":bgView]))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[bgView]-0-|", options: nil, metrics: nil, views: ["bgView":bgView]))
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetToFirstTab", name: "activeProjectSet", object: nil)
     }
     
     override func viewWillAppear() {
@@ -44,4 +46,11 @@ class ProjectTabViewController: NSTabViewController {
         self.topConstraint?.constant = CGFloat(constant)
     }
     
+    func resetToFirstTab() {
+        self.tabView.selectFirstTabViewItem(self)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }

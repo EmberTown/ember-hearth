@@ -41,6 +41,7 @@
 		E9D4361D1AC840300020E123 /* NPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361C1AC840300020E123 /* NPM.swift */; };
 		E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361E1AC842C00020E123 /* EmberCLI.swift */; };
 		E9D436221AC843E90020E123 /* Bower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D436211AC843E90020E123 /* Bower.swift */; };
+		E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */; };
 		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
 		E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */; };
 		E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE71AC95CE900E4875E /* BGColorView.swift */; };
@@ -95,6 +96,7 @@
 		E9D4361C1AC840300020E123 /* NPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPM.swift; sourceTree = "<group>"; };
 		E9D4361E1AC842C00020E123 /* EmberCLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmberCLI.swift; sourceTree = "<group>"; };
 		E9D436211AC843E90020E123 /* Bower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bower.swift; sourceTree = "<group>"; };
+		E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectActionsViewController.swift; sourceTree = "<group>"; };
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 		E9F34BE71AC95CE900E4875E /* BGColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGColorView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */,
 				E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */,
 				E9286B921AD7030100719335 /* ProjectStatisticsViewController.swift */,
+				E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */,
 			);
 			name = "Project views";
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
 				18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */,
 				E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */,
+				E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */,
 				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 				E9286B931AD7030100719335 /* ProjectStatisticsViewController.swift in Sources */,
 			);
