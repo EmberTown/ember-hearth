@@ -133,10 +133,12 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var view: NSTableCellView = tableView.makeViewWithIdentifier("projectCell", owner: tableView) as! NSTableCellView
         var project: Project = projects![row]
-        if project.serverRunning {
-            view.textField!.stringValue = "✅ \(project.name!)"
-        } else {
-            view.textField!.stringValue = "❌ \(project.name!)"
+        if let name = project.name {
+            if project.serverRunning {
+                view.textField!.stringValue = "✅ \(name)"
+            } else {
+                view.textField!.stringValue = "❌ \(name)"
+            }
         }
         
         return view

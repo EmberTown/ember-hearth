@@ -422,7 +422,7 @@
                 <splitViewController id="17w-JS-V2c" customClass="MainSplitViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="eA0-Eq-CQG"/>
-                        <splitViewItem id="w53-jO-lAh"/>
+                        <splitViewItem canCollapse="YES" collapsed="YES" id="w53-jO-lAh"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="8NL-sU-oNd">
                         <rect key="frame" x="0.0" y="6" width="647" height="495"/>
