@@ -159,11 +159,14 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         var view: NSTableCellView = tableView.makeViewWithIdentifier("projectCell", owner: tableView) as! NSTableCellView
         var project: Project = projects![row]
         if let name = project.name {
+            let statusImageName: String
             if project.serverRunning {
-                view.textField!.stringValue = "✅ \(name)"
+                statusImageName = "NSStatusAvailable"
             } else {
-                view.textField!.stringValue = "❌ \(name)"
+                statusImageName = "NSStatusNone"
             }
+            view.textField!.stringValue = name
+            view.imageView?.image = NSImage(named: statusImageName)
         }
         
         return view
