@@ -4,17 +4,17 @@
   {% include head.html %}
 
   <body>
+    <div class="wrapper">
 
-    {% include header.html %}
+      {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
+      <section>
         {{ content }}
-      </div>
+      </section>
+
+      {% include footer.html %}
     </div>
-
-    {% include footer.html %}
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
   </body>
 
 </html>
