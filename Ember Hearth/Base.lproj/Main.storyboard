@@ -494,6 +494,7 @@
                                                                 <constraint firstItem="Exy-VP-xM4" firstAttribute="top" secondItem="hcj-W1-JsP" secondAttribute="top" constant="5" id="bH2-pr-WtH"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="menu" destination="BiR-mH-P0q" id="ucx-u9-YHr"/>
                                                                 <outlet property="textField" destination="Exy-VP-xM4" id="6l0-0L-DIz"/>
                                                             </connections>
                                                         </tableCellView>
@@ -503,6 +504,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="dot-n3-klN" id="UJj-e9-luh"/>
                                                 <outlet property="delegate" destination="dot-n3-klN" id="a21-rV-xwg"/>
+                                                <outlet property="menu" destination="BiR-mH-P0q" id="SMT-uC-chA"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -619,6 +621,29 @@
                     </connections>
                 </viewController>
                 <customObject id="aJU-MU-whI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="BiR-mH-P0q">
+                    <items>
+                        <menuItem title="Open in Finder" id="CQN-Kv-9kE">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openInFinder:" target="dot-n3-klN" id="PgM-dZ-OzD"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Open in Terminal" id="xVo-O4-wck">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openInTerminal:" target="dot-n3-klN" id="tXe-uw-1XE"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="Dou-2J-2ha"/>
+                        <menuItem title="Remove from list" id="xvj-z8-qj6">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="delete:" target="dot-n3-klN" id="l1G-eW-dQp"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="1472" y="410"/>
         </scene>

@@ -48,6 +48,52 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         appDelegate.openExistingProject(sender)
     }
     
+    @IBAction func openInFinder(sender: AnyObject?) {
+        let project = projects![tableView.clickedRow]
+        let pathURL = NSURL(fileURLWithPath: project.path!)
+        NSWorkspace.sharedWorkspace().openURL(pathURL!)
+    }
+    
+    @IBAction func openInTerminal(sender: AnyObject?) {
+        let project = projects![tableView.clickedRow]
+        NSAppleScript(source: "tell application \"Terminal\" to do script \"cd \(project.path!) && clear\"")?.executeAndReturnError(nil)
+    }
+    
+    @IBAction func delete(sender: AnyObject?) {
+        let project = self.projects![tableView.clickedRow]
+        var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
+        if let projects = projects {
+            var index: Int? = nil
+            
+            for (iteratorIndex, projectDict) in enumerate(projects) {
+                if projectDict["path"] as? String == project.path {
+                    index = iteratorIndex
+                }
+            }
+            
+            if let index = index {
+                var tempArray = Array(projects)
+                tempArray.removeAtIndex(index)
+                NSUserDefaults.standardUserDefaults().setObject(tempArray, forKey: "projects")
+            }
+        }
+        
+        var index: Int? = nil
+        
+        for (iteratorIndex, aProject) in enumerate(self.projects!) {
+            if aProject == project {
+                index = iteratorIndex
+            }
+        }
+        
+        if let index = index {
+            self.projects?.removeAtIndex(index)
+            self.tableView.beginUpdates()
+            self.tableView.removeRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideUp)
+            self.tableView.endUpdates()
+        }
+    }
+    
     //MARK: Data updating
     func refreshList(notification: NSNotification?) {
         var projectDicts = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? [Dictionary<String, AnyObject>]
@@ -97,14 +143,17 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     }
 
     func tableViewSelectionDidChange(notification: NSNotification) {
-        if projects == nil || projects?.count == 0 {
+        if projects == nil || projects?.count == 0 || tableView.selectedRow < 0 {
             return
         }
-        var project = projects?[tableView.selectedRow]
-        if project != nil {
-            var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
-            if appDelegate.activeProject != project {
-                appDelegate.activeProject = project!
+        if tableView.selectedRow < projects?.count {
+            println("\(tableView.selectedRow) < \(projects!.count)")
+            var project = projects?[tableView.selectedRow]
+            if project != nil {
+                var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
+                if appDelegate.activeProject != project {
+                    appDelegate.activeProject = project!
+                }
             }
         }
     }
