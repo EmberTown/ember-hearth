@@ -16,13 +16,11 @@
                         <toolbar key="toolbar" implicitIdentifier="260F0E5F-A21B-44D0-A465-A12430DB3B1B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="QAQ-pr-GKa">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ayf-mR-0FO"/>
-                                <toolbarItem implicitItemIdentifier="537AF465-9561-468E-BD9C-D63CCA832BDC" label="Paths" paletteLabel="Paths" tag="-1" image="TerminalIcon" id="Bn7-IR-0Qr"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cBm-8i-HhE"/>
                                 <toolbarItem implicitItemIdentifier="2C74798E-4D9C-40CE-8D2E-8EABBBD32A90" label="General" paletteLabel="General" tag="-1" image="NSPreferencesGeneral" id="MIS-jv-Oym"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="MIS-jv-Oym"/>
-                                <toolbarItem reference="Bn7-IR-0Qr"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
@@ -210,6 +208,5 @@
     </scenes>
     <resources>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
-        <image name="TerminalIcon" width="128" height="128"/>
     </resources>
 </document>
