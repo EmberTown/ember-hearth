@@ -158,6 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                 if !success {
                     println("Error creating ember project!")
                     sheet.label.stringValue = "Install failed."
+                    self.removeProject(project)
                 } else {
                     sheet.label.stringValue = "Success!"
                 }
@@ -166,11 +167,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
                     sheet.window!.orderOut(nil)
                     sheet.window!.endSheet(sheet.window!)
+                    if !success {
+                        var alert = NSAlert()
+                        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+                        alert.messageText = "Installation failed"
+                        alert.informativeText = "Run ' cd \"\(project.path!.stringByDeletingLastPathComponent)\" && ember install \"\(project.name!)\" ' from Terminal to see what went wrong."
+                        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+                    }
                 }
 
             })
         }
         return project
+    }
+
+    func removeProject(project: Project) {
+        if self.activeProject == project {
+            self.activeProject = nil
+        }
+        var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
+        if let projects = projects {
+            var index: Int? = nil
+            
+            for (iteratorIndex, projectDict) in enumerate(projects) {
+                if projectDict["path"] as? String == project.path {
+                    index = iteratorIndex
+                }
+            }
+            
+            if let index = index {
+                var tempArray = Array(projects)
+                tempArray.removeAtIndex(index)
+                NSUserDefaults.standardUserDefaults().setObject(tempArray, forKey: "projects")
+                NSNotificationCenter.defaultCenter().postNotificationName("projectRemoved", object: nil)
+            }
+        }
     }
     
     func stopAllServers() {
