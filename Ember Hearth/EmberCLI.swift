@@ -66,6 +66,7 @@ class EmberCLI: CLITool {
     }
     
     func build(path:String, type:EmberBuildType, completion: (result:String?) -> ()) {
+        NSNotificationCenter.defaultCenter().postNotificationName("startedBuilding", object: nil)
         var term = Terminal()
         term.workingDirectory = path
         var command = "npm install && bower install && ember build"
@@ -76,6 +77,7 @@ class EmberCLI: CLITool {
             command += " -prod"
         }
         term.runTerminalCommandAsync(command, completion: { (result) -> () in
+            NSNotificationCenter.defaultCenter().postNotificationName("endedBuilding", object: result)
             completion(result: result)
         })
     }

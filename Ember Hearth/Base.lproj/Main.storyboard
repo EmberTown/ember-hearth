@@ -795,7 +795,7 @@
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="SUD-kx-hDz">
                                         <items>
-                                            <menuItem title="Development" state="on" id="aWu-rz-Qwa"/>
+                                            <menuItem title="Development" id="aWu-rz-Qwa"/>
                                             <menuItem title="Production" id="lpM-ba-lbW"/>
                                         </items>
                                     </menu>
@@ -814,6 +814,9 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ez6-RH-Ger">
+                                <rect key="frame" x="168" y="261" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eaG-vp-bg4" secondAttribute="trailing" constant="20" id="0Ey-sc-mqW"/>
@@ -825,11 +828,15 @@
                             <constraint firstItem="l4U-YW-Eg1" firstAttribute="width" secondItem="eaG-vp-bg4" secondAttribute="width" id="aOf-ba-KyC"/>
                             <constraint firstItem="Ie3-eX-Etr" firstAttribute="width" secondItem="JmT-HM-DEm" secondAttribute="width" id="ca0-6N-7F1"/>
                             <constraint firstItem="eaG-vp-bg4" firstAttribute="top" secondItem="l4U-YW-Eg1" secondAttribute="bottom" constant="12" id="iN3-0k-Jab"/>
+                            <constraint firstItem="Ie3-eX-Etr" firstAttribute="centerY" secondItem="ez6-RH-Ger" secondAttribute="centerY" constant="-0.5" id="pcz-SQ-dMx"/>
+                            <constraint firstItem="Ie3-eX-Etr" firstAttribute="leading" secondItem="ez6-RH-Ger" secondAttribute="trailing" constant="8" id="qUB-4d-b0P"/>
                             <constraint firstItem="eaG-vp-bg4" firstAttribute="leading" secondItem="JmT-HM-DEm" secondAttribute="trailing" constant="8" id="twf-FT-66X"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buildButton" destination="l4U-YW-Eg1" id="oTS-9T-q3j"/>
                         <outlet property="buildTypeButton" destination="Ie3-eX-Etr" id="1Nw-gd-5CJ"/>
+                        <outlet property="buildingIndicator" destination="ez6-RH-Ger" id="25H-UT-t3d"/>
                     </connections>
                 </viewController>
                 <customObject id="lzq-A8-3a1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
