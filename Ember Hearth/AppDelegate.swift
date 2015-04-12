@@ -208,10 +208,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     
     @IBAction func checkForUpdates(sender: AnyObject?) {
         #if DEBUG
-            var alert = NSAlert()
-            alert.messageText = "No updates in debug mode"
-            alert.addButtonWithTitle("OK")
-            alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+        var alert = NSAlert()
+        alert.messageText = "No updates in debug mode"
+        alert.addButtonWithTitle("OK")
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
         #else
         if let updater = self.updater {
             updater.checkForUpdates(sender)
