@@ -7,7 +7,9 @@
 //
 
 import Cocoa
+#if RELEASE
 import Sparkle
+#endif
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
@@ -22,10 +24,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     }
     var projectNameController: ProjectNameWindowController?
     var preferensesWindowController: NSWindowController?
-    var updater: SUUpdater?
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
+    #else
+    var updater: SUUpdater?
     #endif
     
 
@@ -204,8 +207,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     }
     
     @IBAction func checkForUpdates(sender: AnyObject?) {
+        #if DEBUG
+            var alert = NSAlert()
+            alert.messageText = "No updates in debug mode"
+            alert.addButtonWithTitle("OK")
+            alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+        #else
         if let updater = self.updater {
             updater.checkForUpdates(sender)
         }
+        #endif
     }
 }
