@@ -398,15 +398,6 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="DFA1C434-781B-4F84-A4D6-FD9005D4E595" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="eMP-z0-rmJ">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="ahd-PK-qWF"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="ruC-Mk-0YC"/>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="ruC-Mk-0YC"/>
-                            </defaultToolbarItems>
-                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="17w-JS-V2c" kind="relationship" relationship="window.shadowedContentViewController" id="cyJ-Op-Awi"/>

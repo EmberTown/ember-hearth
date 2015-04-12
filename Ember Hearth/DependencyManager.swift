@@ -108,15 +108,17 @@ class DependencyManager: DependencyInfoWindowDelegate {
             if done == self.dependencyInfoWindow!.dependencies!.count {
                 self.dependencyInfoWindow?.okButtonEnabled = true
                 var remaining = 0
+                var name = "" // Temp in case we have just 1
                 for dependency in self.dependencyInfoWindow!.dependencies! {
                     if dependency.available == false { // Can be nil, therefore "== true"
                         remaining++
+                        name = dependency.name
                     }
                 }
                 if remaining == 0 {
                     self.dependencyInfoWindow?.infoText = "All dependencies are available."
                 } else if remaining == 1 {
-                    self.dependencyInfoWindow?.infoText = "Ember Hearth will install \(dependency.name) automatically."
+                    self.dependencyInfoWindow?.infoText = "Ember Hearth will install \(name) automatically."
                 } else {
                     self.dependencyInfoWindow?.infoText = "Ember Hearth will install \(remaining) missing  dependencies automatically."
                 }
@@ -186,7 +188,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
                         Int64(0.5 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
                         progressBar.window!.orderOut(nil)
-                        progressBar.window!.endSheet(progressBar.window!)
+                        NSApplication.sharedApplication().mainWindow!.endSheet(progressBar.window!)
                         self.progressBar = nil
                         completion(success: success)
                     }
