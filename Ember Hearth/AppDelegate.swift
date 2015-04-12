@@ -131,8 +131,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
         })
     }
 
-    func createProject(path: String, name: String?, runEmberInstall: Bool) -> Project {
+    func createProject(path: String, name: String?, runEmberInstall: Bool) -> Project? {
         var project = Project(name: name, path: path)
+        
+        if let projects = self.projects {
+            if let index = find(projects, project) {
+                var alert = NSAlert()
+                alert.messageText = "Project already loaded"
+                alert.informativeText = "A project from the same path is already in the list."
+                alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (response) -> Void in
+                    self.activeProject = projects[index]
+                })
+                return nil
+            }
+        }
+        
         if runEmberInstall && name != nil {
             project.path = project.path?.stringByAppendingPathComponent(name!)
         } else if name == nil {
