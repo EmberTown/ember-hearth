@@ -61,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, ProjectNameWindowDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+        self.stopAllServers()
     }
 
     @IBAction func createNewProject (sender: AnyObject) {
