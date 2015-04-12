@@ -485,11 +485,10 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="centerY" secondItem="wMT-cp-gOZ" secondAttribute="centerY" id="337-Gi-PDY"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Exy-VP-xM4" secondAttribute="bottom" constant="5" id="NeI-Qc-SdN"/>
                                                                 <constraint firstItem="Exy-VP-xM4" firstAttribute="leading" secondItem="hcj-W1-JsP" secondAttribute="leading" constant="10" id="VXt-XJ-qXU"/>
                                                                 <constraint firstAttribute="trailing" secondItem="wMT-cp-gOZ" secondAttribute="trailing" constant="10" id="YmC-fa-DJ2"/>
-                                                                <constraint firstItem="Exy-VP-xM4" firstAttribute="top" secondItem="hcj-W1-JsP" secondAttribute="top" constant="5" id="bH2-pr-WtH"/>
                                                                 <constraint firstItem="wMT-cp-gOZ" firstAttribute="leading" secondItem="Exy-VP-xM4" secondAttribute="trailing" constant="5" id="cQS-nM-UfO"/>
+                                                                <constraint firstAttribute="centerY" secondItem="Exy-VP-xM4" secondAttribute="centerY" id="clL-aj-2gC"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="wMT-cp-gOZ" id="KFS-jQ-KMo"/>
