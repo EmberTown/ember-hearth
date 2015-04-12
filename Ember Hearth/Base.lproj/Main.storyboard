@@ -459,6 +459,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="247" minWidth="40" maxWidth="1000" id="D49-pm-E7k">
@@ -467,7 +468,7 @@
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" identifier="projectCell" title="Text Cell" id="vDX-xp-ONg">
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" identifier="projectCell" title="Text Cell" placeholderString="" id="vDX-xp-ONg">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -478,22 +479,29 @@
                                                             <rect key="frame" x="1" y="1" width="247" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-VP-xM4">
-                                                                    <rect key="frame" x="8" y="5" width="231" height="24"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="cZE-bS-Z4B">
-                                                                        <font key="font" metaFont="system" size="20"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-VP-xM4" userLabel="Project name">
+                                                                    <rect key="frame" x="8" y="5" width="210" height="24"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Unnamed Project" id="cZE-bS-Z4B">
+                                                                        <font key="font" metaFont="system" size="16"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMT-cp-gOZ" userLabel="Project Status Indicator">
+                                                                    <rect key="frame" x="221" y="9" width="16" height="16"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="da1-OH-dae"/>
+                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="Exy-VP-xM4" secondAttribute="trailing" constant="10" id="AqP-9c-Hdx"/>
+                                                                <constraint firstAttribute="centerY" secondItem="wMT-cp-gOZ" secondAttribute="centerY" id="337-Gi-PDY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Exy-VP-xM4" secondAttribute="bottom" constant="5" id="NeI-Qc-SdN"/>
                                                                 <constraint firstItem="Exy-VP-xM4" firstAttribute="leading" secondItem="hcj-W1-JsP" secondAttribute="leading" constant="10" id="VXt-XJ-qXU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="wMT-cp-gOZ" secondAttribute="trailing" constant="10" id="YmC-fa-DJ2"/>
                                                                 <constraint firstItem="Exy-VP-xM4" firstAttribute="top" secondItem="hcj-W1-JsP" secondAttribute="top" constant="5" id="bH2-pr-WtH"/>
+                                                                <constraint firstItem="wMT-cp-gOZ" firstAttribute="leading" secondItem="Exy-VP-xM4" secondAttribute="trailing" constant="5" id="cQS-nM-UfO"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="imageView" destination="wMT-cp-gOZ" id="KFS-jQ-KMo"/>
                                                                 <outlet property="menu" destination="BiR-mH-P0q" id="ucx-u9-YHr"/>
                                                                 <outlet property="textField" destination="Exy-VP-xM4" id="6l0-0L-DIz"/>
                                                             </connections>
@@ -522,8 +530,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="iqB-3M-Pi0" userLabel="New State View">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-3M-Pi0" userLabel="New State View">
+                                <rect key="frame" x="1000" y="0.0" width="250" height="300"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t4I-5a-yyf">
                                         <rect key="frame" x="68" y="133" width="115" height="32"/>
@@ -972,6 +980,7 @@
     </scenes>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSStatusNone" width="16" height="16"/>
         <image name="ProjectListNewBackground" width="197" height="197"/>
     </resources>
 </document>
