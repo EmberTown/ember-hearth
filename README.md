@@ -7,7 +7,7 @@ Ember Hearth is an application used to manage Ember projects.
 * Installs all needed tools automatically ([node.js](http://nodejs.org), [NPM](http://npmjs.com), [Bower](http://bower.io), [PhantomJS](http://phantomjs.org), [Ember-CLI](http://ember-cli.com))
 * Create new Ember projects
 * Manage existing Ember projects
-* Run a local test server
+* Run a local server
 * Create development and release builds
 
 ## Installing
