@@ -736,14 +736,14 @@
         <!--Project Tab View Controller-->
         <scene sceneID="iJk-c0-W5a">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="2" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="QcM-gF-IpV"/>
                         <tabViewItem id="Kb4-nb-ZTd"/>
                         <tabViewItem id="xRa-1N-CES"/>
                         <tabViewItem id="SfC-oz-T3L"/>
                     </tabViewItems>
-                    <tabView key="tabView" id="XcE-S1-ZJK">
+                    <tabView key="tabView" allowsTruncatedLabels="NO" id="XcE-S1-ZJK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
