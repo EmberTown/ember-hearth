@@ -15,6 +15,7 @@ class ProjectViewController: NSViewController {
     
     let runServerString = "Run Ember server"
     let stopServerString = "Stop Ember server"
+    var serverOutput = ""
     
     var project: Project? {
         get {
@@ -62,19 +63,17 @@ class ProjectViewController: NSViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: NSFileHandleDataAvailableNotification, object: task)
         let pipe = task.standardOutput as! NSPipe
         if task.terminationStatus > 0 {
-            let result = pipe.fileHandleForReading.readDataToEndOfFile()
-            if result.length > 0 && project != nil && project!.serverRunning {
+            if project != nil && !runButton.enabled { // Ad hoc check for if server was interupted before it started
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     project?.serverRunning = false
                     NSNotificationCenter.defaultCenter().postNotificationName("serverStopped", object: nil)
                     var alert = NSAlert()
-                    let string = NSString(data: result, encoding:NSASCIIStringEncoding)
                     alert.messageText = "Error starting server"
-                    if string?.length > 400 {
-                        alert.informativeText = "\(string!.substringToIndex(400))…"
-                    } else {
-                        alert.informativeText = string as? String
+                    var info = self.serverOutput as NSString
+                    if info.length > 400 {
+                        info = info.substringToIndex(400)
                     }
+                    alert.informativeText = info as String
                     alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
                     self.stopServer()
                 })
@@ -88,6 +87,7 @@ class ProjectViewController: NSViewController {
             if data.length > 0 {
                 fileHandle?.waitForDataInBackgroundAndNotify()
                 if let string = NSString(data: data, encoding:NSUTF8StringEncoding) {
+                    self.serverOutput += string as String
                     let range = string.rangeOfString("Serving on ")
                     if range.location != NSNotFound {
                         serverStarted()
@@ -108,6 +108,7 @@ class ProjectViewController: NSViewController {
     }
 
     func stopServer() {
+        self.serverOutput = ""
         runButton.enabled = true
         progressIndicator.hidden = true
         progressIndicator.stopAnimation(self)
