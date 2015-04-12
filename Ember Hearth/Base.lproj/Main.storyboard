@@ -476,19 +476,19 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="projectCell" id="hcj-W1-JsP">
-                                                            <rect key="frame" x="1" y="1" width="247" height="34"/>
+                                                            <rect key="frame" x="1" y="1" width="247" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-VP-xM4" userLabel="Project name">
-                                                                    <rect key="frame" x="8" y="5" width="210" height="24"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Exy-VP-xM4" userLabel="Project name">
+                                                                    <rect key="frame" x="8" y="5" width="210" height="19"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Unnamed Project" id="cZE-bS-Z4B">
                                                                         <font key="font" metaFont="system" size="16"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wMT-cp-gOZ" userLabel="Project Status Indicator">
-                                                                    <rect key="frame" x="221" y="9" width="16" height="16"/>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wMT-cp-gOZ" userLabel="Project Status Indicator">
+                                                                    <rect key="frame" x="221" y="7" width="16" height="16"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="da1-OH-dae"/>
                                                                 </imageView>
                                                             </subviews>
@@ -530,8 +530,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-3M-Pi0" userLabel="New State View">
-                                <rect key="frame" x="1000" y="0.0" width="250" height="300"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="iqB-3M-Pi0" userLabel="New State View">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t4I-5a-yyf">
                                         <rect key="frame" x="68" y="133" width="115" height="32"/>
