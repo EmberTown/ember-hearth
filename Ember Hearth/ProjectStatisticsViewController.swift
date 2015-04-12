@@ -28,14 +28,14 @@ class ProjectStatisticsViewController: NSViewController {
         var project = delegate.activeProject
         
         var terminal = Terminal()
-        let creationTime = terminal.runTerminalCommandSync("GetFileInfo -d \(project!.path!)")
+        let creationTime = terminal.runTerminalCommandSync("GetFileInfo -d \"\(project!.path!)\"")
         if creationTime != nil {
             label.stringValue += "Created at \(creationTime!)"
         }
         
         let appPath = "\(project!.path!)/app"
         terminal = Terminal()
-        terminal.runTerminalCommandAsync("find \(appPath) -name \"*.js\" | wc -l", completion: { (result) -> () in
+        terminal.runTerminalCommandAsync("find \"\(appPath)\" -name \"*.js\" | wc -l", completion: { (result) -> () in
             let count = result?.stringByReplacingOccurrencesOfString("\\s", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
             if count != nil && count!.toInt() > 0 {
                 self.label.stringValue += "\(count!) javascript files\n"
@@ -43,7 +43,7 @@ class ProjectStatisticsViewController: NSViewController {
         })
         
         terminal = Terminal()
-        terminal.runTerminalCommandAsync("find \(appPath) -name \"*.coffee\" | wc -l", completion: { (result) -> () in
+        terminal.runTerminalCommandAsync("find \"\(appPath)\" -name \"*.coffee\" | wc -l", completion: { (result) -> () in
             let count = result?.stringByReplacingOccurrencesOfString("\\s", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
             if count != nil && count!.toInt() > 0 {
                 self.label.stringValue += "\(count!) coffeescript files\n"
@@ -51,7 +51,7 @@ class ProjectStatisticsViewController: NSViewController {
         })
         
         terminal = Terminal()
-        terminal.runTerminalCommandAsync("find \(appPath) -name \"*.hbs\" | wc -l", completion: { (result) -> () in
+        terminal.runTerminalCommandAsync("find \"\(appPath)\" -name \"*.hbs\" | wc -l", completion: { (result) -> () in
             let count = result?.stringByReplacingOccurrencesOfString("\\s", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
             if count != nil && count!.toInt() > 0 {
                 self.label.stringValue += "\(count!) template files\n"
@@ -59,7 +59,7 @@ class ProjectStatisticsViewController: NSViewController {
         })
         
         terminal = Terminal()
-        terminal.runTerminalCommandAsync("find \(appPath) -name \"*.css\" | wc -l", completion: { (result) -> () in
+        terminal.runTerminalCommandAsync("find \"\(appPath)\" -name \"*.css\" | wc -l", completion: { (result) -> () in
             let count = result?.stringByReplacingOccurrencesOfString("\\s", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
             if count != nil && count!.toInt() > 0 {
                 self.label.stringValue += "\(count!) css files\n"
@@ -67,7 +67,7 @@ class ProjectStatisticsViewController: NSViewController {
         })
         
         terminal = Terminal()
-        terminal.runTerminalCommandAsync("find \(appPath) -name \"*.scss\" | wc -l", completion: { (result) -> () in
+        terminal.runTerminalCommandAsync("find \"\(appPath)\" -name \"*.scss\" | wc -l", completion: { (result) -> () in
             let count = result?.stringByReplacingOccurrencesOfString("\\s", withString: "", options: NSStringCompareOptions.RegularExpressionSearch, range: nil)
             if count != nil && count!.toInt() > 0 {
                 self.label.stringValue += "\(count!) scss files\n"
