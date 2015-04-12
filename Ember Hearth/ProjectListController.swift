@@ -147,7 +147,6 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             return
         }
         if tableView.selectedRow < projects?.count {
-            println("\(tableView.selectedRow) < \(projects!.count)")
             var project = projects?[tableView.selectedRow]
             if project != nil {
                 var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
