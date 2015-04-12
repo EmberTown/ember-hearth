@@ -9,6 +9,8 @@
 import Cocoa
 
 class DebugMenu: NSMenu {
+    var dependencyManger: DependencyManager?
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
@@ -118,7 +120,7 @@ class DebugMenu: NSMenu {
     }
     
     func dependencyStatus() {
-        var dpManager = DependencyManager()
-        dpManager.showDependencyStatus()
+        dependencyManger = DependencyManager()
+        dependencyManger?.showDependencyStatus()
     }
 }

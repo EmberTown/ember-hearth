@@ -30,7 +30,10 @@ class Node: CLITool {
     class func version() -> String? {
         var term = Terminal()
         return term.runTerminalCommandSync("node -v")
-}
+    }
+    
+    static let name = "Node.js"
+    let name: String = Node.name
     
     func install(completion:(success:Bool) -> ()) {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-node", ofType: "sh")

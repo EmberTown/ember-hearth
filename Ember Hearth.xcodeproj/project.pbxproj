@@ -21,6 +21,9 @@
 		E953BDA21AD6990D0035F539 /* FirstResponderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E953BDA11AD6990D0035F539 /* FirstResponderView.swift */; };
 		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
 		E95EE93F1AC9AD4700609327 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93E1AC9AD4700609327 /* Project.swift */; };
+		E95F0E491ADA6E2300183AD6 /* DependencyInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E471ADA6E2300183AD6 /* DependencyInfoWindow.swift */; };
+		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
+		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
@@ -68,6 +71,9 @@
 		E953BDA11AD6990D0035F539 /* FirstResponderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponderView.swift; sourceTree = "<group>"; };
 		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		E95EE93E1AC9AD4700609327 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		E95F0E471ADA6E2300183AD6 /* DependencyInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInfoWindow.swift; sourceTree = "<group>"; };
+		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
+		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 			children = (
 				188C3DF01AC86F8900444710 /* NewProjectTitle.xib */,
 				E9BC4DFD1AC8093A00A747EC /* Main.storyboard */,
+				E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */,
 				E9735F981AC8661E0068F3A3 /* ProgressPanel.xib */,
 				E9286B941AD70F5B00719335 /* Settings.storyboard */,
 			);
@@ -200,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */,
+				E95F0E471ADA6E2300183AD6 /* DependencyInfoWindow.swift */,
 			);
 			name = Modals;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				E9F34BE71AC95CE900E4875E /* BGColorView.swift */,
 				E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */,
 				E953BDA11AD6990D0035F539 /* FirstResponderView.swift */,
+				E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -389,6 +398,7 @@
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
+				E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */,
 				188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
 				E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */,
@@ -471,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E95F0E491ADA6E2300183AD6 /* DependencyInfoWindow.swift in Sources */,
 				E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */,
 				E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */,
 				E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */,
@@ -478,6 +489,7 @@
 				E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */,
 				E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */,
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
+				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,

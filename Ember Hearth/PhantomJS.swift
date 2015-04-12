@@ -23,6 +23,9 @@ class PhantomJS: CLITool {
         return term.runTerminalCommandSync("phantomjs -v")
     }
     
+    static let name = "PhantomJS"
+    let name: String = Node.name
+    
     func install(completion:(success:Bool) -> ()) {
         var term = Terminal()
         term.runTerminalCommandAsync("npm install -g phantomjs", completion: { (result) -> () in

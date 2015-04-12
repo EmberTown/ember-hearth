@@ -23,6 +23,9 @@ class NPM: CLITool {
         return term.runTerminalCommandSync("npm -v")
     }
     
+    static let name = "NPM"
+    let name: String = Node.name
+    
     func install (completion: (success: Bool) -> ()) {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
         

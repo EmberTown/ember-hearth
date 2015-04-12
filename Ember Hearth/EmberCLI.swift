@@ -28,6 +28,9 @@ class EmberCLI: CLITool {
         return term.runTerminalCommandSync("ember -v")
     }
     
+    static let name = "Ember-CLI"
+    let name: String = Node.name
+    
     func install (completion: (success: Bool) -> ()) {
         var term = Terminal()
         term.runTerminalCommandAsync("npm install -g ember-cli", completion: { (result) -> () in

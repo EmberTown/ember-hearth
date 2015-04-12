@@ -11,107 +11,139 @@ import Cocoa
 protocol CLITool {
     func install(completion:(success:Bool) -> ())
     func installIfNeeded(completion:(success:Bool) -> ())
+    var name: String {get}
 }
 
-enum Dependency: String {
-    case Node = "Node.js"
-    case NPM = "NPM"
-    case Bower = "Bower"
-    case PhantomJS = "Phantom.js"
-    case Ember = "Ember-CLI"
+class DependencyAvailability: Equatable {
+    convenience init(type: Dependency, name: String, available: Bool?) {
+        self.init()
+        self.type = type
+        self.name = name
+        self.available = available
+    }
+    var type: Dependency!
+    var name: String!
+    var available: Bool? // Nil is valid as "not sure yet"
 }
 
-class DependencyManager {
+func ==(left: DependencyAvailability, right: DependencyAvailability) -> Bool {
+    return left.type == right.type
+}
+
+enum Dependency {
+    case Node
+    case NPM
+    case Bower
+    case PhantomJS
+    case Ember
+}
+
+class DependencyManager: DependencyInfoWindowDelegate {
     var progressBar: ProgressWindowController?
+    var dependencyInfoWindow: DependencyInfoWindow?
+    var completion: ((success:Bool) -> Void)?
     
-    func listNeededInstalls () -> ([String], [Dependency]) {
-        var needed: [String] = []
-        var dependencies: [Dependency] = []
-        switch Node.isInstalled() {
-        case true: needed.append("✅ Node.js")
-        default:
-            needed.append("❌ Node.js")
-            dependencies.append(.Node)
+    func listDependencies () -> [DependencyAvailability] {
+        return [
+            DependencyAvailability(type: .Node, name:Node.name, available: nil),
+            DependencyAvailability(type: .NPM, name:NPM.name, available: nil),
+            DependencyAvailability(type: .Bower, name:Bower.name, available: nil),
+            DependencyAvailability(type: .PhantomJS, name:PhantomJS.name, available: nil),
+            DependencyAvailability(type: .Ember, name:EmberCLI.name, available: nil)
+        ]
+    }
+    
+    func checkAvailabilityForDependencies(dependencies:[DependencyAvailability], completedDependency:(dependency: DependencyAvailability) -> ()) {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        var done = 0
+        for dependency in dependencies {
+            dispatch_async(dispatch_get_global_queue(priority, 0), { () -> Void in
+                switch dependency.type! {
+                case .Node:
+                    dependency.available = Node.isInstalled()
+                case .NPM:
+                    dependency.available = NPM.isInstalled()
+                case .Bower:
+                    dependency.available = Bower.isInstalled()
+                case .PhantomJS:
+                    dependency.available = PhantomJS.isInstalled()
+                case .Ember:
+                    dependency.available = EmberCLI.isInstalled()
+                }
+                completedDependency(dependency: dependency)
+            })
         }
-        
-        switch NPM.isInstalled() {
-        case true: needed.append("✅ NPM")
-        default:
-            needed.append("❌ NPM")
-            dependencies.append(.NPM)
-        }
-        
-        switch Bower.isInstalled() {
-        case true: needed.append("✅ Bower")
-        default:
-            needed.append("❌ Bower")
-            dependencies.append(.Bower)
-        }
-        
-        switch PhantomJS.isInstalled() {
-        case true: needed.append("✅ PhantomJS")
-        default:
-            needed.append("❌ PhantomJS")
-            dependencies.append(.PhantomJS)
-        }
-        
-        switch EmberCLI.isInstalled() {
-        case true: needed.append("✅ Ember-CLI")
-        default:
-            needed.append("❌ Ember-CLI")
-            dependencies.append(.Ember)
-        }
-        return (needed, dependencies)
     }
     
     func showDependencyStatus() {
-        let (needed, dependencies) = listNeededInstalls()
-        var neededString = ""
-        for string in needed {
-            neededString += "\(string)\n"
-        }
-        if dependencies.count == 1 {
-            neededString += "\n\(dependencies.count) dependency missing."
-        } else if dependencies.count > 0 {
-            neededString += "\n\(dependencies.count) dependencies missing."
-        } else {
-            neededString += "\nAll dependencies installed."
-        }
+        dependencyInfoWindow = DependencyInfoWindow(windowNibName: "DependencyInfoWindow")
+        dependencyInfoWindow!.shouldShowCancelButton = false
+        dependencyInfoWindow!.okButtonEnabled = false
+        dependencyInfoWindow!.dependencies = listDependencies()
         
-        var alert = NSAlert()
-        alert.messageText = "Dependencies:"
-        alert.informativeText = neededString
-        alert.addButtonWithTitle("OK")
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+        var done = 0
+        checkAvailabilityForDependencies(dependencyInfoWindow!.dependencies!, completedDependency: { (dependency) -> Void in
+            self.dependencyInfoWindow?.updateDependency(dependency)
+            done++
+            if done == self.dependencyInfoWindow!.dependencies!.count {
+                self.dependencyInfoWindow?.okButtonEnabled = true
+                self.dependencyInfoWindow = nil
+            }
+        })
+        
+        NSApplication.sharedApplication().mainWindow?.beginSheet(dependencyInfoWindow!.window!, completionHandler: nil)
     }
     
     func installDependencies(completion:(success:Bool) -> ()) {
-        let (needed, dependencies) = listNeededInstalls()
-        var neededString = ""
-        for string in needed {
-            neededString += "\(string)\n"
-        }
-        if dependencies.count == 1 {
-            neededString += "\nEmber Hearth will install \(dependencies[0].rawValue) automatically."
-        } else if dependencies.count == 1 {
-            neededString += "\nEmber Hearth will install 1 missing dependency automatically."
-        } else if dependencies.count > 0 {
-            neededString += "\nEmber Hearth will install \(dependencies.count) missing dependencies automatically."
-        } else {
-            completion(success: true)
-            return
-        }
-
-        var alert = NSAlert()
-        alert.messageText = "Dependencies:"
-        alert.informativeText = neededString
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
-        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: { (response: NSModalResponse) -> Void in
-            if response == 1000 { // OK
-                self.installDependeniesInOrder(dependencies, totalCount: dependencies.count, completion: completion)
+        self.completion = completion
+        dependencyInfoWindow = DependencyInfoWindow(windowNibName: "DependencyInfoWindow")
+        dependencyInfoWindow!.shouldShowCancelButton = false
+        dependencyInfoWindow!.okButtonEnabled = false
+        dependencyInfoWindow!.dependencies = listDependencies()
+        dependencyInfoWindow!.delegate = self
+        
+        var done = 0
+        checkAvailabilityForDependencies(dependencyInfoWindow!.dependencies!, completedDependency: { (dependency) -> Void in
+            self.dependencyInfoWindow?.updateDependency(dependency)
+            done++
+            if done == self.dependencyInfoWindow!.dependencies!.count {
+                self.dependencyInfoWindow?.okButtonEnabled = true
+                var remaining = 0
+                for dependency in self.dependencyInfoWindow!.dependencies! {
+                    if dependency.available == false { // Can be nil, therefore "== true"
+                        remaining++
+                    }
+                }
+                if remaining == 0 {
+                    self.dependencyInfoWindow?.infoText = "All dependencies are available."
+                } else if remaining == 1 {
+                    self.dependencyInfoWindow?.infoText = "Ember Hearth will install \(dependency.name) automatically."
+                } else {
+                    self.dependencyInfoWindow?.infoText = "Ember Hearth will install \(remaining) missing  dependencies automatically."
+                }
             }
         })
+        
+        NSApplication.sharedApplication().mainWindow?.beginSheet(dependencyInfoWindow!.window!, completionHandler: nil)
+    }
+    
+    func buttonClicked(button: DependencyInfoWindowButton) {
+        if button == DependencyInfoWindowButton.OKButton {
+            var remaining: [Dependency] = []
+            for dependency in self.dependencyInfoWindow!.dependencies! {
+                if dependency.available == false { // Can be nil, therefore "== true"
+                    remaining.append(dependency.type)
+                }
+            }
+            
+            if remaining.count > 0 {
+                self.installDependeniesInOrder(remaining, totalCount: remaining.count, completion: completion!)
+            } else {
+                if let completion = self.completion {
+                    completion(success: true)
+                }
+            }
+        }
     }
     
     private func installDependeniesInOrder(dependencies: [Dependency], totalCount: Int, completion:(success:Bool) -> ()) {
@@ -124,7 +156,7 @@ class DependencyManager {
         var tool = initializedToolForDependency(dependency)
 
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.progressBar?.label.stringValue = "Installing \(dependency.rawValue)…"
+            self.progressBar?.label.stringValue = "Installing \(tool.name)…"
             if dependency == Dependency.Node {
                 self.progressBar?.label.stringValue += " This may take up to 15 minutes."
             }
@@ -137,7 +169,7 @@ class DependencyManager {
         tool.installIfNeeded { (success) -> () in
             var reducedArray = Array<Dependency>(dependencies)
             reducedArray.removeAtIndex(0)
-            println("Installed \(dependency.rawValue), \(reducedArray.count) dependencies left")
+            println("Installed \(tool.name), \(reducedArray.count) dependencies left")
             if success && reducedArray.count > 0 {
                 println("Proceeding to next dependency")
                 self.progressBar?.progressIndicator.doubleValue = Double(totalCount - reducedArray.count) / Double(totalCount)
@@ -149,7 +181,7 @@ class DependencyManager {
                         progressBar.progressIndicator.doubleValue = 1
                         progressBar.label.stringValue = "Success!"
                     } else {
-                        progressBar.label.stringValue = "Error installing \(dependency.rawValue). Aborting."
+                        progressBar.label.stringValue = "Error installing \(tool.name). Aborting."
                     }
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW,
                         Int64(0.5 * Double(NSEC_PER_SEC)))

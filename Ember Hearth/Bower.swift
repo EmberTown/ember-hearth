@@ -23,6 +23,9 @@ class Bower: CLITool {
         return term.runTerminalCommandSync("bower -v")
     }
     
+    static let name = "Bower"
+    let name: String = Node.name
+    
     func install (completion: (success: Bool) -> ()) {
         var term = Terminal()
         term.runTerminalCommandAsync("npm install -g bower", completion: { (result) -> () in
