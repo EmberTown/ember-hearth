@@ -27,6 +27,9 @@ class ProjectViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "projectChanged:", name: "activeProjectSet", object: nil)
+        if project != nil {
+            self.projectChanged(nil)
+        }
     }
 
     @IBAction func runServer (sender: AnyObject) {
@@ -116,7 +119,7 @@ class ProjectViewController: NSViewController {
         runButton.title = "Run Ember server"
     }
 
-    func projectChanged(notification: NSNotification) {
+    func projectChanged(notification: NSNotification?) {
         setProjectTitle(notification)
         if project != nil && project!.serverRunning {
             runButton.title = stopServerString
@@ -125,7 +128,7 @@ class ProjectViewController: NSViewController {
         }
     }
     
-    func setProjectTitle(notification: NSNotification) {
+    func setProjectTitle(notification: NSNotification?) {
         if let name = project?.name {
             self.titleLabel.stringValue = name
         }
