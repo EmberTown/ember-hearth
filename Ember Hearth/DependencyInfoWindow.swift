@@ -20,6 +20,7 @@ protocol DependencyInfoWindowDelegate {
 class DependencyInfoWindow: NSWindowController, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet private var tableView: NSTableView?
     @IBOutlet private var okButton: NSButton?
+    @IBOutlet private var issueButton: NSButton?
     @IBOutlet private var cancelButton: NSButton?
     @IBOutlet private var infoLabel: NSTextField?
     
@@ -41,6 +42,7 @@ class DependencyInfoWindow: NSWindowController, NSTableViewDataSource, NSTableVi
     var okButtonEnabled = true {
         didSet {
             okButton?.enabled = okButtonEnabled
+            issueButton?.enabled = okButtonEnabled
         }
     }
 
@@ -49,6 +51,7 @@ class DependencyInfoWindow: NSWindowController, NSTableViewDataSource, NSTableVi
 
         cancelButton?.hidden = !shouldShowCancelButton
         okButton?.enabled = okButtonEnabled
+        issueButton?.enabled = okButtonEnabled
         self.tableView?.reloadData()
     }
 
@@ -89,5 +92,24 @@ class DependencyInfoWindow: NSWindowController, NSTableViewDataSource, NSTableVi
         
         self.window!.orderOut(self)
         NSApplication.sharedApplication().mainWindow!.endSheet(self.window!)
+    }
+    
+    @IBAction func makeIssue(sender: AnyObject?) {
+        var missingTools = ""
+        for tool in dependencies! {
+            if !tool.available! {
+               missingTools += "\(tool.name)\n"
+            }
+        }
+        
+        var string = "https://github.com/EmberTown/ember-hearth/issues/new" +
+            "?title=Problem detecting tools" +
+        "&body="
+        if missingTools.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
+            string += "Tools missing:\n\(missingTools)\n"
+        }
+        string += "Note: Ember Hearth relies on bash, so if you use another shell, that might be the problem."
+        let url = NSURL(string: string.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!
+        NSWorkspace.sharedWorkspace().openURL(url)
     }
 }

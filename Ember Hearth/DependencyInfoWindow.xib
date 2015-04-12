@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="cancelButton" destination="xE8-5I-n51" id="9iX-Ns-E1j"/>
                 <outlet property="infoLabel" destination="26J-md-2nc" id="vax-bn-ZKL"/>
+                <outlet property="issueButton" destination="OFQ-fi-BhN" id="rJ0-Gf-mGB"/>
                 <outlet property="okButton" destination="Jjt-Wc-f7J" id="WuN-2L-AX6"/>
                 <outlet property="tableView" destination="odj-BI-grA" id="c6t-73-BU2"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -19,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="331"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="331"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -149,6 +150,19 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OFQ-fi-BhN">
+                        <rect key="frame" x="280" y="13" width="126" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="114" id="wKQ-SC-Tjs"/>
+                        </constraints>
+                        <buttonCell key="cell" type="push" title="Not correct?" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ruH-5U-8OW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="makeIssue:" target="-2" id="cht-oD-ONt"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xE8-5I-n51" firstAttribute="top" secondItem="26J-md-2nc" secondAttribute="bottom" constant="8" id="2vp-ly-ufq"/>
@@ -159,7 +173,9 @@ Gw
                     <constraint firstItem="26J-md-2nc" firstAttribute="top" secondItem="NV0-4Q-KJm" secondAttribute="bottom" constant="8" id="ctb-co-6Om"/>
                     <constraint firstItem="NV0-4Q-KJm" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="duD-tx-RO2"/>
                     <constraint firstAttribute="trailing" secondItem="Jjt-Wc-f7J" secondAttribute="trailing" constant="20" id="hG9-uA-tI6"/>
+                    <constraint firstItem="OFQ-fi-BhN" firstAttribute="top" secondItem="Jjt-Wc-f7J" secondAttribute="top" id="phl-c0-2Tq"/>
                     <constraint firstItem="NV0-4Q-KJm" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="tQG-wB-ZrT"/>
+                    <constraint firstItem="Jjt-Wc-f7J" firstAttribute="leading" secondItem="OFQ-fi-BhN" secondAttribute="trailing" constant="12" id="uI4-Qz-KD9"/>
                     <constraint firstAttribute="trailing" secondItem="NV0-4Q-KJm" secondAttribute="trailing" constant="20" id="ytv-03-rDO"/>
                     <constraint firstItem="26J-md-2nc" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="22" id="zCb-9b-r5W"/>
                 </constraints>
