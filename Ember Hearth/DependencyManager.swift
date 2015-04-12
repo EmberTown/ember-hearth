@@ -87,7 +87,6 @@ class DependencyManager: DependencyInfoWindowDelegate {
             done++
             if done == self.dependencyInfoWindow!.dependencies!.count {
                 self.dependencyInfoWindow?.okButtonEnabled = true
-                self.dependencyInfoWindow = nil
             }
         })
         

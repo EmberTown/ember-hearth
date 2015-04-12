@@ -81,9 +81,9 @@ class DependencyInfoWindow: NSWindowController, NSTableViewDataSource, NSTableVi
     }
     
     @IBAction func buttonClicked(sender: AnyObject?) {
-        if sender as? NSButton == okButton && delegate != nil {
+        if sender as? NSButton == okButton {
             delegate?.buttonClicked(.OKButton)
-        } else if sender as? NSButton == cancelButton && delegate != nil {
+        } else if sender as? NSButton == cancelButton {
             delegate?.buttonClicked(.CancelButton)
         }
         
