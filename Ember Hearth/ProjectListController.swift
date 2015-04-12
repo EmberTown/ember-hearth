@@ -66,8 +66,14 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         // Deselect active project if needed
         let delegate = NSApplication.sharedApplication().delegate! as! AppDelegate
         if delegate.activeProject == project {
-            self.tableView.deselectAll(sender)
-            delegate.activeProject = nil
+            let index = indexForProject(project)
+            if index > 0 {
+                delegate.activeProject = self.projects?[index-1]
+            } else if index == 0 && self.projects?.count > 1 {
+                delegate.activeProject = self.projects?[index+1]
+            } else {
+                delegate.activeProject = nil
+            }
         }
         
         var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
@@ -101,6 +107,16 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             self.tableView.removeRowsAtIndexes(NSIndexSet(index: index), withAnimation: NSTableViewAnimationOptions.SlideUp)
             self.tableView.endUpdates()
         }
+    }
+    
+    func indexForProject(project: Project) -> Int {
+        if let projects = self.projects {
+            if let result = find(projects, project) {
+                return result
+            }
+        }
+        
+        return -1
     }
     
     //MARK: Data updating
