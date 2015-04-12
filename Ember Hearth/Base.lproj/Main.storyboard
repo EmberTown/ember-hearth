@@ -416,10 +416,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Main Split View Controller-->
         <scene sceneID="7t4-4i-twX">
             <objects>
-                <splitViewController id="17w-JS-V2c" sceneMemberID="viewController">
+                <splitViewController id="17w-JS-V2c" customClass="MainSplitViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="eA0-Eq-CQG"/>
                         <splitViewItem id="w53-jO-lAh"/>
