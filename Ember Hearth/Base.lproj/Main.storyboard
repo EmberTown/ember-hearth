@@ -674,19 +674,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="484" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="318" y="18" width="152" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runServer:" target="bXs-Kf-6T4" id="vAr-2y-kq2"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
                                 <rect key="frame" x="18" y="20" width="154" height="30"/>
                                 <constraints>
@@ -712,6 +699,19 @@
                                     <action selector="openInBrowser:" target="bXs-Kf-6T4" id="RKb-pd-JoN"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
+                                <rect key="frame" x="318" y="18" width="152" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="runServer:" target="S6J-Ke-Xdp" id="Rdk-hC-B2l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="TnO-z9-eOo" firstAttribute="top" secondItem="4v2-lA-E5P" secondAttribute="top" id="1hF-V0-lV2"/>
@@ -734,6 +734,7 @@
                     </connections>
                 </viewController>
                 <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>
@@ -863,8 +864,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmY-Qp-f3E">
-                                <rect key="frame" x="18" y="20" width="414" height="160"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmY-Qp-f3E">
+                                <rect key="frame" x="18" y="163" width="414" height="17"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Loading project statistics…" id="s8A-ab-uaw">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
