@@ -41,6 +41,7 @@
 		E9D4361D1AC840300020E123 /* NPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361C1AC840300020E123 /* NPM.swift */; };
 		E9D4361F1AC842C00020E123 /* EmberCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4361E1AC842C00020E123 /* EmberCLI.swift */; };
 		E9D436221AC843E90020E123 /* Bower.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D436211AC843E90020E123 /* Bower.swift */; };
+		E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B761ADC2CC600FD15BD /* ProjectController.swift */; };
 		E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */; };
 		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
 		E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */; };
@@ -96,6 +97,7 @@
 		E9D4361C1AC840300020E123 /* NPM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPM.swift; sourceTree = "<group>"; };
 		E9D4361E1AC842C00020E123 /* EmberCLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmberCLI.swift; sourceTree = "<group>"; };
 		E9D436211AC843E90020E123 /* Bower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bower.swift; sourceTree = "<group>"; };
+		E9D47B761ADC2CC600FD15BD /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectActionsViewController.swift; sourceTree = "<group>"; };
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
+				E9D47B751ADC2CAF00FD15BD /* ObjectControllers */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
 				E9D436201AC842C50020E123 /* External tools */,
@@ -309,6 +312,14 @@
 				E96E8D341AD585DB00C2D1A3 /* Brew.swift */,
 			);
 			name = "External tools";
+			sourceTree = "<group>";
+		};
+		E9D47B751ADC2CAF00FD15BD /* ObjectControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
+			);
+			name = ObjectControllers;
 			sourceTree = "<group>";
 		};
 		E9F34BE41AC94CE300E4875E /* View */ = {
@@ -504,6 +515,7 @@
 				E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */,
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
 				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
+				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
