@@ -57,7 +57,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW,
             Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-        var panel = NSOpenPanel.hearthFolderPicker(name, allowFolderCreation: true)
+            var panel = NSOpenPanel.hearthFolderPicker(name, allowFolderCreation: true)
             panel.beginSheetModalForWindow(self.mainWindow, completionHandler: { (result: Int) -> Void in
                 if result == NSFileHandlingPanelOKButton {
                     let path = (panel.URLs.first! as! NSURL).path!
