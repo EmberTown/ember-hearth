@@ -70,12 +70,12 @@
                                     <items>
                                         <menuItem title="New Project" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="createNewProject:" target="Voe-Tx-rLC" id="EH3-FX-MIK"/>
+                                                <action selector="createProject:" target="S6J-Ke-Xdp" id="faG-6O-qWZ"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openExistingProject:" target="Voe-Tx-rLC" id="LVl-Hr-idz"/>
+                                                <action selector="openProject:" target="S6J-Ke-Xdp" id="2hH-8z-EVO"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -385,6 +385,7 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Ember_Hearth" customModuleProvider="target"/>
+                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75.5" y="-84"/>
@@ -404,7 +405,6 @@
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
@@ -531,7 +531,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="createNewProject:" target="dot-n3-klN" id="Z0D-oc-pTg"/>
+                                            <action selector="createProject:" target="KKa-eA-3C7" id="Ypr-ci-XoE"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38D-SR-eaM">
@@ -541,7 +541,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openExistingProject:" target="dot-n3-klN" id="IWd-qC-rZ5"/>
+                                            <action selector="openProject:" target="KKa-eA-3C7" id="FOu-de-Si1"/>
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-ji-dQg" userLabel="Hacky button icon">
@@ -561,12 +561,12 @@
                                                 <items>
                                                     <menuItem title="Create project" id="zHb-gX-Lzr">
                                                         <connections>
-                                                            <action selector="createNewProject:" target="dot-n3-klN" id="Jr4-KT-KGc"/>
+                                                            <action selector="createProject:" target="KKa-eA-3C7" id="otA-NJ-zZU"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Open Project" id="jHO-qa-Dmp">
                                                         <connections>
-                                                            <action selector="openExistingProject:" target="dot-n3-klN" id="rHB-Y7-Pz8"/>
+                                                            <action selector="openProject:" target="KKa-eA-3C7" id="iLr-xH-YYk"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
@@ -620,6 +620,7 @@
                     </connections>
                 </viewController>
                 <customObject id="aJU-MU-whI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="KKa-eA-3C7" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
                 <menu id="BiR-mH-P0q">
                     <items>
                         <menuItem title="Open in Finder" id="CQN-Kv-9kE">
@@ -710,7 +711,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="runServer:" target="S6J-Ke-Xdp" id="Rdk-hC-B2l"/>
+                                    <action selector="runServer:" target="oDU-nh-bNN" id="tC4-aq-4ud"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -735,6 +736,7 @@
                     </connections>
                 </viewController>
                 <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="oDU-nh-bNN" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>

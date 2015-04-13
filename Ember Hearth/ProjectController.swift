@@ -8,30 +8,168 @@
 
 import Cocoa
 
-class ProjectController: NSObject {
+class ProjectController: NSObject, ProjectNameWindowDelegate {
     var project: Project? {
         get {
             var delegate = NSApplication.sharedApplication().delegate as? AppDelegate
             return delegate?.activeProject
         }
+        set {
+            var delegate = NSApplication.sharedApplication().delegate as? AppDelegate
+            delegate?.activeProject = newValue
+        }
     }
+    var appDelegate: AppDelegate {get {return NSApplication.sharedApplication().delegate as! AppDelegate}}
+    var mainWindow: NSWindow {get {return NSApplication.sharedApplication().mainWindow!}}
     var serverOutput: String = ""
+    var projectNameController: ProjectNameWindowController?
     
+    // MARK: Creating and opening projects
     @IBAction func createProject(sender: AnyObject) {
-        
+        projectNameController = ProjectNameWindowController(windowNibName: "NewProjectTitle")
+        projectNameController?.delegate = self
+        mainWindow.beginSheet(projectNameController!.window!, completionHandler: {(result: Int) -> Void in
+            self.projectNameController?.cancel(nil)
+            self.projectNameController = nil
+        })
     }
     
     @IBAction func openProject(sender: AnyObject) {
-        
+        var panel = NSOpenPanel.hearthFolderPicker(nil, allowFolderCreation: false)
+        panel.beginSheetModalForWindow(mainWindow, completionHandler: { (result: Int) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                let path = (panel.URLs.first! as! NSURL).path!
+                // Create project with new folder
+                var dependencyManager = DependencyManager()
+                dependencyManager.installDependencies { (success) -> () in
+                    if !success {
+                        println("Could not set up dependencies.")
+                        return
+                    }
+                    
+                    self.project = self.addProject(path, name: nil, runEmberInstall:false)
+                }
+            }
+        })
     }
     
+    func nameSet(name: String) {
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(0.5 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        var panel = NSOpenPanel.hearthFolderPicker(name, allowFolderCreation: true)
+            panel.beginSheetModalForWindow(self.mainWindow, completionHandler: { (result: Int) -> Void in
+                if result == NSFileHandlingPanelOKButton {
+                    let path = (panel.URLs.first! as! NSURL).path!
+                    // Create project with new folder
+                    var dependencyManager = DependencyManager()
+                    dependencyManager.installDependencies {(success) -> () in
+                        if !success {
+                            println("Could not set up dependencies.")
+                            return
+                        }
+                        
+                        self.project = self.addProject(path, name: name, runEmberInstall:true)
+                    }
+                }
+            })
+        }
+    }
+    
+    func addProject(path: String, name: String?, runEmberInstall: Bool) -> Project? {
+        var project = Project(name: name, path: path)
+        
+        if let projects = appDelegate.projects {
+            if let index = find(projects, project) {
+                var alert = NSAlert()
+                alert.messageText = "Project already loaded"
+                alert.informativeText = "A project from the same path is already in the list."
+                alert.beginSheetModalForWindow(mainWindow, completionHandler: { (response) -> Void in
+                    self.project = projects[index]
+                })
+                return nil
+            }
+        }
+        
+        if runEmberInstall && name != nil {
+            project.path = project.path?.stringByAppendingPathComponent(name!)
+        } else if name == nil {
+            project.loadNameFromPath()
+        }
+        var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
+        if projects == nil {
+            projects = []
+        }
+        projects!.append(project.dictionaryRepresentation())
+        NSUserDefaults.standardUserDefaults().setObject(projects, forKey: "projects")
+        
+        if runEmberInstall {
+            var sheet = ProgressWindowController()
+            NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
+            sheet.progressIndicator.indeterminate = true
+            sheet.progressIndicator.startAnimation(nil)
+            sheet.label.stringValue = "Setting up ember project files…"
+            NSApplication.sharedApplication().mainWindow?.beginSheet(sheet.window!, completionHandler: nil)
+            
+            var ember = EmberCLI()
+            ember.createProject(path, name: name!, completion: { (success) -> () in
+                if !success {
+                    println("Error creating ember project!")
+                    sheet.label.stringValue = "Install failed."
+                    self.removeProject(project)
+                } else {
+                    sheet.label.stringValue = "Success!"
+                }
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(0.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    sheet.window!.orderOut(nil)
+                    sheet.window!.endSheet(sheet.window!)
+                    if !success {
+                        var alert = NSAlert()
+                        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+                        alert.messageText = "Installation failed"
+                        alert.informativeText = "Run ' cd \"\(project.path!.stringByDeletingLastPathComponent)\" && ember install \"\(project.name!)\" ' from Terminal to see what went wrong."
+                        alert.beginSheetModalForWindow(self.mainWindow, completionHandler: nil)
+                    }
+                }
+                
+            })
+        }
+        
+        return project
+    }
+    
+    func removeProject(project: Project) {
+        if self.project == project {
+            self.project = nil
+        }
+        var projects: Array<Dictionary<String, AnyObject>>? = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? Array
+        if let projects = projects {
+            var index: Int? = nil
+            
+            for (iteratorIndex, projectDict) in enumerate(projects) {
+                if projectDict["path"] as? String == project.path {
+                    index = iteratorIndex
+                }
+            }
+            
+            if let index = index {
+                var tempArray = Array(projects)
+                tempArray.removeAtIndex(index)
+                NSUserDefaults.standardUserDefaults().setObject(tempArray, forKey: "projects")
+                NSNotificationCenter.defaultCenter().postNotificationName("projectRemoved", object: nil)
+            }
+        }
+    }
+    
+    // MARK: Running and stopping server
     @IBAction func runServer(sender: AnyObject) {
         if project?.serverTask != nil {
             stopServer(nil)
             project?.serverStatus = .stopped
         } else if project != nil {
             // Stop all servers
-            var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.stopAllServers()
             
             serverOutput = ""
@@ -66,7 +204,7 @@ class ProjectController: NSObject {
                         info = info.substringToIndex(400)
                     }
                     alert.informativeText = info as String
-                    alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+                    alert.beginSheetModalForWindow(self.mainWindow, completionHandler: nil)
                     self.stopServer(nil)
                 })
             }
