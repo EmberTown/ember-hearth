@@ -10,6 +10,7 @@ import Cocoa
 
 class ProjectViewController: NSViewController {
     @IBOutlet var runButton: NSButton!
+    @IBOutlet var openInBrowserButton: NSButton!
     @IBOutlet var titleLabel: NSTextField!
     @IBOutlet var progressIndicator: NSProgressIndicator!
     
@@ -27,9 +28,24 @@ class ProjectViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "projectChanged:", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "activateBrowserButton", name: "serverStarted", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deactivateBrowserButton", name: "serverStopped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deactivateBrowserButton", name: "serverStoppedWithError", object: nil)
         if project != nil {
             self.projectChanged(nil)
         }
+    }
+    
+    @IBAction func openInBrowser (sender: AnyObject) {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
+    }
+    
+    func activateBrowserButton() {
+        openInBrowserButton.enabled = true
+    }
+    
+    func deactivateBrowserButton() {
+        openInBrowserButton.enabled = false
     }
 
     @IBAction func runServer (sender: AnyObject) {

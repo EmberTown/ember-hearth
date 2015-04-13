@@ -671,11 +671,11 @@
             <objects>
                 <viewController id="bXs-Kf-6T4" customClass="ProjectViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GSX-7Z-XIl" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="484" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="284" y="18" width="152" height="32"/>
+                                <rect key="frame" x="318" y="18" width="152" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
                                 </constraints>
@@ -688,25 +688,38 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
-                                <rect key="frame" x="18" y="20" width="266" height="30"/>
+                                <rect key="frame" x="18" y="20" width="154" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WL5-f9-i6C"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jbQ-kS-Ncc"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Project name" id="rrh-09-P4T">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Project name" id="rrh-09-P4T">
                                     <font key="font" size="20" name="HelveticaNeue-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
-                                <rect key="frame" x="352" y="27" width="16" height="16"/>
+                                <rect key="frame" x="386" y="27" width="16" height="16"/>
                             </progressIndicator>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo">
+                                <rect key="frame" x="176" y="18" width="142" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open in browser" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openInBrowser:" target="bXs-Kf-6T4" id="RKb-pd-JoN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="TnO-z9-eOo" firstAttribute="top" secondItem="4v2-lA-E5P" secondAttribute="top" id="1hF-V0-lV2"/>
+                            <constraint firstItem="TnO-z9-eOo" firstAttribute="leading" secondItem="jnP-bm-eUb" secondAttribute="trailing" constant="12" id="7KC-bk-reX"/>
                             <constraint firstAttribute="trailing" secondItem="4v2-lA-E5P" secondAttribute="trailing" constant="20" id="JRA-dm-BLX"/>
                             <constraint firstItem="4v2-lA-E5P" firstAttribute="centerY" secondItem="IY0-CY-E5G" secondAttribute="centerY" constant="-0.5" id="P3e-5K-my5"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jnP-bm-eUb" secondAttribute="bottom" constant="20" id="Wq4-ps-cRx"/>
-                            <constraint firstItem="4v2-lA-E5P" firstAttribute="leading" secondItem="jnP-bm-eUb" secondAttribute="trailing" constant="8" id="icS-L7-Z2k"/>
+                            <constraint firstItem="4v2-lA-E5P" firstAttribute="leading" secondItem="TnO-z9-eOo" secondAttribute="trailing" constant="12" id="ba3-nh-8QR"/>
                             <constraint firstItem="jnP-bm-eUb" firstAttribute="top" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="20" id="lgw-jH-t7F"/>
                             <constraint firstItem="4v2-lA-E5P" firstAttribute="centerX" secondItem="IY0-CY-E5G" secondAttribute="centerX" id="oVz-f6-YEy"/>
                             <constraint firstAttribute="centerY" secondItem="4v2-lA-E5P" secondAttribute="centerY" id="oie-C0-sYF"/>
@@ -714,6 +727,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="openInBrowserButton" destination="TnO-z9-eOo" id="sHc-hh-atM"/>
                         <outlet property="progressIndicator" destination="IY0-CY-E5G" id="gYO-eS-fhC"/>
                         <outlet property="runButton" destination="4v2-lA-E5P" id="1tS-m3-Muu"/>
                         <outlet property="titleLabel" destination="jnP-bm-eUb" id="OLa-LK-zeL"/>
