@@ -9,6 +9,13 @@
 import Cocoa
 
 class ProjectController {
+    var project: Project? {
+        get {
+            var delegate = NSApplication.sharedApplication().delegate as? AppDelegate
+            return delegate?.activeProject
+        }
+    }
+    
     @IBAction func createProject(sender: AnyObject) {
         
     }
@@ -18,10 +25,10 @@ class ProjectController {
     }
     
     @IBAction func runServer(sender: AnyObject) {
-    
+        
     }
 
     @IBAction func stopServer(sender: AnyObject) {
-        
+        project?.stopServer()
     }
 }
