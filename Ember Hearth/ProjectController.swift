@@ -34,6 +34,8 @@ class ProjectController: NSObject {
             var appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
             appDelegate.stopAllServers()
             
+            serverOutput = ""
+            
             project?.serverStatus = .booting
             
             var ember = EmberCLI()
