@@ -404,6 +404,7 @@
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
@@ -734,7 +735,6 @@
                     </connections>
                 </viewController>
                 <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>
