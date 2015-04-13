@@ -15,7 +15,7 @@ Ember Hearth aspires to allow new users to do all they need to do to run Ember p
 * Installs all needed tools automatically ([node.js](http://nodejs.org), [NPM](http://npmjs.com), [Bower](http://bower.io), [PhantomJS](http://phantomjs.org) and [Ember-CLI](http://ember-cli.com))
 * Create new Ember projects
 * Manage existing Ember projects
-* Run a local test server
+* Run a local server
 * Create development and release builds
 
 ## Installing
