@@ -10,10 +10,12 @@ import Cocoa
 
 private let _projectControllerSharedInstance = ProjectController()
 
-class ProjectController: NSObject, ProjectNameWindowDelegate {
+class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDelegate, DependencyManagerDelegate {
     class var sharedInstance: ProjectController {
         get {return _projectControllerSharedInstance}
     }
+    
+    private weak var currentlyRunningTask: NSTask?
     
     var project: Project? {
         get {
@@ -47,6 +49,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
                 let path = (panel.URLs.first! as! NSURL).path!
                 // Create project with new folder
                 var dependencyManager = DependencyManager()
+                dependencyManager.delegate = self
                 dependencyManager.installDependencies { (success) -> () in
                     if !success {
                         println("Could not set up dependencies.")
@@ -119,6 +122,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
         
         if runEmberInstall {
             var sheet = ProgressWindowController()
+            sheet.delegate = self
             NSBundle.mainBundle().loadNibNamed("ProgressPanel", owner: sheet, topLevelObjects: nil)
             sheet.progressIndicator.indeterminate = true
             sheet.progressIndicator.startAnimation(nil)
@@ -126,19 +130,23 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
             NSApplication.sharedApplication().mainWindow?.beginSheet(sheet.window!, completionHandler: nil)
             
             var ember = EmberCLI()
-            ember.createProject(path, name: name!, completion: { (success) -> () in
-                if !success {
-                    println("Error creating ember project!")
-                    sheet.label.stringValue = "Install failed."
-                    self.removeProject(project)
-                } else {
-                    sheet.label.stringValue = "Success!"
-                }
+            self.currentlyRunningTask = ember.createProject(path, name: name!, completion: { (success) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if !success {
+                        println("Error creating ember project!")
+                        sheet.label.stringValue = "Install failed."
+                        self.removeProject(project)
+                    } else {
+                        sheet.label.stringValue = "Success!"
+                    }
+                })
+                
+                sheet.window!.orderOut(nil)
+                self.mainWindow.endSheet(sheet.window!)
+                
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW,
                     Int64(0.5 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    sheet.window!.orderOut(nil)
-                    sheet.window!.endSheet(sheet.window!)
                     if !success {
                         var alert = NSAlert()
                         alert.alertStyle = NSAlertStyle.WarningAlertStyle
@@ -150,7 +158,6 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
                 
             })
         }
-        
         return project
     }
     
@@ -176,6 +183,22 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
             }
         }
     }
+    
+    
+    
+    // Mark: ProgressWindowDelegate
+    func progressWindowCancelled() {
+        self.currentlyRunningTask?.terminate()
+    }
+
+    
+    
+    // MARK: DependencyManagerDelegate
+    func startingTask(task: NSTask?) {
+        self.currentlyRunningTask = task
+    }
+    
+    
     
     // MARK: Running and stopping server
     @IBAction func toggleServer(sender: AnyObject?) {
