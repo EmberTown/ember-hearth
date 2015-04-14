@@ -97,6 +97,14 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
             }
         }
         
+        if !runEmberInstall && !NSFileManager.defaultManager().fileExistsAtPath(path.stringByAppendingPathComponent("package.json")) {
+            var alert = NSAlert()
+            alert.messageText = "No ember project in folder"
+            alert.informativeText = "No ember project was found in this folder (looked for package.json)."
+            alert.beginSheetModalForWindow(mainWindow, completionHandler: nil)
+            return nil
+        }
+        
         if runEmberInstall && name != nil {
             project.path = project.path?.stringByAppendingPathComponent(name!)
         } else if name == nil {
