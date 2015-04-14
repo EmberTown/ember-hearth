@@ -17,16 +17,13 @@ class ProjectNameWindowController: NSWindowController {
 
     @IBOutlet var textField: NSTextField!
     
-    override func windowDidLoad() {
-        super.windowDidLoad()
-    }
-
     @IBAction func cancel(sender: AnyObject?) {
         self.window?.orderOut(nil)
-        self.window!.endSheet(self.window!)
+        NSApplication.sharedApplication().mainWindow!.endSheet(self.window!)
     }
     
     @IBAction func save(sender: AnyObject?) {
         self.delegate?.nameSet(self.textField.stringValue)
+        self.cancel(sender)
     }
 }

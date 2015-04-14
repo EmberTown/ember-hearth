@@ -70,12 +70,12 @@
                                     <items>
                                         <menuItem title="New Project" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="createNewProject:" target="Voe-Tx-rLC" id="EH3-FX-MIK"/>
+                                                <action selector="createProject:" target="Voe-Tx-rLC" id="8FX-ge-Mev"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openExistingProject:" target="Voe-Tx-rLC" id="LVl-Hr-idz"/>
+                                                <action selector="openProject:" target="Voe-Tx-rLC" id="bPB-cU-JR8"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -530,7 +530,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="createNewProject:" target="dot-n3-klN" id="Z0D-oc-pTg"/>
+                                            <action selector="createProject:" target="dot-n3-klN" id="EPC-VH-vd8"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38D-SR-eaM">
@@ -540,7 +540,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openExistingProject:" target="dot-n3-klN" id="IWd-qC-rZ5"/>
+                                            <action selector="openProject:" target="dot-n3-klN" id="fjB-X6-N3F"/>
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-ji-dQg" userLabel="Hacky button icon">
@@ -558,16 +558,8 @@
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" autoenablesItems="NO" id="JSO-O6-del">
                                                 <items>
-                                                    <menuItem title="Create project" id="zHb-gX-Lzr">
-                                                        <connections>
-                                                            <action selector="createNewProject:" target="dot-n3-klN" id="Jr4-KT-KGc"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Open Project" id="jHO-qa-Dmp">
-                                                        <connections>
-                                                            <action selector="openExistingProject:" target="dot-n3-klN" id="rHB-Y7-Pz8"/>
-                                                        </connections>
-                                                    </menuItem>
+                                                    <menuItem title="Create project" id="zHb-gX-Lzr"/>
+                                                    <menuItem title="Open Project" id="jHO-qa-Dmp"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -674,19 +666,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="484" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="318" y="18" width="152" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runServer:" target="bXs-Kf-6T4" id="vAr-2y-kq2"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
                                 <rect key="frame" x="18" y="20" width="154" height="30"/>
                                 <constraints>
@@ -710,6 +689,19 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="openInBrowser:" target="bXs-Kf-6T4" id="RKb-pd-JoN"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
+                                <rect key="frame" x="318" y="18" width="152" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleServer:" target="bXs-Kf-6T4" id="28t-TF-TpF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -863,8 +855,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmY-Qp-f3E">
-                                <rect key="frame" x="18" y="20" width="414" height="160"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmY-Qp-f3E">
+                                <rect key="frame" x="18" y="163" width="414" height="17"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Loading project statistics…" id="s8A-ab-uaw">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>

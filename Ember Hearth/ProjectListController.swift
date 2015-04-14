@@ -41,14 +41,12 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         refreshList(nil)
     }
     
-    @IBAction func createNewProject(sender: AnyObject) {
-        var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
-        appDelegate.createNewProject(sender)
+    @IBAction func createProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.createProject(sender)
     }
     
-    @IBAction func openExistingProject(sender: AnyObject) {
-        var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
-        appDelegate.openExistingProject(sender)
+    @IBAction func openProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.openProject(sender)
     }
     
     @IBAction func openInFinder(sender: AnyObject?) {
