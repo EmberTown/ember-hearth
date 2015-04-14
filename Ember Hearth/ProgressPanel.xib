@@ -16,17 +16,20 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="pvQ-KP-Swy" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="0.0" width="663" height="110"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="contentRect" x="0.0" y="0.0" width="663" height="125"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="RKS-zr-BeC">
-                <rect key="frame" x="0.0" y="0.0" width="663" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="663" height="125"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <progressIndicator maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="es8-l9-7bc">
-                        <rect key="frame" x="20" y="19" width="623" height="48"/>
+                        <rect key="frame" x="20" y="52" width="623" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="HCj-a1-eJ6"/>
+                        </constraints>
                     </progressIndicator>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Gc-Bb-4g0">
-                        <rect key="frame" x="18" y="58" width="627" height="32"/>
+                        <rect key="frame" x="18" y="73" width="627" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="qOe-0z-D8u"/>
                         </constraints>
@@ -36,18 +39,33 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-I5-BDM">
+                        <rect key="frame" x="566" y="13" width="83" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tOW-Gz-ze6">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="wie-sW-cyi"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ebD-I5-BDM" secondAttribute="trailing" constant="20" id="25a-UA-Kul"/>
                     <constraint firstItem="1Gc-Bb-4g0" firstAttribute="top" secondItem="RKS-zr-BeC" secondAttribute="top" constant="20" id="8mF-eb-QQV"/>
+                    <constraint firstItem="ebD-I5-BDM" firstAttribute="top" secondItem="es8-l9-7bc" secondAttribute="bottom" constant="12" id="R0b-I0-e8O"/>
+                    <constraint firstAttribute="bottom" secondItem="ebD-I5-BDM" secondAttribute="bottom" constant="20" id="Sb5-cE-w58"/>
                     <constraint firstItem="es8-l9-7bc" firstAttribute="leading" secondItem="RKS-zr-BeC" secondAttribute="leading" constant="20" id="TuH-uC-XwV"/>
                     <constraint firstAttribute="trailing" secondItem="1Gc-Bb-4g0" secondAttribute="trailing" constant="20" id="aPs-ry-bt6"/>
-                    <constraint firstItem="es8-l9-7bc" firstAttribute="top" secondItem="1Gc-Bb-4g0" secondAttribute="bottom" constant="-8" id="dKh-i1-Ik1"/>
-                    <constraint firstAttribute="bottom" secondItem="es8-l9-7bc" secondAttribute="bottom" constant="20" id="uGg-RH-5LF"/>
+                    <constraint firstItem="es8-l9-7bc" firstAttribute="top" secondItem="1Gc-Bb-4g0" secondAttribute="bottom" id="dKh-i1-Ik1"/>
                     <constraint firstItem="1Gc-Bb-4g0" firstAttribute="leading" secondItem="RKS-zr-BeC" secondAttribute="leading" constant="20" id="y31-q9-YiW"/>
                     <constraint firstAttribute="trailing" secondItem="es8-l9-7bc" secondAttribute="trailing" constant="20" id="zM6-Je-hNe"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="565.5" y="252"/>
+            <point key="canvasLocation" x="565.5" y="329.5"/>
         </window>
     </objects>
 </document>

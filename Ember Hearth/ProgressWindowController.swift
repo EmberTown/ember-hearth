@@ -8,14 +8,19 @@
 
 import Cocoa
 
+protocol ProgressWindowDelegate {
+    func progressWindowCancelled()
+}
+
 class ProgressWindowController: NSWindowController {
     @IBOutlet var progressIndicator: NSProgressIndicator!
     @IBOutlet var label: NSTextField!
-
-    override func windowDidLoad() {
-        super.windowDidLoad()
     
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    var delegate: ProgressWindowDelegate?
+    
+    @IBAction func cancel(sender: AnyObject?) {
+        self.delegate?.progressWindowCancelled()
+        self.window?.orderOut(sender)
+        self.window?.parentWindow?.endSheet(self.window!)
     }
-
 }
