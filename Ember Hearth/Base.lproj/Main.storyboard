@@ -666,7 +666,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="484" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
                                 <rect key="frame" x="18" y="20" width="154" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WL5-f9-i6C"/>
@@ -683,6 +683,9 @@
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo">
                                 <rect key="frame" x="176" y="18" width="142" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="xfH-HY-WJU"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Open in browser" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>

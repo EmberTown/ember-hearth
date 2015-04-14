@@ -28,7 +28,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
         }
     }
     var appDelegate: AppDelegate {get {return NSApplication.sharedApplication().delegate as! AppDelegate}}
-    var mainWindow: NSWindow {get {return NSApplication.sharedApplication().mainWindow!}}
+    var mainWindow: NSWindow? { get { return NSApplication.sharedApplication().mainWindow } }
     var serverOutput: String = ""
     var projectNameController: ProjectNameWindowController?
     
@@ -36,7 +36,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     @IBAction func createProject(sender: AnyObject?) {
         projectNameController = ProjectNameWindowController(windowNibName: "NewProjectTitle")
         projectNameController?.delegate = self
-        mainWindow.beginSheet(projectNameController!.window!, completionHandler: {(result: Int) -> Void in
+        mainWindow?.beginSheet(projectNameController!.window!, completionHandler: {(result: Int) -> Void in
             self.projectNameController?.cancel(nil)
             self.projectNameController = nil
         })
@@ -44,7 +44,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     
     @IBAction func openProject(sender: AnyObject?) {
         var panel = NSOpenPanel.hearthFolderPicker(nil, allowFolderCreation: false)
-        panel.beginSheetModalForWindow(mainWindow, completionHandler: { (result: Int) -> Void in
+        panel.beginSheetModalForWindow(mainWindow!, completionHandler: { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 let path = (panel.URLs.first! as! NSURL).path!
                 // Create project with new folder
@@ -67,7 +67,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
             Int64(0.5 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             var panel = NSOpenPanel.hearthFolderPicker(name, allowFolderCreation: true)
-            panel.beginSheetModalForWindow(self.mainWindow, completionHandler: { (result: Int) -> Void in
+            panel.beginSheetModalForWindow(self.mainWindow!, completionHandler: { (result: Int) -> Void in
                 if result == NSFileHandlingPanelOKButton {
                     let path = (panel.URLs.first! as! NSURL).path!
                     // Create project with new folder
@@ -93,7 +93,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                 var alert = NSAlert()
                 alert.messageText = "Project already loaded"
                 alert.informativeText = "A project from the same path is already in the list."
-                alert.beginSheetModalForWindow(mainWindow, completionHandler: { (response) -> Void in
+                alert.beginSheetModalForWindow(mainWindow!, completionHandler: { (response) -> Void in
                     self.project = projects[index]
                 })
                 return nil
@@ -104,7 +104,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
             var alert = NSAlert()
             alert.messageText = "No ember project in folder"
             alert.informativeText = "No ember project was found in this folder (looked for package.json)."
-            alert.beginSheetModalForWindow(mainWindow, completionHandler: nil)
+            alert.beginSheetModalForWindow(mainWindow!, completionHandler: nil)
             return nil
         }
         
@@ -127,7 +127,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
             sheet.progressIndicator.indeterminate = true
             sheet.progressIndicator.startAnimation(nil)
             sheet.label.stringValue = "Setting up ember project files…"
-            NSApplication.sharedApplication().mainWindow?.beginSheet(sheet.window!, completionHandler: nil)
+            mainWindow?.beginSheet(sheet.window!, completionHandler: nil)
             
             var ember = EmberCLI()
             self.currentlyRunningTask = ember.createProject(path, name: name!, completion: { (success) -> () in
@@ -142,7 +142,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                 })
                 
                 sheet.window!.orderOut(nil)
-                self.mainWindow.endSheet(sheet.window!)
+                self.mainWindow?.endSheet(sheet.window!)
                 
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW,
                     Int64(0.5 * Double(NSEC_PER_SEC)))
@@ -152,7 +152,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                         alert.alertStyle = NSAlertStyle.WarningAlertStyle
                         alert.messageText = "Installation failed"
                         alert.informativeText = "Run ' cd \"\(project.path!.stringByDeletingLastPathComponent)\" && ember install \"\(project.name!)\" ' from Terminal to see what went wrong."
-                        alert.beginSheetModalForWindow(self.mainWindow, completionHandler: nil)
+                        alert.beginSheetModalForWindow(self.mainWindow!, completionHandler: nil)
                     }
                 }
                 
@@ -241,7 +241,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                         info = info.substringToIndex(400)
                     }
                     alert.informativeText = info as String
-                    alert.beginSheetModalForWindow(self.mainWindow, completionHandler: nil)
+                    alert.beginSheetModalForWindow(self.mainWindow!, completionHandler: nil)
                     self.stopServer(nil)
                 })
             }
