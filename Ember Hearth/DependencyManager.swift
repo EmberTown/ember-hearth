@@ -101,7 +101,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
     func installDependencies(completion:(success:Bool) -> ()) {
         self.completion = completion
         dependencyInfoWindow = DependencyInfoWindow(windowNibName: "DependencyInfoWindow")
-        dependencyInfoWindow!.shouldShowCancelButton = false
+        dependencyInfoWindow!.shouldShowCancelButton = true
         dependencyInfoWindow!.okButtonEnabled = false
         dependencyInfoWindow!.dependencies = listDependencies()
         dependencyInfoWindow!.delegate = self
@@ -193,7 +193,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
                         Int64(0.5 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
                         progressBar.window!.orderOut(nil)
-                        NSApplication.sharedApplication().mainWindow!.endSheet(progressBar.window!)
+                        NSApplication.sharedApplication().mainWindow?.endSheet(progressBar.window!)
                         self.progressBar = nil
                         completion(success: success)
                     }
