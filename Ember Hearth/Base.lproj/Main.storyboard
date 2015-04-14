@@ -70,12 +70,12 @@
                                     <items>
                                         <menuItem title="New Project" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
-                                                <action selector="createProject:" target="S6J-Ke-Xdp" id="faG-6O-qWZ"/>
+                                                <action selector="createProject:" target="Voe-Tx-rLC" id="8FX-ge-Mev"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
-                                                <action selector="openProject:" target="S6J-Ke-Xdp" id="2hH-8z-EVO"/>
+                                                <action selector="openProject:" target="Voe-Tx-rLC" id="bPB-cU-JR8"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -385,7 +385,6 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Ember_Hearth" customModuleProvider="target"/>
-                <customObject id="S6J-Ke-Xdp" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75.5" y="-84"/>
@@ -531,7 +530,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="createProject:" target="KKa-eA-3C7" id="Ypr-ci-XoE"/>
+                                            <action selector="createProject:" target="dot-n3-klN" id="EPC-VH-vd8"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38D-SR-eaM">
@@ -541,7 +540,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="openProject:" target="KKa-eA-3C7" id="FOu-de-Si1"/>
+                                            <action selector="openProject:" target="dot-n3-klN" id="fjB-X6-N3F"/>
                                         </connections>
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-ji-dQg" userLabel="Hacky button icon">
@@ -559,16 +558,8 @@
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" autoenablesItems="NO" id="JSO-O6-del">
                                                 <items>
-                                                    <menuItem title="Create project" id="zHb-gX-Lzr">
-                                                        <connections>
-                                                            <action selector="createProject:" target="KKa-eA-3C7" id="otA-NJ-zZU"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                    <menuItem title="Open Project" id="jHO-qa-Dmp">
-                                                        <connections>
-                                                            <action selector="openProject:" target="KKa-eA-3C7" id="iLr-xH-YYk"/>
-                                                        </connections>
-                                                    </menuItem>
+                                                    <menuItem title="Create project" id="zHb-gX-Lzr"/>
+                                                    <menuItem title="Open Project" id="jHO-qa-Dmp"/>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
@@ -620,7 +611,6 @@
                     </connections>
                 </viewController>
                 <customObject id="aJU-MU-whI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="KKa-eA-3C7" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
                 <menu id="BiR-mH-P0q">
                     <items>
                         <menuItem title="Open in Finder" id="CQN-Kv-9kE">
@@ -711,7 +701,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="runServer:" target="oDU-nh-bNN" id="tC4-aq-4ud"/>
+                                    <action selector="toggleServer:" target="bXs-Kf-6T4" id="28t-TF-TpF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -736,7 +726,6 @@
                     </connections>
                 </viewController>
                 <customObject id="c44-Nj-2Ml" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="oDU-nh-bNN" customClass="ProjectController" customModule="Ember_Hearth" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2272" y="490"/>
         </scene>

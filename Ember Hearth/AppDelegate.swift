@@ -109,4 +109,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         #endif
     }
+    
+    @IBAction func createProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.createProject(sender)
+    }
+    
+    @IBAction func openProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.openProject(sender)
+    }
 }

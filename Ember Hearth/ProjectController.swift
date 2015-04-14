@@ -8,7 +8,13 @@
 
 import Cocoa
 
+private let _projectControllerSharedInstance = ProjectController()
+
 class ProjectController: NSObject, ProjectNameWindowDelegate {
+    class var sharedInstance: ProjectController {
+        get {return _projectControllerSharedInstance}
+    }
+    
     var project: Project? {
         get {
             var delegate = NSApplication.sharedApplication().delegate as? AppDelegate
@@ -25,7 +31,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
     var projectNameController: ProjectNameWindowController?
     
     // MARK: Creating and opening projects
-    @IBAction func createProject(sender: AnyObject) {
+    @IBAction func createProject(sender: AnyObject?) {
         projectNameController = ProjectNameWindowController(windowNibName: "NewProjectTitle")
         projectNameController?.delegate = self
         mainWindow.beginSheet(projectNameController!.window!, completionHandler: {(result: Int) -> Void in
@@ -34,7 +40,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
         })
     }
     
-    @IBAction func openProject(sender: AnyObject) {
+    @IBAction func openProject(sender: AnyObject?) {
         var panel = NSOpenPanel.hearthFolderPicker(nil, allowFolderCreation: false)
         panel.beginSheetModalForWindow(mainWindow, completionHandler: { (result: Int) -> Void in
             if result == NSFileHandlingPanelOKButton {
@@ -164,7 +170,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate {
     }
     
     // MARK: Running and stopping server
-    @IBAction func runServer(sender: AnyObject) {
+    @IBAction func toggleServer(sender: AnyObject?) {
         if project?.serverTask != nil {
             stopServer(nil)
             project?.serverStatus = .stopped

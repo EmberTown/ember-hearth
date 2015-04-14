@@ -36,6 +36,10 @@ class ProjectViewController: NSViewController {
         }
     }
     
+    @IBAction func toggleServer(sender: AnyObject?) {
+        ProjectController.sharedInstance.toggleServer(sender)
+    }
+    
     @IBAction func openInBrowser (sender: AnyObject) {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
     }

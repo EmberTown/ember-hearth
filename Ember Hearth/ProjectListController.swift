@@ -41,6 +41,14 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         refreshList(nil)
     }
     
+    @IBAction func createProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.createProject(sender)
+    }
+    
+    @IBAction func openProject(sender: AnyObject?) {
+        ProjectController.sharedInstance.openProject(sender)
+    }
+    
     @IBAction func openInFinder(sender: AnyObject?) {
         let project = projects![tableView.clickedRow]
         let pathURL = NSURL(fileURLWithPath: project.path!)
