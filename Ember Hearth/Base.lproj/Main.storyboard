@@ -524,8 +524,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t4I-5a-yyf">
-                                        <rect key="frame" x="68" y="133" width="115" height="32"/>
-                                        <buttonCell key="cell" type="push" title="New project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qH-ru-Nfz">
+                                        <rect key="frame" x="81" y="138" width="89" height="25"/>
+                                        <buttonCell key="cell" type="roundTextured" title="New project" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qH-ru-Nfz">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -534,8 +534,8 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38D-SR-eaM">
-                                        <rect key="frame" x="57" y="92" width="136" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Existing project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o5C-60-b8g">
+                                        <rect key="frame" x="70" y="96" width="110" height="25"/>
+                                        <buttonCell key="cell" type="roundTextured" title="Existing project" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o5C-60-b8g">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -663,11 +663,11 @@
             <objects>
                 <viewController id="bXs-Kf-6T4" customClass="ProjectViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GSX-7Z-XIl" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="484" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="496" height="70"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jnP-bm-eUb">
-                                <rect key="frame" x="18" y="20" width="154" height="30"/>
+                                <rect key="frame" x="18" y="20" width="166" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WL5-f9-i6C"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jbQ-kS-Ncc"/>
@@ -678,15 +678,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
-                                <rect key="frame" x="386" y="27" width="16" height="16"/>
+                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
+                                <rect key="frame" x="398" y="27" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo">
-                                <rect key="frame" x="176" y="18" width="142" height="32"/>
+                                <rect key="frame" x="194" y="22" width="130" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="xfH-HY-WJU"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Open in browser" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
+                                <buttonCell key="cell" type="roundTextured" title="Open in browser" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -695,11 +695,11 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P">
-                                <rect key="frame" x="318" y="18" width="152" height="32"/>
+                                <rect key="frame" x="336" y="22" width="140" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Run Ember server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
+                                <buttonCell key="cell" type="roundTextured" title="Run Ember server" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0NO-Al-qzh">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -735,7 +735,7 @@
         <!--Project Tab View Controller-->
         <scene sceneID="iJk-c0-W5a">
             <objects>
-                <tabViewController selectedTabViewItemIndex="2" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="73e-FV-9jW" customClass="ProjectTabViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="QcM-gF-IpV"/>
                         <tabViewItem id="Kb4-nb-ZTd"/>
@@ -890,13 +890,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="t2Y-bs-RKh">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t2Y-bs-RKh">
                                 <rect key="frame" x="148" y="131" width="154" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="XIP-Nm-Ibx"/>
                                     <constraint firstAttribute="height" constant="33" id="bYG-aU-qyx"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Contribute" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="clh-yW-tDx">
+                                <buttonCell key="cell" type="squareTextured" title="Contribute" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="clh-yW-tDx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -937,13 +937,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="yj1-JE-RON">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yj1-JE-RON">
                                 <rect key="frame" x="148" y="131" width="154" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="gBr-qE-UJE"/>
                                     <constraint firstAttribute="width" constant="150" id="hJk-cT-uGq"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Contribute" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nWZ-vZ-Kmw">
+                                <buttonCell key="cell" type="squareTextured" title="Contribute" bezelStyle="texturedSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nWZ-vZ-Kmw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
