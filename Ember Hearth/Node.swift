@@ -35,24 +35,25 @@ class Node: CLITool {
     static let name = "Node.js"
     let name: String = Node.name
     
-    func install(completion:(success:Bool) -> ()) {
+    func install(completion:(success:Bool) -> ()) -> NSTask? {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-node", ofType: "sh")
         
         var term = Terminal()
         term.workingDirectory = "~"
-        term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
+        return term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
             completion(success: result != nil)
         })
     }
     
-    func installIfNeeded(completion:(success:Bool) -> ()) {
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
         if Node.isInstalled() {
             completion(success: true)
         } else {
             var node = Node()
-            node.install({ (success) -> () in
+            return node.install({ (success) -> () in
                 completion(success: success)
             })
         }
+        return nil
     }
 }

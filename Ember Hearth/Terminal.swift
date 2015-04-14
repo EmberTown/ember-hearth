@@ -50,11 +50,11 @@ public class Terminal {
         return nil
     }
     
-    public func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) {
-        self.runTerminalCommandAsync(command, showOutput: true, completion: completion)
+    public func runTerminalCommandAsync (command: String, completion: (result: String?) -> ()) -> NSTask? {
+        return self.runTerminalCommandAsync(command, showOutput: true, completion: completion)
     }
     
-    public func runTerminalCommandAsync (command: String, showOutput:Bool, completion: (result: String?) -> ()) {
+    public func runTerminalCommandAsync (command: String, showOutput:Bool, completion: (result: String?) -> ()) -> NSTask? {
         self.task = taskForCommand(command)
         if self.workingDirectory != nil {
             self.task?.currentDirectoryPath = self.workingDirectory!
@@ -86,5 +86,6 @@ public class Terminal {
             self.output = nil
         }
         self.task?.launch()
+        return self.task
     }
 }

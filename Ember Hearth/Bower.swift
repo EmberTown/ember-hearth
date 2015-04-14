@@ -26,21 +26,22 @@ class Bower: CLITool {
     static let name = "Bower"
     let name: String = Node.name
     
-    func install (completion: (success: Bool) -> ()) {
+    func install (completion: (success: Bool) -> ()) -> NSTask? {
         var term = Terminal()
-        term.runTerminalCommandAsync("npm install -g bower", completion: { (result) -> () in
+        return term.runTerminalCommandAsync("npm install -g bower", completion: { (result) -> () in
             completion(success:result != nil)
         })
     }
     
-    func installIfNeeded(completion:(success:Bool) -> ()) {
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
         if Bower.isInstalled() {
             completion(success: true)
         } else {
             var bower = Bower()
-            bower.install({ (success) -> () in
+            return bower.install({ (success) -> () in
                 completion(success: success)
             })
         }
+        return nil
     }
 }

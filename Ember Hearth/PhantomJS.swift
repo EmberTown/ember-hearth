@@ -26,20 +26,21 @@ class PhantomJS: CLITool {
     static let name = "PhantomJS"
     let name: String = Node.name
     
-    func install(completion:(success:Bool) -> ()) {
+    func install(completion:(success:Bool) -> ()) -> NSTask? {
         var term = Terminal()
-        term.runTerminalCommandAsync("npm install -g phantomjs", completion: { (result) -> () in
+        return term.runTerminalCommandAsync("npm install -g phantomjs", completion: { (result) -> () in
             completion(success:result != nil)
         })
     }
     
-    func installIfNeeded(completion:(success:Bool) -> ()) {
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
         if PhantomJS.isInstalled() {
             completion(success: true)
         } else {
-            self.install({ (success) -> () in
+            return self.install({ (success) -> () in
                 completion(success: success)
             })
         }
+        return nil
     }
 }

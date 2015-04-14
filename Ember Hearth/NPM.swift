@@ -26,23 +26,24 @@ class NPM: CLITool {
     static let name = "NPM"
     let name: String = Node.name
     
-    func install (completion: (success: Bool) -> ()) {
+    func install (completion: (success: Bool) -> ()) -> NSTask? {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
         
         var term = Terminal()
-        term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
+        return term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
             completion(success: result != nil)
         })
     }
     
-    func installIfNeeded(completion:(success:Bool) -> ()) {
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
         if NPM.isInstalled() {
             completion(success: true)
         } else {
             var npm = NPM()
-            npm.install({ (success) -> () in
+            return npm.install({ (success) -> () in
                 completion(success: success)
             })
         }
+        return nil
     }
 }

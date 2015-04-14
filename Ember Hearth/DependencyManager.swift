@@ -9,9 +9,13 @@
 import Cocoa
 
 protocol CLITool {
-    func install(completion:(success:Bool) -> ())
-    func installIfNeeded(completion:(success:Bool) -> ())
+    func install(completion:(success:Bool) -> ()) -> NSTask?
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask?
     var name: String {get}
+}
+
+protocol DependencyManagerDelegate {
+    func startingTask(task: NSTask?)
 }
 
 class DependencyAvailability: Equatable {
@@ -42,6 +46,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
     var progressBar: ProgressWindowController?
     var dependencyInfoWindow: DependencyInfoWindow?
     var completion: ((success:Bool) -> Void)?
+    var delegate: DependencyManagerDelegate?
     
     func listDependencies () -> [DependencyAvailability] {
         return [
@@ -167,7 +172,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
             }
         })
         
-        tool.installIfNeeded { (success) -> () in
+        let task = tool.installIfNeeded { (success) -> () in
             var reducedArray = Array<Dependency>(dependencies)
             reducedArray.removeAtIndex(0)
             println("Installed \(tool.name), \(reducedArray.count) dependencies left")
@@ -197,6 +202,7 @@ class DependencyManager: DependencyInfoWindowDelegate {
                 }
             }
         }
+        self.delegate?.startingTask(task)
     }
     
     func initializedToolForDependency(dependency: Dependency) -> CLITool {

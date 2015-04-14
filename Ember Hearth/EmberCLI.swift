@@ -31,28 +31,29 @@ class EmberCLI: CLITool {
     static let name = "Ember-CLI"
     let name: String = Node.name
     
-    func install (completion: (success: Bool) -> ()) {
+    func install (completion: (success: Bool) -> ()) -> NSTask? {
         var term = Terminal()
-        term.runTerminalCommandAsync("npm install -g ember-cli", completion: { (result) -> () in
+        return term.runTerminalCommandAsync("npm install -g ember-cli", completion: { (result) -> () in
             completion(success:result != nil)
         })
     }
     
-    func installIfNeeded(completion:(success:Bool) -> ()) {
+    func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
         if EmberCLI.isInstalled() {
             completion(success: true)
         } else {
             var ember = EmberCLI()
-            ember.install({ (success) -> () in
+            return ember.install({ (success) -> () in
                 completion(success: success)
             })
         }
+        return nil
     }
     
-    func createProject(path: String, name: String, completion: (success:Bool) -> ()) {
+    func createProject(path: String, name: String, completion: (success:Bool) -> ()) -> NSTask? {
         var term = Terminal()
         term.workingDirectory = path
-        term.runTerminalCommandAsync("ember new \"\(name)\"", completion: { (result) -> () in
+        return term.runTerminalCommandAsync("ember new \"\(name)\"", completion: { (result) -> () in
             println("Attempted to create ember project: \(result)")
             completion(success: result != nil)
         })
