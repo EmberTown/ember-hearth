@@ -38,6 +38,7 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        
         refreshList(nil)
     }
     
