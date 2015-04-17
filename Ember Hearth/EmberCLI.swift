@@ -13,7 +13,14 @@ enum EmberBuildType {
     case production
 }
 
+enum EmberTestType {
+    case terminal
+    case testem
+    case browser
+}
+
 class EmberCLI: CLITool {
+    // MARK: Class functions (tool status)
     class func isInstalled () -> Bool {
         return version() != nil
     }
@@ -31,6 +38,8 @@ class EmberCLI: CLITool {
     static let name = "Ember-CLI"
     let name: String = Node.name
     
+    
+    // MARK: Installing Ember-CLI
     func install (completion: (success: Bool) -> ()) -> NSTask? {
         var term = Terminal()
         return term.runTerminalCommandAsync("npm install -g ember-cli", completion: { (result) -> () in
@@ -50,6 +59,7 @@ class EmberCLI: CLITool {
         return nil
     }
     
+    // MARK: Creating projects
     func createProject(path: String, name: String, completion: (success:Bool) -> ()) -> NSTask? {
         var term = Terminal()
         term.workingDirectory = path
@@ -59,6 +69,8 @@ class EmberCLI: CLITool {
         })
     }
     
+    
+    // MARK: Running server
     func runServerTask(path:String) -> NSTask {
         var term = Terminal()
         var task = term.taskForCommand("npm install && bower install && ember serve")
@@ -66,6 +78,13 @@ class EmberCLI: CLITool {
         return task
     }
     
+    func runServer(path: String, completion:(running: Bool)->()) {
+        var task = self.runServerTask(path)
+        
+    }
+    
+    
+    // MARK: Building
     func build(path:String, type:EmberBuildType, completion: (result:String?) -> ()) {
         NSNotificationCenter.defaultCenter().postNotificationName("startedBuilding", object: nil)
         var term = Terminal()
@@ -81,5 +100,24 @@ class EmberCLI: CLITool {
             NSNotificationCenter.defaultCenter().postNotificationName("endedBuilding", object: result)
             completion(result: result)
         })
+    }
+    
+    
+    // MARK: Testing
+    func test(path:String, type:EmberTestType) {
+        let projectController = ProjectController.sharedInstance
+        switch type {
+        case .browser:
+            if projectController.isServerRunning() {
+                projectController.launchBrowserTests()
+            } else {
+                projectController.showTestsWhenRunning = true
+                projectController.toggleServer(nil)
+            }
+        case .terminal:
+            Terminal().runTerminalCommandInTerminalApp("ember test", path: path)
+        case .testem:
+            Terminal().runTerminalCommandInTerminalApp("ember test --server", path: path)
+        }
     }
 }
