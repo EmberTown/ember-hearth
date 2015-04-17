@@ -201,8 +201,12 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     
     
     // MARK: Running and stopping server
+    func isServerRunning() -> Bool {
+        return project?.serverTask != nil
+    }
+    
     @IBAction func toggleServer(sender: AnyObject?) {
-        if project?.serverTask != nil {
+        if self.isServerRunning() {
             stopServer(nil)
             project?.serverStatus = .stopped
         } else if project != nil {
