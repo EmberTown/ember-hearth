@@ -7,8 +7,9 @@
 //
 
 import Cocoa
+import MASPreferences
 
-class SettingsWindowController: NSWindowController {
+class SettingsWindowController: MASPreferencesWindowController {
 
     var generalTabButton: NSToolbarItem!
     var pathTabButton: NSToolbarItem!
