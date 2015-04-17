@@ -698,7 +698,7 @@
                         <splitViewItem id="kjE-jc-WXs"/>
                         <splitViewItem id="J7B-la-Xfp"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm" customClass="OverlayableSplitView" customModule="Ember_Hearth" customModuleProvider="target">
+                    <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>

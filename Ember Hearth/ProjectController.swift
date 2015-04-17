@@ -167,6 +167,9 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                 
             })
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("projectAdded", object: project)
+        
         return project
     }
     
@@ -278,5 +281,9 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
 
     @IBAction func stopServer(sender: AnyObject?) {
         project?.stopServer()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

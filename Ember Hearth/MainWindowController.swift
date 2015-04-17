@@ -19,6 +19,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate, DraggingDestin
         self.overlay?.alphaValue = 0
         self.overlay?.translatesAutoresizingMaskIntoConstraints = false
         self.overlay?.backgroundColor = NSColor(white: 1, alpha: 1)
+        self.overlay?.delegate = self
         self.overlay?.wantsLayer = true
         self.window?.contentView.addSubview(self.overlay!)
         self.window?.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[overlay]-0-|", options: nil, metrics: nil, views: ["overlay":self.overlay!]))
