@@ -21,14 +21,14 @@ class Project: Equatable {
     var serverTask: NSTask?
     var serverStatus = ServerStatus.stopped {
         didSet {
-            let name: String
+            let postName: String
             switch serverStatus {
-            case .booting: name = "serverStarting"
-            case .running: name = "serverStarted"
-            case .stopped: name = "serverStopped"
-            case .errored: name = "serverStoppedWithError"
+            case .booting: postName = "serverStarting"
+            case .running: postName = "serverStarted"
+            case .stopped: postName = "serverStopped"
+            case .errored: postName = "serverStoppedWithError"
             }
-            NSNotificationCenter.defaultCenter().postNotificationName(name, object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
         }
     }
     
