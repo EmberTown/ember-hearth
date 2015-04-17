@@ -38,6 +38,9 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        
+        NSApplication.sharedApplication().mainWindow?.contentView.registerForDraggedTypes([NSFilenamesPboardType])
+        
         refreshList(nil)
     }
     
@@ -119,7 +122,19 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         return -1
     }
     
-    //MARK: Data updating
+    // MARK: FolderDragDestinationDelegate
+    func folderDropped(paths: [String]) {
+        let projectController = ProjectController.sharedInstance
+        for path in paths {
+            let project = projectController.addProject(path, name: nil, runEmberInstall: false)
+            if let project = project {
+                self.projects?.append(project)
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    // MARK: Data updating
     func refreshList(notification: NSNotification?) {
         var projectDicts = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? [Dictionary<String, AnyObject>]
         var tempArray: [Project] = []

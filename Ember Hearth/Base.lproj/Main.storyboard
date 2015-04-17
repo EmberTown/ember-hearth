@@ -392,7 +392,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Ember Hearth" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -643,7 +643,7 @@
                 <splitViewController id="8xq-VQ-oTB" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="kjE-jc-WXs"/>
-                        <splitViewItem id="FU3-OS-j9U"/>
+                        <splitViewItem id="J7B-la-Xfp"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -651,7 +651,7 @@
                     </splitView>
                     <connections>
                         <segue destination="bXs-Kf-6T4" kind="relationship" relationship="splitItems" id="Kes-I1-NeD"/>
-                        <segue destination="73e-FV-9jW" kind="relationship" relationship="splitItems" id="e21-Z1-9tv"/>
+                        <segue destination="73e-FV-9jW" kind="relationship" relationship="splitItems" id="wlH-R3-eYh"/>
                     </connections>
                 </splitViewController>
                 <customObject id="9bD-gc-C7c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

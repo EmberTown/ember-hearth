@@ -25,6 +25,7 @@
 		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
 		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */; };
+		E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96379AE1AE062040032F2FE /* MainWindowController.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
@@ -80,6 +81,7 @@
 		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
 		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		E96379AE1AE062040032F2FE /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,14 @@
 				E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */,
 			);
 			name = "Organizing views";
+			sourceTree = "<group>";
+		};
+		E96379AD1AE061F40032F2FE /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E96379AE1AE062040032F2FE /* MainWindowController.swift */,
+			);
+			name = WindowControllers;
 			sourceTree = "<group>";
 		};
 		E9735F911AC863C60068F3A3 /* UI */ = {
@@ -268,6 +278,7 @@
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
 				E9D47B751ADC2CAF00FD15BD /* ObjectControllers */,
+				E96379AD1AE061F40032F2FE /* WindowControllers */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
 				E9D436201AC842C50020E123 /* External tools */,
@@ -533,6 +544,7 @@
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */,
+				E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
 				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
