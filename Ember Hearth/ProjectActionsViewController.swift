@@ -58,4 +58,8 @@ class ProjectActionsViewController: NSViewController {
         }
         alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
     }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }

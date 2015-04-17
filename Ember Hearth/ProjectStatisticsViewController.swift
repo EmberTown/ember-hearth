@@ -74,4 +74,8 @@ class ProjectStatisticsViewController: NSViewController {
             }
         })
     }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
