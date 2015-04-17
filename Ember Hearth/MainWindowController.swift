@@ -8,55 +8,27 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController, NSWindowDelegate, NSDraggingDestination {
-    var overlay: FirstResponderView?
+class MainWindowController: NSWindowController, NSWindowDelegate, DraggingDestinationViewDelegate {
+    var overlay: DraggingDestinationView?
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    
-        self.window?.registerForDraggedTypes([NSFilenamesPboardType])
-        self.window?.delegate = self
+        
+        self.overlay = DraggingDestinationView()
+        self.overlay?.registerForDraggedTypes([NSFilenamesPboardType])
+        self.overlay?.alphaValue = 0
+        self.overlay?.translatesAutoresizingMaskIntoConstraints = false
+        self.overlay?.backgroundColor = NSColor(white: 1, alpha: 1)
+        self.overlay?.wantsLayer = true
+        self.window?.contentView.addSubview(self.overlay!)
+        self.window?.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[overlay]-0-|", options: nil, metrics: nil, views: ["overlay":self.overlay!]))
+        self.window?.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[overlay]-0-|", options: nil, metrics: nil, views: ["overlay":self.overlay!]))
     }
     
-    
-    // MARK: NSDraggingDestination
-    func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-        println("DraggingEntered")
-        
-        if let window = self.window {
-            self.overlay = FirstResponderView(frame:NSMakeRect(0, 0, window.frame.size.width, window.frame.size.height))
-            self.overlay?.backgroundColor = NSColor(white: 1, alpha: 1)
-            self.overlay?.alphaValue = 0.7
-            let view = window.contentView as? NSView
-            self.overlay?.wantsLayer = true
-            
-            view?.addSubview(self.overlay!)
+    // MARK: DraggingDestinationViewDelegate
+    func folderDropped(paths: [String]) {
+        for path in paths {
+            ProjectController.sharedInstance.addProject(path, name: nil, runEmberInstall: false)
         }
-        
-        return NSDragOperation.Generic
-    }
-    
-    func draggingExited(sender: NSDraggingInfo?) {
-        self.overlay?.removeFromSuperview()
-        self.overlay = nil
-        self.window?.alphaValue = 1
-    }
-    
-    func draggingEnded(sender: NSDraggingInfo?) {
-        self.overlay?.removeFromSuperview()
-        self.overlay = nil
-        self.window?.alphaValue = 1
-    }
-    
-    func performDragOperation(sender: NSDraggingInfo) -> Bool {
-        let paths: AnyObject? = sender.draggingPasteboard().propertyListForType(NSFilenamesPboardType)
-        
-        println("Got paths")
-        
-        if let paths = paths as? [String] {
-//            self.dragDelegate?.folderDropped(paths)
-            return true
-        }
-        return false
     }
 }
