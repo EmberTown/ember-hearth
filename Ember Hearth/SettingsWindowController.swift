@@ -13,6 +13,8 @@ class SettingsWindowController: NSWindowController {
     var generalTabButton: NSToolbarItem!
     var pathTabButton: NSToolbarItem!
     
+    @IBOutlet var subViewController: NSViewController!
+    
     @IBAction func tabChanged(sender: AnyObject?) {
         if sender as? NSToolbarItem == generalTabButton {
             

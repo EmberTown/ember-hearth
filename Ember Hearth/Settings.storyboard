@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Cbp-aM-8ZX">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Cbp-aM-8ZX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Window Controller-->
         <scene sceneID="sc0-ZD-lFH">
             <objects>
-                <windowController id="Cbp-aM-8ZX" sceneMemberID="viewController">
+                <windowController id="Cbp-aM-8ZX" customClass="SettingsWindowController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Ember Hearth Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bA1-pv-Cjm">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -25,7 +25,7 @@
                         </toolbar>
                     </window>
                     <connections>
-                        <segue destination="SY7-Sb-cIw" kind="relationship" relationship="window.shadowedContentViewController" id="QgN-AZ-Y0y"/>
+                        <segue destination="SY7-Sb-cIw" kind="relationship" relationship="window.shadowedContentViewController" id="jhb-50-KSw"/>
                     </connections>
                 </windowController>
                 <customObject id="tO4-i3-rg1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -203,7 +203,20 @@
                 </viewController>
                 <customObject id="8YP-cY-WSO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="530" y="928"/>
+            <point key="canvasLocation" x="1124" y="432.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DVS-5q-ymW">
+            <objects>
+                <viewController id="NgR-im-LEh" sceneMemberID="viewController">
+                    <view key="view" id="3sE-vt-qbc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="06I-ne-6iC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="545" y="898"/>
         </scene>
     </scenes>
     <resources>

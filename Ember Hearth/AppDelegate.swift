@@ -10,6 +10,7 @@ import Cocoa
 #if RELEASE
 import Sparkle
 #endif
+import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

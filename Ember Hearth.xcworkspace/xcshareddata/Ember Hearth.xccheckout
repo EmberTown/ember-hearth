@@ -12,6 +12,8 @@
 	<dict>
 		<key>16930115F6E4027C7A079888A05D5577E37D0D40</key>
 		<string>https://github.com/EmberTown/ember-hearth.git</string>
+		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
+		<string>https://github.com/thomassnielsen/MASPreferences.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Ember Hearth.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>16930115F6E4027C7A079888A05D5577E37D0D40</key>
 		<string>..</string>
+		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
+		<string>../../MASPreferences</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/EmberTown/ember-hearth.git</string>
@@ -35,6 +39,14 @@
 			<string>16930115F6E4027C7A079888A05D5577E37D0D40</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Ember%20Hearth</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MASPreferences</string>
 		</dict>
 	</array>
 </dict>
