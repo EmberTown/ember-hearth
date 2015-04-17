@@ -19,6 +19,12 @@ class DropZoneView: NSView {
     @IBInspectable var inset: CGFloat = 5.0
     @IBInspectable var borderRadius: CGFloat = 15.0
     
+    @IBInspectable var alpha: CGFloat = 1.0 {
+        didSet {
+            self.alphaValue = alpha
+        }
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 

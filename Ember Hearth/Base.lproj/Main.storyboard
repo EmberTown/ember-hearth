@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
@@ -586,16 +586,67 @@
                                     <constraint firstItem="MkI-7X-BTb" firstAttribute="leading" secondItem="xdS-ji-dQg" secondAttribute="leading" id="ysL-Uj-Ube"/>
                                 </constraints>
                             </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4tl-ZL-s4T" customClass="BGColorView" customModule="Ember_Hearth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="xJW-dJ-EAU" customClass="DropZoneView" customModule="Ember_Hearth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1im-s7-8SK">
+                                        <rect key="frame" x="-2" y="134" width="254" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="8hd-DQ-sZz"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Add project" id="A4x-t4-ZQ3">
+                                            <font key="font" size="26" name="HelveticaNeue"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="1im-s7-8SK" secondAttribute="centerY" constant="0.5" id="1nW-BK-aPa"/>
+                                    <constraint firstAttribute="trailing" secondItem="1im-s7-8SK" secondAttribute="trailing" id="Cgx-0O-r2J"/>
+                                    <constraint firstItem="1im-s7-8SK" firstAttribute="leading" secondItem="xJW-dJ-EAU" secondAttribute="leading" id="Xn7-CE-20r"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineLength">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineSpacing">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="alpha">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="iqB-3M-Pi0" secondAttribute="bottom" id="0Ji-Ly-qEl"/>
                             <constraint firstAttribute="trailing" secondItem="tLo-87-omS" secondAttribute="trailing" id="1kX-rY-Y3Z"/>
+                            <constraint firstAttribute="trailing" secondItem="xJW-dJ-EAU" secondAttribute="trailing" id="4YN-M0-fve"/>
                             <constraint firstAttribute="trailing" secondItem="iqB-3M-Pi0" secondAttribute="trailing" id="60G-xK-k46"/>
                             <constraint firstItem="tLo-87-omS" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="K0Q-MH-yhB"/>
                             <constraint firstItem="tLo-87-omS" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="OHt-N9-yJ1"/>
                             <constraint firstAttribute="bottom" secondItem="tLo-87-omS" secondAttribute="bottom" constant="30" id="PNJ-D1-AJO"/>
+                            <constraint firstItem="xJW-dJ-EAU" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="RLc-xG-88k"/>
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="Zbb-2E-Htz"/>
+                            <constraint firstAttribute="bottom" secondItem="xJW-dJ-EAU" secondAttribute="bottom" id="ke2-QD-Rb2"/>
                             <constraint firstItem="iqB-3M-Pi0" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="vYq-1T-VmQ"/>
+                            <constraint firstItem="xJW-dJ-EAU" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="yyA-GB-ChF"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -605,8 +656,10 @@
                     </view>
                     <connections>
                         <outlet property="createProjectButton" destination="t4I-5a-yyf" id="qgb-B2-AWS"/>
+                        <outlet property="dropZoneView" destination="xJW-dJ-EAU" id="Wtn-jo-7Pi"/>
                         <outlet property="openProjectButton" destination="38D-SR-eaM" id="lcd-5z-SIG"/>
                         <outlet property="overlay" destination="bhg-eg-t3g" id="o0B-db-ndN"/>
+                        <outlet property="overlayView" destination="4tl-ZL-s4T" id="R4J-up-nSh"/>
                         <outlet property="tableView" destination="qnU-Py-fF8" id="pYy-Us-xCX"/>
                     </connections>
                 </viewController>
@@ -645,7 +698,7 @@
                         <splitViewItem id="kjE-jc-WXs"/>
                         <splitViewItem id="J7B-la-Xfp"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
+                    <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm" customClass="OverlayableSplitView" customModule="Ember_Hearth" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>

@@ -15,6 +15,11 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     @IBOutlet var createProjectButton: NSButton!
     @IBOutlet var openProjectButton: NSButton!
     
+    @IBOutlet var overlayView: BGColorView!
+    @IBOutlet var dropZoneView: DropZoneView!
+    
+    var selectedRow: Int = -1
+    
     var projects: Array<Project>? {
         set {
             var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
@@ -39,11 +44,34 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dragEntered:", name: "dragEntered", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dragEnded:", name: "dragEnded", object: nil)
+        
         NSApplication.sharedApplication().mainWindow?.contentView.registerForDraggedTypes([NSFilenamesPboardType])
+        
+        self.overlayView.alphaValue = 0
         
         refreshList(nil)
     }
     
+    // MARK: Drag-and-drop
+    func dragEntered(notification: NSNotification?) {
+        selectedRow = self.tableView.selectedRow
+        self.tableView.deselectAll(nil)
+        self.overlayView.alphaValue = 0.5
+        self.dropZoneView.alpha = 1
+    }
+    
+    func dragEnded(notification: NSNotification?) {
+        if selectedRow >= 0 && selectedRow < projects?.count {
+            let indexes = NSIndexSet(index: selectedRow)
+            self.tableView.selectRowIndexes(indexes, byExtendingSelection: false)
+        }
+        self.overlayView.alphaValue = 0
+        self.dropZoneView.alpha = 0
+    }
+    
+    // MARK: IBactions
     @IBAction func createProject(sender: AnyObject?) {
         ProjectController.sharedInstance.createProject(sender)
     }
@@ -215,5 +243,9 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     
     func serverStopped(notification: NSNotification?) {
         self.refreshList(notification)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

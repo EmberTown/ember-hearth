@@ -17,21 +17,16 @@ class DraggingDestinationView: BGColorView, NSDraggingDestination {
     
     // MARK: NSDraggingDestination
     override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-        
-        
-        if let window = self.window {
-            self.alphaValue = 0.7
-        }
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("dragEntered", object: nil)
         return NSDragOperation.Generic
     }
     
     override func draggingExited(sender: NSDraggingInfo?) {
-        self.alphaValue = 0
+        NSNotificationCenter.defaultCenter().postNotificationName("dragEnded", object: nil)
     }
     
     override func draggingEnded(sender: NSDraggingInfo?) {
-        self.alphaValue = 0
+        NSNotificationCenter.defaultCenter().postNotificationName("dragEnded", object: nil)
     }
     
     override func performDragOperation(sender: NSDraggingInfo) -> Bool {
