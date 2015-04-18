@@ -1,41 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Cbp-aM-8ZX">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <scenes>
-        <!--Window Controller-->
-        <scene sceneID="sc0-ZD-lFH">
-            <objects>
-                <windowController id="Cbp-aM-8ZX" customClass="SettingsWindowController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Ember Hearth Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bA1-pv-Cjm">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="362" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-                        <toolbar key="toolbar" implicitIdentifier="260F0E5F-A21B-44D0-A465-A12430DB3B1B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="QAQ-pr-GKa">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Ayf-mR-0FO"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="cBm-8i-HhE"/>
-                                <toolbarItem implicitItemIdentifier="2C74798E-4D9C-40CE-8D2E-8EABBBD32A90" label="General" paletteLabel="General" tag="-1" image="NSPreferencesGeneral" id="MIS-jv-Oym"/>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="MIS-jv-Oym"/>
-                            </defaultToolbarItems>
-                        </toolbar>
-                    </window>
-                    <connections>
-                        <segue destination="SY7-Sb-cIw" kind="relationship" relationship="window.shadowedContentViewController" id="jhb-50-KSw"/>
-                    </connections>
-                </windowController>
-                <customObject id="tO4-i3-rg1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="530" y="466"/>
-        </scene>
         <!--Path Settings View Controller-->
         <scene sceneID="s8D-1q-F1E">
             <objects>
-                <viewController id="SY7-Sb-cIw" customClass="PathSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PathSettings" id="SY7-Sb-cIw" customClass="PathSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wRi-1b-8IK" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,23 +175,34 @@
                 </viewController>
                 <customObject id="8YP-cY-WSO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="432.5"/>
+            <point key="canvasLocation" x="546" y="855.5"/>
         </scene>
-        <!--View Controller-->
+        <!--General Settings View Controller-->
         <scene sceneID="DVS-5q-ymW">
             <objects>
-                <viewController id="NgR-im-LEh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GeneralSettings" id="NgR-im-LEh" customClass="GeneralSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3sE-vt-qbc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h6b-1l-nQ6">
+                                <rect key="frame" x="173" y="142" width="105" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General settings" id="epQ-TR-Khr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="h6b-1l-nQ6" secondAttribute="centerY" constant="0.5" id="m3r-6X-c0q"/>
+                            <constraint firstAttribute="centerX" secondItem="h6b-1l-nQ6" secondAttribute="centerX" constant="-0.5" id="oJu-n5-SVP"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="06I-ne-6iC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="545" y="898"/>
+            <point key="canvasLocation" x="546" y="454"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSPreferencesGeneral" width="32" height="32"/>
-    </resources>
 </document>

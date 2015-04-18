@@ -17,8 +17,8 @@ class PathSettingsViewController: NSViewController, MASPreferencesViewController
     @IBOutlet var phantomJSPathTextField: NSTextField!
     @IBOutlet var emberCLIPathTextField: NSTextField!
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         nodePathTextField.placeholderString = Node.path()
         npmPathTextField.placeholderString = NPM.path()
         bowerPathTextField.placeholderString = Bower.path()
@@ -27,6 +27,6 @@ class PathSettingsViewController: NSViewController, MASPreferencesViewController
     }
  
     // MARK: MASPreferencesViewController
-    var toolbarItemImage = NSImage(named: "NSImageNameListViewTemplate")
+    var toolbarItemImage = NSImage(named: "NSListViewTemplate")
     var toolbarItemLabel = "Paths"
 }
