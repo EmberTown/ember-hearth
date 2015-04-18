@@ -15,7 +15,6 @@ class ProjectActionsViewController: NSViewController {
     
     @IBOutlet var testTypeBrowser: NSMenuItem!
     @IBOutlet var testTypeTestem: NSMenuItem!
-    @IBOutlet var testTypeTerminal: NSMenuItem!
     @IBOutlet var testTypeButton: NSPopUpButton!
     @IBOutlet var testButton: NSButton!
     
@@ -79,9 +78,6 @@ class ProjectActionsViewController: NSViewController {
                 case testTypeBrowser:
                     println("Running tests in browser")
                     testType = .browser
-                case testTypeTerminal:
-                    println("Running tests in terminal")
-                    testType = .terminal
                 default:
                     println("Running tests in testem")
                     testType = .testem
