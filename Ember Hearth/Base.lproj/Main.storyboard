@@ -766,7 +766,7 @@ AAAAAAEGA
                                     <action selector="openInBrowser:" target="bXs-Kf-6T4" id="RKb-pd-JoN"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v2-lA-E5P" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
                                 <rect key="frame" x="334" y="20" width="144" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="TS4-2Z-Xbr"/>
@@ -802,7 +802,7 @@ AAAAAAEGA
                     <connections>
                         <outlet property="openInBrowserButton" destination="TnO-z9-eOo" id="sHc-hh-atM"/>
                         <outlet property="progressIndicator" destination="IY0-CY-E5G" id="gYO-eS-fhC"/>
-                        <outlet property="runButton" destination="4v2-lA-E5P" id="1tS-m3-Muu"/>
+                        <outlet property="runButton" destination="4v2-lA-E5P" id="0qp-Wp-Mnm"/>
                         <outlet property="titleLabel" destination="jnP-bm-eUb" id="OLa-LK-zeL"/>
                     </connections>
                 </viewController>
@@ -891,12 +891,12 @@ AAAAAAEGA
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmT-HM-DEm">
                                 <rect key="frame" x="169" y="223" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4lE-VM-5CA" id="DRz-fu-0zk">
+                                <popUpButtonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4lE-VM-5CA" id="DRz-fu-0zk">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="HAP-N3-b5H">
                                         <items>
-                                            <menuItem title="Browser" id="4lE-VM-5CA"/>
+                                            <menuItem title="Browser" state="on" id="4lE-VM-5CA"/>
                                             <menuItem title="Terminal (testem)" id="WwE-I1-Ccx">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
