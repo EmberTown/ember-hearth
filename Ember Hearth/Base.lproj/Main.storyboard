@@ -780,9 +780,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4U-YW-Eg1">
-                                <rect key="frame" x="324" y="252" width="112" height="32"/>
+                                <rect key="frame" x="303" y="252" width="133" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="l1f-C3-zpi"/>
+                                    <constraint firstAttribute="width" constant="121" id="l1f-C3-zpi"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MiU-li-ROR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -793,7 +793,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaG-vp-bg4">
-                                <rect key="frame" x="324" y="219" width="112" height="32"/>
+                                <rect key="frame" x="303" y="219" width="133" height="32"/>
                                 <buttonCell key="cell" type="push" title="Run tests" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NMK-Pj-vS6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -803,7 +803,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ie3-eX-Etr">
-                                <rect key="frame" x="190" y="256" width="135" height="26"/>
+                                <rect key="frame" x="169" y="256" width="135" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="C3v-Db-Uf8"/>
                                 </constraints>
@@ -819,8 +819,8 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmT-HM-DEm">
-                                <rect key="frame" x="190" y="223" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="DRz-fu-0zk">
+                                <rect key="frame" x="169" y="223" width="135" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4lE-VM-5CA" id="DRz-fu-0zk">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="HAP-N3-b5H">
@@ -829,28 +829,37 @@
                                             <menuItem title="Terminal (testem)" id="WwE-I1-Ccx">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
-                                            <menuItem isSeparatorItem="YES" id="kov-0n-6G8"/>
-                                            <menuItem title="Terminal (run once)" id="KiI-iU-sI4">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
                             <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ez6-RH-Ger">
-                                <rect key="frame" x="168" y="261" width="16" height="16"/>
+                                <rect key="frame" x="147" y="261" width="16" height="16"/>
                             </progressIndicator>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9ff-oK-ESe">
+                                <rect key="frame" x="303" y="186" width="133" height="32"/>
+                                <buttonCell key="cell" type="push" title="Run tests once" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdk-c0-wau">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="runTestsOnce:" target="L0i-SK-l41" id="88H-ag-ZlI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eaG-vp-bg4" secondAttribute="trailing" constant="20" id="0Ey-sc-mqW"/>
+                            <constraint firstAttribute="trailing" secondItem="9ff-oK-ESe" secondAttribute="trailing" constant="20" id="2tL-ke-jrA"/>
                             <constraint firstItem="l4U-YW-Eg1" firstAttribute="leading" secondItem="Ie3-eX-Etr" secondAttribute="trailing" constant="8" id="7I1-ZM-Szf"/>
                             <constraint firstItem="l4U-YW-Eg1" firstAttribute="top" secondItem="Ie3-eX-Etr" secondAttribute="top" id="7eF-vf-ptm"/>
                             <constraint firstItem="JmT-HM-DEm" firstAttribute="top" secondItem="eaG-vp-bg4" secondAttribute="top" id="IzL-Yx-0uw"/>
+                            <constraint firstItem="9ff-oK-ESe" firstAttribute="width" secondItem="eaG-vp-bg4" secondAttribute="width" id="NmU-qn-vRi"/>
                             <constraint firstAttribute="trailing" secondItem="l4U-YW-Eg1" secondAttribute="trailing" constant="20" id="Oae-MP-TpX"/>
                             <constraint firstItem="l4U-YW-Eg1" firstAttribute="top" secondItem="1c7-UW-qhd" secondAttribute="top" constant="20" id="Ok1-K4-ck6"/>
                             <constraint firstItem="l4U-YW-Eg1" firstAttribute="width" secondItem="eaG-vp-bg4" secondAttribute="width" id="aOf-ba-KyC"/>
                             <constraint firstItem="Ie3-eX-Etr" firstAttribute="width" secondItem="JmT-HM-DEm" secondAttribute="width" id="ca0-6N-7F1"/>
                             <constraint firstItem="eaG-vp-bg4" firstAttribute="top" secondItem="l4U-YW-Eg1" secondAttribute="bottom" constant="12" id="iN3-0k-Jab"/>
+                            <constraint firstItem="9ff-oK-ESe" firstAttribute="top" secondItem="eaG-vp-bg4" secondAttribute="bottom" constant="12" id="k4f-7J-glU"/>
                             <constraint firstItem="Ie3-eX-Etr" firstAttribute="centerY" secondItem="ez6-RH-Ger" secondAttribute="centerY" constant="-0.5" id="pcz-SQ-dMx"/>
                             <constraint firstItem="Ie3-eX-Etr" firstAttribute="leading" secondItem="ez6-RH-Ger" secondAttribute="trailing" constant="8" id="qUB-4d-b0P"/>
                             <constraint firstItem="eaG-vp-bg4" firstAttribute="leading" secondItem="JmT-HM-DEm" secondAttribute="trailing" constant="8" id="twf-FT-66X"/>
@@ -863,7 +872,6 @@
                         <outlet property="testButton" destination="eaG-vp-bg4" id="VzH-L0-Oh5"/>
                         <outlet property="testTypeBrowser" destination="4lE-VM-5CA" id="uWE-hm-2JD"/>
                         <outlet property="testTypeButton" destination="JmT-HM-DEm" id="IEb-LW-qhd"/>
-                        <outlet property="testTypeTerminal" destination="KiI-iU-sI4" id="je3-xC-ZYk"/>
                         <outlet property="testTypeTestem" destination="WwE-I1-Ccx" id="2J2-x6-y6P"/>
                     </connections>
                 </viewController>

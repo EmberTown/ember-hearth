@@ -95,4 +95,11 @@ class ProjectActionsViewController: NSViewController {
             ember.test(project.path!, type: testType)
         }
     }
+    
+    @IBAction func runTestsOnce(sender: AnyObject?) {
+        if let project = self.project {
+            var ember = EmberCLI()
+            ember.test(project.path!, type: .terminal)
+        }
+    }
 }
