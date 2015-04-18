@@ -102,6 +102,8 @@ class EmberCLI: CLITool {
         })
     }
     
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        return self.install(completion)
     
     // MARK: Testing
     func test(path:String, type:EmberTestType) {

@@ -94,6 +94,8 @@ class ProjectActionsViewController: NSViewController {
             var ember = EmberCLI()
             ember.test(project.path!, type: testType)
         }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     @IBAction func runTestsOnce(sender: AnyObject?) {
