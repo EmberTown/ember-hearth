@@ -59,8 +59,8 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     func dragEntered(notification: NSNotification?) {
         selectedRow = self.tableView.selectedRow
         self.tableView.deselectAll(nil)
-        self.overlayView.alphaValue = 0.5
-        self.dropZoneView.alpha = 1
+        self.overlayView.animator().alphaValue = 0.5
+        self.dropZoneView.animator().alphaValue = 1
     }
     
     func dragEnded(notification: NSNotification?) {
@@ -68,8 +68,8 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             let indexes = NSIndexSet(index: selectedRow)
             self.tableView.selectRowIndexes(indexes, byExtendingSelection: false)
         }
-        self.overlayView.alphaValue = 0
-        self.dropZoneView.alpha = 0
+        self.overlayView.animator().alphaValue = 0
+        self.dropZoneView.animator().alphaValue = 0
     }
     
     // MARK: IBactions
