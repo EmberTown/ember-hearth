@@ -37,11 +37,11 @@ class MainSplitViewController: NSSplitViewController {
     
     // MARK: Overlays
     func showOverlay(notification: NSNotification?) {
-        self.overlay.alphaValue = 0.5
+        self.overlay.animator().alphaValue = 0.5
     }
     
     func hideOverlay(notification: NSNotification?) {
-        self.overlay.alphaValue = 0
+        self.overlay.animator().alphaValue = 0
     }
     
     // MARK: Toggling second pane
