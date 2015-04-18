@@ -163,9 +163,6 @@ class DependencyManager: DependencyInfoWindowDelegate {
 
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.progressBar?.label.stringValue = "Installing \(tool.name)…"
-            if dependency == Dependency.Node {
-                self.progressBar?.label.stringValue += " This may take up to 15 minutes."
-            }
             println("\(self.progressBar?.label.stringValue)")
             if self.progressBar?.window?.sheetParent == nil {
                 NSApplication.sharedApplication().mainWindow?.beginSheet(self.progressBar!.window!, completionHandler: nil)
