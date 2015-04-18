@@ -24,7 +24,7 @@ class PhantomJS: CLITool {
     }
     
     static let name = "PhantomJS"
-    let name: String = Node.name
+    let name: String = PhantomJS.name
     
     func install(completion:(success:Bool) -> ()) -> NSTask? {
         var term = Terminal()
