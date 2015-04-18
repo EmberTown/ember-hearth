@@ -23,3 +23,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 1. Clone git project
 2. Run `pod install` in the project folder
 3. Open Ember Hearth.xcworkspace
+
+## Troubleshooting
+
+### Node/NPM/Ember-cli is not available in my terminal
+If you're using something else than bash for your shell, the tools installed through Ember Hearth might not be in your path. This can be fixed by adding `export PATH=$HOME/local/bin:$PATH` to your config (for example  `~/.zshrc` for zsh).
