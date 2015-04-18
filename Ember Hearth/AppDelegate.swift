@@ -94,6 +94,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showSettings(sender: AnyObject?) {
+        self.preferensesWindowController = nil
+        
         var general = NSStoryboard(name: "Settings", bundle: nil)?.instantiateControllerWithIdentifier("GeneralSettings") as! GeneralSettingsViewController
         general.identifier = "General"
         var paths = NSStoryboard(name: "Settings", bundle: nil)?.instantiateControllerWithIdentifier("PathSettings") as! PathSettingsViewController

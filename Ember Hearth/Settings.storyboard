@@ -185,20 +185,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h6b-1l-nQ6">
-                                <rect key="frame" x="173" y="142" width="105" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General settings" id="epQ-TR-Khr">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="QMc-zA-pxh">
+                                <rect key="frame" x="124" y="264" width="204" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0lc-XP-9en"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Enable automatic updates" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="5Iw-0Q-qGD">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="h6b-1l-nQ6" secondAttribute="centerY" constant="0.5" id="m3r-6X-c0q"/>
-                            <constraint firstAttribute="centerX" secondItem="h6b-1l-nQ6" secondAttribute="centerX" constant="-0.5" id="oJu-n5-SVP"/>
+                            <constraint firstItem="QMc-zA-pxh" firstAttribute="top" secondItem="3sE-vt-qbc" secondAttribute="top" constant="20" id="G5S-jZ-cKY"/>
+                            <constraint firstAttribute="centerX" secondItem="QMc-zA-pxh" secondAttribute="centerX" constant="-0.5" id="j6A-Hs-RyS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="automaticUpdatesCheckbox" destination="QMc-zA-pxh" id="MwG-AK-Wo6"/>
+                    </connections>
                 </viewController>
                 <customObject id="06I-ne-6iC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
