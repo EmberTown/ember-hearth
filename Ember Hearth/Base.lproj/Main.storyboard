@@ -587,7 +587,7 @@
                                 </constraints>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4tl-ZL-s4T" userLabel="Drop Zone Overlay bg" customClass="BGColorView" customModule="Ember_Hearth" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="250" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                 <animations/>
                             </customView>
                             <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xJW-dJ-EAU" customClass="DropZoneView" customModule="Ember_Hearth" customModuleProvider="target">
@@ -641,7 +641,7 @@
                             <constraint firstAttribute="trailing" secondItem="tLo-87-omS" secondAttribute="trailing" id="1kX-rY-Y3Z"/>
                             <constraint firstAttribute="trailing" secondItem="xJW-dJ-EAU" secondAttribute="trailing" id="4YN-M0-fve"/>
                             <constraint firstAttribute="trailing" secondItem="iqB-3M-Pi0" secondAttribute="trailing" id="60G-xK-k46"/>
-                            <constraint firstAttribute="bottom" secondItem="4tl-ZL-s4T" secondAttribute="bottom" constant="30" id="E79-xO-eeO"/>
+                            <constraint firstAttribute="bottom" secondItem="4tl-ZL-s4T" secondAttribute="bottom" id="E79-xO-eeO"/>
                             <constraint firstItem="tLo-87-omS" firstAttribute="top" secondItem="M8V-hn-6mb" secondAttribute="top" id="K0Q-MH-yhB"/>
                             <constraint firstItem="tLo-87-omS" firstAttribute="leading" secondItem="M8V-hn-6mb" secondAttribute="leading" id="OHt-N9-yJ1"/>
                             <constraint firstAttribute="bottom" secondItem="tLo-87-omS" secondAttribute="bottom" constant="30" id="PNJ-D1-AJO"/>
