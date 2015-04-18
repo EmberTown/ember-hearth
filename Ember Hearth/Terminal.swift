@@ -90,6 +90,10 @@ public class Terminal {
     }
     
     public func runTerminalCommandInTerminalApp(command:String, path:String) {
-        NSAppleScript(source: "tell application \"Terminal\" to do script \"bash -l -c 'cd \(path) && \(command)'\"")?.executeAndReturnError(nil)
+        NSAppleScript(source: "tell application \"Terminal\"\n" +
+                              "  do script \"bash -l -c 'cd \(path) && \(command)'\"\n" +
+                              "  activate\n" +
+                              "end tell"
+            )?.executeAndReturnError(nil)
     }
 }
