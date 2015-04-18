@@ -60,4 +60,9 @@ class Node: CLITool {
         }
         return nil
     }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        println("Node update not yet implemented")
+        return nil
+    }
 }
