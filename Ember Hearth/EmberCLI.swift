@@ -29,7 +29,7 @@ class EmberCLI: CLITool {
     }
     
     static let name = "Ember-CLI"
-    let name: String = Node.name
+    let name: String = EmberCLI.name
     
     func install (completion: (success: Bool) -> ()) -> NSTask? {
         var term = Terminal()
