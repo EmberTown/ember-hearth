@@ -162,7 +162,13 @@ class DependencyManager: DependencyInfoWindowDelegate {
         var tool = initializedToolForDependency(dependency)
 
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.progressBar?.label.stringValue = "Installing \(tool.name)…"
+            if dependency == .Node {
+                self.progressBar?.label.stringValue = "Installing Node.js and NPM…"
+            } else if dependency == .NPM {
+                self.progressBar?.label.stringValue = "Updating \(tool.name)…"
+            } else {
+                self.progressBar?.label.stringValue = "Installing \(tool.name)…"
+            }
             println("\(self.progressBar?.label.stringValue)")
             if self.progressBar?.window?.sheetParent == nil {
                 NSApplication.sharedApplication().mainWindow?.beginSheet(self.progressBar!.window!, completionHandler: nil)
