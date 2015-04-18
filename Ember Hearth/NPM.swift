@@ -46,4 +46,11 @@ class NPM: CLITool {
         }
         return nil
     }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        var term = Terminal()
+        return term.runTerminalCommandAsync("npm install -g npm", showOutput: false, completion: { (result) -> () in
+            completion(success: result != nil)
+        })
+    }
 }
