@@ -25,6 +25,7 @@
 		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
 		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */; };
+		E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
@@ -80,6 +81,7 @@
 		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
 		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				E99D97E11AD86B6000009524 /* PathSettingsViewController.swift */,
+				E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
 				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
+				E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
@@ -669,6 +673,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -688,6 +693,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
