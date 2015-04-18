@@ -17,7 +17,7 @@ class ButtonWithTextColor: NSButton {
     }
     override var title: String {
         set {
-            var attributedString = NSMutableAttributedString(string: title)
+            var attributedString = NSMutableAttributedString(string: newValue)
             attributedString.addAttribute(NSForegroundColorAttributeName, value: textColor, range: NSMakeRange(0, attributedString.length))
             var style = NSMutableParagraphStyle()
             style.alignment = .CenterTextAlignment
