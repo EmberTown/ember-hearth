@@ -28,7 +28,16 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
         }
     }
     var appDelegate: AppDelegate {get {return NSApplication.sharedApplication().delegate as! AppDelegate}}
-    var mainWindow: NSWindow? { get { return NSApplication.sharedApplication().mainWindow } }
+    var mainWindow: NSWindow? {
+        get {
+            if NSApplication.sharedApplication().mainWindow != nil {
+                return NSApplication.sharedApplication().mainWindow
+            } else {
+                return NSApplication.sharedApplication().windows.first as? NSWindow
+            }
+            
+        }
+    }
     var serverOutput: String = ""
     var projectNameController: ProjectNameWindowController?
     
@@ -158,6 +167,9 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                 
             })
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("projectAdded", object: project)
+        
         return project
     }
     
@@ -269,5 +281,9 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
 
     @IBAction func stopServer(sender: AnyObject?) {
         project?.stopServer()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
