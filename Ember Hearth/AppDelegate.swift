@@ -10,6 +10,7 @@ import Cocoa
 #if RELEASE
 import Sparkle
 #endif
+import MASPreferences
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -93,8 +94,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showSettings(sender: AnyObject?) {
-        preferensesWindowController = NSStoryboard(name: "Settings", bundle: nil)?.instantiateInitialController() as? NSWindowController
-        preferensesWindowController?.showWindow(nil)
+        self.preferensesWindowController = nil
+        
+        var general = NSStoryboard(name: "Settings", bundle: nil)?.instantiateControllerWithIdentifier("GeneralSettings") as! GeneralSettingsViewController
+        general.identifier = "General"
+        var paths = NSStoryboard(name: "Settings", bundle: nil)?.instantiateControllerWithIdentifier("PathSettings") as! PathSettingsViewController
+        paths.identifier = "Paths"
+        
+        self.preferensesWindowController = MASPreferencesWindowController(viewControllers:[general, paths], title: "Settings")
+        self.preferensesWindowController?.showWindow(nil)
     }
     
     @IBAction func checkForUpdates(sender: AnyObject?) {

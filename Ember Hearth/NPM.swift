@@ -24,7 +24,7 @@ class NPM: CLITool {
     }
     
     static let name = "NPM"
-    let name: String = Node.name
+    let name: String = NPM.name
     
     func install (completion: (success: Bool) -> ()) -> NSTask? {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
@@ -45,5 +45,12 @@ class NPM: CLITool {
             })
         }
         return nil
+    }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        var term = Terminal()
+        return term.runTerminalCommandAsync("npm install -g npm", showOutput: false, completion: { (result) -> () in
+            completion(success: result != nil)
+        })
     }
 }

@@ -27,5 +27,10 @@ Think you've found a bug or have a new feature to suggest? Let us know!
    submit a Pull Request. We always have more work to do than time to do it. If
    you can write some code then that will speed the process along.
 
+# Running in Xcode
+1. Clone git project
+2. Run `pod install` in the project folder
+3. Open Ember Hearth.xcworkspace
+
 # Questions to the core maintainers?
 Reach out to [@kimroen](https://twitter.com/kimroen) or [@thomassnielsen](https://twitter.com/thomassnielsen) on twitter.

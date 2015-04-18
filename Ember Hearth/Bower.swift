@@ -24,7 +24,7 @@ class Bower: CLITool {
     }
     
     static let name = "Bower"
-    let name: String = Node.name
+    let name: String = Bower.name
     
     func install (completion: (success: Bool) -> ()) -> NSTask? {
         var term = Terminal()
@@ -43,5 +43,9 @@ class Bower: CLITool {
             })
         }
         return nil
+    }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        return self.install(completion)
     }
 }

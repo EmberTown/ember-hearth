@@ -15,6 +15,11 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     @IBOutlet var createProjectButton: NSButton!
     @IBOutlet var openProjectButton: NSButton!
     
+    @IBOutlet var overlayView: BGColorView!
+    @IBOutlet var dropZoneView: DropZoneView!
+    
+    var selectedRow: Int = -1
+    
     var projects: Array<Project>? {
         set {
             var appDelegate = NSApplication.sharedApplication().delegate! as! AppDelegate
@@ -33,14 +38,41 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "projectAdded:", name: "projectAdded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshList:", name: "projectRemoved", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarting", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dragEntered:", name: "dragEntered", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dragEnded:", name: "dragEnded", object: nil)
+        
+        NSApplication.sharedApplication().mainWindow?.contentView.registerForDraggedTypes([NSFilenamesPboardType])
+        
+        self.overlayView.alphaValue = 0
+        
         refreshList(nil)
     }
     
+    // MARK: Drag-and-drop
+    func dragEntered(notification: NSNotification?) {
+        selectedRow = self.tableView.selectedRow
+        self.tableView.deselectAll(nil)
+        self.overlayView.animator().alphaValue = 0.5
+        self.dropZoneView.animator().alphaValue = 1
+    }
+    
+    func dragEnded(notification: NSNotification?) {
+        if selectedRow >= 0 && selectedRow < projects?.count {
+            let indexes = NSIndexSet(index: selectedRow)
+            self.tableView.selectRowIndexes(indexes, byExtendingSelection: false)
+        }
+        self.overlayView.animator().alphaValue = 0
+        self.dropZoneView.animator().alphaValue = 0
+    }
+    
+    // MARK: IBactions
     @IBAction func createProject(sender: AnyObject?) {
         ProjectController.sharedInstance.createProject(sender)
     }
@@ -119,7 +151,19 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         return -1
     }
     
-    //MARK: Data updating
+    // MARK: FolderDragDestinationDelegate
+    func folderDropped(paths: [String]) {
+        let projectController = ProjectController.sharedInstance
+        for path in paths {
+            let project = projectController.addProject(path, name: nil, runEmberInstall: false)
+            if let project = project {
+                self.projects?.append(project)
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    // MARK: Data updating
     func refreshList(notification: NSNotification?) {
         var projectDicts = NSUserDefaults.standardUserDefaults().objectForKey("projects") as? [Dictionary<String, AnyObject>]
         var tempArray: [Project] = []
@@ -144,6 +188,13 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             }
         } else {
             appDelegate.activeProject = projects?.first
+        }
+    }
+    
+    func projectAdded(notification: NSNotification?) {
+        if let project = notification?.object as? Project {
+            self.projects?.append(project)
+            self.refreshList(notification)
         }
     }
     
@@ -200,5 +251,9 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
     
     func serverStopped(notification: NSNotification?) {
         self.refreshList(notification)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

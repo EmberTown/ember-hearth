@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1833B8CC1AE1D28300BA40B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1833B8CB1AE1D28300BA40B4 /* QuartzCore.framework */; };
 		188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C3DF01AC86F8900444710 /* NewProjectTitle.xib */; };
 		18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7B8511AC93926008D2E25 /* PhantomJS.swift */; };
 		62DD0F542FA65A4690494A52 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0704C35A143EC7EF69BF2D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -25,6 +26,8 @@
 		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
 		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */; };
+		E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */; };
+		E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96379AE1AE062040032F2FE /* MainWindowController.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
 		E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F8F1AC859660068F3A3 /* ProjectListController.swift */; };
 		E9735F951AC864C20068F3A3 /* ProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */; };
@@ -44,8 +47,12 @@
 		E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B761ADC2CC600FD15BD /* ProjectController.swift */; };
 		E9D47B791ADC32B600FD15BD /* OpenDialogExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B781ADC32B600FD15BD /* OpenDialogExtentions.swift */; };
 		E9D47B7D1ADD932800FD15BD /* ButtonWithTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */; };
+		E9DB7A5C1AE2792800CAE8FE /* node.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */; };
+		E9DB7A601AE27ACC00CAE8FE /* add-paths.sh in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */; };
 		E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */; };
 		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
+		E9ED713C1AE173DA0078D7CA /* DraggingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */; };
+		E9ED713F1AE1756B0078D7CA /* DropZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED713E1AE1756B0078D7CA /* DropZoneView.swift */; };
 		E9F34BE61AC94CF700E4875E /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */; };
 		E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F34BE71AC95CE900E4875E /* BGColorView.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1833B8CB1AE1D28300BA40B4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		188C3DF01AC86F8900444710 /* NewProjectTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTitle.xib; sourceTree = "<group>"; };
 		18E7B8511AC93926008D2E25 /* PhantomJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomJS.swift; sourceTree = "<group>"; };
 		7C0704C35A143EC7EF69BF2D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +88,8 @@
 		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
 		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
+		E96379AE1AE062040032F2FE /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
 		E9735F8F1AC859660068F3A3 /* ProjectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListController.swift; sourceTree = "<group>"; };
 		E9735F941AC864C20068F3A3 /* ProgressWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressWindowController.swift; sourceTree = "<group>"; };
@@ -102,8 +112,12 @@
 		E9D47B761ADC2CC600FD15BD /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		E9D47B781ADC32B600FD15BD /* OpenDialogExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDialogExtentions.swift; sourceTree = "<group>"; };
 		E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithTextColor.swift; sourceTree = "<group>"; };
+		E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = node.tar.gz; sourceTree = "<group>"; };
+		E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "add-paths.sh"; sourceTree = "<group>"; };
 		E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectActionsViewController.swift; sourceTree = "<group>"; };
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
+		E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggingDestinationView.swift; sourceTree = "<group>"; };
+		E9ED713E1AE1756B0078D7CA /* DropZoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropZoneView.swift; sourceTree = "<group>"; };
 		E9F34BE51AC94CF700E4875E /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
 		E9F34BE71AC95CE900E4875E /* BGColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGColorView.swift; sourceTree = "<group>"; };
 		F20620C2CBB14CB208066B88 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1833B8CC1AE1D28300BA40B4 /* QuartzCore.framework in Frameworks */,
 				62DD0F542FA65A4690494A52 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +155,7 @@
 		937C11D4E6E91C2025433932 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1833B8CB1AE1D28300BA40B4 /* QuartzCore.framework */,
 				7C0704C35A143EC7EF69BF2D /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -150,6 +166,7 @@
 			children = (
 				E9D4361A1AC840170020E123 /* install-npm.sh */,
 				E90598371AC824FF0034AA22 /* install-node.sh */,
+				E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -168,6 +185,14 @@
 				E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */,
 			);
 			name = "Organizing views";
+			sourceTree = "<group>";
+		};
+		E96379AD1AE061F40032F2FE /* WindowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E96379AE1AE062040032F2FE /* MainWindowController.swift */,
+			);
+			name = WindowControllers;
 			sourceTree = "<group>";
 		};
 		E9735F911AC863C60068F3A3 /* UI */ = {
@@ -207,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				E99D97E11AD86B6000009524 /* PathSettingsViewController.swift */,
+				E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -264,10 +290,12 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9DB7A5D1AE2793100CAE8FE /* Binaries */,
 				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
 				E9D47B751ADC2CAF00FD15BD /* ObjectControllers */,
+				E96379AD1AE061F40032F2FE /* WindowControllers */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
 				E9D436201AC842C50020E123 /* External tools */,
@@ -327,6 +355,14 @@
 			name = ObjectControllers;
 			sourceTree = "<group>";
 		};
+		E9DB7A5D1AE2793100CAE8FE /* Binaries */ = {
+			isa = PBXGroup;
+			children = (
+				E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */,
+			);
+			name = Binaries;
+			sourceTree = "<group>";
+		};
 		E9F34BE41AC94CE300E4875E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +372,8 @@
 				E953BDA11AD6990D0035F539 /* FirstResponderView.swift */,
 				E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */,
 				E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */,
+				E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */,
+				E9ED713E1AE1756B0078D7CA /* DropZoneView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -429,10 +467,12 @@
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
+				E9DB7A5C1AE2792800CAE8FE /* node.tar.gz in Resources */,
 				E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */,
 				188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
 				E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */,
+				E9DB7A601AE27ACC00CAE8FE /* add-paths.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,8 +562,10 @@
 				E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */,
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
 				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
+				E9ED713F1AE1756B0078D7CA /* DropZoneView.swift in Sources */,
 				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
+				E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
@@ -533,8 +575,10 @@
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */,
+				E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */,
 				E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */,
 				E9735F901AC859660068F3A3 /* ProjectListController.swift in Sources */,
+				E9ED713C1AE173DA0078D7CA /* DraggingDestinationView.swift in Sources */,
 				E9D4361D1AC840300020E123 /* NPM.swift in Sources */,
 				18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */,
 				E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */,
@@ -610,6 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR) @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -647,6 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR) @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -669,6 +715,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -688,6 +735,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
