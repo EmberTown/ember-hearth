@@ -83,6 +83,9 @@ class EmberCLI: CLITool {
         
     }
     
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        return self.install(completion)
+    }
     
     // MARK: Building
     func build(path:String, type:EmberBuildType, completion: (result:String?) -> ()) {
@@ -101,9 +104,6 @@ class EmberCLI: CLITool {
             completion(result: result)
         })
     }
-    
-    func update(completion:(success:Bool) -> ()) -> NSTask? {
-        return self.install(completion)
     
     // MARK: Testing
     func test(path:String, type:EmberTestType) {

@@ -296,6 +296,8 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     // MARK: Testing
     func launchBrowserTests() {
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200/tests")!)
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
