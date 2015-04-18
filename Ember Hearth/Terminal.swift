@@ -88,4 +88,8 @@ public class Terminal {
         self.task?.launch()
         return self.task
     }
+    
+    public func runTerminalCommandInTerminalApp(command:String, path:String) {
+        NSAppleScript(source: "tell application \"Terminal\" to do script \"bash -l -c 'cd \(path) && \(command)'\"")?.executeAndReturnError(nil)
+    }
 }

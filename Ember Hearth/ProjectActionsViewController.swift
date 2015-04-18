@@ -11,6 +11,14 @@ import Cocoa
 class ProjectActionsViewController: NSViewController {
     @IBOutlet var buildTypeButton: NSPopUpButton!
     @IBOutlet var buildButton: NSButton!
+    
+    
+    @IBOutlet var testTypeBrowser: NSMenuItem!
+    @IBOutlet var testTypeTestem: NSMenuItem!
+    @IBOutlet var testTypeTerminal: NSMenuItem!
+    @IBOutlet var testTypeButton: NSPopUpButton!
+    @IBOutlet var testButton: NSButton!
+    
     @IBOutlet var buildingIndicator: NSProgressIndicator!
     
     var project: Project? {
@@ -27,6 +35,8 @@ class ProjectActionsViewController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endedBuilding:", name: "endedBuilding", object: nil)
     }
     
+    
+    // MARK: Build actions
     @IBAction func build(sender: AnyObject?) {
         if let project = self.project {
             var buildType = buildTypeButton.indexOfSelectedItem == 0 ? EmberBuildType.development : EmberBuildType.production
@@ -59,7 +69,39 @@ class ProjectActionsViewController: NSViewController {
         alert.beginSheetModalForWindow(self.view.window!, completionHandler: nil)
     }
     
+    // MARK: Test actions
+    @IBAction func runTests(sender: AnyObject?) {
+        if let project = self.project {
+            
+            let testType: EmberTestType
+            if let menuItem = testTypeButton.selectedItem {
+                switch menuItem {
+                case testTypeBrowser:
+                    println("Running tests in browser")
+                    testType = .browser
+                case testTypeTerminal:
+                    println("Running tests in terminal")
+                    testType = .terminal
+                default:
+                    println("Running tests in testem")
+                    testType = .testem
+                }
+            } else {
+                println("Running tests in testem (fallback)")
+                testType = .testem
+            }
+            
+            var ember = EmberCLI()
+            ember.test(project.path!, type: testType)
+        }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @IBAction func runTestsOnce(sender: AnyObject?) {
+        if let project = self.project {
+            var ember = EmberCLI()
+            ember.test(project.path!, type: .terminal)
+        }
     }
 }

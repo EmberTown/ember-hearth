@@ -41,6 +41,8 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     var serverOutput: String = ""
     var projectNameController: ProjectNameWindowController?
     
+    var showTestsWhenRunning = false // Resets for each run
+    
     // MARK: Creating and opening projects
     @IBAction func createProject(sender: AnyObject?) {
         projectNameController = ProjectNameWindowController(windowNibName: "NewProjectTitle")
@@ -213,8 +215,12 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
     
     
     // MARK: Running and stopping server
+    func isServerRunning() -> Bool {
+        return project?.serverTask != nil
+    }
+    
     @IBAction func toggleServer(sender: AnyObject?) {
-        if project?.serverTask != nil {
+        if self.isServerRunning() {
             stopServer(nil)
             project?.serverStatus = .stopped
         } else if project != nil {
@@ -269,6 +275,10 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                     self.serverOutput += string as String
                     let range = string.rangeOfString("Serving on ")
                     if range.location != NSNotFound {
+                        if self.showTestsWhenRunning {
+                            self.launchBrowserTests()
+                            self.showTestsWhenRunning = false
+                        }
                         project?.serverStatus = .running
                     }
                 }
@@ -283,6 +293,9 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
         project?.stopServer()
     }
     
+    // MARK: Testing
+    func launchBrowserTests() {
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200/tests")!)
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
