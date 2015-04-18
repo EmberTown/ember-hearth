@@ -9,7 +9,7 @@
 import Cocoa
 
 @IBDesignable
-class DropZoneView: NSView {
+class DropZoneView: BGColorView {
     @IBInspectable var lineColor: NSColor = NSColor.blackColor()
 
     @IBInspectable var lineWidth: CGFloat = 5.0
