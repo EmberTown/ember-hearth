@@ -24,7 +24,7 @@ class NPM: CLITool {
     }
     
     static let name = "NPM"
-    let name: String = Node.name
+    let name: String = NPM.name
     
     func install (completion: (success: Bool) -> ()) -> NSTask? {
         let scriptPath = NSBundle.mainBundle().pathForResource("install-npm", ofType: "sh")
