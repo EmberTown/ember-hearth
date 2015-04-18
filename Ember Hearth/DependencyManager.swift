@@ -11,6 +11,7 @@ import Cocoa
 protocol CLITool {
     func install(completion:(success:Bool) -> ()) -> NSTask?
     func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask?
+    func update(completion:(success:Bool) -> ()) -> NSTask?
     var name: String {get}
 }
 
@@ -162,9 +163,12 @@ class DependencyManager: DependencyInfoWindowDelegate {
         var tool = initializedToolForDependency(dependency)
 
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.progressBar?.label.stringValue = "Installing \(tool.name)…"
-            if dependency == Dependency.Node {
-                self.progressBar?.label.stringValue += " This may take up to 15 minutes."
+            if dependency == .Node {
+                self.progressBar?.label.stringValue = "Installing Node.js and NPM…"
+            } else if dependency == .NPM {
+                self.progressBar?.label.stringValue = "Updating \(tool.name)…"
+            } else {
+                self.progressBar?.label.stringValue = "Installing \(tool.name)…"
             }
             println("\(self.progressBar?.label.stringValue)")
             if self.progressBar?.window?.sheetParent == nil {
@@ -172,37 +176,49 @@ class DependencyManager: DependencyInfoWindowDelegate {
             }
         })
         
-        let task = tool.installIfNeeded { (success) -> () in
-            var reducedArray = Array<Dependency>(dependencies)
-            reducedArray.removeAtIndex(0)
-            println("Installed \(tool.name), \(reducedArray.count) dependencies left")
-            if success && reducedArray.count > 0 {
-                println("Proceeding to next dependency")
-                self.progressBar?.progressIndicator.doubleValue = Double(totalCount - reducedArray.count) / Double(totalCount)
-                self.installDependeniesInOrder(reducedArray, totalCount: totalCount, completion: completion)
-            } else {
-                println("Done installing dependencies with success? \(success) still missing: \(reducedArray.count)")
-                if let progressBar = self.progressBar {
-                    if success {
-                        progressBar.progressIndicator.doubleValue = 1
-                        progressBar.label.stringValue = "Success!"
-                    } else {
-                        progressBar.label.stringValue = "Error installing \(tool.name). Aborting."
-                    }
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-                        Int64(0.5 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
-                        progressBar.window!.orderOut(nil)
-                        NSApplication.sharedApplication().mainWindow?.endSheet(progressBar.window!)
-                        self.progressBar = nil
-                        completion(success: success)
-                    }
-                } else {
-                    completion(success: success)
-                }
-            }
+        let doneBlock = { (success: Bool) -> () in
+            self.handleInstallDone(dependencies, success: success, tool: tool, totalCount: totalCount, completion: completion)
+        }
+        
+        let task: NSTask?
+        switch dependency {
+        case .NPM:
+            task = tool.update(doneBlock)
+        default:
+            task = tool.installIfNeeded(doneBlock)
         }
         self.delegate?.startingTask(task)
+    }
+    
+    func handleInstallDone(dependencies: [Dependency], success: Bool, tool: CLITool, totalCount: Int, completion: (success:Bool) -> ()) {
+        var reducedArray = [Dependency](dependencies)
+        reducedArray.removeAtIndex(0)
+        println("Installed \(tool.name), \(reducedArray.count) dependencies left")
+        if success && reducedArray.count > 0 {
+            println("Proceeding to next dependency")
+            self.progressBar?.progressIndicator.doubleValue = Double(totalCount - reducedArray.count) / Double(totalCount)
+            self.installDependeniesInOrder(reducedArray, totalCount: totalCount, completion: completion)
+        } else {
+            println("Done installing dependencies with success? \(success) still missing: \(reducedArray.count)")
+            if let progressBar = self.progressBar {
+                if success {
+                    progressBar.progressIndicator.doubleValue = 1
+                    progressBar.label.stringValue = "Success!"
+                } else {
+                    progressBar.label.stringValue = "Error installing \(tool.name). Aborting."
+                }
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+                    Int64(0.5 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    progressBar.window!.orderOut(nil)
+                    NSApplication.sharedApplication().mainWindow?.endSheet(progressBar.window!)
+                    self.progressBar = nil
+                    completion(success: success)
+                }
+            } else {
+                completion(success: success)
+            }
+        }
     }
     
     func initializedToolForDependency(dependency: Dependency) -> CLITool {

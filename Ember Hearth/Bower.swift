@@ -44,4 +44,8 @@ class Bower: CLITool {
         }
         return nil
     }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        return self.install(completion)
+    }
 }

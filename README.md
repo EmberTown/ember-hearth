@@ -18,3 +18,8 @@ Go to [ember.town/ember-hearth](http://ember.town/ember-hearth) and download Hea
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Running in Xcode
+1. Clone git project
+2. Run `pod install` in the project folder
+3. Open Ember Hearth.xcworkspace

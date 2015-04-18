@@ -82,4 +82,8 @@ class EmberCLI: CLITool {
             completion(result: result)
         })
     }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        return self.install(completion)
+    }
 }

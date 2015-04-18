@@ -46,6 +46,8 @@
 		E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B761ADC2CC600FD15BD /* ProjectController.swift */; };
 		E9D47B791ADC32B600FD15BD /* OpenDialogExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B781ADC32B600FD15BD /* OpenDialogExtentions.swift */; };
 		E9D47B7D1ADD932800FD15BD /* ButtonWithTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */; };
+		E9DB7A5C1AE2792800CAE8FE /* node.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */; };
+		E9DB7A601AE27ACC00CAE8FE /* add-paths.sh in Resources */ = {isa = PBXBuildFile; fileRef = E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */; };
 		E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */; };
 		E9E989021AC84A090053763E /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
 		E9ED713C1AE173DA0078D7CA /* DraggingDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */; };
@@ -108,6 +110,8 @@
 		E9D47B761ADC2CC600FD15BD /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		E9D47B781ADC32B600FD15BD /* OpenDialogExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDialogExtentions.swift; sourceTree = "<group>"; };
 		E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithTextColor.swift; sourceTree = "<group>"; };
+		E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = node.tar.gz; sourceTree = "<group>"; };
+		E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "add-paths.sh"; sourceTree = "<group>"; };
 		E9DBECB01ADAB9E900211A92 /* ProjectActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectActionsViewController.swift; sourceTree = "<group>"; };
 		E9E989011AC84A090053763E /* Terminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
 		E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggingDestinationView.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				E9D4361A1AC840170020E123 /* install-npm.sh */,
 				E90598371AC824FF0034AA22 /* install-node.sh */,
+				E9DB7A5F1AE27ACC00CAE8FE /* add-paths.sh */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				E99D97E11AD86B6000009524 /* PathSettingsViewController.swift */,
+				E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9DB7A5D1AE2793100CAE8FE /* Binaries */,
 				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
@@ -344,6 +351,14 @@
 				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
 			);
 			name = ObjectControllers;
+			sourceTree = "<group>";
+		};
+		E9DB7A5D1AE2793100CAE8FE /* Binaries */ = {
+			isa = PBXGroup;
+			children = (
+				E9DB7A5B1AE2792800CAE8FE /* node.tar.gz */,
+			);
+			name = Binaries;
 			sourceTree = "<group>";
 		};
 		E9F34BE41AC94CE300E4875E /* View */ = {
@@ -450,10 +465,12 @@
 				E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */,
 				E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */,
 				E9D4361B1AC840170020E123 /* install-npm.sh in Resources */,
+				E9DB7A5C1AE2792800CAE8FE /* node.tar.gz in Resources */,
 				E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */,
 				188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */,
 				E90598381AC824FF0034AA22 /* install-node.sh in Resources */,
 				E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */,
+				E9DB7A601AE27ACC00CAE8FE /* add-paths.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +563,7 @@
 				E9ED713F1AE1756B0078D7CA /* DropZoneView.swift in Sources */,
 				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
+				E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */,
 				E979AEB51AD537850013F10E /* DebugMenu.swift in Sources */,
 				E905983D1AC827340034AA22 /* Node.swift in Sources */,
 				E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */,
@@ -695,6 +713,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -714,6 +733,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

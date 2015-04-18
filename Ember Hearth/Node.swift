@@ -36,13 +36,17 @@ class Node: CLITool {
     let name: String = Node.name
     
     func install(completion:(success:Bool) -> ()) -> NSTask? {
-        let scriptPath = NSBundle.mainBundle().pathForResource("install-node", ofType: "sh")
-        
+        let archivePath = NSBundle.mainBundle().pathForResource("node.tar", ofType: "gz")!
+        let pathAddScriptPath = NSBundle.mainBundle().pathForResource("add-paths", ofType: "sh")!
         var term = Terminal()
         term.workingDirectory = "~"
-        return term.runTerminalCommandAsync("\"\(scriptPath!)\"", showOutput:false, completion: { (result) -> () in
+        let command = "mkdir -p ~/local && " +
+                      "tar -xf '\(archivePath)' -C ~/local --strip-components=1 && " +
+                      "'\(pathAddScriptPath)'"
+        
+        return term.runTerminalCommandAsync(command, showOutput: false) { (result) -> () in
             completion(success: result != nil)
-        })
+        }
     }
     
     func installIfNeeded(completion:(success:Bool) -> ()) -> NSTask? {
@@ -54,6 +58,11 @@ class Node: CLITool {
                 completion(success: success)
             })
         }
+        return nil
+    }
+    
+    func update(completion:(success:Bool) -> ()) -> NSTask? {
+        println("Node update not yet implemented")
         return nil
     }
 }
