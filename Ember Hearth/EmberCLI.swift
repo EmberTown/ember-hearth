@@ -117,9 +117,9 @@ class EmberCLI: CLITool {
                 projectController.toggleServer(nil)
             }
         case .terminal:
-            Terminal().runTerminalCommandInTerminalApp("ember test", path: path)
+            Terminal().runTerminalCommandInTerminalApp("npm install && bower install && ember test", path: path)
         case .testem:
-            Terminal().runTerminalCommandInTerminalApp("ember test --server", path: path)
+            Terminal().runTerminalCommandInTerminalApp("npm install && bower install && ember test --server", path: path)
         }
     }
 }
