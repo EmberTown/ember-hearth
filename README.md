@@ -11,6 +11,7 @@ Ember Hearth aspires to allow new users to do all they need to do to run Ember p
 * Create new Ember projects
 * Manage existing Ember projects
 * Run a local server
+* Run tests 
 * Create development and release builds
 
 ## Installing
