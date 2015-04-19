@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
@@ -738,7 +738,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
-                                <rect key="frame" x="398" y="26" width="16" height="16"/>
+                                <rect key="frame" x="398" y="27" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
                                 <rect key="frame" x="192" y="20" width="134" height="29"/>
@@ -838,90 +838,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4U-YW-Eg1">
-                                <rect key="frame" x="303" y="252" width="133" height="32"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="L2C-7g-ekD">
+                                <rect key="frame" x="56" y="104" width="339" height="196"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4U-YW-Eg1">
+                                        <rect key="frame" x="172" y="123" width="133" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="121" id="l1f-C3-zpi"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MiU-li-ROR">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="build:" target="L0i-SK-l41" id="NUr-7C-WXs"/>
+                                        </connections>
+                                    </button>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ie3-eX-Etr">
+                                        <rect key="frame" x="38" y="127" width="135" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="C3v-Db-Uf8"/>
+                                        </constraints>
+                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="84C-hZ-1RS">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="SUD-kx-hDz">
+                                                <items>
+                                                    <menuItem title="Development" id="aWu-rz-Qwa"/>
+                                                    <menuItem title="Production" id="lpM-ba-lbW"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                    <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ez6-RH-Ger">
+                                        <rect key="frame" x="307" y="132" width="16" height="16"/>
+                                    </progressIndicator>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s3W-pL-zca">
+                                        <rect key="frame" x="38" y="159" width="83" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Build project" id="G2q-fd-dz7">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmT-HM-DEm">
+                                        <rect key="frame" x="38" y="50" width="139" height="26"/>
+                                        <popUpButtonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4lE-VM-5CA" id="DRz-fu-0zk">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" id="HAP-N3-b5H">
+                                                <items>
+                                                    <menuItem title="Browser" state="on" id="4lE-VM-5CA"/>
+                                                    <menuItem title="Terminal (testem)" id="WwE-I1-Ccx">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9ff-oK-ESe">
+                                        <rect key="frame" x="176" y="13" width="133" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Run tests once" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdk-c0-wau">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="runTestsOnce:" target="L0i-SK-l41" id="88H-ag-ZlI"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mRg-Iu-xeC">
+                                        <rect key="frame" x="38" y="82" width="63" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Run tests" id="Gj0-ep-Ky5">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Wd2-pS-nHL">
+                                        <rect key="frame" x="40" y="113" width="259" height="5"/>
+                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <font key="titleFont" metaFont="system"/>
+                                    </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaG-vp-bg4">
+                                        <rect key="frame" x="176" y="46" width="133" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Run tests" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NMK-Pj-vS6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="runTests:" target="L0i-SK-l41" id="JgD-cm-UY6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="l1f-C3-zpi"/>
+                                    <constraint firstItem="9ff-oK-ESe" firstAttribute="top" secondItem="eaG-vp-bg4" secondAttribute="bottom" constant="12" id="37k-Mu-KEj"/>
+                                    <constraint firstItem="eaG-vp-bg4" firstAttribute="leading" secondItem="JmT-HM-DEm" secondAttribute="trailing" constant="8" id="6BS-Na-qJ6"/>
+                                    <constraint firstItem="Ie3-eX-Etr" firstAttribute="top" secondItem="s3W-pL-zca" secondAttribute="bottom" constant="8" id="6Ik-dd-cPG"/>
+                                    <constraint firstItem="l4U-YW-Eg1" firstAttribute="leading" secondItem="Ie3-eX-Etr" secondAttribute="trailing" constant="8" id="7Pb-K3-ohj"/>
+                                    <constraint firstItem="Wd2-pS-nHL" firstAttribute="leading" secondItem="s3W-pL-zca" secondAttribute="leading" id="826-DK-mFP"/>
+                                    <constraint firstItem="l4U-YW-Eg1" firstAttribute="centerY" secondItem="ez6-RH-Ger" secondAttribute="centerY" id="83x-Uk-Tu5"/>
+                                    <constraint firstItem="mRg-Iu-xeC" firstAttribute="top" secondItem="Wd2-pS-nHL" secondAttribute="bottom" constant="16" id="EaP-AT-rZk"/>
+                                    <constraint firstItem="s3W-pL-zca" firstAttribute="top" secondItem="L2C-7g-ekD" secondAttribute="top" constant="20" id="Egm-UZ-X62"/>
+                                    <constraint firstItem="eaG-vp-bg4" firstAttribute="width" secondItem="l4U-YW-Eg1" secondAttribute="width" id="Fci-a0-d0r"/>
+                                    <constraint firstItem="mRg-Iu-xeC" firstAttribute="leading" secondItem="JmT-HM-DEm" secondAttribute="leading" id="Fe9-3j-LUN"/>
+                                    <constraint firstItem="9ff-oK-ESe" firstAttribute="width" secondItem="l4U-YW-Eg1" secondAttribute="width" id="Gcx-5v-hBq"/>
+                                    <constraint firstItem="JmT-HM-DEm" firstAttribute="top" secondItem="mRg-Iu-xeC" secondAttribute="bottom" constant="8" id="Gnb-Dn-HUw"/>
+                                    <constraint firstAttribute="trailing" secondItem="l4U-YW-Eg1" secondAttribute="trailing" constant="40" id="Jdi-Pt-aBY"/>
+                                    <constraint firstItem="Wd2-pS-nHL" firstAttribute="trailing" secondItem="l4U-YW-Eg1" secondAttribute="trailing" id="MSH-W4-rbL"/>
+                                    <constraint firstItem="Ie3-eX-Etr" firstAttribute="leading" secondItem="s3W-pL-zca" secondAttribute="leading" id="PLd-XU-e4b"/>
+                                    <constraint firstItem="mRg-Iu-xeC" firstAttribute="leading" secondItem="s3W-pL-zca" secondAttribute="leading" id="Xix-qv-w4N"/>
+                                    <constraint firstItem="eaG-vp-bg4" firstAttribute="top" secondItem="JmT-HM-DEm" secondAttribute="top" id="YRv-gf-cgZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="9ff-oK-ESe" secondAttribute="bottom" constant="20" id="bQa-UL-OJs"/>
+                                    <constraint firstItem="Ie3-eX-Etr" firstAttribute="top" secondItem="l4U-YW-Eg1" secondAttribute="top" id="ci4-HV-y3g"/>
+                                    <constraint firstItem="Wd2-pS-nHL" firstAttribute="top" secondItem="Ie3-eX-Etr" secondAttribute="bottom" constant="14" id="fhQ-pM-Eat"/>
+                                    <constraint firstItem="ez6-RH-Ger" firstAttribute="leading" secondItem="l4U-YW-Eg1" secondAttribute="trailing" constant="8" id="me9-Xu-axq"/>
+                                    <constraint firstItem="s3W-pL-zca" firstAttribute="leading" secondItem="L2C-7g-ekD" secondAttribute="leading" constant="40" id="ot3-GX-q5j"/>
+                                    <constraint firstItem="9ff-oK-ESe" firstAttribute="leading" secondItem="eaG-vp-bg4" secondAttribute="leading" id="wH1-jp-nSc"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MiU-li-ROR">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="build:" target="L0i-SK-l41" id="NUr-7C-WXs"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eaG-vp-bg4">
-                                <rect key="frame" x="303" y="219" width="133" height="32"/>
-                                <buttonCell key="cell" type="push" title="Run tests" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NMK-Pj-vS6">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runTests:" target="L0i-SK-l41" id="JgD-cm-UY6"/>
-                                </connections>
-                            </button>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ie3-eX-Etr">
-                                <rect key="frame" x="169" y="256" width="135" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="C3v-Db-Uf8"/>
-                                </constraints>
-                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="84C-hZ-1RS">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="SUD-kx-hDz">
-                                        <items>
-                                            <menuItem title="Development" id="aWu-rz-Qwa"/>
-                                            <menuItem title="Production" id="lpM-ba-lbW"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JmT-HM-DEm">
-                                <rect key="frame" x="169" y="223" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Browser" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4lE-VM-5CA" id="DRz-fu-0zk">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="HAP-N3-b5H">
-                                        <items>
-                                            <menuItem title="Browser" state="on" id="4lE-VM-5CA"/>
-                                            <menuItem title="Terminal (testem)" id="WwE-I1-Ccx">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ez6-RH-Ger">
-                                <rect key="frame" x="147" y="261" width="16" height="16"/>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9ff-oK-ESe">
-                                <rect key="frame" x="303" y="186" width="133" height="32"/>
-                                <buttonCell key="cell" type="push" title="Run tests once" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdk-c0-wau">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="runTestsOnce:" target="L0i-SK-l41" id="88H-ag-ZlI"/>
-                                </connections>
-                            </button>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eaG-vp-bg4" secondAttribute="trailing" constant="20" id="0Ey-sc-mqW"/>
-                            <constraint firstAttribute="trailing" secondItem="9ff-oK-ESe" secondAttribute="trailing" constant="20" id="2tL-ke-jrA"/>
-                            <constraint firstItem="l4U-YW-Eg1" firstAttribute="leading" secondItem="Ie3-eX-Etr" secondAttribute="trailing" constant="8" id="7I1-ZM-Szf"/>
-                            <constraint firstItem="l4U-YW-Eg1" firstAttribute="top" secondItem="Ie3-eX-Etr" secondAttribute="top" id="7eF-vf-ptm"/>
-                            <constraint firstItem="JmT-HM-DEm" firstAttribute="top" secondItem="eaG-vp-bg4" secondAttribute="top" id="IzL-Yx-0uw"/>
-                            <constraint firstItem="9ff-oK-ESe" firstAttribute="width" secondItem="eaG-vp-bg4" secondAttribute="width" id="NmU-qn-vRi"/>
-                            <constraint firstAttribute="trailing" secondItem="l4U-YW-Eg1" secondAttribute="trailing" constant="20" id="Oae-MP-TpX"/>
-                            <constraint firstItem="l4U-YW-Eg1" firstAttribute="top" secondItem="1c7-UW-qhd" secondAttribute="top" constant="20" id="Ok1-K4-ck6"/>
-                            <constraint firstItem="l4U-YW-Eg1" firstAttribute="width" secondItem="eaG-vp-bg4" secondAttribute="width" id="aOf-ba-KyC"/>
-                            <constraint firstItem="Ie3-eX-Etr" firstAttribute="width" secondItem="JmT-HM-DEm" secondAttribute="width" id="ca0-6N-7F1"/>
-                            <constraint firstItem="eaG-vp-bg4" firstAttribute="top" secondItem="l4U-YW-Eg1" secondAttribute="bottom" constant="12" id="iN3-0k-Jab"/>
-                            <constraint firstItem="9ff-oK-ESe" firstAttribute="top" secondItem="eaG-vp-bg4" secondAttribute="bottom" constant="12" id="k4f-7J-glU"/>
-                            <constraint firstItem="Ie3-eX-Etr" firstAttribute="centerY" secondItem="ez6-RH-Ger" secondAttribute="centerY" constant="-0.5" id="pcz-SQ-dMx"/>
-                            <constraint firstItem="Ie3-eX-Etr" firstAttribute="leading" secondItem="ez6-RH-Ger" secondAttribute="trailing" constant="8" id="qUB-4d-b0P"/>
-                            <constraint firstItem="eaG-vp-bg4" firstAttribute="leading" secondItem="JmT-HM-DEm" secondAttribute="trailing" constant="8" id="twf-FT-66X"/>
+                            <constraint firstAttribute="centerX" secondItem="L2C-7g-ekD" secondAttribute="centerX" id="Xrs-oq-kfJ"/>
+                            <constraint firstItem="L2C-7g-ekD" firstAttribute="top" secondItem="1c7-UW-qhd" secondAttribute="top" id="lcT-c0-H95"/>
                         </constraints>
                     </view>
                     <connections>
@@ -936,7 +975,7 @@
                 </viewController>
                 <customObject id="lzq-A8-3a1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2835" y="-73"/>
+            <point key="canvasLocation" x="2835" y="-78"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="ShC-cf-vzC">
@@ -978,8 +1017,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2Y-bs-RKh">
-                                <rect key="frame" x="148" y="131" width="154" height="38"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t2Y-bs-RKh">
+                                <rect key="frame" x="150" y="132" width="150" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="XIP-Nm-Ibx"/>
                                     <constraint firstAttribute="height" constant="33" id="bYG-aU-qyx"/>
@@ -1025,8 +1064,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yj1-JE-RON">
-                                <rect key="frame" x="148" y="131" width="154" height="38"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yj1-JE-RON">
+                                <rect key="frame" x="150" y="132" width="150" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="gBr-qE-UJE"/>
                                     <constraint firstAttribute="width" constant="150" id="hJk-cT-uGq"/>
