@@ -6,7 +6,7 @@ Ember Hearth is an application used to manage Ember projects.
 
 **Warning: Ember Hearth is alpha software and may misbehave.**
 
-<img width="666" src="{{"/images/screenshot 0.1.0.png" | prepend: site.baseurl}}" alt="The glory that is Ember Hearth"/>
+<img width="794" src="{{"/images/screenshot 0.2.0.png" | prepend: site.baseurl}}" alt="The glory that is Ember Hearth"/>
 
 ## Goals
 Ember Hearth aspires to allow new users to do all they need to do to run Ember projects without touching the command line.
@@ -16,6 +16,7 @@ Ember Hearth aspires to allow new users to do all they need to do to run Ember p
 * Create new Ember projects
 * Manage existing Ember projects
 * Run a local server
+* Run tests
 * Create development and release builds
 
 ## Installing
