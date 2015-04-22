@@ -30,7 +30,6 @@ class MainSplitViewController: NSSplitViewController {
         rightView?.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[overlay]-0-|", options: nil, metrics: nil, views: ["overlay":overlay]))
         rightView?.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[overlay]-0-|", options: nil, metrics: nil, views: ["overlay":overlay]))
         
-        NSNotificationCenter.defaultCenter().removeObserver(self)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showOverlay:", name: "dragEntered", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideOverlay:", name: "dragEnded", object: nil)
     }
@@ -74,6 +73,6 @@ class MainSplitViewController: NSSplitViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "activeProjectSet", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
