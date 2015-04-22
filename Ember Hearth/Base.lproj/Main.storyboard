@@ -523,6 +523,10 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="iqB-3M-Pi0" userLabel="New State View">
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                                 <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g" userLabel="Gradient overlay">
+                                        <rect key="frame" x="0.0" y="30" width="250" height="270"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
+                                    </imageView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t4I-5a-yyf" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
                                         <rect key="frame" x="81" y="138" width="89" height="25"/>
                                         <buttonCell key="cell" type="roundTextured" title="New project" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5qH-ru-Nfz">
@@ -564,10 +568,6 @@
                                             </menu>
                                         </popUpButtonCell>
                                     </popUpButton>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhg-eg-t3g">
-                                        <rect key="frame" x="0.0" y="30" width="250" height="270"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="ProjectListNewBackground" id="Py7-a9-6jY"/>
-                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="MkI-7X-BTb" secondAttribute="bottom" id="15I-V0-tCk"/>
