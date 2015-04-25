@@ -119,6 +119,14 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
             return nil
         }
         
+        if runEmberInstall && NSFileManager.defaultManager().fileExistsAtPath(path) {
+            var alert = NSAlert()
+            alert.messageText = "Folder already exists"
+            alert.informativeText = "The folder \(name!) already exists at \(path), and can not be overwritten."
+            alert.beginSheetModalForWindow(mainWindow!, completionHandler: nil)
+            return nil
+        }
+        
         if runEmberInstall && name != nil {
             project.path = project.path?.stringByAppendingPathComponent(name!)
         } else if name == nil {
