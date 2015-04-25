@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -696,10 +696,10 @@
             </objects>
             <point key="canvasLocation" x="1472" y="410"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Project Details Split View Controller-->
         <scene sceneID="xgT-Pt-Raf">
             <objects>
-                <splitViewController id="8xq-VQ-oTB" sceneMemberID="viewController">
+                <splitViewController id="8xq-VQ-oTB" customClass="ProjectDetailsSplitViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="kjE-jc-WXs"/>
                         <splitViewItem id="J7B-la-Xfp"/>
@@ -707,6 +707,9 @@
                     <splitView key="splitView" dividerStyle="thin" id="K08-cc-Rgm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="8xq-VQ-oTB" id="cO7-Q2-xOz"/>
+                        </connections>
                     </splitView>
                     <connections>
                         <segue destination="bXs-Kf-6T4" kind="relationship" relationship="splitItems" id="Kes-I1-NeD"/>

@@ -36,6 +36,7 @@
 		E997C3111AD58B790097499E /* TerminalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3101AD58B790097499E /* TerminalTests.swift */; };
 		E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99D97E11AD86B6000009524 /* PathSettingsViewController.swift */; };
 		E99E712A1AD58D3200993E36 /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E989011AC84A090053763E /* Terminal.swift */; };
+		E9A1F6661AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A1F6651AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift */; };
 		E9BC4DF81AC8093A00A747EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */; };
 		E9BC4DFC1AC8093A00A747EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFB1AC8093A00A747EC /* Images.xcassets */; };
 		E9BC4DFF1AC8093A00A747EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BC4DFD1AC8093A00A747EC /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		E97E798B1AC874B00080BB66 /* ProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E997C3101AD58B790097499E /* TerminalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalTests.swift; sourceTree = "<group>"; };
 		E99D97E11AD86B6000009524 /* PathSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSettingsViewController.swift; sourceTree = "<group>"; };
+		E9A1F6651AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsSplitViewController.swift; sourceTree = "<group>"; };
 		E9BC4DF21AC8093A00A747EC /* Ember Hearth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ember Hearth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BC4DF61AC8093A00A747EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9BC4DF71AC8093A00A747EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */,
+				E9A1F6651AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift */,
 			);
 			name = "Organizing views";
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A1F6661AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift in Sources */,
 				E95F0E491ADA6E2300183AD6 /* DependencyInfoWindow.swift in Sources */,
 				E9D47B791ADC32B600FD15BD /* OpenDialogExtentions.swift in Sources */,
 				E97E798C1AC874B00080BB66 /* ProjectViewController.swift in Sources */,
