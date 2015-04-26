@@ -51,8 +51,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem?.button?.setAccessibilityTitle("Ember Hearth")
         statusBarItem?.button?.image = tomster
         statusBarMenu = NSMenu(title: "Ember Hearth")
-        statusBarMenu?.addItem(NSMenuItem(title: "Demo", action: "toggleProjectMenus", keyEquivalent: ""))
-        statusBarItem?.button?.menu = statusBarMenu
+        statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: "e"))
+        statusBarMenu?.autoenablesItems = false
+        statusBarMenu?.itemAtIndex(0)?.keyEquivalentModifierMask = Int(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue)
+        statusBarMenu?.itemAtIndex(0)?.enabled = true
+        statusBarItem?.menu = statusBarMenu
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
+    }
+    
+    @IBAction func toggleServer(sender: AnyObject?) {
+        ProjectController.sharedInstance.toggleServer(sender)
+    }
+    
+    func serverStarting(notification: NSNotification?) {
+        statusBarMenu?.itemAtIndex(0)?.enabled = false
+    }
+    
+    func serverStarted(notification: NSNotification?) {
+        statusBarMenu?.itemAtIndex(0)?.enabled = true
+        statusBarMenu?.itemAtIndex(0)?.title = "Stop Server"
+    }
+    
+    func serverStopped(notification: NSNotification?) {
+        statusBarMenu?.itemAtIndex(0)?.enabled = true
+        statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
     }
     
     func toggleProjectMenus() {
@@ -73,6 +99,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
+        println("Terminating")
         self.stopAllServers()
     }
 
@@ -135,5 +162,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func openProject(sender: AnyObject?) {
         ProjectController.sharedInstance.openProject(sender)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

@@ -296,7 +296,6 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
         }
     }
     
-
     @IBAction func stopServer(sender: AnyObject?) {
         project?.stopServer()
     }
