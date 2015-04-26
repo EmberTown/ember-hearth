@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <scenes>
         <!--Path Settings View Controller-->
@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="PathSettings" id="SY7-Sb-cIw" customClass="PathSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wRi-1b-8IK" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="253"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Jh-N6g">
@@ -108,7 +108,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-ai-EhS">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-ai-EhS">
                                 <rect key="frame" x="18" y="182" width="414" height="51"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="6iI-9A-6ir">
                                     <font key="font" metaFont="system"/>
@@ -186,23 +186,57 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="QMc-zA-pxh">
-                                <rect key="frame" x="124" y="264" width="204" height="18"/>
+                                <rect key="frame" x="48" y="264" width="354" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="0lc-XP-9en"/>
+                                    <constraint firstAttribute="width" constant="350" id="0lc-XP-9en"/>
                                 </constraints>
                                 <buttonCell key="cell" type="check" title="Enable automatic updates" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="5Iw-0Q-qGD">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="7Bk-aF-ux9">
+                                <rect key="frame" x="48" y="230" width="354" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show Ember Hearth in status bar" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="QqT-IC-jUA">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleStatusItem:" target="NgR-im-LEh" id="aUu-J5-riq"/>
+                                </connections>
+                            </button>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="TCg-Mz-OIT" customClass="MASShortcutView">
+                                <rect key="frame" x="257" y="195" width="143" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="tfm-Fl-o3M"/>
+                                </constraints>
+                            </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zwI-1R-h59">
+                                <rect key="frame" x="48" y="197" width="196" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stop/run server global shortcut" id="Z17-Wr-YGj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="TCg-Mz-OIT" firstAttribute="centerY" secondItem="zwI-1R-h59" secondAttribute="centerY" constant="1" id="4eo-JQ-tsN"/>
+                            <constraint firstItem="7Bk-aF-ux9" firstAttribute="leading" secondItem="zwI-1R-h59" secondAttribute="leading" id="EBX-kJ-fPo"/>
                             <constraint firstItem="QMc-zA-pxh" firstAttribute="top" secondItem="3sE-vt-qbc" secondAttribute="top" constant="20" id="G5S-jZ-cKY"/>
-                            <constraint firstAttribute="centerX" secondItem="QMc-zA-pxh" secondAttribute="centerX" constant="-0.5" id="j6A-Hs-RyS"/>
+                            <constraint firstItem="QMc-zA-pxh" firstAttribute="trailing" secondItem="7Bk-aF-ux9" secondAttribute="trailing" id="Htf-Bk-uzr"/>
+                            <constraint firstItem="TCg-Mz-OIT" firstAttribute="trailing" secondItem="7Bk-aF-ux9" secondAttribute="trailing" id="Oyy-Un-pMN"/>
+                            <constraint firstItem="7Bk-aF-ux9" firstAttribute="top" secondItem="QMc-zA-pxh" secondAttribute="bottom" constant="20" id="fV3-dM-ORA"/>
+                            <constraint firstAttribute="centerX" secondItem="QMc-zA-pxh" secondAttribute="centerX" id="j6A-Hs-RyS"/>
+                            <constraint firstItem="TCg-Mz-OIT" firstAttribute="leading" secondItem="zwI-1R-h59" secondAttribute="trailing" constant="15" id="j6W-Rm-qMs"/>
+                            <constraint firstItem="zwI-1R-h59" firstAttribute="top" secondItem="7Bk-aF-ux9" secondAttribute="bottom" constant="18" id="pYa-QZ-9W9"/>
+                            <constraint firstItem="QMc-zA-pxh" firstAttribute="leading" secondItem="7Bk-aF-ux9" secondAttribute="leading" id="yAO-L9-zqq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="automaticUpdatesCheckbox" destination="QMc-zA-pxh" id="MwG-AK-Wo6"/>
+                        <outlet property="shortcutView" destination="TCg-Mz-OIT" id="dCP-FF-dIs"/>
+                        <outlet property="showStatusItemCheckbox" destination="7Bk-aF-ux9" id="wez-FG-pa1"/>
                     </connections>
                 </viewController>
                 <customObject id="06I-ne-6iC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

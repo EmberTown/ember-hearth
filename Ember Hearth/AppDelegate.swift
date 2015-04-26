@@ -11,9 +11,10 @@ import Cocoa
 import Sparkle
 #endif
 import MASPreferences
+import MASShortcut
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     var projects: [Project]?
     var activeProject: Project? {
         didSet {
@@ -27,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     var projectNameController: ProjectNameWindowController?
     var preferensesWindowController: NSWindowController?
+    var statusBarManager = StatusBarManager.sharedManager
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
@@ -34,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var updater: SUUpdater?
     #endif
     
+    let hideStatusBarItemKey = "ShouldHideStatusBarItem"
+    let runServerHotKey = "HotkeyForRunningServer"
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
@@ -42,6 +46,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #else
         updater = SUUpdater()
         #endif
+        
+        let defaultShortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue))
+        MASShortcutBinder.sharedBinder().registerDefaultShortcuts([runServerHotKey:defaultShortcut])
+        
+        if !NSUserDefaults.standardUserDefaults().boolForKey(hideStatusBarItemKey) {
+            statusBarManager.showStatusBarItem()
+        }
+        
+        
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        
+        
+    }
+    
+    // MARK: NSUserNotificationCenterDelegate
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
+    }
+    
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+        if notification.identifier == "OpenInBrowser" {
+            NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
+        }
+    }
+    
+    // MARK: Toggling server
+    @IBAction func toggleServer(sender: AnyObject?) {
+        ProjectController.sharedInstance.toggleServer(sender)
     }
     
     func toggleProjectMenus() {
@@ -124,5 +156,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func openProject(sender: AnyObject?) {
         ProjectController.sharedInstance.openProject(sender)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

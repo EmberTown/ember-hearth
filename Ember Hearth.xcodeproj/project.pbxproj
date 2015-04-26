@@ -17,6 +17,7 @@
 		E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9286B941AD70F5B00719335 /* Settings.storyboard */; };
 		E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */; };
 		E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */; };
+		E94158631AECEB5A00466E78 /* ColoredTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94158621AECEB5A00466E78 /* ColoredTabView.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
 		E953BDA21AD6990D0035F539 /* FirstResponderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E953BDA11AD6990D0035F539 /* FirstResponderView.swift */; };
 		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
@@ -25,6 +26,7 @@
 		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
 		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */; };
+		E9604C071AED67E1006036B3 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9604C061AED67E1006036B3 /* StatusBarManager.swift */; };
 		E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96379AE1AE062040032F2FE /* MainWindowController.swift */; };
 		E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
@@ -79,6 +81,7 @@
 		E9286B941AD70F5B00719335 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotImplementedViewController.swift; sourceTree = "<group>"; };
 		E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabViewController.swift; sourceTree = "<group>"; };
+		E94158621AECEB5A00466E78 /* ColoredTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredTabView.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
 		E953BDA11AD6990D0035F539 /* FirstResponderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponderView.swift; sourceTree = "<group>"; };
 		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
 		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		E9604C061AED67E1006036B3 /* StatusBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
 		E96379AE1AE062040032F2FE /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
@@ -185,6 +189,15 @@
 				E9A1F6651AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift */,
 			);
 			name = "Organizing views";
+			sourceTree = "<group>";
+		};
+		E9604C081AED68FA006036B3 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
+				E9604C061AED67E1006036B3 /* StatusBarManager.swift */,
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 		E96379AD1AE061F40032F2FE /* WindowControllers */ = {
@@ -290,11 +303,11 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9604C081AED68FA006036B3 /* Singletons */,
 				E9DB7A5D1AE2793100CAE8FE /* Binaries */,
 				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
-				E9D47B751ADC2CAF00FD15BD /* ObjectControllers */,
 				E96379AD1AE061F40032F2FE /* WindowControllers */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
@@ -347,14 +360,6 @@
 			name = "External tools";
 			sourceTree = "<group>";
 		};
-		E9D47B751ADC2CAF00FD15BD /* ObjectControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
-			);
-			name = ObjectControllers;
-			sourceTree = "<group>";
-		};
 		E9DB7A5D1AE2793100CAE8FE /* Binaries */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +379,7 @@
 				E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */,
 				E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */,
 				E9ED713E1AE1756B0078D7CA /* DropZoneView.swift */,
+				E94158621AECEB5A00466E78 /* ColoredTabView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
 				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
 				E9ED713F1AE1756B0078D7CA /* DropZoneView.swift in Sources */,
+				E9604C071AED67E1006036B3 /* StatusBarManager.swift in Sources */,
 				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
 				E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */,
@@ -586,6 +593,7 @@
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E953BDA21AD6990D0035F539 /* FirstResponderView.swift in Sources */,
 				E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */,
+				E94158631AECEB5A00466E78 /* ColoredTabView.swift in Sources */,
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */,

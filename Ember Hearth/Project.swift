@@ -22,13 +22,42 @@ class Project: Equatable {
     var serverStatus = ServerStatus.stopped {
         didSet {
             let postName: String
+            let userNotificationTitle: String?
+            let userNotificationMessage: String?
             switch serverStatus {
-            case .booting: postName = "serverStarting"
-            case .running: postName = "serverStarted"
-            case .stopped: postName = "serverStopped"
-            case .errored: postName = "serverStoppedWithError"
+            case .booting:
+                userNotificationTitle = "Starting Ember server"
+                userNotificationMessage = "Starting Ember server for \(name!)"
+                postName = "serverStarting"
+            case .running:
+                userNotificationTitle = "Ember server started"
+                userNotificationMessage = "\(name!) running at localhost"
+                postName = "serverStarted"
+            case .stopped:
+                userNotificationTitle = "Ember server stopped"
+                userNotificationMessage = "Ember server stopped for \(name!)"
+                postName = "serverStopped"
+            case .errored:
+                userNotificationTitle = "Server Failed"
+                userNotificationMessage = "The Ember server for \(name!) wasn't able to start. See error message."
+                postName = "serverStoppedWithError"
             }
             NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
+
+            // Don't show message to user when server is booting or stopping, and then only if the app is not active.
+            if serverStatus != .booting &&
+                    serverStatus != .stopped &&
+                    !(NSApplication.sharedApplication().mainWindow?.keyWindow ?? false) {
+                let userNotification = NSUserNotification()
+                userNotification.title = userNotificationTitle
+                userNotification.informativeText = userNotificationMessage
+                if serverStatus == .running {
+                    userNotification.identifier = "OpenInBrowser"
+                    userNotification.hasActionButton = true
+                    userNotification.actionButtonTitle = "Open in browser"
+                }
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
+            }
         }
     }
     
