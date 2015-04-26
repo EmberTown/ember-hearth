@@ -50,6 +50,7 @@ class Project: Equatable {
                 if serverStatus == .running {
                     userNotification.identifier = "OpenInBrowser"
                     userNotification.hasActionButton = true
+                    userNotification.otherButtonTitle = "Close"
                     userNotification.actionButtonTitle = "Open in browser"
                 }
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
