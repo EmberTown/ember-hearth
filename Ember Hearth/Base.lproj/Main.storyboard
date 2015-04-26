@@ -786,7 +786,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" red="0.94311010837554932" green="0.94308191537857056" blue="0.94309788942337036" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="value" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -811,7 +811,7 @@
                         <tabViewItem id="xRa-1N-CES"/>
                         <tabViewItem id="SfC-oz-T3L"/>
                     </tabViewItems>
-                    <tabView key="tabView" allowsTruncatedLabels="NO" id="XcE-S1-ZJK">
+                    <tabView key="tabView" allowsTruncatedLabels="NO" id="XcE-S1-ZJK" customClass="ColoredTabView" customModule="Ember_Hearth" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>

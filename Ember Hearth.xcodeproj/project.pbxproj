@@ -17,6 +17,7 @@
 		E9286B951AD70F5B00719335 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9286B941AD70F5B00719335 /* Settings.storyboard */; };
 		E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */; };
 		E940435C1AD43F0D00877810 /* ProjectTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */; };
+		E94158631AECEB5A00466E78 /* ColoredTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94158621AECEB5A00466E78 /* ColoredTabView.swift */; };
 		E94505551AC8872D00F4D7BB /* ProjectNameWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */; };
 		E953BDA21AD6990D0035F539 /* FirstResponderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E953BDA11AD6990D0035F539 /* FirstResponderView.swift */; };
 		E95EE93C1AC9AB6A00609327 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */; };
@@ -79,6 +80,7 @@
 		E9286B941AD70F5B00719335 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		E92BB3561AD41526000EAC20 /* NotImplementedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotImplementedViewController.swift; sourceTree = "<group>"; };
 		E940435B1AD43F0D00877810 /* ProjectTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTabViewController.swift; sourceTree = "<group>"; };
+		E94158621AECEB5A00466E78 /* ColoredTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredTabView.swift; sourceTree = "<group>"; };
 		E94505531AC8872D00F4D7BB /* ProjectNameWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNameWindowController.swift; sourceTree = "<group>"; };
 		E953BDA11AD6990D0035F539 /* FirstResponderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponderView.swift; sourceTree = "<group>"; };
 		E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				E9D47B7C1ADD932800FD15BD /* ButtonWithTextColor.swift */,
 				E9ED713A1AE173DA0078D7CA /* DraggingDestinationView.swift */,
 				E9ED713E1AE1756B0078D7CA /* DropZoneView.swift */,
+				E94158621AECEB5A00466E78 /* ColoredTabView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				E9F34BE81AC95CE900E4875E /* BGColorView.swift in Sources */,
 				E953BDA21AD6990D0035F539 /* FirstResponderView.swift in Sources */,
 				E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */,
+				E94158631AECEB5A00466E78 /* ColoredTabView.swift in Sources */,
 				E95EE93F1AC9AD4700609327 /* Project.swift in Sources */,
 				E9D436221AC843E90020E123 /* Bower.swift in Sources */,
 				E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */,
