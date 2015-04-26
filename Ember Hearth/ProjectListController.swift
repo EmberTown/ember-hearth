@@ -87,6 +87,32 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         NSWorkspace.sharedWorkspace().openURL(pathURL!)
     }
     
+    @IBAction func openInEditor(sender: AnyObject?) {
+        let project = projects![tableView.clickedRow]
+        let pathURL = NSURL(fileURLWithPath: project.path!)
+        let configURL = pathURL!.URLByAppendingPathComponent("config").URLByAppendingPathComponent("environment.js")
+        let url = NSWorkspace.sharedWorkspace().URLForApplicationToOpenURL(configURL)
+        let appName = url?.lastPathComponent?.stringByDeletingPathExtension
+        let opened: Bool
+        if let appName = appName {
+            opened = NSWorkspace.sharedWorkspace().openFile(project.path!, withApplication: appName, andDeactivate: true)
+        } else {
+            opened = false
+        }
+        
+        // Handle error
+        if !opened {
+            var alert = NSAlert()
+            alert.messageText = "Could not open editor"
+            if appName != nil {
+                alert.informativeText = "Ember Hearth looked for the default application for opening javascript files, and found \(appName!), but \(appName!) couldn't open the project folder."
+            } else {
+                alert.informativeText = "Ember Hearth looked for the default application for opening javascript files but couldn't find one."
+            }
+            alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+        }
+    }
+    
     @IBAction func openInTerminal(sender: AnyObject?) {
         let project = projects![tableView.clickedRow]
         NSAppleScript(source: "tell application \"Terminal\" to do script \"cd \(project.path!) && clear\"")?.executeAndReturnError(nil)

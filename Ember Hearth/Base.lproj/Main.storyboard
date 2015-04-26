@@ -684,6 +684,12 @@
                                 <action selector="openInTerminal:" target="dot-n3-klN" id="tXe-uw-1XE"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="Open in editor" id="cIH-E8-SG8">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="openInEditor:" target="dot-n3-klN" id="zBe-fs-ZPO"/>
+                            </connections>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="Dou-2J-2ha"/>
                         <menuItem title="Remove from list" id="xvj-z8-qj6">
                             <modifierMask key="keyEquivalentModifierMask"/>
