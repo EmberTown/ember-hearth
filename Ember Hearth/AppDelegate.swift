@@ -11,6 +11,7 @@ import Cocoa
 import Sparkle
 #endif
 import MASPreferences
+import MASShortcut
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -61,6 +62,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
+        
+        let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(statusBarMenu!.itemAtIndex(0)!.keyEquivalentModifierMask))
+        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: { () in
+            if self.statusBarMenu?.itemAtIndex(0)?.enabled != nil && self.statusBarMenu!.itemAtIndex(0)!.enabled {
+                self.toggleServer(nil)
+            }
+        })
     }
     
     @IBAction func toggleServer(sender: AnyObject?) {

@@ -1,13 +1,16 @@
 PODS:
   - MASPreferences (1.1.2)
+  - MASShortcut (2.1.2)
   - Sparkle (1.9.0)
 
 DEPENDENCIES:
   - MASPreferences
+  - MASShortcut
   - Sparkle (~> 1.9)
 
 SPEC CHECKSUMS:
   MASPreferences: 32d8a2c5ef1d60b63240f5676b011ff72e194cb1
+  MASShortcut: ef92b912469f9f6744dba5f0a906665c26de760c
   Sparkle: 75bbbc5ab2d666f7f77c241afe7fd28364a8f9f7
 
 COCOAPODS: 0.36.4
