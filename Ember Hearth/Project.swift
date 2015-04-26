@@ -22,20 +22,16 @@ class Project: Equatable {
     var serverStatus = ServerStatus.stopped {
         didSet {
             let postName: String
-            let userNotificationTitle: String?
-            let userNotificationMessage: String?
+            var userNotificationTitle: String = ""
+            var userNotificationMessage: String = ""
             switch serverStatus {
             case .booting:
-                userNotificationTitle = "Starting Ember server"
-                userNotificationMessage = "Starting Ember server for \(name!)"
                 postName = "serverStarting"
             case .running:
                 userNotificationTitle = "Ember server started"
                 userNotificationMessage = "\(name!) running at localhost"
                 postName = "serverStarted"
             case .stopped:
-                userNotificationTitle = "Ember server stopped"
-                userNotificationMessage = "Ember server stopped for \(name!)"
                 postName = "serverStopped"
             case .errored:
                 userNotificationTitle = "Server Failed"
