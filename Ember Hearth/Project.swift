@@ -22,8 +22,8 @@ class Project: Equatable {
     var serverStatus = ServerStatus.stopped {
         didSet {
             let postName: String
-            var userNotificationTitle: String = ""
-            var userNotificationMessage: String = ""
+            var userNotificationTitle: String?
+            var userNotificationMessage: String?
             switch serverStatus {
             case .booting:
                 postName = "serverStarting"
