@@ -44,7 +44,7 @@ class Project: Equatable {
             }
             NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
 
-            // Don't show message to user when server is booting, and only show stop-message if server was running.
+            // Don't show message to user when server is booting or stopping, and then only if the app is not active.
             if serverStatus != .booting &&
                     serverStatus != .stopped &&
                     !(NSApplication.sharedApplication().mainWindow?.keyWindow ?? false) {
