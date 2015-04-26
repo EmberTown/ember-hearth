@@ -51,9 +51,9 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
     
     @IBAction func toggleStatusItem(sender: AnyObject?) {
         if NSUserDefaults.standardUserDefaults().boolForKey(appDelegate.hideStatusBarItemKey) {
-            appDelegate.hideStatusBarItem()
+            StatusBarManager.sharedManager.hideStatusBarItem()
         } else {
-            appDelegate.showStatusBarItem()
+            StatusBarManager.sharedManager.showStatusBarItem()
         }
     }
 }

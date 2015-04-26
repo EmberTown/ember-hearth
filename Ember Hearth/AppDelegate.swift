@@ -28,8 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     var projectNameController: ProjectNameWindowController?
     var preferensesWindowController: NSWindowController?
-    var statusBarItem: NSStatusItem?
-    var statusBarMenu: NSMenu?
+    var statusBarManager = StatusBarManager.sharedManager
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
@@ -52,39 +51,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         MASShortcutBinder.sharedBinder().registerDefaultShortcuts([runServerHotKey:defaultShortcut])
         
         if !NSUserDefaults.standardUserDefaults().boolForKey(hideStatusBarItemKey) {
-            showStatusBarItem()
+            statusBarManager.showStatusBarItem()
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStoppedWithError:", name: "serverStoppedWithError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
+        
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         
         
-    }
-    
-    func showStatusBarItem() {
-        let statusIcon = NSImage(named: "StatusBarIconIdle")
-        statusIcon?.setTemplate(true)
-        statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength( -2 ) // NSSquareStatusItemLength
-        statusBarItem?.button?.setAccessibilityTitle("Ember Hearth")
-        statusBarItem?.button?.image = statusIcon
-        statusBarMenu = NSMenu(title: "Ember Hearth")
-        statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: ""))
-        statusBarMenu?.autoenablesItems = false
-        statusBarMenu?.itemAtIndex(0)?.enabled = true
-        statusBarItem?.menu = statusBarMenu
-        
-        MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(runServerHotKey, toAction: { () -> Void in
-            self.toggleServer(nil)
-        })
-    }
-    
-    func hideStatusBarItem() {
-        if statusBarItem != nil {
-            NSStatusBar.systemStatusBar().removeStatusItem(statusBarItem!)
-        }
     }
     
     // MARK: NSUserNotificationCenterDelegate
@@ -95,36 +68,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     // MARK: Toggling server
     @IBAction func toggleServer(sender: AnyObject?) {
         ProjectController.sharedInstance.toggleServer(sender)
-    }
-    
-    func updateStatusBarButton(imageName: String, accessibilityTitle: String) {
-        let image = NSImage(named: imageName)
-        image?.setTemplate(true)
-        statusBarItem?.button?.image = image
-        statusBarItem?.button?.setAccessibilityTitle(accessibilityTitle)
-    }
-    
-    func serverStarting(notification: NSNotification?) {
-        updateStatusBarButton("StatusBarIconStarting", accessibilityTitle: "Ember Hearth - Starting Server")
-        statusBarMenu?.itemAtIndex(0)?.enabled = false
-    }
-    
-    func serverStarted(notification: NSNotification?) {
-        updateStatusBarButton("StatusBarIconRunning", accessibilityTitle: "Ember Hearth - Running Server")
-        statusBarMenu?.itemAtIndex(0)?.enabled = true
-        statusBarMenu?.itemAtIndex(0)?.title = "Stop Server"
-    }
-    
-    func serverStopped(notification: NSNotification?) {
-        updateStatusBarButton("StatusBarIconIdle", accessibilityTitle: "Ember Hearth")
-        statusBarMenu?.itemAtIndex(0)?.enabled = true
-        statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
-    }
-    
-    func serverStoppedWithError(notification: NSNotification?) {
-        updateStatusBarButton("StatusBarIconError", accessibilityTitle: "Ember Hearth - Server Failed Miserably")
-        statusBarMenu?.itemAtIndex(0)?.enabled = true
-        statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
     }
     
     func toggleProjectMenus() {

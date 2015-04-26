@@ -26,6 +26,7 @@
 		E95F0E4A1ADA6E2300183AD6 /* DependencyInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */; };
 		E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */; };
 		E95F0E4F1ADA9C6E00183AD6 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */; };
+		E9604C071AED67E1006036B3 /* StatusBarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9604C061AED67E1006036B3 /* StatusBarManager.swift */; };
 		E96379AF1AE062040032F2FE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96379AE1AE062040032F2FE /* MainWindowController.swift */; };
 		E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */; };
 		E96E8D351AD585DB00C2D1A3 /* Brew.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96E8D341AD585DB00C2D1A3 /* Brew.swift */; };
@@ -89,6 +90,7 @@
 		E95F0E481ADA6E2300183AD6 /* DependencyInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependencyInfoWindow.xib; sourceTree = "<group>"; };
 		E95F0E4B1ADA6F9A00183AD6 /* DependencyWindowCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyWindowCellView.swift; sourceTree = "<group>"; };
 		E95F0E4E1ADA9C6E00183AD6 /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		E9604C061AED67E1006036B3 /* StatusBarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarManager.swift; sourceTree = "<group>"; };
 		E96379AE1AE062040032F2FE /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		E964193C1AE1CE2700ADD825 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
 		E96E8D341AD585DB00C2D1A3 /* Brew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brew.swift; sourceTree = "<group>"; };
@@ -187,6 +189,15 @@
 				E9A1F6651AEC052E007C99E1 /* ProjectDetailsSplitViewController.swift */,
 			);
 			name = "Organizing views";
+			sourceTree = "<group>";
+		};
+		E9604C081AED68FA006036B3 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
+				E9604C061AED67E1006036B3 /* StatusBarManager.swift */,
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 		E96379AD1AE061F40032F2FE /* WindowControllers */ = {
@@ -292,11 +303,11 @@
 		E9BC4DF41AC8093A00A747EC /* Ember Hearth */ = {
 			isa = PBXGroup;
 			children = (
+				E9604C081AED68FA006036B3 /* Singletons */,
 				E9DB7A5D1AE2793100CAE8FE /* Binaries */,
 				E979AEB31AD5375A0013F10E /* Helpers */,
 				E95EE93D1AC9AD3900609327 /* Model */,
 				E9F34BE41AC94CE300E4875E /* View */,
-				E9D47B751ADC2CAF00FD15BD /* ObjectControllers */,
 				E96379AD1AE061F40032F2FE /* WindowControllers */,
 				E97E798A1AC874950080BB66 /* ViewControllers */,
 				E9735F911AC863C60068F3A3 /* UI */,
@@ -347,14 +358,6 @@
 				E96E8D341AD585DB00C2D1A3 /* Brew.swift */,
 			);
 			name = "External tools";
-			sourceTree = "<group>";
-		};
-		E9D47B751ADC2CAF00FD15BD /* ObjectControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E9D47B761ADC2CC600FD15BD /* ProjectController.swift */,
-			);
-			name = ObjectControllers;
 			sourceTree = "<group>";
 		};
 		E9DB7A5D1AE2793100CAE8FE /* Binaries */ = {
@@ -580,6 +583,7 @@
 				E92BB3571AD41526000EAC20 /* NotImplementedViewController.swift in Sources */,
 				E95F0E4C1ADA6F9A00183AD6 /* DependencyWindowCellView.swift in Sources */,
 				E9ED713F1AE1756B0078D7CA /* DropZoneView.swift in Sources */,
+				E9604C071AED67E1006036B3 /* StatusBarManager.swift in Sources */,
 				E9D47B771ADC2CC600FD15BD /* ProjectController.swift in Sources */,
 				E99D97E31AD86B6000009524 /* PathSettingsViewController.swift in Sources */,
 				E964193D1AE1CE2700ADD825 /* GeneralSettingsViewController.swift in Sources */,
