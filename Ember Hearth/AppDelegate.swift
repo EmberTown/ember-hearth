@@ -14,7 +14,7 @@ import MASPreferences
 import MASShortcut
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     var projects: [Project]?
     var activeProject: Project? {
         didSet {
@@ -69,8 +69,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.toggleServer(nil)
             }
         })
+        
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
     }
     
+    // MARK: NSUserNotificationCenterDelegate
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
+    }
+    
+    // MARK: Toggling server
     @IBAction func toggleServer(sender: AnyObject?) {
         ProjectController.sharedInstance.toggleServer(sender)
     }

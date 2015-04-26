@@ -22,13 +22,35 @@ class Project: Equatable {
     var serverStatus = ServerStatus.stopped {
         didSet {
             let postName: String
+            let userNotificationTitle: String?
+            let userNotificationMessage: String?
             switch serverStatus {
-            case .booting: postName = "serverStarting"
-            case .running: postName = "serverStarted"
-            case .stopped: postName = "serverStopped"
-            case .errored: postName = "serverStoppedWithError"
+            case .booting:
+                userNotificationTitle = "Starting Ember server"
+                userNotificationMessage = "Starting Ember server for \(name!)"
+                postName = "serverStarting"
+            case .running:
+                userNotificationTitle = "Ember server started"
+                userNotificationMessage = "Ember server started for \(name!)"
+                postName = "serverStarted"
+            case .stopped:
+                userNotificationTitle = "Ember server stopped"
+                userNotificationMessage = "Ember server stopped for \(name!)"
+                postName = "serverStopped"
+            case .errored:
+                userNotificationTitle = "Ember server failed to start"
+                userNotificationMessage = "Ember server failed to start for \(name!)"
+                postName = "serverStoppedWithError"
             }
             NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
+
+            // Don't show message to user when server is booting, and only show stop-message if server was running.
+            if serverStatus != .booting && (serverStatus != .stopped || ProjectController.sharedInstance.isServerRunning()) {
+                let userNotification = NSUserNotification()
+                userNotification.title = userNotificationTitle
+                userNotification.informativeText = userNotificationMessage
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
+            }
         }
     }
     
