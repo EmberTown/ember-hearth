@@ -107,7 +107,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        println("Terminating")
         self.stopAllServers()
     }
 
