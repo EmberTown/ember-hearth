@@ -65,6 +65,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return true
     }
     
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+        if notification.identifier == "OpenInBrowser" {
+            NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
+        }
+    }
+    
     // MARK: Toggling server
     @IBAction func toggleServer(sender: AnyObject?) {
         ProjectController.sharedInstance.toggleServer(sender)

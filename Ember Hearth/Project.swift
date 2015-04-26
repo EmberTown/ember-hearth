@@ -31,7 +31,7 @@ class Project: Equatable {
                 postName = "serverStarting"
             case .running:
                 userNotificationTitle = "Ember server started"
-                userNotificationMessage = "Ember server started for \(name!)"
+                userNotificationMessage = "\(name!) running at localhost"
                 postName = "serverStarted"
             case .stopped:
                 userNotificationTitle = "Ember server stopped"
@@ -39,7 +39,7 @@ class Project: Equatable {
                 postName = "serverStopped"
             case .errored:
                 userNotificationTitle = "Ember server failed to start"
-                userNotificationMessage = "Ember server failed to start for \(name!)"
+                userNotificationMessage = "Could not start server for \(name!)."
                 postName = "serverStoppedWithError"
             }
             NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
@@ -51,6 +51,11 @@ class Project: Equatable {
                 let userNotification = NSUserNotification()
                 userNotification.title = userNotificationTitle
                 userNotification.informativeText = userNotificationMessage
+                if serverStatus == .running {
+                    userNotification.identifier = "OpenInBrowser"
+                    userNotification.hasActionButton = true
+                    userNotification.actionButtonTitle = "Open in browser"
+                }
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
             }
         }

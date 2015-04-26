@@ -30,6 +30,8 @@
 	<string>Copyright © 2015 Thomas Sunde Nielsen. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSUserNotificationAlertStyle</key>
+	<string>alert</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
