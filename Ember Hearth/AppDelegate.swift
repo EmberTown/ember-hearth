@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarMenu = NSMenu(title: "Ember Hearth")
         statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: "e"))
         statusBarMenu?.autoenablesItems = false
-        statusBarMenu?.itemAtIndex(0)?.keyEquivalentModifierMask = Int(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue)
+        statusBarMenu?.itemAtIndex(0)?.keyEquivalentModifierMask = Int(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue)
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarItem?.menu = statusBarMenu
         
