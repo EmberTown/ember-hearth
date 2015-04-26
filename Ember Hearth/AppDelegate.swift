@@ -65,11 +65,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     
     func showStatusBarItem() {
-        let tomster = NSImage(named: "StatusBarIcon")
-        tomster?.setTemplate(true)
+        let statusIcon = NSImage(named: "StatusBarIconIdle")
+        statusIcon?.setTemplate(true)
         statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength( -2 ) // NSSquareStatusItemLength
         statusBarItem?.button?.setAccessibilityTitle("Ember Hearth")
-        statusBarItem?.button?.image = tomster
+        statusBarItem?.button?.image = statusIcon
         statusBarMenu = NSMenu(title: "Ember Hearth")
         statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: ""))
         statusBarMenu?.autoenablesItems = false
@@ -97,16 +97,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         ProjectController.sharedInstance.toggleServer(sender)
     }
     
+    func updateStatusBarButton(imageName: String, accessibilityTitle: String) {
+        let image = NSImage(named: imageName)
+        image?.setTemplate(true)
+        statusBarItem?.button?.image = image
+        statusBarItem?.button?.setAccessibilityTitle(accessibilityTitle)
+    }
+    
     func serverStarting(notification: NSNotification?) {
+        updateStatusBarButton("StatusBarIconStarting", accessibilityTitle: "Ember Hearth - Starting Server")
         statusBarMenu?.itemAtIndex(0)?.enabled = false
     }
     
     func serverStarted(notification: NSNotification?) {
+        updateStatusBarButton("StatusBarIconRunning", accessibilityTitle: "Ember Hearth - Running Server")
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarMenu?.itemAtIndex(0)?.title = "Stop Server"
     }
     
     func serverStopped(notification: NSNotification?) {
+        updateStatusBarButton("StatusBarIconIdle", accessibilityTitle: "Ember Hearth")
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
     }
