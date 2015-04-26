@@ -27,6 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     var projectNameController: ProjectNameWindowController?
     var preferensesWindowController: NSWindowController?
+    var statusBarItem: NSStatusItem?
+    var statusBarMenu: NSMenu?
     
     #if DEBUG
     var debugMenu = DebugMenu(title: "Debug")
@@ -42,6 +44,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         #else
         updater = SUUpdater()
         #endif
+        
+        let tomster = NSImage(named: "StatusBarIcon")
+        tomster?.setTemplate(true)
+        statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength( -2 ) // NSSquareStatusItemLength
+        statusBarItem?.button?.setAccessibilityTitle("Ember Hearth")
+        statusBarItem?.button?.image = tomster
+        statusBarMenu = NSMenu(title: "Ember Hearth")
+        statusBarMenu?.addItem(NSMenuItem(title: "Demo", action: "toggleProjectMenus", keyEquivalent: ""))
+        statusBarItem?.button?.menu = statusBarMenu
     }
     
     func toggleProjectMenus() {
