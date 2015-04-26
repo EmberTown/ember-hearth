@@ -38,8 +38,8 @@ class Project: Equatable {
                 userNotificationMessage = "Ember server stopped for \(name!)"
                 postName = "serverStopped"
             case .errored:
-                userNotificationTitle = "Ember server failed to start"
-                userNotificationMessage = "Could not start server for \(name!)."
+                userNotificationTitle = "Server Failed"
+                userNotificationMessage = "The Ember server for \(name!) wasn't able to start. See error message."
                 postName = "serverStoppedWithError"
             }
             NSNotificationCenter.defaultCenter().postNotificationName(postName, object: self)
