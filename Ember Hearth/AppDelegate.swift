@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     #endif
     
     let hideStatusBarItemKey = "ShouldHideStatusBarItem"
+    let runServerHotKey = "HotkeyForRunningServer"
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
@@ -46,6 +47,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         #else
         updater = SUUpdater()
         #endif
+        
+        let defaultShortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue))
+        MASShortcutBinder.sharedBinder().registerDefaultShortcuts([runServerHotKey:defaultShortcut])
         
         if !NSUserDefaults.standardUserDefaults().boolForKey(hideStatusBarItemKey) {
             showStatusBarItem()
@@ -56,6 +60,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        
+        
     }
     
     func showStatusBarItem() {
@@ -65,18 +71,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         statusBarItem?.button?.setAccessibilityTitle("Ember Hearth")
         statusBarItem?.button?.image = tomster
         statusBarMenu = NSMenu(title: "Ember Hearth")
-        statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: "e"))
+        statusBarMenu?.addItem(NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: ""))
         statusBarMenu?.autoenablesItems = false
-        statusBarMenu?.itemAtIndex(0)?.keyEquivalentModifierMask = Int(NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue | NSEventModifierFlags.AlternateKeyMask.rawValue)
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarItem?.menu = statusBarMenu
         
-        let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(statusBarMenu!.itemAtIndex(0)!.keyEquivalentModifierMask))
-        MASShortcutMonitor.sharedMonitor().unregisterAllShortcuts()
-        MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: { () in
-            if self.statusBarMenu?.itemAtIndex(0)?.enabled ?? false {
-                self.toggleServer(nil)
-            }
+        MASShortcutBinder.sharedBinder().bindShortcutWithDefaultsKey(runServerHotKey, toAction: { () -> Void in
+            self.toggleServer(nil)
         })
     }
     

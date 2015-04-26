@@ -11,13 +11,17 @@ import MASPreferences
 #if RELEASE
 import Sparkle
 #endif
+import MASShortcut
 
 class GeneralSettingsViewController: NSViewController, MASPreferencesViewController {
     #if RELEASE
     var updater = SUUpdater()
     #endif
+    
     @IBOutlet var automaticUpdatesCheckbox: NSButton!
     @IBOutlet var showStatusItemCheckbox: NSButton!
+    @IBOutlet var shortcutView: MASShortcutView!
+    
     let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
@@ -28,6 +32,8 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
         automaticUpdatesCheckbox.target = self
         automaticUpdatesCheckbox.action = "noUpdatesInDebug"
         #endif
+        
+        shortcutView.associatedUserDefaultsKey = appDelegate.runServerHotKey
         
         showStatusItemCheckbox.bind("value",
             toObject: NSUserDefaultsController.sharedUserDefaultsController(),
