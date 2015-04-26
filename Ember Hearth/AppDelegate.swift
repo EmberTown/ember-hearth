@@ -57,7 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStoppedWithError:", name: "serverStoppedWithError", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         
@@ -117,6 +117,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func serverStopped(notification: NSNotification?) {
         updateStatusBarButton("StatusBarIconIdle", accessibilityTitle: "Ember Hearth")
+        statusBarMenu?.itemAtIndex(0)?.enabled = true
+        statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
+    }
+    
+    func serverStoppedWithError(notification: NSNotification?) {
+        updateStatusBarButton("StatusBarIconError", accessibilityTitle: "Ember Hearth - Server Failed Miserably")
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarMenu?.itemAtIndex(0)?.title = "Run Server"
     }
