@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(statusBarMenu!.itemAtIndex(0)!.keyEquivalentModifierMask))
         MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: { () in
-            if self.statusBarMenu?.itemAtIndex(0)?.enabled != nil && self.statusBarMenu!.itemAtIndex(0)!.enabled {
+            if self.statusBarMenu?.itemAtIndex(0)?.enabled ?? false {
                 self.toggleServer(nil)
             }
         })
