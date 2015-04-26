@@ -6,12 +6,14 @@ Ember Hearth is an application used to manage Ember projects.
 ## Goals
 Ember Hearth aspires to allow new users to do all they need to do to run Ember projects without touching the command line.
 
+![Screenshot](http://ember.town/ember-hearth/images/screenshot%200.2.0.png)
+
 ## Features
 * Installs all needed tools automatically ([node.js](http://nodejs.org), [NPM](http://npmjs.com), [Bower](http://bower.io), [PhantomJS](http://phantomjs.org), [Ember-CLI](http://ember-cli.com))
 * Create new Ember projects
 * Manage existing Ember projects
 * Run a local server
-* Run tests 
+* Run tests
 * Create development and release builds
 
 ## Installing
