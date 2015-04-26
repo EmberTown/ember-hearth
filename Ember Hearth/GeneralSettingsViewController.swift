@@ -17,6 +17,8 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
     var updater = SUUpdater()
     #endif
     @IBOutlet var automaticUpdatesCheckbox: NSButton!
+    @IBOutlet var showStatusItemCheckbox: NSButton!
+    let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,11 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
         automaticUpdatesCheckbox.target = self
         automaticUpdatesCheckbox.action = "noUpdatesInDebug"
         #endif
+        
+        showStatusItemCheckbox.bind("value",
+            toObject: NSUserDefaultsController.sharedUserDefaultsController(),
+            withKeyPath: "values.\(appDelegate.hideStatusBarItemKey)",
+            options: [NSValueTransformerNameBindingOption:NSNegateBooleanTransformerName]) // Flip bool value
     }
     
     // MARK: MASPreferencesViewController
@@ -34,5 +41,13 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
     
     func noUpdatesInDebug() {
         println("Debug builds doesn't load Sparkle and doesn't provide automatic updates. This button does nothing here.")
+    }
+    
+    @IBAction func toggleStatusItem(sender: AnyObject?) {
+        if NSUserDefaults.standardUserDefaults().boolForKey(appDelegate.hideStatusBarItemKey) {
+            appDelegate.hideStatusBarItem()
+        } else {
+            appDelegate.showStatusBarItem()
+        }
     }
 }

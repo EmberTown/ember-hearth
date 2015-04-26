@@ -37,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var updater: SUUpdater?
     #endif
     
+    let hideStatusBarItemKey = "ShouldHideStatusBarItem"
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
@@ -46,6 +47,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         updater = SUUpdater()
         #endif
         
+        if !NSUserDefaults.standardUserDefaults().boolForKey(hideStatusBarItemKey) {
+            showStatusBarItem()
+        }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+    }
+    
+    func showStatusBarItem() {
         let tomster = NSImage(named: "StatusBarIcon")
         tomster?.setTemplate(true)
         statusBarItem = NSStatusBar.systemStatusBar().statusItemWithLength( -2 ) // NSSquareStatusItemLength
@@ -58,19 +71,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         statusBarMenu?.itemAtIndex(0)?.enabled = true
         statusBarItem?.menu = statusBarMenu
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarted:", name: "serverStarted", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStopped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStopped:", name: "serverStoppedWithError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serverStarting:", name: "serverStarting", object: nil)
-        
         let shortcut = MASShortcut(keyCode: UInt(kVK_ANSI_E), modifierFlags: UInt(statusBarMenu!.itemAtIndex(0)!.keyEquivalentModifierMask))
+        MASShortcutMonitor.sharedMonitor().unregisterAllShortcuts()
         MASShortcutMonitor.sharedMonitor().registerShortcut(shortcut, withAction: { () in
             if self.statusBarMenu?.itemAtIndex(0)?.enabled ?? false {
                 self.toggleServer(nil)
             }
         })
-        
-        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+    }
+    
+    func hideStatusBarItem() {
+        if statusBarItem != nil {
+            NSStatusBar.systemStatusBar().removeStatusItem(statusBarItem!)
+        }
     }
     
     // MARK: NSUserNotificationCenterDelegate
