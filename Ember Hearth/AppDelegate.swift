@@ -76,6 +76,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         ProjectController.sharedInstance.toggleServer(sender)
     }
     
+    @IBAction func terminate(sender: AnyObject?) {
+        NSApplication.sharedApplication().terminate(self)
+    }
+    
     func toggleProjectMenus() {
         var mainMenu = NSApplication.sharedApplication().mainMenu
         let projectActive = activeProject != nil

@@ -20,6 +20,7 @@ class StatusBarManager: NSObject {
     var statusBarMenu: NSMenu?
     var nameMenuItem: NSMenuItem?
     var runServerMenuItem: NSMenuItem?
+    var terminateMenuItem: NSMenuItem?
     
     let noProjectString = "No project selected"
     
@@ -53,6 +54,12 @@ class StatusBarManager: NSObject {
 
         runServerMenuItem = NSMenuItem(title: "Run Server", action: "toggleServer:", keyEquivalent: "")
         statusBarMenu?.addItem(runServerMenuItem!)
+        
+        let separator = NSMenuItem.separatorItem()
+        statusBarMenu?.addItem(separator)
+        
+        terminateMenuItem = NSMenuItem(title: "Quit Ember Hearth", action: "terminate:", keyEquivalent: "")
+        statusBarMenu?.addItem(terminateMenuItem!)
         
         statusBarMenu?.autoenablesItems = false
         runServerMenuItem?.enabled = true
