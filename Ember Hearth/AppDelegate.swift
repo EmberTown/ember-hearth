@@ -40,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let runServerHotKey = "HotkeyForRunningServer"
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        
+        NSUserNotificationCenter.defaultUserNotificationCenter().removeAllDeliveredNotifications()
         #if DEBUG
         addDebugMenu()
         #else
@@ -94,6 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
+        NSUserNotificationCenter.defaultUserNotificationCenter().removeAllDeliveredNotifications()
         self.stopAllServers()
     }
 

@@ -55,6 +55,9 @@ class Project: Equatable {
                 }
                 NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(userNotification)
             }
+            if serverStatus == .stopped {
+                NSUserNotificationCenter.defaultUserNotificationCenter().removeAllDeliveredNotifications()
+            }
         }
     }
     
