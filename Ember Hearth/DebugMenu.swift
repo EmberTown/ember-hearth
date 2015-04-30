@@ -35,7 +35,8 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Install Ember CLI", action: "installEmberCLI", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Install Bower", action: "installBower", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Install Phantom.js", action: "installPhantomjs", keyEquivalent: ""))
-        
+        self.addItem(NSMenuItem(title: "Install Watchman", action: "installWatchman", keyEquivalent: ""))
+
         self.addItem(NSMenuItem.separatorItem())
         
         self.addItem(NSMenuItem(title: "Node.js version", action: "nodeVersion", keyEquivalent: ""))
@@ -43,7 +44,8 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Bower version", action: "bowerVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Ember CLI version", action: "emberCLIVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Phantom.js version", action: "phantomJSVersion", keyEquivalent: ""))
-        
+        self.addItem(NSMenuItem(title: "Watchman version", action: "watchmanVersion", keyEquivalent: ""))
+
         self.addItem(NSMenuItem.separatorItem())
         
         self.addItem(NSMenuItem(title: "Show dependency status", action: "dependencyStatus", keyEquivalent: ""))
@@ -88,6 +90,13 @@ class DebugMenu: NSMenu {
             println("Installed Phantom JS with success: \(success)")
         }
     }
+
+    func installWatchman() {
+        var watchman = Watchman()
+        watchman.install { (success) -> () in
+            println("Installed Watchman with success: \(success)")
+        }
+    }
     
     func nodeVersion() {
         let alert = NSAlert()
@@ -118,7 +127,13 @@ class DebugMenu: NSMenu {
         alert.messageText = "Phantom.js version: \(PhantomJS.version()!)"
         alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
     }
-    
+
+    func watchmanVersion() {
+        let alert = NSAlert()
+        alert.messageText = "Watchman version: \(Watchman.version()!)"
+        alert.beginSheetModalForWindow(NSApplication.sharedApplication().mainWindow!, completionHandler: nil)
+    }
+
     func dependencyStatus() {
         dependencyManger = DependencyManager()
         dependencyManger?.showDependencyStatus()

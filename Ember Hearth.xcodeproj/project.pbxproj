@@ -10,6 +10,7 @@
 		1833B8CC1AE1D28300BA40B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1833B8CB1AE1D28300BA40B4 /* QuartzCore.framework */; };
 		188C3DF11AC86F8900444710 /* NewProjectTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188C3DF01AC86F8900444710 /* NewProjectTitle.xib */; };
 		18E7B8521AC93926008D2E25 /* PhantomJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7B8511AC93926008D2E25 /* PhantomJS.swift */; };
+		5590BA01A63691C15E4F5B9A /* Watchman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590B14F00950A6AF9B57B47 /* Watchman.swift */; };
 		62DD0F542FA65A4690494A52 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0704C35A143EC7EF69BF2D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E905983D1AC827340034AA22 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905983C1AC827340034AA22 /* Node.swift */; };
 		E911A3521AD45834000374B9 /* PaddedTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911A3511AD45834000374B9 /* PaddedTextFieldCell.swift */; };
@@ -73,6 +74,7 @@
 		1833B8CB1AE1D28300BA40B4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		188C3DF01AC86F8900444710 /* NewProjectTitle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewProjectTitle.xib; sourceTree = "<group>"; };
 		18E7B8511AC93926008D2E25 /* PhantomJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhantomJS.swift; sourceTree = "<group>"; };
+		5590B14F00950A6AF9B57B47 /* Watchman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Watchman.swift; sourceTree = "<group>"; };
 		7C0704C35A143EC7EF69BF2D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEFDB98E16C5AB4F92C604A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E905983C1AC827340034AA22 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				E95EE93B1AC9AB6A00609327 /* DependencyManager.swift */,
 				18E7B8511AC93926008D2E25 /* PhantomJS.swift */,
 				E96E8D341AD585DB00C2D1A3 /* Brew.swift */,
+				5590B14F00950A6AF9B57B47 /* Watchman.swift */,
 			);
 			name = "External tools";
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				E9DBECB11ADAB9E900211A92 /* ProjectActionsViewController.swift in Sources */,
 				E9E989021AC84A090053763E /* Terminal.swift in Sources */,
 				E9286B931AD7030100719335 /* ProjectStatisticsViewController.swift in Sources */,
+				5590BA01A63691C15E4F5B9A /* Watchman.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
