@@ -9,12 +9,21 @@
 import Cocoa
 
 class Brew {
+    class func isInstalled() -> Bool {
+        return Brew.version() != nil
+    }
+
     class func isInstalled(tool: String) -> Bool {
         var versions = installedVersions(tool)
         if versions == nil {
             return false
         }
         return versions!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0
+    }
+
+    class func version() -> String? {
+        var term = Terminal()
+        return term.runTerminalCommandSync("brew -v")
     }
     
     class func installedVersions(tool: String) -> String? {

@@ -35,7 +35,9 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Install Ember CLI", action: "installEmberCLI", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Install Bower", action: "installBower", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Install Phantom.js", action: "installPhantomjs", keyEquivalent: ""))
-        self.addItem(NSMenuItem(title: "Install Watchman", action: "installWatchman", keyEquivalent: ""))
+        if (Brew.isInstalled()) {
+            self.addItem(NSMenuItem(title: "Install Watchman", action: "installWatchman", keyEquivalent: ""))
+        }
 
         self.addItem(NSMenuItem.separatorItem())
         
@@ -44,7 +46,9 @@ class DebugMenu: NSMenu {
         self.addItem(NSMenuItem(title: "Bower version", action: "bowerVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Ember CLI version", action: "emberCLIVersion", keyEquivalent: ""))
         self.addItem(NSMenuItem(title: "Phantom.js version", action: "phantomJSVersion", keyEquivalent: ""))
-        self.addItem(NSMenuItem(title: "Watchman version", action: "watchmanVersion", keyEquivalent: ""))
+        if (Brew.isInstalled()) {
+            self.addItem(NSMenuItem(title: "Watchman version", action: "watchmanVersion", keyEquivalent: ""))
+        }
 
         self.addItem(NSMenuItem.separatorItem())
         

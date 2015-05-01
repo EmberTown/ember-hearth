@@ -51,14 +51,18 @@ class DependencyManager: DependencyInfoWindowDelegate {
     var delegate: DependencyManagerDelegate?
     
     func listDependencies () -> [DependencyAvailability] {
-        return [
+        var dependencies = [
             DependencyAvailability(type: .Node, name:Node.name, available: nil),
             DependencyAvailability(type: .NPM, name:NPM.name, available: nil),
             DependencyAvailability(type: .Bower, name:Bower.name, available: nil),
             DependencyAvailability(type: .PhantomJS, name:PhantomJS.name, available: nil),
             DependencyAvailability(type: .Ember, name:EmberCLI.name, available: nil),
-            DependencyAvailability(type: .Watchman, name:Watchman.name, available: nil),
         ]
+        if (Brew.isInstalled()) {
+            dependencies.append(DependencyAvailability(type: .Watchman, name: Watchman.name, available: nil))
+        }
+
+        return dependencies;
     }
     
     func checkAvailabilityForDependencies(dependencies:[DependencyAvailability], completedDependency:(dependency: DependencyAvailability) -> ()) {
