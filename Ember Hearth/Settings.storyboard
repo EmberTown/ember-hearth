@@ -9,11 +9,11 @@
             <objects>
                 <viewController storyboardIdentifier="PathSettings" id="SY7-Sb-cIw" customClass="PathSettingsViewController" customModule="Ember_Hearth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wRi-1b-8IK" customClass="FirstResponderView" customModule="Ember_Hearth" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9g-Jh-N6g">
-                                <rect key="frame" x="229" y="140" width="201" height="22"/>
+                                <rect key="frame" x="229" y="170" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Fqf-7X-Nss"/>
                                     <constraint firstAttribute="height" constant="22" id="d20-9D-rT1"/>
@@ -25,7 +25,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xfd-vu-eLN">
-                                <rect key="frame" x="18" y="140" width="205" height="22"/>
+                                <rect key="frame" x="18" y="170" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Node.js path" id="Vfd-vY-Qqd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -33,7 +33,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cR2-cw-RoI">
-                                <rect key="frame" x="229" y="110" width="201" height="22"/>
+                                <rect key="frame" x="229" y="140" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="z2K-Dp-9Wb"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dzZ-MO-6QQ">
-                                <rect key="frame" x="18" y="110" width="205" height="22"/>
+                                <rect key="frame" x="18" y="140" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NPM path" id="ZgD-3X-N9i">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9li-Ya-oLz">
-                                <rect key="frame" x="229" y="50" width="201" height="22"/>
+                                <rect key="frame" x="229" y="80" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="FhW-eE-cZ1"/>
                                 </constraints>
@@ -63,7 +63,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ugs-UQ-xzS">
-                                <rect key="frame" x="18" y="50" width="205" height="22"/>
+                                <rect key="frame" x="18" y="80" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="EmberCLI path" id="e7g-vQ-ehx">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,7 +71,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frX-s0-gkX">
-                                <rect key="frame" x="229" y="20" width="201" height="22"/>
+                                <rect key="frame" x="229" y="50" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="4j8-ez-Lct"/>
                                 </constraints>
@@ -82,15 +82,26 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWn-pW-I71">
-                                <rect key="frame" x="18" y="20" width="205" height="22"/>
+                                <rect key="frame" x="18" y="50" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="PhantomJS path" id="ohi-1t-t3P">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpM-Jm-2x8">
+                                <rect key="frame" x="229" y="20" width="201" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="yeJ-wJ-S5s"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Mwh-9I-NQX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nnD-0Q-Q1I">
-                                <rect key="frame" x="229" y="80" width="201" height="22"/>
+                                <rect key="frame" x="229" y="110" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="Opa-zb-s68"/>
                                 </constraints>
@@ -101,19 +112,27 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D38-YA-u3k">
-                                <rect key="frame" x="18" y="80" width="205" height="22"/>
+                                <rect key="frame" x="18" y="110" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bower path" id="Blk-en-v8N">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-ai-EhS">
-                                <rect key="frame" x="18" y="182" width="414" height="51"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0v-ai-EhS">
+                                <rect key="frame" x="18" y="212" width="414" height="51"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="6iI-9A-6ir">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">These paths are fetched from your Bash shell settings (~/.bashrc). If you use another shell, make sure that the install locations you want to use are added to your bash path.</string>
                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-QI-zug">
+                                <rect key="frame" x="18" y="20" width="205" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Watchman path" id="6SU-W4-w9b">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
@@ -122,12 +141,15 @@
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="height" secondItem="D38-YA-u3k" secondAttribute="height" id="42W-ug-A1x"/>
                             <constraint firstItem="Z0v-ai-EhS" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="4kV-ZS-hsG"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="leading" secondItem="xfd-vu-eLN" secondAttribute="trailing" constant="8" id="6Au-3L-bP4"/>
+                            <constraint firstAttribute="bottom" secondItem="LLb-QI-zug" secondAttribute="bottom" constant="20" id="8I0-tv-eRf"/>
                             <constraint firstItem="cR2-cw-RoI" firstAttribute="height" secondItem="dzZ-MO-6QQ" secondAttribute="height" id="8sp-NW-0OY"/>
                             <constraint firstItem="Ugs-UQ-xzS" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="CMA-kF-YIN"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="width" secondItem="xfd-vu-eLN" secondAttribute="width" id="D1w-9N-BHe"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OpM-Jm-2x8" secondAttribute="bottom" constant="20" id="D3T-lw-Qhc"/>
                             <constraint firstItem="CWn-pW-I71" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="DaC-C7-65x"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="width" secondItem="D38-YA-u3k" secondAttribute="width" id="Eu0-5R-RUW"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="top" secondItem="xfd-vu-eLN" secondAttribute="top" id="FT4-ed-bEH"/>
+                            <constraint firstItem="OpM-Jm-2x8" firstAttribute="width" secondItem="LLb-QI-zug" secondAttribute="width" id="FgJ-7P-MD3"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="width" secondItem="Ugs-UQ-xzS" secondAttribute="width" id="Hhk-Y3-cQR"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="height" secondItem="Ugs-UQ-xzS" secondAttribute="height" id="I2v-zc-LPg"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="leading" secondItem="Ugs-UQ-xzS" secondAttribute="trailing" constant="8" id="JT6-w7-hIs"/>
@@ -136,7 +158,7 @@
                             <constraint firstItem="frX-s0-gkX" firstAttribute="height" secondItem="CWn-pW-I71" secondAttribute="height" id="N6C-2m-z1e"/>
                             <constraint firstItem="xfd-vu-eLN" firstAttribute="top" secondItem="Z0v-ai-EhS" secondAttribute="bottom" constant="20" id="Qjb-wR-72Q"/>
                             <constraint firstAttribute="trailing" secondItem="cR2-cw-RoI" secondAttribute="trailing" constant="20" id="Qmd-OL-4cp"/>
-                            <constraint firstAttribute="bottom" secondItem="frX-s0-gkX" secondAttribute="bottom" constant="20" id="U1h-bv-z7Y"/>
+                            <constraint firstAttribute="bottom" secondItem="OpM-Jm-2x8" secondAttribute="bottom" constant="20" id="SOo-Hh-5iH"/>
                             <constraint firstAttribute="trailing" secondItem="9li-Ya-oLz" secondAttribute="trailing" constant="20" id="VIL-73-WrM"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="width" secondItem="CWn-pW-I71" secondAttribute="width" id="Vma-lP-Uj2"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="leading" secondItem="CWn-pW-I71" secondAttribute="trailing" constant="8" id="WjX-NV-2Qv"/>
@@ -144,6 +166,7 @@
                             <constraint firstAttribute="trailing" secondItem="frX-s0-gkX" secondAttribute="trailing" constant="20" id="YxS-IV-po4"/>
                             <constraint firstItem="D38-YA-u3k" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="aEh-Ie-ow0"/>
                             <constraint firstItem="Ugs-UQ-xzS" firstAttribute="top" secondItem="D38-YA-u3k" secondAttribute="bottom" constant="8" id="dpM-pN-wg7"/>
+                            <constraint firstItem="OpM-Jm-2x8" firstAttribute="height" secondItem="LLb-QI-zug" secondAttribute="height" id="eC7-og-vWV"/>
                             <constraint firstItem="dzZ-MO-6QQ" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="fKU-xs-L3x"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="height" secondItem="xfd-vu-eLN" secondAttribute="height" id="gg3-Mq-CnH"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="leading" secondItem="D38-YA-u3k" secondAttribute="trailing" constant="8" id="hH0-nj-bNS"/>
@@ -156,6 +179,7 @@
                             <constraint firstAttribute="trailing" secondItem="Z0v-ai-EhS" secondAttribute="trailing" constant="20" id="nzY-Cq-19V"/>
                             <constraint firstAttribute="trailing" secondItem="k9g-Jh-N6g" secondAttribute="trailing" constant="20" id="oBZ-6i-gaS"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="top" secondItem="9li-Ya-oLz" secondAttribute="bottom" constant="8" id="sJp-vT-DIz"/>
+                            <constraint firstItem="OpM-Jm-2x8" firstAttribute="leading" secondItem="LLb-QI-zug" secondAttribute="trailing" constant="8" id="vi1-nt-NhU"/>
                             <constraint firstItem="cR2-cw-RoI" firstAttribute="width" secondItem="dzZ-MO-6QQ" secondAttribute="width" id="whj-ly-EzC"/>
                             <constraint firstItem="cR2-cw-RoI" firstAttribute="leading" secondItem="dzZ-MO-6QQ" secondAttribute="trailing" constant="8" id="ytS-M9-12f"/>
                         </constraints>
@@ -171,11 +195,12 @@
                         <outlet property="nodePathTextField" destination="k9g-Jh-N6g" id="I8e-hE-3vl"/>
                         <outlet property="npmPathTextField" destination="cR2-cw-RoI" id="1L6-0G-xcm"/>
                         <outlet property="phantomJSPathTextField" destination="frX-s0-gkX" id="tkN-LV-yDW"/>
+                        <outlet property="watchmanPathTextField" destination="OpM-Jm-2x8" id="LsC-7a-ffY"/>
                     </connections>
                 </viewController>
                 <customObject id="8YP-cY-WSO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="546" y="855.5"/>
+            <point key="canvasLocation" x="546" y="838.5"/>
         </scene>
         <!--General Settings View Controller-->
         <scene sceneID="DVS-5q-ymW">

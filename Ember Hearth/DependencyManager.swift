@@ -41,6 +41,7 @@ enum Dependency {
     case Bower
     case PhantomJS
     case Ember
+    case Watchman
 }
 
 class DependencyManager: DependencyInfoWindowDelegate {
@@ -50,13 +51,18 @@ class DependencyManager: DependencyInfoWindowDelegate {
     var delegate: DependencyManagerDelegate?
     
     func listDependencies () -> [DependencyAvailability] {
-        return [
+        var dependencies = [
             DependencyAvailability(type: .Node, name:Node.name, available: nil),
             DependencyAvailability(type: .NPM, name:NPM.name, available: nil),
             DependencyAvailability(type: .Bower, name:Bower.name, available: nil),
             DependencyAvailability(type: .PhantomJS, name:PhantomJS.name, available: nil),
-            DependencyAvailability(type: .Ember, name:EmberCLI.name, available: nil)
+            DependencyAvailability(type: .Ember, name:EmberCLI.name, available: nil),
         ]
+        if (Brew.isInstalled()) {
+            dependencies.append(DependencyAvailability(type: .Watchman, name: Watchman.name, available: nil))
+        }
+
+        return dependencies;
     }
     
     func checkAvailabilityForDependencies(dependencies:[DependencyAvailability], completedDependency:(dependency: DependencyAvailability) -> ()) {
@@ -75,6 +81,8 @@ class DependencyManager: DependencyInfoWindowDelegate {
                     dependency.available = PhantomJS.isInstalled()
                 case .Ember:
                     dependency.available = EmberCLI.isInstalled()
+                case .Watchman:
+                    dependency.available = Watchman.isInstalled()
                 }
                 completedDependency(dependency: dependency)
             })
@@ -233,6 +241,8 @@ class DependencyManager: DependencyInfoWindowDelegate {
             return EmberCLI()
         case .PhantomJS:
             return PhantomJS()
+        case .Watchman:
+            return Watchman()
         }
     }
 }

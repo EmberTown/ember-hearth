@@ -170,3 +170,4 @@ Icon
 # From Jekyll
 /_site
 /.sass-cache
+.idea

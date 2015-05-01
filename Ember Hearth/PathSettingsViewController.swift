@@ -16,6 +16,7 @@ class PathSettingsViewController: NSViewController, MASPreferencesViewController
     @IBOutlet var bowerPathTextField: NSTextField!
     @IBOutlet var phantomJSPathTextField: NSTextField!
     @IBOutlet var emberCLIPathTextField: NSTextField!
+    @IBOutlet var watchmanPathTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class PathSettingsViewController: NSViewController, MASPreferencesViewController
         bowerPathTextField.placeholderString = Bower.path()
         phantomJSPathTextField.placeholderString = PhantomJS.path()
         emberCLIPathTextField.placeholderString = EmberCLI.path()
+        watchmanPathTextField.placeholderString = Watchman.path()
     }
  
     // MARK: MASPreferencesViewController
