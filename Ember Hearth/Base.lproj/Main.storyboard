@@ -746,16 +746,13 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
-                                <rect key="frame" x="398" y="27" width="16" height="16"/>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
+                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TnO-z9-eOo" customClass="ButtonWithTextColor" customModule="Ember_Hearth" customModuleProvider="target">
                                 <rect key="frame" x="192" y="20" width="134" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="bMj-4R-2GO"/>
                                     <constraint firstAttribute="width" constant="130" id="xfH-HY-WJU"/>
                                 </constraints>
-                                <buttonCell key="cell" type="bevel" title="Open in browser" bezelStyle="regularSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
+                                <buttonCell key="cell" type="bevel" title="Open in browser" bezelStyle="regularSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J5G-tJ-3fb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -777,16 +774,19 @@
                                     <action selector="toggleServer:" target="bXs-Kf-6T4" id="28t-TF-TpF"/>
                                 </connections>
                             </button>
+                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-CY-E5G">
+                                <rect key="frame" x="308" y="27" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="TnO-z9-eOo" firstAttribute="top" secondItem="4v2-lA-E5P" secondAttribute="top" id="1hF-V0-lV2"/>
                             <constraint firstItem="TnO-z9-eOo" firstAttribute="leading" secondItem="jnP-bm-eUb" secondAttribute="trailing" constant="12" id="7KC-bk-reX"/>
+                            <constraint firstItem="4v2-lA-E5P" firstAttribute="leading" secondItem="IY0-CY-E5G" secondAttribute="trailing" constant="12" id="Gef-IC-oRs"/>
                             <constraint firstAttribute="trailing" secondItem="4v2-lA-E5P" secondAttribute="trailing" constant="20" id="JRA-dm-BLX"/>
-                            <constraint firstItem="4v2-lA-E5P" firstAttribute="centerY" secondItem="IY0-CY-E5G" secondAttribute="centerY" constant="-0.5" id="P3e-5K-my5"/>
+                            <constraint firstItem="IY0-CY-E5G" firstAttribute="centerY" secondItem="4v2-lA-E5P" secondAttribute="centerY" id="P2P-hB-jIl"/>
                             <constraint firstAttribute="bottom" secondItem="jnP-bm-eUb" secondAttribute="bottom" constant="20" id="Wq4-ps-cRx"/>
                             <constraint firstItem="4v2-lA-E5P" firstAttribute="leading" secondItem="TnO-z9-eOo" secondAttribute="trailing" constant="12" id="ba3-nh-8QR"/>
                             <constraint firstItem="jnP-bm-eUb" firstAttribute="top" secondItem="GSX-7Z-XIl" secondAttribute="top" constant="20" id="lgw-jH-t7F"/>
-                            <constraint firstItem="4v2-lA-E5P" firstAttribute="centerX" secondItem="IY0-CY-E5G" secondAttribute="centerX" id="oVz-f6-YEy"/>
                             <constraint firstAttribute="centerY" secondItem="4v2-lA-E5P" secondAttribute="centerY" id="oie-C0-sYF"/>
                             <constraint firstItem="jnP-bm-eUb" firstAttribute="leading" secondItem="GSX-7Z-XIl" secondAttribute="leading" constant="20" id="ow3-qb-WPK"/>
                         </constraints>
