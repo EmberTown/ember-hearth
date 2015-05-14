@@ -170,7 +170,7 @@ class ProjectController: NSObject, ProjectNameWindowDelegate, ProgressWindowDele
                         var alert = NSAlert()
                         alert.alertStyle = NSAlertStyle.WarningAlertStyle
                         alert.messageText = "Installation failed"
-                        alert.informativeText = "Run ' cd \"\(project.path!.stringByDeletingLastPathComponent)\" && ember install \"\(project.name!)\" ' from Terminal to see what went wrong."
+                        alert.informativeText = "Run ' cd \"\(project.path!.stringByDeletingLastPathComponent)\" && ember new \"\(project.name!)\" ' from Terminal to see what went wrong."
                         alert.beginSheetModalForWindow(self.mainWindow!, completionHandler: nil)
                     }
                 }
