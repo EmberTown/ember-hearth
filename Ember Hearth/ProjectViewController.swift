@@ -45,7 +45,6 @@ class ProjectViewController: NSViewController {
     }
     
     func serverStarting() {
-        runButton.enabled = false
         progressIndicator.startAnimation(self)
         progressIndicator.hidden = false
         runButton.title = stopServerString
@@ -53,16 +52,14 @@ class ProjectViewController: NSViewController {
     
     func serverStarted() {
         runButton.title = stopServerString
-        openInBrowserButton.enabled = true
-        runButton.enabled = true
+        openInBrowserButton.hidden = false
         progressIndicator.hidden = true
         progressIndicator.stopAnimation(self)
     }
     
     func serverStopped() {
-        openInBrowserButton.enabled = false
+        openInBrowserButton.hidden = true
         runButton.title = runServerString
-        runButton.enabled = true
         progressIndicator.hidden = true
         progressIndicator.stopAnimation(self)
     }
