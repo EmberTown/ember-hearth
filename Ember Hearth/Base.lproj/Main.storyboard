@@ -562,8 +562,16 @@
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" autoenablesItems="NO" id="JSO-O6-del">
                                                 <items>
-                                                    <menuItem title="Create project" id="zHb-gX-Lzr"/>
-                                                    <menuItem title="Open Project" id="jHO-qa-Dmp"/>
+                                                    <menuItem title="Create project" id="zHb-gX-Lzr">
+                                                        <connections>
+                                                            <action selector="createProject:" target="dot-n3-klN" id="jWo-NE-lG0"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                    <menuItem title="Open Project" id="jHO-qa-Dmp">
+                                                        <connections>
+                                                            <action selector="openProject:" target="dot-n3-klN" id="PwO-tR-enO"/>
+                                                        </connections>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
