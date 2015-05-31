@@ -41,7 +41,12 @@ class ProjectViewController: NSViewController {
     }
     
     @IBAction func openInBrowser (sender: AnyObject) {
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
+        if let defaultBrowser = NSUserDefaults.standardUserDefaults().objectForKey(defaultBrowserKey) as? String {
+            let urls = [NSURL(string: "http://localhost:4200")!] as [AnyObject]
+            NSWorkspace.sharedWorkspace().openURLs(urls, withAppBundleIdentifier: defaultBrowser, options: NSWorkspaceLaunchOptions.allZeros, additionalEventParamDescriptor: nil, launchIdentifiers: nil)
+        } else {
+            NSWorkspace.sharedWorkspace().openURL(NSURL(string: "http://localhost:4200")!)
+        }
     }
     
     func serverStarting() {

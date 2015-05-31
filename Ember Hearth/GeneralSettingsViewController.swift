@@ -13,6 +13,19 @@ import Sparkle
 #endif
 import MASShortcut
 
+struct Browser {
+    var identifier: String
+    var path: String
+    var name: String
+    var icon: NSImage
+}
+
+func ==(left: Browser, right: Browser) -> Bool {
+    return left.identifier == right.identifier
+}
+
+let defaultBrowserKey = "defaultBrowserKey"
+
 class GeneralSettingsViewController: NSViewController, MASPreferencesViewController {
     #if RELEASE
     var updater = SUUpdater()
@@ -21,8 +34,13 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
     @IBOutlet var automaticUpdatesCheckbox: NSButton!
     @IBOutlet var showStatusItemCheckbox: NSButton!
     @IBOutlet var shortcutView: MASShortcutView!
+    @IBOutlet var browserButton: NSPopUpButton!
+    
+    let knownBrowsers = ["com.operasoftware.Opera", "com.google.Chrome", "com.apple.Safari", "org.mozilla.firefox", "com.google.Chrome.canary"] as Set
     
     let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+    var installedBrowsers: [Browser] = []
+    var defaultBrowser: Browser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +51,42 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
         automaticUpdatesCheckbox.action = "noUpdatesInDebug"
         #endif
         
+        let defaultBrowserIdentifier = NSUserDefaults.standardUserDefaults().stringForKey(defaultBrowserKey) ?? LSCopyDefaultHandlerForURLScheme("https").takeUnretainedValue() as! String
+        let httpsers = Set(LSCopyAllHandlersForURLScheme("https").takeUnretainedValue() as! [String])
+        let installedBrowserIdentifiers = Array(httpsers.intersect(self.knownBrowsers))
+        for identifier in installedBrowserIdentifiers {
+            let paths = (LSCopyApplicationURLsForBundleIdentifier(identifier, nil).takeUnretainedValue() as! [NSURL])
+            let path = paths.first!.absoluteString!
+            let name = path.stringByDeletingPathExtension.lastPathComponent.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            let icon = NSWorkspace.sharedWorkspace().iconForFile(path.stringByReplacingOccurrencesOfString("file://", withString: "", options: NSStringCompareOptions.allZeros, range: nil).stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+            
+            let smallIcon = NSImage(size: NSSize(width: 16, height: 16))
+            smallIcon.lockFocus()
+            icon.drawInRect(NSRect(x: 0, y: 0, width: smallIcon.size.width, height: smallIcon.size.height))
+            smallIcon.unlockFocus()
+            
+            let browser = Browser(identifier: identifier, path: path, name: name, icon: smallIcon)
+            installedBrowsers.append(browser)
+            if identifier == defaultBrowserIdentifier {
+                defaultBrowser = browser
+            }
+        }
+        installedBrowsers = installedBrowsers.sorted { $0.name < $1.name }
+        
+        browserButton.menu?.removeAllItems()
+        for browser in installedBrowsers {
+            let item = NSMenuItem()
+            item.title = browser.name
+            item.image = browser.icon
+            browserButton.menu?.addItem(item)
+            
+            if NSUserDefaults.standardUserDefaults().stringForKey(defaultBrowserKey) != nil && NSUserDefaults.standardUserDefaults().stringForKey(defaultBrowserKey) == browser.identifier {
+                browserButton.selectItem(item)
+            } else if browser == defaultBrowser! {
+                browserButton.selectItem(item)
+            }
+        }
+
         shortcutView.associatedUserDefaultsKey = appDelegate.runServerHotKey
         
         showStatusItemCheckbox.bind("value",
@@ -55,5 +109,11 @@ class GeneralSettingsViewController: NSViewController, MASPreferencesViewControl
         } else {
             StatusBarManager.sharedManager.showStatusBarItem()
         }
+    }
+    
+    @IBAction func changedBrowser(sender: AnyObject?) {
+        let browser = installedBrowsers[browserButton.indexOfSelectedItem]
+        println("Set default browser to  \(browser.identifier)")
+        NSUserDefaults.standardUserDefaults().setValue(browser.identifier, forKey: defaultBrowserKey)
     }
 }

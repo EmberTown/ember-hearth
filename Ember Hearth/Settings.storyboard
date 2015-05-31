@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <scenes>
         <!--Path Settings View Controller-->
@@ -89,7 +89,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpM-Jm-2x8">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OpM-Jm-2x8">
                                 <rect key="frame" x="229" y="20" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="yeJ-wJ-S5s"/>
@@ -128,7 +128,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-QI-zug">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-QI-zug">
                                 <rect key="frame" x="18" y="20" width="205" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Watchman path" id="6SU-W4-w9b">
                                     <font key="font" metaFont="system"/>
@@ -138,6 +138,7 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="OpM-Jm-2x8" firstAttribute="trailing" secondItem="frX-s0-gkX" secondAttribute="trailing" id="1hi-zW-TRy"/>
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="height" secondItem="D38-YA-u3k" secondAttribute="height" id="42W-ug-A1x"/>
                             <constraint firstItem="Z0v-ai-EhS" firstAttribute="leading" secondItem="wRi-1b-8IK" secondAttribute="leading" constant="20" id="4kV-ZS-hsG"/>
                             <constraint firstItem="k9g-Jh-N6g" firstAttribute="leading" secondItem="xfd-vu-eLN" secondAttribute="trailing" constant="8" id="6Au-3L-bP4"/>
@@ -156,6 +157,7 @@
                             <constraint firstItem="nnD-0Q-Q1I" firstAttribute="top" secondItem="cR2-cw-RoI" secondAttribute="bottom" constant="8" id="JxB-Pq-zdI"/>
                             <constraint firstItem="9li-Ya-oLz" firstAttribute="top" secondItem="nnD-0Q-Q1I" secondAttribute="bottom" constant="8" id="KIR-fa-Lkp"/>
                             <constraint firstItem="frX-s0-gkX" firstAttribute="height" secondItem="CWn-pW-I71" secondAttribute="height" id="N6C-2m-z1e"/>
+                            <constraint firstItem="CWn-pW-I71" firstAttribute="leading" secondItem="LLb-QI-zug" secondAttribute="leading" id="Psw-RS-CZb"/>
                             <constraint firstItem="xfd-vu-eLN" firstAttribute="top" secondItem="Z0v-ai-EhS" secondAttribute="bottom" constant="20" id="Qjb-wR-72Q"/>
                             <constraint firstAttribute="trailing" secondItem="cR2-cw-RoI" secondAttribute="trailing" constant="20" id="Qmd-OL-4cp"/>
                             <constraint firstAttribute="bottom" secondItem="OpM-Jm-2x8" secondAttribute="bottom" constant="20" id="SOo-Hh-5iH"/>
@@ -244,13 +246,42 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KcI-pD-QoL">
+                                <rect key="frame" x="48" y="162" width="196" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open in browser" id="oh4-rR-pK2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RCK-vw-Ovn">
+                                <rect key="frame" x="330" y="157" width="73" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="9O4-yb-24r" id="ma1-tB-qUD">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="4Sw-2v-E5m">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="9O4-yb-24r"/>
+                                            <menuItem title="Item 2" id="Qs4-YZ-A2W"/>
+                                            <menuItem title="Item 3" id="Etw-65-jyS"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="changedBrowser:" target="NgR-im-LEh" id="g5h-3j-o5Q"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="zwI-1R-h59" firstAttribute="leading" secondItem="KcI-pD-QoL" secondAttribute="leading" id="0es-Tn-Jkn"/>
                             <constraint firstItem="TCg-Mz-OIT" firstAttribute="centerY" secondItem="zwI-1R-h59" secondAttribute="centerY" constant="1" id="4eo-JQ-tsN"/>
+                            <constraint firstItem="KcI-pD-QoL" firstAttribute="top" secondItem="zwI-1R-h59" secondAttribute="bottom" constant="18" id="5Zm-er-9re"/>
+                            <constraint firstItem="TCg-Mz-OIT" firstAttribute="trailing" secondItem="RCK-vw-Ovn" secondAttribute="trailing" id="B1B-ON-Hb6"/>
                             <constraint firstItem="7Bk-aF-ux9" firstAttribute="leading" secondItem="zwI-1R-h59" secondAttribute="leading" id="EBX-kJ-fPo"/>
                             <constraint firstItem="QMc-zA-pxh" firstAttribute="top" secondItem="3sE-vt-qbc" secondAttribute="top" constant="20" id="G5S-jZ-cKY"/>
                             <constraint firstItem="QMc-zA-pxh" firstAttribute="trailing" secondItem="7Bk-aF-ux9" secondAttribute="trailing" id="Htf-Bk-uzr"/>
                             <constraint firstItem="TCg-Mz-OIT" firstAttribute="trailing" secondItem="7Bk-aF-ux9" secondAttribute="trailing" id="Oyy-Un-pMN"/>
+                            <constraint firstItem="KcI-pD-QoL" firstAttribute="centerY" secondItem="RCK-vw-Ovn" secondAttribute="centerY" id="TSB-Ha-0E3"/>
                             <constraint firstItem="7Bk-aF-ux9" firstAttribute="top" secondItem="QMc-zA-pxh" secondAttribute="bottom" constant="20" id="fV3-dM-ORA"/>
                             <constraint firstAttribute="centerX" secondItem="QMc-zA-pxh" secondAttribute="centerX" id="j6A-Hs-RyS"/>
                             <constraint firstItem="TCg-Mz-OIT" firstAttribute="leading" secondItem="zwI-1R-h59" secondAttribute="trailing" constant="15" id="j6W-Rm-qMs"/>
@@ -260,6 +291,7 @@
                     </view>
                     <connections>
                         <outlet property="automaticUpdatesCheckbox" destination="QMc-zA-pxh" id="MwG-AK-Wo6"/>
+                        <outlet property="browserButton" destination="RCK-vw-Ovn" id="BXq-Dh-jly"/>
                         <outlet property="shortcutView" destination="TCg-Mz-OIT" id="dCP-FF-dIs"/>
                         <outlet property="showStatusItemCheckbox" destination="7Bk-aF-ux9" id="wez-FG-pa1"/>
                     </connections>
