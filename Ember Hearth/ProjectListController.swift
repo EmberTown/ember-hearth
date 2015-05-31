@@ -55,6 +55,15 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
         refreshList(nil)
     }
     
+    override func viewDidAppear() {
+        let delegate = NSApplication.sharedApplication().delegate! as! AppDelegate
+        if (self.tableView.selectedRow < 0 && delegate.activeProject != nil && self.projects != nil) {
+            if let index = find(self.projects!, delegate.activeProject!) {
+                self.tableView.selectRowIndexes(NSIndexSet(index: index), byExtendingSelection: false)
+            }
+        }
+    }
+    
     // MARK: Drag-and-drop
     func dragEntered(notification: NSNotification?) {
         selectedRow = self.tableView.selectedRow
@@ -212,7 +221,17 @@ class ProjectListController: NSViewController, NSTableViewDataSource, NSTableVie
             if indexOfActiveProject != nil {
                 self.tableView.selectRowIndexes(NSIndexSet(index: indexOfActiveProject!), byExtendingSelection: false)
             }
-        } else {
+        } else if let currentProjectPath = NSUserDefaults.standardUserDefaults().stringForKey(currentProjectPathKey) {
+            if let projects = self.projects {
+                for project in projects {
+                    if project.path == currentProjectPath {
+                        appDelegate.activeProject = project
+                    }
+                }
+            }
+        }
+        
+        if appDelegate.activeProject == nil {
             appDelegate.activeProject = projects?.first
         }
     }

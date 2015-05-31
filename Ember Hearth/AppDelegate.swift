@@ -13,12 +13,15 @@ import Sparkle
 import MASPreferences
 import MASShortcut
 
+let currentProjectPathKey = "currentProjectPathKey"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     var projects: [Project]?
     var activeProject: Project? {
         didSet {
             if activeProject != nil {
+                NSUserDefaults.standardUserDefaults().setObject(activeProject!.path, forKey: currentProjectPathKey)
                 NSNotificationCenter.defaultCenter().postNotificationName("activeProjectSet", object: activeProject)
             } else {
                 NSNotificationCenter.defaultCenter().postNotificationName("noActiveProject", object: activeProject)
