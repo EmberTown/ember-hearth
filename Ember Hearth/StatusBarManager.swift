@@ -79,25 +79,26 @@ class StatusBarManager: NSObject {
     // MARK: Notification handling
     func serverStarting(notification: NSNotification?) {
         updateStatusBarButton("StatusBarIconStarting", accessibilityTitle: "Ember Hearth - Starting Server")
-        runServerMenuItem?.enabled = false
+        runServerMenuItem?.enabled = true
+        runServerMenuItem?.title = "Stop booting server"
     }
     
     func serverStarted(notification: NSNotification?) {
         updateStatusBarButton("StatusBarIconRunning", accessibilityTitle: "Ember Hearth - Running Server")
         runServerMenuItem?.enabled = true
-        runServerMenuItem?.title = "Stop Server"
+        runServerMenuItem?.title = "Stop server"
     }
     
     func serverStopped(notification: NSNotification?) {
         updateStatusBarButton("StatusBarIconIdle", accessibilityTitle: "Ember Hearth")
         runServerMenuItem?.enabled = true
-        runServerMenuItem?.title = "Run Server"
+        runServerMenuItem?.title = "Run server"
     }
     
     func serverStoppedWithError(notification: NSNotification?) {
         updateStatusBarButton("StatusBarIconError", accessibilityTitle: "Ember Hearth - Server Failed Miserably")
         runServerMenuItem?.enabled = true
-        runServerMenuItem?.title = "Run Server"
+        runServerMenuItem?.title = "Run server"
     }
     
     func activeProjectSet(notification: NSNotification?) {
