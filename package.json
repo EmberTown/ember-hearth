@@ -20,6 +20,8 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
+    "electron-packager": "5.2.1",
+    "electron-prebuilt": "0.36.5",
     "ember-ajax": "0.7.1",
     "ember-cli": "2.3.0-beta.1",
     "ember-cli-app-version": "^1.0.0",
@@ -34,7 +36,40 @@
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.3.0",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-electron": "0.3.4",
     "ember-export-application-global": "^1.0.4",
     "ember-resolver": "^2.0.3"
+  },
+  "main": "electron.js",
+  "ember-electron": {
+    "WHAT IS THIS?": "Please see the README.md",
+    "name": null,
+    "platform": null,
+    "arch": null,
+    "version": null,
+    "app-bundle-id": null,
+    "app-category-type": null,
+    "app-version": null,
+    "asar": null,
+    "asar-unpack": null,
+    "asar-unpack-dir": null,
+    "build-version": null,
+    "cache": null,
+    "helper-bundle-id": null,
+    "icon": null,
+    "ignore": null,
+    "out": null,
+    "overwrite": null,
+    "prune": null,
+    "sign": null,
+    "strict-ssl": null,
+    "version-string": {
+      "CompanyName": null,
+      "LegalCopyright": null,
+      "FileDescription": null,
+      "OriginalFilename": null,
+      "ProductName": null,
+      "InternalName": null
+    }
   }
 }
