@@ -1,0 +1,54 @@
+<form class="ui equal width form">
+    <h4 class="ui header">{{cmd.name}}</h4>
+    <p>{{cmd.description}}</p>
+
+    <div class="fields">
+      {{#if blueprintOptions}}
+          <div class="field">
+              <label>blueprint</label>
+              <select class="ui fluid dropdown" onchange={{action (mut selectedBlueprintName) value="target.value"}}>
+                {{#each blueprintOptions as |opt|}}
+                    <option value="{{opt.name}}" selected={{eq opt.name selectedBlueprintName}}>{{opt.name}}</option>
+                {{/each}}
+              </select>
+          </div>
+        {{#each selectedBlueprint.anonymousOptions as |opt|}}
+            <div class="field">
+                <label>&nbsp;</label>
+              {{input placeholder=opt}}
+            </div>
+        {{/each}}
+      {{/if}}
+    </div>
+
+    <p>{{selectedBlueprint.description}}</p>
+    <button class="ui button" type="submit"><i class="icon lightning"></i> Run</button>
+</form>
+
+<div class="ui list">
+  {{#each cmd.availableOptions as |opt|}}
+      <div class="item">
+          <div class="header">{{opt.name}} {{#if opt.required}}(required){{/if}}</div>
+          default {{#if opt.type}}({{opt.type}}){{/if}}: {{opt.default}}
+      </div>
+  {{/each}}
+</div>
+
+<ul>
+  {{#each cmd.availableBlueprints as |blueprint|}}
+      <li>
+        {{#each-in blueprint as |name bp|}}
+            <strong>{{name}}</strong>
+            <ul>
+              {{#each bp as |b|}}
+                  <li>
+                    {{b.name}}
+                    {{b.description}}
+                    {{b.anonymousOptions}}
+                  </li>
+              {{/each}}
+            </ul>
+        {{/each-in}}
+      </li>
+  {{/each}}
+</ul>

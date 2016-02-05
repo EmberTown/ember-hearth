@@ -1,0 +1,17 @@
+<h2 class="ui header">Log</h2>
+<div class="ui celled stackable grid">
+    <div class="sixteen wide column">
+        <div class="ui grid">
+            <div class="eight wide column">
+                <h3 class="ui header">stdout</h3>
+                <pre class="stdout">{{#each model.stdout as |stdout|}}{{stdout}}{{/each}}</pre>
+            </div>
+            <div class="eight wide column">
+                <h3 class="ui header">stderr</h3>
+                <pre class="stderr">{{model.stderr}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{outlet}}

@@ -6,6 +6,14 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('app', function() {
+    this.route('detail', {path: '/:app_id'}, function() {
+      this.route('statistics');
+      this.route('actions');
+      this.route('log');
+    });
+    this.route('new');
+  });
 });
 
 export default Router;

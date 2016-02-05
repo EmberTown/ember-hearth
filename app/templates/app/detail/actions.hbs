@@ -1,0 +1,10 @@
+<div class="ui grid">
+    <div class="sixteen wide column">
+        <br>
+      {{#each availableCommands as |cmd|}}
+        {{ember-cmd cmd=cmd}}
+      {{/each}}
+    </div>
+</div>
+
+{{outlet}}
