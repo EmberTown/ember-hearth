@@ -2,7 +2,7 @@
     <div class="sixteen wide column">
         <br>
       {{#each availableCommands as |cmd|}}
-        {{ember-cmd cmd=cmd}}
+        {{ember-cmd app=model cmd=cmd}}
       {{/each}}
     </div>
 </div>
