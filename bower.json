@@ -7,7 +7,8 @@
     "ember-load-initializers": "0.1.7",
     "ember-qunit-notifications": "0.1.0",
     "jquery": "1.11.3",
-    "loader.js": "^3.5.0"
+    "loader.js": "^3.5.0",
+    "semantic": "^2.1.8"
   },
   "resolutions": {
     "ember": "2.2.0"

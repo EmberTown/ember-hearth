@@ -1,0 +1,53 @@
+<h2 class="ui header">Package</h2>
+<div class="ui celled stackable grid">
+    <div class="sixteen wide tablet eight wide computer column">
+        <h3 class="ui header">DevDependencies</h3>
+
+        <table class="ui compact very basic table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Version</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each-in model.package.devDependencies as |name version|}}
+                <tr>
+                    <td>
+                        <!--TODO: not every package is automatically on npm-->
+                        <span {{action 'openExternal' (concat "https://www.npmjs.com/package/" name)}}>{{name}}</span>
+                    </td>
+                    <td>{{version}}</td>
+                </tr>
+            {{/each-in}}
+            </tbody>
+        </table>
+    </div>
+    <div class="sixteen wide tablet eight wide computer column">
+        <h3 class="ui header">Dependencies</h3>
+
+        <table class="ui compact very basic table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Version</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each-in model.package.dependencies as |name version|}}
+                <tr>
+                    <td>
+                        <!--TODO: not every package is automatically on npm-->
+                        <span {{action 'openExternal' (concat "https://www.npmjs.com/package/" name)}}>{{name}}</span>
+                    </td>
+                    <td>{{version}}</td>
+                </tr>
+            {{/each-in}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{outlet}}

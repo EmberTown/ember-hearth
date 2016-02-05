@@ -1,0 +1,65 @@
+<div class="flex flex-column">
+    <div>
+        <h2 class="ui header">
+            <div class="content">
+                <i class="icon {{if model.isAddon 'puzzle' 'desktop'}}"></i>
+              {{model.name}}
+                <div class="sub header">{{model.path}}</div>
+            </div>
+        </h2>
+
+      {{#if model.running}}
+          <button class="ui labeled red icon button" {{action 'stopServer'}}>
+              <i class="stop square icon"></i>
+              Stop Ember server
+          </button>
+          <button class="ui labeled icon button" {{action 'openExternal' (concat "http://127.0.0.1:" model.cli.port)}}>
+              <i class="external square icon"></i>
+              Open in browser
+          </button>
+      {{else}}
+          <div class="ui labeled green icon button" {{action 'startServer'}}>
+              <i class="play square icon"></i>
+              Start Ember server
+          </div>
+      {{/if}}
+
+      {{#if model.starting}}
+        {{#if model.running}}
+            <div class="ui icon positive message">
+                <i class="checkmark icon"></i>
+                <div class="content">
+                    <div class="header">Ember server running</div>
+                    <p>at <code>http://127.0.0.1:{{model.cli.port}}</code></p>
+                </div>
+            </div>
+        {{else}}
+            <div class="ui icon warning message">
+                <i class="notched circle loading icon"></i>
+                <div class="content">
+                    <div class="header">starting Ember project</div>
+                    <p>{{model.lastStdout}}</p>
+                </div>
+            </div>
+        {{/if}}
+      {{/if}}
+
+        <div class="ui secondary pointing menu">
+          {{#if model.running}}
+            {{#link-to 'app.detail.log' model class='item'}}Log{{/link-to}}
+          {{/if}}
+          {{#link-to 'app.detail.actions' model class='item'}}Actions{{/link-to}}
+            <a class="item">Addons</a>
+            <a class="item">Project settings</a>
+          {{#link-to 'app.detail.statistics' model class='item'}}Statistics{{/link-to}}
+        </div>
+    </div>
+    <div class="flex-fill">
+      {{#if isLoading}}
+          <div class="ui active inverted dimmer">
+              <div class="ui text loader">Reticulating Splines</div>
+          </div>
+      {{/if}}
+      {{outlet}}
+    </div>
+</div>

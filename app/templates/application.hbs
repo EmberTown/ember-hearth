@@ -1,3 +1,44 @@
-<h2 id="title">Welcome to Ember</h2>
-
-{{outlet}}
+<div class="ui fluid container">
+    <div class="ui celled stackable grid">
+        <div class="base-col five wide tablet six wide computer four wide large screen three wide widescreen column">
+            <div class="flex flex-column">
+                <div class="ui center aligned basic segment">
+                    <h2 class="ui center aligned header">Hearth</h2>
+                    <div class="ui horizontal divider">Ember</div>
+                    <div class="ui fluid buttons">
+                      {{#link-to 'app.new' class='ui labeled icon green button'}}
+                          <i class="icon star"></i>
+                          New app
+                      {{/link-to}}
+                        <button class="ui right labeled icon button" {{action 'addApp'}}>
+                            <i class="icon plus"></i>
+                            Add existing
+                        </button>
+                    </div>
+                </div>
+                <div class="ui horizontal divider">projects</div>
+                <div class="flex-fill">
+                    <div class="ui vertical text menu fluid">
+                      {{#each model as |app|}}
+                        {{#link-to 'app.detail' app class='item'}}
+                            <div class="ui blue label">{{app.package.version}}</div>
+                          {{#if app.starting}}
+                            {{#if app.running}}
+                                <i class="icon check circle green"></i>
+                            {{else}}
+                                <i class="icon asterisk loading yellow" title="starting"></i>
+                            {{/if}}
+                          {{/if}}
+                            <i class="icon {{if app.isAddon 'puzzle' 'desktop'}}"></i>
+                          {{app.name}}
+                        {{/link-to}}
+                      {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="base-col eleven wide tablet ten wide computer twelve wide large screen thirteen wide widescreen column">
+          {{outlet}}
+        </div>
+    </div>
+</div>

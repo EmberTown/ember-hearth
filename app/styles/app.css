@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.stderr, .stdout{
+  white-space: pre;
+  height: 400px;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+
+body > div > .container > .grid{
+  margin: 0 !important;
+}
+
+.base-col{
+  overflow: hidden;
+  height: 100vh;
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-column{
+  height: 100vh;
+  flex-direction: column;
+}
+.flex-fill{
+  flex: 2;
+  overflow: auto;
+}
