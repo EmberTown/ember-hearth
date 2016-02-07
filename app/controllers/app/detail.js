@@ -17,11 +17,10 @@ export default Ember.Controller.extend({
         project: this.get('model')
       });
 
-      this.set('startCommand', command);
       this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
     },
     stopServer(){
-      this.get('ipc').trigger('hearth-kill-cmd', this.get('store').serialize(this.get('startCommand'), {includeId: true}));
+      this.get('ipc').trigger('hearth-kill-cmd', this.get('store').serialize(this.get('model.serveCommand'), {includeId: true}));
     }
   }
 });
