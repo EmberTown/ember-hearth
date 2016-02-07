@@ -1,10 +1,15 @@
-<div class="ui grid">
-    <div class="sixteen wide column">
-        <br>
-      {{#each availableCommands as |cmd|}}
-        {{ember-cmd cmd=cmd}}
-      {{/each}}
-    </div>
+<div class="ui basic segment">
+  {{#unless help}}
+      <div class="ui active inverted dimmer">
+          <div class="ui text loader">
+              Reticulating splines <br>
+          </div>
+      </div>
+  {{else}}
+    {{#each availableCommands key='name' as |cmd|}}
+      {{ember-cmd app=model cmd=cmd}}
+    {{/each}}
+  {{/unless}}
 </div>
 
 {{outlet}}

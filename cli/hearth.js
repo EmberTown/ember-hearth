@@ -17,9 +17,9 @@ let processes = {},
 
 function addMetadata(app) {
   // get some app metadata (could probably be cached, but avoids old entries if stored in db on add)
-  console.log('stat', path.resolve(app.path, 'package.json'));
-  const packagePath = path.resolve(app.path, 'package.json');
-  const cliPath = path.resolve(app.path, '.ember-cli');
+  console.log('stat', path.resolve(app.data.attributes.path, 'package.json'));
+  const packagePath = path.resolve(app.data.attributes.path, 'package.json');
+  const cliPath = path.resolve(app.data.attributes.path, '.ember-cli');
 
   return Promise.props({
     'package': fs.statAsync(packagePath),
@@ -29,13 +29,13 @@ function addMetadata(app) {
       'package': stats.package.isFile() && fs.readFileAsync(packagePath),
       cli: stats.cli.isFile() && fs.readFileAsync(cliPath)
     }).then(data => {
-      if (data.package) app.package = JSON.parse(data.package);
-      if (data.cli) app.cli = JSON.parse(jsonminify(data.cli.toString('utf8')));
+      if (data.package) app.data.attributes.package = JSON.parse(data.package);
+      if (data.cli) app.data.attributes.cli = JSON.parse(jsonminify(data.cli.toString('utf8')));
 
       // TODO: read default ports
-      if (!app.cli) app.cli = {};
-      if (!app.cli.testPort) app.cli.testPort = 7357;
-      if (!app.cli.port) app.cli.port = 4200;
+      if (!app.data.attributes.cli) app.data.attributes.cli = {};
+      if (!app.data.attributes.cli.testPort) app.data.attributes.cli.testPort = 7357;
+      if (!app.data.attributes.cli.port) app.data.attributes.cli.port = 4200;
 
       return app;
     });
@@ -48,113 +48,98 @@ function emitApps(ev) {
       .then((apps) => {
         // send jsonapi list of apps
         ev.sender.send('app-list', {
-          data: apps.map(app => {
-            return {
-              id: app.id,
-              type: 'project',
-              attributes: app
-            };
-          })
+          data: apps.map(app => app.data)
         });
       }).catch(e => console.error(e));
   });
 }
 
-function emitEmberHelp(ev, app){
-  var ember = spawn(EMBER_BIN, ['--help', '--json'], {
-    cwd: path.normalize(app.path),
-    detached: true
-  });
-  let i = 0,
-    data = '';
-
-  ember.stdout.on('data', (stdoutData) => {
-    // ignore ember version header
-    if (i > 0) {
-      data += stdoutData.toString('utf8');
-    }
-    i++;
-    console.log(`${app.path} stdout: ${stdoutData.toString('utf8')}`);
-  });
-  ember.stderr.on('data', (data) => {
-    console.log(`${app.path} stderr: ${data.toString('utf8')}`);
-  });
-  ember.on('close', (code) => {
-    ev.sender.send('app-help', app, JSON.parse(data));
-    console.log(`${app.path} child process exited with code ${code}`);
-  });
-}
-
 function addApp(ev, appPath) {
   return db.apps.insertAsync({
-    id: uuid.v4(),
-    path: appPath,
-    name: path.basename(appPath)
+    data: {
+      id: uuid.v4(),
+      type: 'project',
+      attributes: {
+        path: appPath,
+        name: path.basename(appPath)
+      }
+    }
   }).then((data) => {
     return emitApps(ev)
       .then(() => data);
   });
 }
 
-function initApp(ev, app) {
+function initApp(ev, data) {
   var ember = spawn(EMBER_BIN, ['init'], {
-    cwd: path.normalize(app.path),
+    cwd: path.normalize(data.path),
     detached: true
   });
   ember.stdout.on('data', (data) => {
-    ev.sender.send('app-stdout', app, data.toString('utf8'));
-    console.log(`${app.path} stdout: ${data.toString('utf8')}`);
+    ev.sender.send('app-init-stdout', data.toString('utf8'));
+    console.log(`${data.path} stdout: ${data.toString('utf8')}`);
   });
   ember.stderr.on('data', (data) => {
-    ev.sender.send('app-stderr', app, data.toString('utf8'));
-    console.log(`${app.path} stderr: ${data.toString('utf8')}`);
+    ev.sender.send('app-init-stderr', data.toString('utf8'));
+    console.log(`${data.path} stderr: ${data.toString('utf8')}`);
   });
   ember.on('close', (code) => {
-    console.log(`${app.path} child process exited with code ${code}`);
-    addApp(ev, app.path).then((app) => {
+    console.log(`${data.path} child process exited with code ${code}`);
+    addApp(ev, data.path).then((app) => {
       ev.sender.send('app-init-end', app);
     });
   });
-  ev.sender.send('app-init-start', app);
-  processes[app.id] = ember;
+  ev.sender.send('app-init-start', data);
 }
 
-function startApp(ev, app) {
-  var ember = spawn(EMBER_BIN, ['s'], {
-    cwd: path.normalize(app.path),
-    detached: true
+function runCmd(ev, cmd) {
+  const cmdData = cmd.data;
+  return db.apps.findAsync({'data.id': cmdData.relationships.project.data.id}).then((apps) => {
+    let app = apps[0],
+      args = [cmdData.attributes.name].concat(cmdData.attributes.args);
+
+    if (cmdData.attributes.options) {
+      Object.keys(cmdData.attributes.options).forEach(optionName =>
+        args.push(`--${optionName}`, cmdData.attributes.options[optionName]));
+    }
+
+    console.log('spawning', path.normalize(app.data.attributes.path), EMBER_BIN, args);
+    var ember = spawn(EMBER_BIN, args, {
+      cwd: path.normalize(app.data.attributes.path),
+      detached: true
+    });
+    ember.stdout.on('data', (data) => {
+      ev.sender.send('cmd-stdout', cmdData, data.toString('utf8'));
+      console.log(`cmd ${args} stdout: ${data}`);
+    });
+    ember.stderr.on('data', (data) => {
+      ev.sender.send('cmd-stderr', cmdData, data.toString('utf8'));
+      console.log(`cmd ${args} stderr: ${data}`);
+    });
+    ember.on('close', (code) => {
+      ev.sender.send('cmd-close', cmdData, code);
+      console.log(`cmd ${args} child process exited with code ${code}`);
+    });
+    ev.sender.send('cmd-start', cmdData);
+    processes[cmdData.id] = ember;
   });
-  ember.stdout.on('data', (data) => {
-    ev.sender.send('app-stdout', app, data.toString('utf8'));
-    console.log(`${app.name} stdout: ${data}`);
-  });
-  ember.stderr.on('data', (data) => {
-    ev.sender.send('app-stderr', app, data.toString('utf8'));
-    console.log(`${app.name} stderr: ${data}`);
-  });
-  ember.on('close', (code) => {
-    ev.sender.send('app-close', app, code);
-    console.log(`${app.name} child process exited with code ${code}`);
-  });
-  ev.sender.send('app-start', app);
-  processes[app.id] = ember;
 }
 
-function stopApp(ev, app) {
-  processes[app.id].kill();
+function killCmd(ev, cmd) {
+  processes[cmd.data.id].kill();
+  ev.sender.send('cmd-kill', cmd.data);
 }
 
-function stopAllApps() {
-  Object.keys(processes).forEach(appId =>
-    processes[appId].kill());
+function killAllProcesses(){
+  Object.keys(processes).forEach(processId =>
+    processes[processId].kill());
 }
 
 module.exports = {
   initApp,
-  stopAllApps,
-  stopApp,
-  emitEmberHelp,
+  runCmd,
+  killCmd,
   emitApps,
   addApp,
-  startApp
+  killAllProcesses
 };

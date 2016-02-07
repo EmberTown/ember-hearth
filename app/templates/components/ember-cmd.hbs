@@ -1,54 +1,89 @@
-<form class="ui equal width form">
-    <h4 class="ui header">{{cmd.name}}</h4>
-    <p>{{cmd.description}}</p>
-
-    <div class="fields">
-      {{#if blueprintOptions}}
-          <div class="field">
-              <label>blueprint</label>
-              <select class="ui fluid dropdown" onchange={{action (mut selectedBlueprintName) value="target.value"}}>
-                {{#each blueprintOptions as |opt|}}
-                    <option value="{{opt.name}}" selected={{eq opt.name selectedBlueprintName}}>{{opt.name}}</option>
-                {{/each}}
-              </select>
-          </div>
-        {{#each selectedBlueprint.anonymousOptions as |opt|}}
-            <div class="field">
-                <label>&nbsp;</label>
-              {{input placeholder=opt}}
-            </div>
-        {{/each}}
-      {{/if}}
+{{#if createdCommand.running}}
+    <div class="ui active inverted dimmer">
+        <div class="ui text loader">Running command <code>{{createdCommand.name}} {{createdCommand.args}}</code></div>
     </div>
+{{/if}}
+
+<div class="ui content">
+    <h3 class="ui header">
+        <div class="content">
+          {{cmd.name}}
+          {{#if createdCommand.succeeded}}
+              <i class="icon checkmark green"></i>
+          {{/if}}
+          {{#if createdCommand.failed}}
+              <i class="icon warning sign red"></i>
+          {{/if}}
+            <div class="sub header">{{cmd.description}}</div>
+        </div>
+    </h3>
+
+    <div class="ui divider"></div>
+
+    <form class="ui equal width form">
+        <div class="inline fields">
+          {{#if cmd.anonymousOptions}}
+            {{#if blueprintOptions}}
+                <div class="wide field">
+                    <select class="ui fluid dropdown"
+                            onchange={{action (mut selectedBlueprintName) value="target.value"}}>
+                      {{#each blueprintOptions as |opt|}}
+                          <option value="{{opt.name}}"
+                                  selected={{eq opt.name selectedBlueprintName}}>{{opt.name}}</option>
+                      {{/each}}
+                    </select>
+                </div>
+              {{#each selectedBlueprint.anonymousOptions as |opt idx|}}
+                  <div class="wide field">
+                      <input type="text"
+                             placeholder="{{opt}}"
+                             oninput={{action 'updateAnonymousField' idx}}>
+                  </div>
+              {{/each}}
+            {{else}}
+              {{#each cmd.anonymousOptions as |opt idx|}}
+                  <div class="wide field">
+                      <input type="text"
+                             placeholder="{{opt}}"
+                             oninput={{action 'updateAnonymousField' idx}}>
+                  </div>
+              {{/each}}
+            {{/if}}
+          {{/if}}
+        </div>
+    </form>
 
     <p>{{selectedBlueprint.description}}</p>
-    <button class="ui button" type="submit"><i class="icon lightning"></i> Run</button>
-</form>
 
-<div class="ui list">
-  {{#each cmd.availableOptions as |opt|}}
-      <div class="item">
-          <div class="header">{{opt.name}} {{#if opt.required}}(required){{/if}}</div>
-          default {{#if opt.type}}({{opt.type}}){{/if}}: {{opt.default}}
-      </div>
-  {{/each}}
+    <h4 class="ui header">Options</h4>
+    <form class="ui small form">
+        <div class="fields">
+          {{#each cmd.availableOptions as |opt|}}
+              <div class="four wide field">
+                  <label>{{opt.name}}</label>
+                  <input type="text"
+                         value="{{opt.default}}"
+                         name="{{opt.name}}"
+                         oninput={{action 'updateOption' opt.name}}>
+              </div>
+          {{/each}}
+        </div>
+    </form>
+
+    <div class="ui internally celled grid">
+        <div class="row">
+            <div class="eight wide column">
+                <h5 class="ui header">stdout</h5>
+                <pre class="stdout">{{#each createdCommand.stdout as |stdout|}}{{stdout}}{{/each}}</pre>
+            </div>
+            <div class="eight wide column">
+                <h5 class="ui header red">stderr</h5>
+                <pre class="stderr">{{#each createdCommand.stderr as |stderr|}}{{stderr}}{{/each}}</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui one buttons">
+        <div class="ui basic green button" {{action 'runCmd'}}><i class="lightning icon"></i> Run</div>
+    </div>
 </div>
-
-<ul>
-  {{#each cmd.availableBlueprints as |blueprint|}}
-      <li>
-        {{#each-in blueprint as |name bp|}}
-            <strong>{{name}}</strong>
-            <ul>
-              {{#each bp as |b|}}
-                  <li>
-                    {{b.name}}
-                    {{b.description}}
-                    {{b.anonymousOptions}}
-                  </li>
-              {{/each}}
-            </ul>
-        {{/each-in}}
-      </li>
-  {{/each}}
-</ul>

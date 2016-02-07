@@ -1,17 +1,33 @@
 import Ember from 'ember';
 
-const {computed} = Ember;
+const {computed, inject, observer} = Ember;
+
+function flatten(array) {
+  return [].concat.apply([], array);
+}
 
 export default Ember.Component.extend({
-  classNames: ['ui', 'vertical', 'segment'],
+  classNames: ['ui segment'],
+
+  ipc: inject.service(),
+  store: inject.service(),
+
+  anonymousFields: [],
+  options: {},
+
+  init(){
+    this._super(...arguments);
+    this.set('options', {});
+    this.set('anonymousFields', []);
+  },
 
   selectedBlueprintName: '',
-  selectedBlueprint: computed('selectedBlueprintName', function(){
+  selectedBlueprint: computed('selectedBlueprintName', function () {
     let selected = this.get('selectedBlueprintName');
     return this.get('blueprintOptions').filter(opt => selected === opt.name)[0];
   }),
 
-  blueprintOptions: computed('cmd.availableBlueprints', function(){
+  blueprintOptions: computed('cmd.availableBlueprints', function () {
     let options = [],
       blueprints = this.get('cmd.availableBlueprints');
 
@@ -26,5 +42,33 @@ export default Ember.Component.extend({
     }
 
     return options;
-  })
+  }),
+
+  actions: {
+    updateOption(name, ev){
+      this.set(`options.${name}`, ev.target.value);
+    },
+    updateAnonymousField(idx, ev){
+      this.get('anonymousFields')[idx] = ev.target.value;
+    },
+    runCmd(){
+      let store = this.get('store'),
+        blueprint = this.get('selectedBlueprint'),
+        app = this.get('app'),
+        anonymousFields = this.get('anonymousFields');
+
+      const command = store.createRecord('command', {
+        id: uuid.v4(),
+        name: this.get('cmd.name'),
+        options: this.get('options'),
+        args: flatten((blueprint ? [blueprint.name] : [])
+          .concat(anonymousFields).map(arg => arg.split(' '))),
+        project: app
+      });
+
+      this.set('createdCommand', command);
+
+      this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
+    }
+  }
 });

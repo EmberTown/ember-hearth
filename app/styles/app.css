@@ -4,8 +4,11 @@ body {
 }
 
 .stderr, .stdout{
+  font-family: monospace;
+  font-size: 10px;
+  margin: 0;
   white-space: pre;
-  height: 400px;
+  max-height: 200px;
   overflow-y: auto;
   word-wrap: break-word;
 }

@@ -21,6 +21,8 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import(app.bowerDirectory + '/semantic/dist/semantic.min.css');
+  // TODO: load uuid via vairable
+  app.import(app.bowerDirectory + '/node-uuid/uuid.js');
 
   return app.toTree();
 };

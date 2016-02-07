@@ -37,7 +37,7 @@ app.on('ready', function onReady() {
   mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
 
   mainWindow.on('closed', function onClosed() {
-    hearth.stopAllApps();
+    hearth.killAllProcesses();
     mainWindow = null;
   });
 });
@@ -45,10 +45,10 @@ app.on('ready', function onReady() {
 var mapping = {
   'hearth-add-app': 'addApp',
   'hearth-ready': 'emitApps',
-  'hearth-start-app': 'startApp',
-  'hearth-stop-app': 'stopApp',
   'hearth-init-app': 'initApp',
-  'hearth-app-help': 'emitEmberHelp'
+
+  'hearth-run-cmd': 'runCmd',
+  'hearth-kill-cmd': 'killCmd'
 };
 
 Object.keys(mapping).forEach((evName) => {
