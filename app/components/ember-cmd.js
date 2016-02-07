@@ -1,21 +1,25 @@
 import Ember from 'ember';
 
-const {computed, inject} = Ember;
+const {computed, inject, observer} = Ember;
 
 function flatten(array) {
   return [].concat.apply([], array);
 }
 
-
 export default Ember.Component.extend({
-  classNames: ['ui', 'vertical', 'segment'],
+  classNames: ['ui segment'],
 
   ipc: inject.service(),
   store: inject.service(),
 
-  createdCommand: undefined,
-
   anonymousFields: [],
+  options: {},
+
+  init(){
+    this._super(...arguments);
+    this.set('options', {});
+    this.set('anonymousFields', []);
+  },
 
   selectedBlueprintName: '',
   selectedBlueprint: computed('selectedBlueprintName', function () {
@@ -41,6 +45,9 @@ export default Ember.Component.extend({
   }),
 
   actions: {
+    updateOption(name, ev){
+      this.set(`options.${name}`, ev.target.value);
+    },
     updateAnonymousField(idx, ev){
       this.get('anonymousFields')[idx] = ev.target.value;
     },
@@ -53,9 +60,9 @@ export default Ember.Component.extend({
       const command = store.createRecord('command', {
         id: uuid.v4(),
         name: this.get('cmd.name'),
+        options: this.get('options'),
         args: flatten((blueprint ? [blueprint.name] : [])
           .concat(anonymousFields).map(arg => arg.split(' '))),
-
         project: app
       });
 

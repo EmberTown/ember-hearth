@@ -33,13 +33,8 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    setPath(){
-      let dialog = this.get('electron.remote.dialog'),
-        dirs = dialog.showOpenDialog({properties: ['openDirectory']});
-
-      if (dirs.length) {
-        this.set('path', dirs[0]);
-      }
+    changedPath(path) {
+      this.set('path', path);
     },
     initProject(){
       let path = this.get('path');

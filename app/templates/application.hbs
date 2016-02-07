@@ -22,11 +22,11 @@
                       {{#each model as |app|}}
                         {{#link-to 'app.detail' app class='item'}}
                             <div class="ui blue label">{{app.package.version}}</div>
-                          {{#if app.starting}}
-                            {{#if app.running}}
-                                <i class="icon check circle green"></i>
+                          {{#if app.serveCommand.running}}
+                            {{#if app.isServing}}
+                                <i class="icon check circle green" title="running"></i>
                             {{else}}
-                                <i class="icon asterisk loading yellow" title="starting"></i>
+                                <i class="icon asterisk loading yellow" title="started"></i>
                             {{/if}}
                           {{/if}}
                             <i class="icon {{if app.isAddon 'puzzle' 'desktop'}}"></i>

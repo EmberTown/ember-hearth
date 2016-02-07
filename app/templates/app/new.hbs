@@ -27,12 +27,7 @@
     <form class="ui form">
         <div class="field">
             <label>Project path</label>
-            <div class="ui labeled button" tabindex="0">
-                <div class="ui button" {{action 'setPath'}}>
-                    <i class="folder outline icon"></i> Set path
-                </div>
-                <a class="ui basic left pointing label">{{path}}</a>
-            </div>
+          {{dir-picker changedPath=(action 'changedPath')}}
         </div>
         <div class="field">
             <label for="fruit">Project type</label>

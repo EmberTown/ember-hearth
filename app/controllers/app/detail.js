@@ -1,23 +1,27 @@
 import Ember from 'ember';
 
-const {inject, computed} = Ember;
+const {inject} = Ember;
 
 export default Ember.Controller.extend({
   ipc: inject.service(),
   store: inject.service(),
 
-  isLoading: computed('model.help', function(){
-    return !this.get('model').hasOwnProperty('help');
-  }),
-
   actions: {
     startServer(){
-      let model = this.get('model');
-      this.get('ipc').trigger('hearth-start-app',  this.get('store').serialize(model, {includeId: true}));
+      let store = this.get('store');
+      const command = store.createRecord('command', {
+        id: uuid.v4(),
+        name: 's',
+        args: [],
+
+        project: this.get('model')
+      });
+
+      this.set('startCommand', command);
+      this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
     },
     stopServer(){
-      let model = this.get('model');
-      this.get('ipc').trigger('hearth-stop-app',  this.get('store').serialize(model, {includeId: true}));
+      this.get('ipc').trigger('hearth-kill-cmd', this.get('store').serialize(this.get('startCommand'), {includeId: true}));
     }
   }
 });

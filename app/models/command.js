@@ -7,5 +7,17 @@ export default DS.Model.extend({
   args: attr(),
   options: attr(),
 
-  project: belongsTo('project')
+  project: belongsTo('project'),
+  running: false,
+  succeeded: false,
+  failed: false,
+
+  stdout: [],
+  stderr: [],
+
+  init(){
+    this._super(...arguments);
+    this.set('stdout', []);
+    this.set('stderr', []);
+  }
 });

@@ -8,7 +8,7 @@
             </div>
         </h2>
 
-      {{#if model.running}}
+      {{#if model.serveCommand.running}}
           <button class="ui labeled red icon button" {{action 'stopServer'}}>
               <i class="stop square icon"></i>
               Stop Ember server
@@ -24,8 +24,8 @@
           </div>
       {{/if}}
 
-      {{#if model.starting}}
-        {{#if model.running}}
+      {{#if model.serveCommand.running}}
+        {{#if model.isServing}}
             <div class="ui icon positive message">
                 <i class="checkmark icon"></i>
                 <div class="content">
@@ -38,16 +38,14 @@
                 <i class="notched circle loading icon"></i>
                 <div class="content">
                     <div class="header">starting Ember project</div>
-                    <p>{{model.lastStdout}}</p>
+                    <p>{{model.serveCommand.stdout}}</p>
                 </div>
             </div>
         {{/if}}
       {{/if}}
 
         <div class="ui secondary pointing menu">
-          {{#if model.running}}
-            {{#link-to 'app.detail.log' model class='item'}}Log{{/link-to}}
-          {{/if}}
+          {{#link-to 'app.detail.log' model class='item'}}Log{{/link-to}}
           {{#link-to 'app.detail.actions' model class='item'}}Actions{{/link-to}}
             <a class="item">Addons</a>
             <a class="item">Project settings</a>
@@ -55,11 +53,6 @@
         </div>
     </div>
     <div class="flex-fill">
-      {{#if isLoading}}
-          <div class="ui active inverted dimmer">
-              <div class="ui text loader">Reticulating splines</div>
-          </div>
-      {{/if}}
-      {{outlet}}
+        {{outlet}}
     </div>
 </div>
