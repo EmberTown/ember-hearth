@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 const {inject} = Ember;
 
-function isRunning(stdout) {
-  return stdout.indexOf('Serving on') !== -1;
-}
-
 export default Ember.Controller.extend({
   ipc: inject.service(),
   electron: inject.service(),
@@ -32,6 +28,9 @@ export default Ember.Controller.extend({
     this.get('ipc').on('cmd-stderr', (ev, cmd, data) => {
       this.get('store').peekRecord('command', cmd.id)
         .get('stderr').pushObject(data);
+    });
+    this.get('ipc').on('open-project', (ev, projectId) => {
+      this.transitionToRoute('project.detail', this.get('store').peekRecord('project', projectId));
     });
 
     this.get('ipc').on('cmd-close', (ev, cmd, code) => {

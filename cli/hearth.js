@@ -1,6 +1,7 @@
 'use strict';
 
 var Datastore = require('nedb'),
+  electron = require('electron'),
   uuid = require('node-uuid'),
   Promise = require('bluebird'),
   jsonminify = require("jsonminify"),
@@ -11,6 +12,7 @@ var Datastore = require('nedb'),
 const EMBER_BIN = path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember');
 
 let processes = {},
+  resetTray,
   db = {
     apps: Promise.promisifyAll(new Datastore({filename: path.resolve(__dirname, 'hearth.nedb.json'), autoload: true}))
   };
@@ -42,15 +44,42 @@ function addMetadata(project) {
   });
 }
 
+var trayApps = [];
+
+function ready(app, window) {
+  const Tray = electron.Tray;
+  const Menu = electron.Menu;
+  let tray = new Tray(path.join(__dirname, 'hearth-tray.png'));
+  resetTray = function () {
+
+    let tpl = trayApps.map(app => {
+      return {
+        label: app.data.attributes.name,
+        type: 'normal',
+        click: () => window.webContents.send('open-project', app.data.id)
+      };
+    }).concat([
+      {type: 'separator'},
+      {label: 'Exit Hearth', type: 'normal', click: () => app.quit()}
+    ]);
+
+    tray.setToolTip(`Ember Hearth v${app.getVersion()}`);
+    tray.setContextMenu(Menu.buildFromTemplate(tpl));
+  };
+  resetTray();
+}
+
 function emitProjects(ev) {
   return db.apps.findAsync({}).then((projects) => {
     return Promise.all(projects.map(doc => addMetadata(doc)))
       .then((apps) => {
+        trayApps = apps;
         // send jsonapi list of apps
         ev.sender.send('project-list', {
           data: apps.map(project => project.data)
         });
-      }).catch(e => console.error(e));
+      }).catch(e => console.error(e))
+      .finally(() => resetTray());
   });
 }
 
@@ -117,6 +146,7 @@ function runCmd(ev, cmd) {
       console.log(`cmd ${args} stderr: ${data}`);
     });
     ember.on('close', (code) => {
+      delete processes[cmdData.id];
       ev.sender.send('cmd-close', cmdData, code);
       console.log(`cmd ${args} child process exited with code ${code}`);
     });
@@ -130,12 +160,13 @@ function killCmd(ev, cmd) {
   ev.sender.send('cmd-kill', cmd.data);
 }
 
-function killAllProcesses(){
+function killAllProcesses() {
   Object.keys(processes).forEach(processId =>
     processes[processId].kill());
 }
 
 module.exports = {
+  ready,
   initProject,
   runCmd,
   killCmd,

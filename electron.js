@@ -2,6 +2,7 @@
 'use strict';
 
 var electron = require('electron'),
+  path = require('path'),
   hearth  = require('./cli/hearth');
 
 var app = electron.app;
@@ -22,6 +23,8 @@ app.on('ready', function onReady() {
     width: 800,
     height: 600
   });
+
+  hearth.ready(app, mainWindow);
 
   delete mainWindow.module;
 
