@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   ipc: inject.service(),
   store: inject.service(),
 
-  model({app_id}){
+  model({project_id}){
     return this.transitionTo('application');
   },
   afterModel(model){

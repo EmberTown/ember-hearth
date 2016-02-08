@@ -21,6 +21,23 @@ export default Ember.Component.extend({
     this.set('anonymousFields', []);
   },
 
+  didInsertElement(){
+    this._super(...arguments);
+    if (!this.get('createdCommand')) {
+      // restore last command if exists
+      let commands = this.get('project.commands'),
+        command = this.get('cmd');
+
+      const createdCommand = commands
+        .filter(c => c.get('name') === command.name)
+        .get('lastObject');
+
+      if (createdCommand) {
+        this.set('createdCommand', createdCommand);
+      }
+    }
+  },
+
   selectedBlueprintName: '',
   selectedBlueprint: computed('selectedBlueprintName', function () {
     let selected = this.get('selectedBlueprintName');
@@ -54,7 +71,7 @@ export default Ember.Component.extend({
     runCmd(){
       let store = this.get('store'),
         blueprint = this.get('selectedBlueprint'),
-        app = this.get('app'),
+        project = this.get('project'),
         anonymousFields = this.get('anonymousFields');
 
       const command = store.createRecord('command', {
@@ -63,7 +80,7 @@ export default Ember.Component.extend({
         options: this.get('options'),
         args: flatten((blueprint ? [blueprint.name] : [])
           .concat(anonymousFields).map(arg => arg.split(' '))),
-        project: app
+        project: project
       });
 
       this.set('createdCommand', command);

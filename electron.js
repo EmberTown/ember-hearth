@@ -43,9 +43,9 @@ app.on('ready', function onReady() {
 });
 
 var mapping = {
-  'hearth-add-app': 'addApp',
-  'hearth-ready': 'emitApps',
-  'hearth-init-app': 'initApp',
+  'hearth-add-project': 'addProject',
+  'hearth-ready': 'emitProjects',
+  'hearth-init-project': 'initProject',
 
   'hearth-run-cmd': 'runCmd',
   'hearth-kill-cmd': 'killCmd'

@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
     let store = this.get('store');
 
-    this.get('ipc').on('app-list', (ev, data) => {
+    this.get('ipc').on('project-list', (ev, data) => {
       this.get('store').pushPayload('project', data);
     });
 
@@ -48,12 +48,12 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    addApp(){
+    addProject(){
       let dialog = this.get('electron.remote.dialog'),
         dirs = dialog.showOpenDialog({properties: ['openDirectory']});
 
       if (dirs.length) {
-        this.get('ipc').trigger('hearth-add-app', dirs[0]);
+        this.get('ipc').trigger('hearth-add-project', dirs[0]);
       }
     }
   }
