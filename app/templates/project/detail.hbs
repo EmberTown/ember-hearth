@@ -13,9 +13,9 @@
               <i class="stop square icon"></i>
               Stop Ember server
           </button>
-          <button class="ui labeled icon button" {{action 'openExternal' (concat "http://127.0.0.1:" model.cli.port)}}>
+          <button class="ui icon button"
+                  title="Open in web browser" {{action 'openExternal' (concat "http://127.0.0.1:" model.cli.port)}}>
               <i class="external square icon"></i>
-              Open in browser
           </button>
       {{else}}
           <div class="ui labeled green icon button" {{action 'startServer'}}>
@@ -23,6 +23,16 @@
               Start Ember server
           </div>
       {{/if}}
+
+        <div class="ui icon buttons">
+            <button class="ui button"
+                    title="Open package.json" {{action 'openItem' (concat model.path '/package.json')}}>
+                <i class="file text icon"></i>
+            </button>
+            <button class="ui button" title="Open project in file manager" {{action 'showItemInFolder' model.path}}>
+                <i class="folder icon"></i>
+            </button>
+        </div>
 
       {{#if model.serveCommand.running}}
         {{#if model.isServing}}
@@ -53,6 +63,6 @@
         </div>
     </div>
     <div class="flex-fill">
-        {{outlet}}
+      {{outlet}}
     </div>
 </div>
