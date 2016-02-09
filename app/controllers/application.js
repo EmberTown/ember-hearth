@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 const {inject} = Ember;
 
-function isRunning(stdout) {
-  return stdout.indexOf('Serving on') !== -1;
-}
-
 export default Ember.Controller.extend({
   ipc: inject.service(),
   electron: inject.service(),
@@ -17,7 +13,7 @@ export default Ember.Controller.extend({
 
     let store = this.get('store');
 
-    this.get('ipc').on('app-list', (ev, data) => {
+    this.get('ipc').on('project-list', (ev, data) => {
       this.get('store').pushPayload('project', data);
     });
 
@@ -32,6 +28,9 @@ export default Ember.Controller.extend({
     this.get('ipc').on('cmd-stderr', (ev, cmd, data) => {
       this.get('store').peekRecord('command', cmd.id)
         .get('stderr').pushObject(data);
+    });
+    this.get('ipc').on('open-project', (ev, projectId) => {
+      this.transitionToRoute('project.detail', this.get('store').peekRecord('project', projectId));
     });
 
     this.get('ipc').on('cmd-close', (ev, cmd, code) => {
@@ -48,12 +47,12 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    addApp(){
+    addProject(){
       let dialog = this.get('electron.remote.dialog'),
         dirs = dialog.showOpenDialog({properties: ['openDirectory']});
 
       if (dirs.length) {
-        this.get('ipc').trigger('hearth-add-app', dirs[0]);
+        this.get('ipc').trigger('hearth-add-project', dirs[0]);
       }
     }
   }

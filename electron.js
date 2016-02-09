@@ -2,6 +2,7 @@
 'use strict';
 
 var electron = require('electron'),
+  path = require('path'),
   hearth  = require('./cli/hearth');
 
 var app = electron.app;
@@ -23,6 +24,8 @@ app.on('ready', function onReady() {
     height: 600
   });
 
+  hearth.ready(app, mainWindow);
+
   delete mainWindow.module;
 
   // If you want to open up dev tools programmatically, call
@@ -43,9 +46,9 @@ app.on('ready', function onReady() {
 });
 
 var mapping = {
-  'hearth-add-app': 'addApp',
-  'hearth-ready': 'emitApps',
-  'hearth-init-app': 'initApp',
+  'hearth-add-project': 'addProject',
+  'hearth-ready': 'emitProjects',
+  'hearth-init-project': 'initProject',
 
   'hearth-run-cmd': 'runCmd',
   'hearth-kill-cmd': 'killCmd'

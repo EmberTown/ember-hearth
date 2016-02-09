@@ -16,18 +16,18 @@ export default Ember.Controller.extend({
   init(){
     this._super(...arguments);
 
-    this.get('ipc').on('app-init-start', () => {
+    this.get('ipc').on('project-init-start', () => {
       this.set('installing', true);
     });
-    this.get('ipc').on('app-init-end', (ev, app) => {
+    this.get('ipc').on('project-init-end', (ev, project) => {
       this.set('installing', false);
-      this.transitionToRoute('app.detail', this.get('store').peekRecord('project', app.data.id));
+      this.transitionToRoute('project.detail', this.get('store').peekRecord('project', project.data.id));
     });
-    this.get('ipc').on('app-init-stdout', (ev, data) => {
+    this.get('ipc').on('project-init-stdout', (ev, data) => {
       this.set('stdout', this.get('stdout') + data);
       this.set('lastStdout', data);
     });
-    this.get('ipc').on('app-init-stderr', (ev, data) => {
+    this.get('ipc').on('project-init-stderr', (ev, data) => {
       this.set('err', this.get('stdout') + data);
     });
   },
@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
       let path = this.get('path');
 
       if (path) {
-        this.get('ipc').trigger('hearth-init-app', {
+        this.get('ipc').trigger('hearth-init-project', {
           path: path,
           addon: false
         });

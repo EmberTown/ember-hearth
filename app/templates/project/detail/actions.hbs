@@ -7,7 +7,7 @@
       </div>
   {{else}}
     {{#each availableCommands key='name' as |cmd|}}
-      {{ember-cmd app=model cmd=cmd}}
+      {{ember-cmd project=model cmd=cmd}}
     {{/each}}
   {{/unless}}
 </div>

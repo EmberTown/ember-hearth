@@ -1,0 +1,8 @@
+<div class="ui labeled button" tabindex="0">
+    <div class="ui button" {{action 'setPath'}}>
+        <i class="folder outline icon"></i> Select directory
+    </div>
+  {{#if path}}
+      <a class="ui basic left pointing label">{{path}}</a>
+  {{/if}}
+</div>
