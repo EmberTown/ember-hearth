@@ -13,9 +13,9 @@ export default Ember.Controller.extend({
   help: computed('helpCommand.stdout.length', function () {
     let helpCommand = this.get('helpCommand');
     if (helpCommand) {
-      if (helpCommand.get('stdout.length') === 2) {
+      if (helpCommand.get('stdout.length') >= 2) {
         try {
-          return JSON.parse(helpCommand.get('stdout')[1]);
+          return JSON.parse(helpCommand.get('stdout').slice(1).join(''));
         } catch (e) {
           console.error('error parsing help command json', helpCommand.get('stdout'));
         }
