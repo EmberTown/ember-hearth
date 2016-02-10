@@ -9,13 +9,19 @@ var Datastore = require('nedb'),
   fs = Promise.promisifyAll(require('fs')),
   path = require('path');
 
-const EMBER_BIN = path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember');
-
 let processes = {},
   resetTray,
   db = {
     apps: Promise.promisifyAll(new Datastore({filename: path.resolve(__dirname, 'hearth.nedb.json'), autoload: true}))
+  },
+  binaries = {
+    ember: path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember'),
+    npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
   };
+
+function pathToBinary(bin) {
+  return binaries[bin];
+}
 
 function addMetadata(project) {
   // get some app metadata (could probably be cached, but avoids old entries if stored in db on add)
@@ -100,7 +106,7 @@ function addProject(ev, appPath) {
 }
 
 function initProject(ev, data) {
-  var ember = spawn(EMBER_BIN, ['init'], {
+  var ember = spawn(pathToBinary('ember'), ['init'], {
     cwd: path.normalize(data.path),
     detached: true
   });
@@ -132,26 +138,25 @@ function runCmd(ev, cmd) {
         args.push(`--${optionName}`, cmdData.attributes.options[optionName]));
     }
 
-    console.log('spawning', path.normalize(project.data.attributes.path), EMBER_BIN, args);
-    var ember = spawn(EMBER_BIN, args, {
+    var cmd = spawn(pathToBinary(cmdData.attributes.bin), args, {
       cwd: path.normalize(project.data.attributes.path),
       detached: true
     });
-    ember.stdout.on('data', (data) => {
+    cmd.stdout.on('data', (data) => {
       ev.sender.send('cmd-stdout', cmdData, data.toString('utf8'));
       console.log(`cmd ${args} stdout: ${data}`);
     });
-    ember.stderr.on('data', (data) => {
+    cmd.stderr.on('data', (data) => {
       ev.sender.send('cmd-stderr', cmdData, data.toString('utf8'));
       console.log(`cmd ${args} stderr: ${data}`);
     });
-    ember.on('close', (code) => {
+    cmd.on('close', (code) => {
       delete processes[cmdData.id];
       ev.sender.send('cmd-close', cmdData, code);
       console.log(`cmd ${args} child process exited with code ${code}`);
     });
     ev.sender.send('cmd-start', cmdData);
-    processes[cmdData.id] = ember;
+    processes[cmdData.id] = cmd;
   });
 }
 

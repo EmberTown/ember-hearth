@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
       let store = this.get('store');
       const command = store.createRecord('command', {
         id: uuid.v4(),
+        bin: 'ember',
         name: 's',
         args: [],
 

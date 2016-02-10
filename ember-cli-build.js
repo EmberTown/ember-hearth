@@ -21,7 +21,11 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import(app.bowerDirectory + '/semantic/dist/semantic.min.css');
-  // TODO: load uuid via vairable
+  app.import(app.bowerDirectory + "/semantic/dist/themes/default/assets/fonts/icons.eot", { destDir: "assets/themes/default/assets/fonts" });
+  app.import(app.bowerDirectory + "/semantic/dist/themes/default/assets/fonts/icons.svg", { destDir: "assets/themes/default/assets/fonts" });
+  app.import(app.bowerDirectory + "/semantic/dist/themes/default/assets/fonts/icons.ttf", { destDir: "assets/themes/default/assets/fonts" });
+  app.import(app.bowerDirectory + "/semantic/dist/themes/default/assets/fonts/icons.woff", { destDir: "assets/themes/default/assets/fonts" });
+
   app.import(app.bowerDirectory + '/node-uuid/uuid.js');
 
   return app.toTree();
