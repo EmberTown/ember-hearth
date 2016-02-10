@@ -12,6 +12,7 @@ export default Ember.Route.extend({
   afterModel(model){
     let store = this.get('store');
     const command = store.createRecord('command', {
+      bin: 'ember',
       id: uuid.v4(),
       name: 'help',
       args: ['--json'],

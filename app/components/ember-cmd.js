@@ -75,6 +75,7 @@ export default Ember.Component.extend({
         anonymousFields = this.get('anonymousFields');
 
       const command = store.createRecord('command', {
+        bin: 'ember',
         id: uuid.v4(),
         name: this.get('cmd.name'),
         options: this.get('options'),

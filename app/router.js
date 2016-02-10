@@ -11,6 +11,12 @@ Router.map(function() {
       this.route('statistics');
       this.route('actions');
       this.route('log');
+
+      this.route('install', function() {
+        this.route('addon');
+        this.route('npm');
+        this.route('bower');
+      });
     });
     this.route('new');
   });
