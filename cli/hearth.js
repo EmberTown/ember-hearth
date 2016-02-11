@@ -12,7 +12,7 @@ var Datastore = require('nedb'),
 let processes = {},
   resetTray,
   db = {
-    apps: Promise.promisifyAll(new Datastore({filename: path.resolve(__dirname, 'hearth.nedb.json'), autoload: true}))
+    apps: Promise.promisifyAll(new Datastore({filename: path.resolve(__dirname, '..', 'hearth.nedb.json'), autoload: true}))
   },
   binaries = {
     ember: path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember'),
