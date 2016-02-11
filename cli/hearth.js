@@ -92,6 +92,17 @@ function emitProjects(ev) {
   });
 }
 
+function removeProject(ev, project) {
+  project.data.commands.forEach(command => {
+    killCmd(ev, command);
+  });
+
+  return db.apps.removeAsync({'data.id': project.data.id}).then(data => {
+    return emitProjects(ev)
+      .then(() => data);
+  });
+}
+
 function addProject(ev, appPath) {
   return db.apps.insertAsync({
     data: {
@@ -164,8 +175,10 @@ function runCmd(ev, cmd) {
 }
 
 function killCmd(ev, cmd) {
-  processes[cmd.data.id].kill();
-  ev.sender.send('cmd-kill', cmd.data);
+  if (processes[cmd.data.id]) {
+    processes[cmd.data.id].kill();
+    ev.sender.send('cmd-kill', cmd.data);
+  }
 }
 
 function killAllProcesses() {
@@ -180,5 +193,6 @@ module.exports = {
   killCmd,
   emitProjects,
   addProject,
+  removeProject,
   killAllProcesses
 };
