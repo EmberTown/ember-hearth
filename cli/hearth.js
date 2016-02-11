@@ -62,7 +62,10 @@ function ready(app, window) {
       return {
         label: app.data.attributes.name,
         type: 'normal',
-        click: () => window.webContents.send('open-project', app.data.id)
+        click: () => {
+          window.webContents.send('open-project', app.data.id);
+          window.show();
+        }
       };
     }).concat([
       {type: 'separator'},
