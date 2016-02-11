@@ -47,6 +47,7 @@ app.on('ready', function onReady() {
 
 var mapping = {
   'hearth-add-project': 'addProject',
+  'hearth-remove-project': 'removeProject',
   'hearth-ready': 'emitProjects',
   'hearth-init-project': 'initProject',
 

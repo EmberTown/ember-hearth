@@ -62,7 +62,10 @@ function ready(app, window) {
       return {
         label: app.data.attributes.name,
         type: 'normal',
-        click: () => window.webContents.send('open-project', app.data.id)
+        click: () => {
+          window.webContents.send('open-project', app.data.id);
+          window.show();
+        }
       };
     }).concat([
       {type: 'separator'},
@@ -86,6 +89,17 @@ function emitProjects(ev) {
         });
       }).catch(e => console.error(e))
       .finally(() => resetTray());
+  });
+}
+
+function removeProject(ev, project) {
+  project.data.commands.forEach(command => {
+    killCmd(ev, command);
+  });
+
+  return db.apps.removeAsync({'data.id': project.data.id}).then(data => {
+    return emitProjects(ev)
+      .then(() => data);
   });
 }
 
@@ -161,8 +175,10 @@ function runCmd(ev, cmd) {
 }
 
 function killCmd(ev, cmd) {
-  processes[cmd.data.id].kill();
-  ev.sender.send('cmd-kill', cmd.data);
+  if (processes[cmd.data.id]) {
+    processes[cmd.data.id].kill();
+    ev.sender.send('cmd-kill', cmd.data);
+  }
 }
 
 function killAllProcesses() {
@@ -177,5 +193,6 @@ module.exports = {
   killCmd,
   emitProjects,
   addProject,
+  removeProject,
   killAllProcesses
 };

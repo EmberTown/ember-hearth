@@ -34,6 +34,11 @@
             </button>
         </div>
 
+        <button class="negative ui right floated labeled icon button" {{action 'removeProject'}}>
+            <i class="remove icon"></i>
+            Remove
+        </button>
+
       {{#if model.serveCommand.running}}
         {{#if model.isServing}}
             <div class="ui icon positive message">

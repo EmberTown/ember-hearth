@@ -14,7 +14,17 @@ export default Ember.Controller.extend({
     let store = this.get('store');
 
     this.get('ipc').on('project-list', (ev, data) => {
+      // create lookup table for current project list
+      let projects = data.data.reduce((all, project) => {
+        all[project.id] = true;
+        return all;
+      }, {});
+
       this.get('store').pushPayload('project', data);
+      // unload all records that aren't in project list
+      this.get('store').peekAll('project')
+        .filter(project => !projects[project.get('id')])
+        .forEach(project => store.unloadRecord(project));
     });
 
     this.get('ipc').on('cmd-start', (ev, cmd) => {
