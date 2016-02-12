@@ -25,15 +25,15 @@
             <td><a href="{{package.homepage}}">{{package.name}}</a></td>
             <td>{{package.version}}</td>
             <td>
-              {{#if (or (get project.model.package.devDependencies package.name) (get project.model.package.devDependencies package.name))}}
-                  <button class="ui disabled fluid button">
-                      <i class="checkmark icon"></i>
-                      Already installed
+              {{#if package.command.running}}
+                  <button class="ui fluid icon loading button" {{action 'install' package}}>
+                      Installing
                   </button>
               {{else}}
-                {{#if package.command.running}}
-                    <button class="ui fluid icon loading button" {{action 'install' package}}>
-                        Installing
+                {{#if (or (get project.model.package.devDependencies package.name) (get project.model.package.devDependencies package.name))}}
+                    <button class="ui negative fluid button" {{action 'uninstall' package}}>
+                        <i class="remove icon"></i>
+                        Uninstall
                     </button>
                 {{else}}
                     <button class="ui fluid labeled icon button" {{action 'install' package}}>

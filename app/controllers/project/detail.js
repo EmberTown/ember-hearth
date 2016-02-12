@@ -5,6 +5,7 @@ const {inject} = Ember;
 export default Ember.Controller.extend({
   ipc: inject.service(),
   store: inject.service(),
+  commander: inject.service(),
 
   actions: {
     removeProject(){
@@ -22,10 +23,10 @@ export default Ember.Controller.extend({
         project: this.get('model')
       });
 
-      this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
+      this.get('commander').start(command);
     },
     stopServer(){
-      this.get('ipc').trigger('hearth-kill-cmd', this.get('store').serialize(this.get('model.serveCommand'), {includeId: true}));
+      this.get('commander').stop(this.get('model.serveCommand'));
     }
   }
 });

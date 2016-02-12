@@ -4,6 +4,7 @@ const {inject, run} = Ember;
 
 export default Ember.Controller.extend({
   ipc: inject.service(),
+  commander: inject.service(),
   ajax: inject.service(),
   project: inject.controller('project.detail'),
 
@@ -11,7 +12,9 @@ export default Ember.Controller.extend({
 
   triggerProjectReload(ev, cmd){
     let command = this.get('store').peekRecord('command', cmd.id);
-    if (command.get('succeeded') && command.get('name') === 'install' && command.get('bin') === 'npm') {
+    if (command.get('succeeded') &&
+      ['install', 'uninstall'].indexOf(command.get('name')) !== -1 &&
+      command.get('bin') === 'npm') {
       this.get('ipc').trigger('hearth-ready');
     }
   },
@@ -48,19 +51,55 @@ export default Ember.Controller.extend({
       run.debounce(this, this.updateSearchResult, ev.target.value, 200);
     },
 
+    uninstall(pkg) {
+      const store = this.get('store'),
+        commander = this.get('commander');
+
+      let command = store.createRecord('command', {
+        id: uuid.v4(),
+        bin: 'npm',
+        name: 'uninstall',
+        args: [pkg.name, '--save-dev'],
+        project: this.get('project.model'),
+        onSucceed(){
+          let servingCommand = this.get('project.commands')
+            .filter(c => c.get('bin') === 'ember' && c.get('name') === 's')
+            .get('lastObject');
+
+          if (servingCommand && servingCommand.get('running')) {
+            commander.restart(servingCommand);
+          }
+        }
+      });
+
+      Ember.set(pkg, 'command', command);
+      commander.start(command);
+    },
+
     install(pkg) {
-      const store = this.get('store');
+      const store = this.get('store'),
+        commander = this.get('commander');
 
       let command = store.createRecord('command', {
         id: uuid.v4(),
         bin: 'npm',
         name: 'install',
         args: [pkg.name, '--save-dev'],
-        project: this.get('project.model')
+        project: this.get('project.model'),
+        onSucceed(){
+          let servingCommand = this.get('project.commands')
+            .filter(c => c.get('bin') === 'ember' && c.get('name') === 's')
+            .get('lastObject');
+
+          if (servingCommand && servingCommand.get('running')) {
+            commander.restart(servingCommand);
+          }
+        }
       });
 
       Ember.set(pkg, 'command', command);
-      this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
+      commander.start(command);
     }
   }
-});
+})
+;
