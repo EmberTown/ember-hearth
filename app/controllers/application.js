@@ -48,8 +48,10 @@ export default Ember.Controller.extend({
       command.set('running', false);
       if (code === 0) {
         command.set('succeeded', true);
+        command.onSucceed();
       } else {
         command.set('failed', true);
+        command.onFail();
       }
     });
 

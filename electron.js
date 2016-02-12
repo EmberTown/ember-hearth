@@ -20,6 +20,7 @@ app.on('window-all-closed', function onWindowAllClosed() {
 
 app.on('ready', function onReady() {
   mainWindow = new BrowserWindow({
+    icon: path.join(__dirname, 'cli', 'hearth-tray.png'),
     width: 800,
     height: 600
   });

@@ -177,7 +177,6 @@ function runCmd(ev, cmd) {
 function killCmd(ev, cmd) {
   if (processes[cmd.data.id]) {
     processes[cmd.data.id].kill();
-    ev.sender.send('cmd-kill', cmd.data);
   }
 }
 

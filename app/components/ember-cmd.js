@@ -9,7 +9,7 @@ function flatten(array) {
 export default Ember.Component.extend({
   classNames: ['ui segment'],
 
-  ipc: inject.service(),
+  commander: inject.service(),
   store: inject.service(),
 
   anonymousFields: [],
@@ -85,8 +85,7 @@ export default Ember.Component.extend({
       });
 
       this.set('createdCommand', command);
-
-      this.get('ipc').trigger('hearth-run-cmd', store.serialize(command, {includeId: true}));
+      this.get('commander').start(command);
     }
   }
 });
