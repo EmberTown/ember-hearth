@@ -1,13 +1,14 @@
 'use strict';
 
-var Datastore = require('nedb'),
-  electron = require('electron'),
-  uuid = require('node-uuid'),
-  Promise = require('bluebird'),
-  jsonminify = require("jsonminify"),
-  spawn = require('child_process').spawn,
-  fs = Promise.promisifyAll(require('fs')),
-  path = require('path');
+const Datastore = require('nedb');
+const electron = require('electron');
+const uuid = require('node-uuid');
+const Promise = require('bluebird');
+const jsonminify = require("jsonminify");
+const spawn = require('child_process').spawn;
+const fs = Promise.promisifyAll(require('fs'));
+const path = require('path');
+const dialog = require('dialog');
 
 let processes = {},
   resetTray,
@@ -104,18 +105,27 @@ function removeProject(ev, project) {
 }
 
 function addProject(ev, appPath) {
-  return db.apps.insertAsync({
-    data: {
-      id: uuid.v4(),
-      type: 'project',
-      attributes: {
-        path: appPath,
-        name: path.basename(appPath)
-      }
+  console.log(db.apps);
+  let searchApp = db.apps.findOneAsync({ "data.attributes.path": appPath });
+
+  searchApp.then((appFound) => {
+    if (appFound) {
+      ev.sender.send('open-project', appFound.data.id);
+    } else {
+      return db.apps.insertAsync({
+        data: {
+          id: uuid.v4(),
+          type: 'project',
+          attributes: {
+            path: appPath,
+            name: path.basename(appPath)
+          }
+        }
+      }).then((data) => {
+        return emitProjects(ev)
+          .then(() => data);
+      });
     }
-  }).then((data) => {
-    return emitProjects(ev)
-      .then(() => data);
   });
 }
 
