@@ -9,16 +9,31 @@ const spawn = require('child_process').spawn;
 const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
 const dialog = require('dialog');
+const term = require('./term');
 
 let processes = {},
   resetTray,
   db = {
-    apps: Promise.promisifyAll(new Datastore({filename: path.resolve(__dirname, '..', 'hearth.nedb.json'), autoload: true}))
+    apps: Promise.promisifyAll(new Datastore({
+      filename: path.resolve(__dirname, '..', 'hearth.nedb.json'),
+      autoload: true
+    }))
   },
   binaries = {
     ember: path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember'),
     npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
   };
+
+function _spawn(bin, args, spawnOptions){
+  if (process.platform === 'win32') {
+    // patch windows spawn call
+    //TODO: maybe not expect `node` to exist
+    args.unshift('node', bin);
+    bin = 'powershell.exe';
+  }
+
+  return spawn(bin, args, spawnOptions);
+}
 
 function pathToBinary(bin) {
   return binaries[bin];
@@ -105,10 +120,9 @@ function removeProject(ev, project) {
 }
 
 function addProject(ev, appPath) {
-  console.log(db.apps);
-  let searchApp = db.apps.findOneAsync({ "data.attributes.path": appPath });
+  let searchApp = db.apps.findOneAsync({"data.attributes.path": appPath});
 
-  searchApp.then((appFound) => {
+  return searchApp.then((appFound) => {
     if (appFound) {
       ev.sender.send('open-project', appFound.data.id);
     } else {
@@ -130,9 +144,8 @@ function addProject(ev, appPath) {
 }
 
 function initProject(ev, data) {
-  var ember = spawn(pathToBinary('ember'), ['init'], {
-    cwd: path.normalize(data.path),
-    detached: true
+  var ember = _spawn(pathToBinary('ember'), ['init'], {
+    cwd: path.normalize(data.path)
   });
   ember.stdout.on('data', (data) => {
     ev.sender.send('project-init-stdout', data.toString('utf8'));
@@ -155,32 +168,41 @@ function runCmd(ev, cmd) {
   const cmdData = cmd.data;
   return db.apps.findAsync({'data.id': cmdData.relationships.project.data.id}).then((projects) => {
     let project = projects[0],
-      args = [cmdData.attributes.name].concat(cmdData.attributes.args);
+      args = [cmdData.attributes.name].concat(cmdData.attributes.args),
+      cmdPromise;
 
     if (cmdData.attributes.options) {
       Object.keys(cmdData.attributes.options).forEach(optionName =>
         args.push(`--${optionName}`, cmdData.attributes.options[optionName]));
     }
 
-    var cmd = spawn(pathToBinary(cmdData.attributes.bin), args, {
-      cwd: path.normalize(project.data.attributes.path),
-      detached: true
+    if (cmdData.attributes['in-term']) {
+      cmdPromise = term.launchTermCommand(pathToBinary(cmdData.attributes.bin), args, {
+        cwd: path.normalize(project.data.attributes.path)
+      });
+    } else {
+      cmdPromise = Promise.resolve(_spawn(pathToBinary(cmdData.attributes.bin), args, {
+        cwd: path.normalize(project.data.attributes.path)
+      }));
+    }
+
+    return cmdPromise.then((cmd) => {
+      cmd.stdout.on('data', (data) => {
+        ev.sender.send('cmd-stdout', cmdData, data.toString('utf8'));
+        console.log(`cmd ${args} stdout: ${data}`);
+      });
+      cmd.stderr.on('data', (data) => {
+        ev.sender.send('cmd-stderr', cmdData, data.toString('utf8'));
+        console.log(`cmd ${args} stderr: ${data}`);
+      });
+      cmd.on('close', (code) => {
+        delete processes[cmdData.id];
+        ev.sender.send('cmd-close', cmdData, code);
+        console.log(`cmd ${args} child process exited with code ${code}`);
+      });
+      ev.sender.send('cmd-start', cmdData);
+      processes[cmdData.id] = cmd;
     });
-    cmd.stdout.on('data', (data) => {
-      ev.sender.send('cmd-stdout', cmdData, data.toString('utf8'));
-      console.log(`cmd ${args} stdout: ${data}`);
-    });
-    cmd.stderr.on('data', (data) => {
-      ev.sender.send('cmd-stderr', cmdData, data.toString('utf8'));
-      console.log(`cmd ${args} stderr: ${data}`);
-    });
-    cmd.on('close', (code) => {
-      delete processes[cmdData.id];
-      ev.sender.send('cmd-close', cmdData, code);
-      console.log(`cmd ${args} child process exited with code ${code}`);
-    });
-    ev.sender.send('cmd-start', cmdData);
-    processes[cmdData.id] = cmd;
   });
 }
 
