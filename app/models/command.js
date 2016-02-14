@@ -9,6 +9,7 @@ export default DS.Model.extend({
   name: attr('string'),
   args: attr(),
   options: attr(),
+  inTerm: attr('boolean'),
 
   project: belongsTo('project'),
   running: false,
