@@ -1,8 +1,9 @@
-const Promise = require('bluebird'),
-  fs = require('fs'),
-  path = require('path'),
-  temp = require('temp').track(),
-  cp = require('child_process');
+const Promise   = require('bluebird');
+const fs        = require('fs');
+const path      = require('path');
+const temp      = require('temp').track();
+const quickTemp = require('quick-temp');
+const cp        = require('child_process');
 
 function buildCommandScript(bin, args, projectDir) {
   var scriptContent = '',
@@ -45,7 +46,10 @@ read
   }
 
   return new Promise((resolve, reject) => {
-    temp.open({prefix: 'hearth-cmd', suffix: suffix}, function (err, info) {
+    var tmp = {};
+    quickTemp.makeOrReuse(tmp, 'tmp');
+
+    temp.open({ dir: tmp.tmp }, function (err, info) {
       if (!err) {
         fs.write(info.fd, scriptContent);
         fs.close(info.fd, function (err) {
@@ -67,7 +71,7 @@ function buildTermLaunchCommand(scriptPath) {
   switch (process.platform) {
     case 'darwin':
       // TODO: check if this works on osx
-      return ['osascript', ['-e', `tell app "Terminal" to do script "${scriptPath}"`]];
+      return ['osascript', ['-e', `tell app "Terminal" to do script "eval $SHELL ${scriptPath}"`]];
     case 'linux':
       return ['/usr/bin/xterm', ['-e', `bash ${scriptPath}`]];
     case 'win32':
