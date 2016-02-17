@@ -1,1 +1,38 @@
+<table class="ui very compact table">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>version</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each model.dependencies as |package|}}
+        <tr>
+            <td><a href="{{package.homepage}}">{{package.pkgMeta.name}}</a></td>
+            <td>{{package.version}}</td>
+            <td>
+              {{#if package.command.running}}
+                  <button class="ui fluid icon loading button" {{action 'install' package}}>
+                      Installing
+                  </button>
+              {{else}}
+                {{#if (or (get project.model.package.devDependencies package.name) (get project.model.package.devDependencies package.name))}}
+                    <button class="ui negative fluid button" {{action 'uninstall' package}}>
+                        <i class="remove icon"></i>
+                        Uninstall
+                    </button>
+                {{else}}
+                    <button class="ui fluid labeled icon button" {{action 'install' package}}>
+                        <i class="plus icon"></i>
+                        Install
+                    </button>
+                {{/if}}
+              {{/if}}
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
 {{outlet}}

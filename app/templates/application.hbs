@@ -19,6 +19,20 @@
                 <div class="ui horizontal divider">projects</div>
                 <div class="flex-fill">
                     <div class="ui vertical text menu fluid">
+                      {{#vertical-collection content=model as |project|}}
+                        {{#link-to 'project.detail' project class='item'}}
+                            <div class="ui blue label">{{project.package.version}}</div>
+                          {{#if project.serveCommand.running}}
+                            {{#if project.isServing}}
+                                <i class="icon check circle green" title="running"></i>
+                            {{else}}
+                                <i class="icon asterisk loading yellow" title="started"></i>
+                            {{/if}}
+                          {{/if}}
+                            <i class="icon {{if project.isAddon 'puzzle' 'desktop'}}"></i>
+                          {{project.name}}
+                        {{/link-to}}
+                      {{/vertical-collection}}
                       {{#each model as |project|}}
                         {{#link-to 'project.detail' project class='item'}}
                             <div class="ui blue label">{{project.package.version}}</div>
