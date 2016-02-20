@@ -7,12 +7,19 @@ export default Ember.Controller.extend({
   commander: inject.service(),
   ajax: inject.service(),
   project: inject.controller('project.detail'),
+<<<<<<< HEAD
   lol: [1,2,3,4,5,6],
+=======
+>>>>>>> 69afc58a06155053007154188c805a63c5e29da3
 
   filterQuery: '',
   filteredAddons: computed('filterQuery', 'model.addons', function(){
     const query = this.get('filterQuery');
+<<<<<<< HEAD
     return this.get('model.addons').filter(addon => addon.name.indexOf(query) !== -1).slice(0,10);
+=======
+    return this.get('model.addons').filter(addon => addon.name.indexOf(query) !== -1);
+>>>>>>> 69afc58a06155053007154188c805a63c5e29da3
   }),
 
   triggerProjectReload(ev, cmd){
