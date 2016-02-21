@@ -1,8 +1,14 @@
-<div class="ui top attached tabular menu">
-  {{#link-to 'project.detail.install.addon' class='item'}}Addons{{/link-to}}
-  {{#link-to 'project.detail.install.npm' class='item'}}npm{{/link-to}}
-  {{#link-to 'project.detail.install.bower' class='item'}}bower{{/link-to}}
-</div>
-<div class="ui bottom attached active tab segment">
-  {{outlet}}
+<div class="flex flex-column absolute-fill">
+    <div>
+        <div class="ui secondary pointing menu">
+          {{#link-to 'project.detail.install.addon' class='item'}}Addons{{/link-to}}
+          {{#link-to 'project.detail.install.npm' class='item'}}npm{{/link-to}}
+          {{#link-to 'project.detail.install.bower' class='item'}}bower{{/link-to}}
+        </div>
+    </div>
+    <div class="flex-fill">
+        <div class="absolute-fill flex flex-column">
+          {{outlet}}
+        </div>
+    </div>
 </div>

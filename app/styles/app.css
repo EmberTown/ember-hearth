@@ -22,15 +22,37 @@ body > div > .container > .grid{
   height: 100vh;
 }
 
+.full-viewport-height{
+  height: 100vh;
+}
+
 .flex{
   display: flex;
   flex-wrap: wrap;
 }
 .flex-column{
-  height: 100vh;
   flex-direction: column;
 }
 .flex-fill{
   flex: 2;
   overflow: auto;
+  position: relative;
+}
+.absolute-fill{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* fix for semantic borders */
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
+.addon-item{
+
+}
+.addon-controls{
+
 }

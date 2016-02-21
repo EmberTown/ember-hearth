@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {computed, inject, run} = Ember;
+const {computed, inject} = Ember;
 
 export default Ember.Controller.extend({
   ipc: inject.service(),
@@ -8,10 +8,48 @@ export default Ember.Controller.extend({
   ajax: inject.service(),
   project: inject.controller('project.detail'),
 
+  pageSize: 20,
+  page: 0,
+  minQueryLength: 3,
+
   filterQuery: '',
-  filteredAddons: computed('filterQuery', 'model.addons', function(){
-    const query = this.get('filterQuery');
-    return this.get('model.addons').filter(addon => addon.name.indexOf(query) !== -1);
+
+  shouldFilterAllAddons: computed('filterQuery', 'minQueryLength', function () {
+    return this.get('filterQuery').trim().length >= this.get('minQueryLength');
+  }),
+
+  filteredAddons: computed(
+    'shouldFilterAllAddons',
+    'filterQuery',
+    'model.addons',
+    function () {
+      const query = this.get('filterQuery').trim();
+      return this.get('model.addons').filter(addon => addon.name.indexOf(query) !== -1);
+    }),
+
+  installedAddons: computed(
+    'model.addons',
+    'project.model.package.devDependencies',
+    'project.model.package.dependencies',
+    function () {
+      let devDeps = this.get('project.model.package.devDependencies') || {},
+        deps = this.get('project.model.package.dependencies') || {};
+
+      return this.get('model.addons').filter((addon) => {
+        return devDeps.hasOwnProperty(addon.name) || deps.hasOwnProperty(addon.name);
+      });
+    }),
+
+  addons: computed('shouldFilterAllAddons', function () {
+    return this.get('shouldFilterAllAddons') ?
+      this.get('filteredAddons') :
+      this.get('installedAddons');
+  }),
+
+  pagedAddons: computed('addons.[]', 'page', 'pageSize', function () {
+    const page = this.get('page'),
+      size = this.get('pageSize');
+    return this.get('addons').slice(0, page * size + size);
   }),
 
   triggerProjectReload(ev, cmd){
@@ -34,6 +72,10 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+    nextPage(){
+      console.log('nextPage');
+      this.incrementProperty('page');
+    },
     install(addon) {
       const store = this.get('store'),
         commander = this.get('commander');

@@ -1,52 +1,56 @@
-<form class="ui form">
-    <div class="field">
-        <label>addon name</label>
-        <div class="ui fluid icon input">
-          {{input value=filterQuery}}
-            <i class="search icon"></i>
+<div class="ui top attached segment">
+    <form class="ui form">
+        <h4 class="ui header">Search addons</h4>
+        <div class="field">
+            <div class="ui fluid icon input">
+              {{input value=filterQuery placeholder='Addon name'}}
+                <i class="search icon"></i>
+            </div>
         </div>
-    </div>
-</form>
-
-<h4 class="ui header">Found addons</h4>
-<table class="ui very compact table">
-    <thead>
-    <tr>
-        <th>score</th>
-        <th>name</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#each filteredAddons as |addon|}}
-        <tr>
-            <td>
-              {{#if addon.score}}
-                  <a class="ui teal circular label">{{addon.score}}</a>
-              {{/if}}
-            </td>
-            <td>{{addon.name}}</td>
-            <td>
-              {{#if addon.command.running}}
-                  <button class="ui fluid icon loading button" {{action 'install' addon}}>
-                      Installing
+    </form>
+</div>
+<div class="ui attached segment flex-fill">
+    <h4 class="ui header">
+      {{#if shouldFilterAllAddons}}
+          Addons search result ({{filteredAddons.length}} results)
+      {{else}}
+          Installed addons
+      {{/if}}
+    </h4>
+    <table class="ui very compact table">
+      {{#vertical-collection content=pagedAddons
+      tagName='tbody'
+      itemTagName='tr'
+      containerSelector='.flex-fill'
+      showEdges=false
+      defaultHeight=47
+      key='name'
+      lastReached="nextPage" as |addon index| }}
+          <td class="center aligned">
+            {{#if addon.score}}
+                <a class="ui teal circular label">{{addon.score}}</a>
+            {{/if}}
+          </td>
+          <td>{{addon.name}}</td>
+          <td>
+            {{#if addon.command.running}}
+                <button class="ui fluid icon loading button" {{action 'install' addon}}>
+                    Installing
+                </button>
+            {{else}}
+              {{#if (or (get project.model.package.devDependencies addon.name) (get project.model.package.devDependencies addon.name))}}
+                  <button disabled class="ui fluid positive button">
+                      <i class="checkmark icon"></i>
+                      Installed
                   </button>
               {{else}}
-                {{#if (or (get project.model.package.devDependencies addon.name) (get project.model.package.devDependencies addon.name))}}
-                    <button disabled class="ui fluid positive button">
-                        <i class="checkmark icon"></i>
-                        Installed
-                    </button>
-                {{else}}
-                    <button class="ui fluid labeled icon button" {{action 'install' addon}}>
-                        <i class="plus icon"></i>
-                        Install
-                    </button>
-                {{/if}}
+                  <button class="ui fluid labeled icon button" {{action 'install' addon}}>
+                      <i class="plus icon"></i>
+                      Install
+                  </button>
               {{/if}}
-            </td>
-        </tr>
-    {{/each}}
-    </tbody>
-</table>
-{{outlet}}
+            {{/if}}
+          </td>
+      {{/vertical-collection}}
+    </table>
+</div>
