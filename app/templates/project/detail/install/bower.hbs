@@ -1,38 +1,44 @@
-<table class="ui very compact table">
-    <thead>
-    <tr>
-        <th>name</th>
-        <th>version</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#each model.dependencies as |package|}}
-        <tr>
-            <td><a href="{{package.homepage}}">{{package.pkgMeta.name}}</a></td>
-            <td>{{package.version}}</td>
-            <td>
-              {{#if package.command.running}}
-                  <button class="ui fluid icon loading button" {{action 'install' package}}>
-                      Installing
-                  </button>
-              {{else}}
-                {{#if (or (get project.model.package.devDependencies package.name) (get project.model.package.devDependencies package.name))}}
-                    <button class="ui negative fluid button" {{action 'uninstall' package}}>
-                        <i class="remove icon"></i>
-                        Uninstall
-                    </button>
-                {{else}}
-                    <button class="ui fluid labeled icon button" {{action 'install' package}}>
-                        <i class="plus icon"></i>
-                        Install
-                    </button>
-                {{/if}}
-              {{/if}}
-            </td>
-        </tr>
-    {{/each}}
-    </tbody>
-</table>
+<div class="ui top attached segment">
+    <form class="ui form">
+        <div class="field">
+            <h4 class="ui header">Search package</h4>
+            <div class="ui fluid icon input">
+                <input type="text" placeholder="Package name">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="ui attached segment flex-fill">
+    <h4 class="ui header">Found packages</h4>
 
-{{outlet}}
+    <table class="ui very compact table">
+        <tbody>
+        {{#each model.dependencies as |package|}}
+            <tr>
+                <td><a href="{{package.homepage}}">{{package.pkgMeta.name}}</a></td>
+                <td>{{package.version}}</td>
+                <td>
+                  {{#if package.command.running}}
+                      <button class="ui fluid icon loading button" {{action 'install' package}}>
+                          Installing
+                      </button>
+                  {{else}}
+                    {{#if (or (get project.model.package.devDependencies package.name) (get project.model.package.devDependencies package.name))}}
+                        <button class="ui negative fluid button" {{action 'uninstall' package}}>
+                            <i class="remove icon"></i>
+                            Uninstall
+                        </button>
+                    {{else}}
+                        <button class="ui fluid labeled icon button" {{action 'install' package}}>
+                            <i class="plus icon"></i>
+                            Install
+                        </button>
+                    {{/if}}
+                  {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
