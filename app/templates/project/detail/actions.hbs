@@ -1,15 +1,14 @@
-<div class="ui basic segment">
-  {{#unless help}}
-      <div class="ui active inverted dimmer">
-          <div class="ui text loader">
-              Reticulating splines <br>
-          </div>
-      </div>
-  {{else}}
-    {{#each availableCommands key='name' as |cmd|}}
-      {{ember-cmd project=model cmd=cmd}}
-    {{/each}}
-  {{/unless}}
-</div>
-
+{{#unless help}}
+    <div class="ui active inverted dimmer absolute-fill">
+        <div class="ui text loader">
+            Reticulating splines <br>
+        </div>
+    </div>
+{{else}}
+    <div class="ui basic segment">
+      {{#each availableCommands key='name' as |cmd|}}
+        {{ember-cmd project=model cmd=cmd}}
+      {{/each}}
+    </div>
+{{/unless}}
 {{outlet}}
