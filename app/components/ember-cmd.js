@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {computed, inject, observer} = Ember;
+const {computed, inject} = Ember;
 
 function flatten(array) {
   return [].concat.apply([], array);

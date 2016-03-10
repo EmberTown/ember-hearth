@@ -11,14 +11,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{dir-picker}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#dir-picker}}
-      template block text
-    {{/dir-picker}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Select directory');
 });

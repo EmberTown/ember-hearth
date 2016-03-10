@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   store: inject.service(),
   commander: inject.service(),
 
-  model({project_id}){
+  model(){
     return this.transitionTo('application');
   },
   afterModel(model){
