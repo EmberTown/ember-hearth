@@ -16,18 +16,23 @@ export default Ember.Controller.extend({
   init(){
     this._super(...arguments);
 
-    this.get('ipc').on('project-init-start', () => {
+    const ipc = this.get('ipc');
+
+    ipc.on('project-init-start', () => {
       this.set('installing', true);
     });
-    this.get('ipc').on('project-init-end', (ev, project) => {
+
+    ipc.on('project-init-end', (ev, project) => {
       this.set('installing', false);
       this.transitionToRoute('project.detail', this.get('store').peekRecord('project', project.data.id));
     });
-    this.get('ipc').on('project-init-stdout', (ev, data) => {
+
+    ipc.on('project-init-stdout', (ev, data) => {
       this.set('stdout', this.get('stdout') + data);
       this.set('lastStdout', data);
     });
-    this.get('ipc').on('project-init-stderr', (ev, data) => {
+
+    ipc.on('project-init-stderr', (ev, data) => {
       this.set('err', this.get('stdout') + data);
     });
   },
@@ -37,7 +42,7 @@ export default Ember.Controller.extend({
       this.set('path', path);
     },
     initProject(){
-      let path = this.get('path');
+      const path = this.get('path');
 
       if (path) {
         this.get('ipc').trigger('hearth-init-project', {
