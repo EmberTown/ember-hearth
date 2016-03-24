@@ -5,11 +5,10 @@ const electron = require('electron');
 const uuid = require('node-uuid');
 const Promise = require('bluebird');
 const jsonminify = require("jsonminify");
-const spawn = require('child_process').spawn;
 const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
 const dialog = require('dialog');
-const term = require('./term');
+const term = require('./models/term').forPlatform();
 
 let processes = {},
   resetTray,
@@ -24,16 +23,6 @@ let processes = {},
     npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
   };
 
-function _spawn(bin, args, spawnOptions){
-  if (process.platform === 'win32') {
-    // patch windows spawn call
-    //TODO: maybe not expect `node` to exist
-    args.unshift('node', bin);
-    bin = 'powershell.exe';
-  }
-
-  return spawn(bin, args, spawnOptions);
-}
 
 function pathToBinary(bin) {
   return binaries[bin];
@@ -181,7 +170,7 @@ function runCmd(ev, cmd) {
         cwd: path.normalize(project.data.attributes.path)
       });
     } else {
-      cmdPromise = Promise.resolve(_spawn(pathToBinary(cmdData.attributes.bin), args, {
+      cmdPromise = Promise.resolve(term.spawn(pathToBinary(cmdData.attributes.bin), args, {
         cwd: path.normalize(project.data.attributes.path)
       }));
     }

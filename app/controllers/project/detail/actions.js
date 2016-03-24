@@ -6,19 +6,19 @@ export default Ember.Controller.extend({
 
   helpCommand: computed('model.commands.[]', function () {
     return this.get('model.commands')
-      .filter(cmd => cmd.get('name') === 'help' && cmd.get('args.length') && cmd.get('args')[0] === '--json')
-      .get('firstObject');
+      .filter(cmd => cmd.get('name') === 'help' && cmd.get('args.firstObject') === '--json')
+      .get('lastObject');
   }),
 
   help: computed('helpCommand.stdout.length', function () {
     let helpCommand = this.get('helpCommand');
-    if (helpCommand) {
-      if (helpCommand.get('stdout.length') >= 2) {
-        try {
-          return JSON.parse(helpCommand.get('stdout').slice(1).join(''));
-        } catch (e) {
-          console.error('error parsing help command json', helpCommand.get('stdout'));
-        }
+
+    if (helpCommand && helpCommand.get('stdout.length')) {
+      try {
+        const stdoutString = helpCommand.get('stdout').join('');
+        return JSON.parse(stdoutString.substring(stdoutString.indexOf('{')));
+      } catch (e) {
+        console.error('error parsing help command json', helpCommand.get('stdout'));
       }
     }
   }),
