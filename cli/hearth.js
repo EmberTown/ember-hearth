@@ -71,9 +71,9 @@ var trayApps = [];
 function ready(app, window) {
   const Tray = electron.Tray;
   const Menu = electron.Menu;
-  let tray = new Tray(path.join(__dirname, 'hearth-tray.png'));
-  resetTray = function () {
+  let tray = new Tray(path.join(__dirname, 'hearth-tray@2x.png'));
 
+  resetTray = function () {
     let tpl = trayApps.map(app => {
       return {
         label: app.data.attributes.name,
@@ -91,6 +91,7 @@ function ready(app, window) {
     tray.setToolTip(`Ember Hearth v${app.getVersion()}`);
     tray.setContextMenu(Menu.buildFromTemplate(tpl));
   };
+
   resetTray();
 }
 
