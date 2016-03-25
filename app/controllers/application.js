@@ -43,6 +43,10 @@ export default Ember.Controller.extend({
       this.transitionToRoute('project.detail', this.get('store').peekRecord('project', projectId));
     });
 
+    this.get('ipc').on('project-not-ember-app', (ev, path) => {
+      alert(`Project at "${path}" is not an ember app`);
+    });
+
     this.get('ipc').on('cmd-close', (ev, cmd, code) => {
       let command = this.get('store').peekRecord('command', cmd.id);
       command.set('running', false);
