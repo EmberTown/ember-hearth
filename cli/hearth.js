@@ -28,6 +28,24 @@ function pathToBinary(bin) {
   return binaries[bin];
 }
 
+function isEmberProject(projectPath) {
+  const packagePath = path.join(projectPath, 'package.json');
+
+  return fs.statAsync(packagePath)
+    .then((stat) => stat.isFile() ? fs.readFileAsync(packagePath) : Promise.reject())
+    .then((data) => {
+      const pkg = JSON.parse(data);
+
+      const isEmberProject = pkg.devDependencies.hasOwnProperty('ember-cli') ||
+        pkg.dependencies.hasOwnProperty('ember-cli') ||
+        pkg.optionalDependencies.hasOwnProperty('ember-cli') ||
+        pkg.bundleDependencies.hasOwnProperty('ember-cli') ||
+        pkg.peerDependencies.hasOwnProperty('ember-cli');
+
+      return isEmberProject ? isEmberProject : Promise.reject();
+    });
+}
+
 function addMetadata(project) {
   // get some app metadata (could probably be cached, but avoids old entries if stored in db on add)
   console.log('stat', path.resolve(project.data.attributes.path, 'package.json'));
@@ -85,17 +103,16 @@ function ready(app, window) {
 }
 
 function emitProjects(ev) {
-  return db.apps.findAsync({}).then((projects) => {
-    return Promise.all(projects.map(doc => addMetadata(doc)))
-      .then((apps) => {
-        trayApps = apps;
-        // send jsonapi list of apps
-        ev.sender.send('project-list', {
-          data: apps.map(project => project.data)
-        });
-      }).catch(e => console.error(e))
-      .finally(() => resetTray());
-  });
+  return db.apps.findAsync({})
+    .filter(project => isEmberProject(project.data.attributes.path).catch(() => false))
+    .map(addMetadata)
+    .then(apps => {
+      trayApps = apps;
+      // send jsonapi list of apps
+      ev.sender.send('project-list', {
+        data: apps.map(project => project.data)
+      });
+    }).finally(() => resetTray());
 }
 
 function removeProject(ev, project) {
@@ -112,25 +129,29 @@ function removeProject(ev, project) {
 function addProject(ev, appPath) {
   let searchApp = db.apps.findOneAsync({"data.attributes.path": appPath});
 
-  return searchApp.then((appFound) => {
-    if (appFound) {
-      ev.sender.send('open-project', appFound.data.id);
-    } else {
-      return db.apps.insertAsync({
-        data: {
-          id: uuid.v4(),
-          type: 'project',
-          attributes: {
-            path: appPath,
-            name: path.basename(appPath)
+  return isEmberProject(appPath)
+    .then(() => searchApp)
+    .then(appFound => {
+      if (appFound) {
+        ev.sender.send('open-project', appFound.data.id);
+      } else {
+        return db.apps.insertAsync({
+          data: {
+            id: uuid.v4(),
+            type: 'project',
+            attributes: {
+              path: appPath,
+              name: path.basename(appPath)
+            }
           }
-        }
-      }).then((data) => {
-        return emitProjects(ev)
-          .then(() => data);
-      });
-    }
-  });
+        }).then((data) => {
+          return emitProjects(ev)
+            .then(() => data);
+        });
+      }
+    }).catch(() => {
+      ev.sender.send('project-not-ember-app', appPath);
+    });
 }
 
 function initProject(ev, data) {
