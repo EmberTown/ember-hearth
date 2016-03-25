@@ -3,7 +3,7 @@
 
 var electron = require('electron'),
   path = require('path'),
-  hearth  = require('./cli/hearth');
+  hearth = require('./cli/hearth');
 
 var app = electron.app;
 var ipc = electron.ipcMain;

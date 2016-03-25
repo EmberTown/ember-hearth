@@ -1,14 +1,32 @@
 import Ember from 'ember';
 
-const {inject} = Ember;
+const {run, inject, RSVP} = Ember;
+const POLL_TIMEOUT = 2.5 * 1000;
 
 export default Ember.Route.extend({
   store: inject.service(),
   commander: inject.service(),
 
-  model(){
-    return this.transitionTo('application');
+  _readyPoll: undefined,
+
+  pollHasProjects(resolve){
+    if (this.controllerFor('application').get('ready')) {
+      resolve();
+    } else {
+      this.set('_readyPoll', run.later(this, this.pollHasProjects, resolve, POLL_TIMEOUT));
+    }
   },
+
+  waitForProjects(){
+    return new RSVP.Promise((resolve) =>
+      this.pollHasProjects(resolve));
+  },
+
+  model({project_id}){
+    return this.waitForProjects().then(() =>
+      this.store.peekRecord('project', project_id));
+  },
+
   afterModel(model){
     let store = this.get('store');
     this.get('commander').start(store.createRecord('command', {
@@ -19,5 +37,12 @@ export default Ember.Route.extend({
 
       project: model
     }));
+  },
+
+  deactivate(){
+    if (this.get('_readyPoll')) {
+      run.cancel(this.get('_readyPoll'));
+    }
+    this._super(...arguments);
   }
 });

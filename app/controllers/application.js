@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   ipc: inject.service(),
   electron: inject.service(),
 
+  ready: false,
   model: [],
 
   init(){
@@ -25,6 +26,8 @@ export default Ember.Controller.extend({
       this.get('store').peekAll('project')
         .filter(project => !projects[project.get('id')])
         .forEach(project => store.unloadRecord(project));
+      
+      this.set('ready', true);
     });
 
     this.get('ipc').on('cmd-start', (ev, cmd) => {
