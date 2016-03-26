@@ -171,7 +171,7 @@ function addProject(ev, appPath) {
 }
 
 function initProject(ev, data) {
-  var ember = _spawn(pathToBinary('ember'), ['init'], {
+  var ember = term.spawn(pathToBinary('ember'), ['init'], {
     cwd: path.normalize(data.path)
   });
   ember.stdout.on('data', (data) => {
