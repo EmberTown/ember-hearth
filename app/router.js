@@ -11,6 +11,7 @@ Router.map(function() {
       this.route('statistics');
       this.route('commands');
       this.route('log');
+      this.route('settings');
 
       this.route('install', function() {
         this.route('addon');

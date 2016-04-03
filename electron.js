@@ -1,14 +1,15 @@
 /* jshint node: true */
 'use strict';
 
-var electron = require('electron'),
-  path = require('path'),
-  hearth = require('./cli/hearth');
+const electron = require('electron');
+const app = electron.app;
+const ipc = electron.ipcMain;
+const BrowserWindow = electron.BrowserWindow;
+const emberAppLocation = `file://${__dirname}/dist/index.html`;
+const path = require('path');
+const hearth = require('./cli/hearth');
 
-var app = electron.app;
-var ipc = electron.ipcMain;
-var mainWindow = null;
-var BrowserWindow = electron.BrowserWindow;
+let mainWindow = null;
 
 electron.crashReporter.start();
 
@@ -38,9 +39,15 @@ app.on('ready', function onReady() {
   // Please ensure that you have set the locationType option in the
   // config/environment.js file to 'hash'. For more information,
   // please consult the ember-electron readme.
-  mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
+  mainWindow.loadURL(emberAppLocation);
 
-  mainWindow.on('closed', function onClosed() {
+  // If a loading operation goes wrong, we'll send Electron back to
+  // Ember App entry point
+  mainWindow.webContents.on('did-fail-load', () => {
+    mainWindow.loadURL(emberAppLocation);
+  });
+
+  mainWindow.on('closed', () => {
     hearth.killAllProcesses();
     mainWindow = null;
   });
@@ -48,6 +55,7 @@ app.on('ready', function onReady() {
 
 var mapping = {
   'hearth-add-project': 'addProject',
+  'hearth-update-project': 'updateProject',
   'hearth-remove-project': 'removeProject',
   'hearth-ready': 'emitProjects',
   'hearth-init-project': 'initProject',
