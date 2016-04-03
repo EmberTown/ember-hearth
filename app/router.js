@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('project', function() {
     this.route('detail', {path: '/:project_id'}, function() {
       this.route('statistics');
-      this.route('actions');
+      this.route('commands');
       this.route('log');
 
       this.route('install', function() {
