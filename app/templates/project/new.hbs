@@ -1,43 +1,43 @@
 <h2 class="ui header">
-    <div class="content">
-        Create new ember project
-    </div>
+  <div class="content">
+    Create new ember project
+  </div>
 </h2>
 
 {{#if installing}}
-    <h3 class="ui header">installing ember in {{path}}</h3>
-    <div class="ui icon message">
-        <i class="notched circle loading icon"></i>
-        <div class="content">
-            <div class="header">Initializing Ember project</div>
-            <p>{{lastStdout}}</p>
-        </div>
+  <h3 class="ui header">installing ember in {{path}}</h3>
+  <div class="ui icon message">
+    <i class="notched circle loading icon"></i>
+    <div class="content">
+      <div class="header">Initializing Ember project</div>
+      <p>{{lastStdout}}</p>
     </div>
-    <div class="ui grid">
-        <div class="eight wide column">
-            <h3 class="ui header">stdout</h3>
-            <pre class="stdout">{{stdout}}</pre>
-        </div>
-        <div class="eight wide column">
-            <h3 class="ui header">stderr</h3>
-            <pre class="stderr">{{stderr}}</pre>
-        </div>
+  </div>
+  <div class="ui grid">
+    <div class="eight wide column">
+      <h3 class="ui header">stdout</h3>
+      <pre class="stdout">{{stdout}}</pre>
     </div>
+    <div class="eight wide column">
+      <h3 class="ui header">stderr</h3>
+      <pre class="stderr">{{stderr}}</pre>
+    </div>
+  </div>
 {{else}}
-    <form class="ui form">
-        <div class="field">
-            <label>Project path</label>
-          {{dir-picker changedPath=(action 'changedPath')}}
-        </div>
-        <div class="field">
-            <label for="fruit">Project type</label>
-            <select class="ui fluid dropdown">
-                <option value="">Application</option>
-                <option value="AL">Addon</option>
-            </select>
-        </div>
-        <button class="ui button" type="submit" {{action 'initProject'}}>Create</button>
-    </form>
+  <form class="ui form">
+    <div class="field">
+      <label>Project path</label>
+      {{dir-picker changedPath=(action 'changedPath')}}
+    </div>
+    <div class="field">
+      <label for="fruit">Project type</label>
+      <select class="ui fluid dropdown">
+        <option value="">Application</option>
+        <option value="AL">Addon</option>
+      </select>
+    </div>
+    <button class="ui button" type="submit" {{action 'initProject'}}>Create</button>
+  </form>
 {{/if}}
 
 
