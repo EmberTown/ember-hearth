@@ -10,8 +10,6 @@ const path = require('path');
 const dialog = require('dialog');
 const term = require('./models/term').forPlatform();
 
-const HEARTH_URL_FILE = path.join(__dirname, '..', 'hearth_close_url');
-
 let processes = {},
   resetTray,
   db = {
@@ -82,10 +80,6 @@ function ready(app, window) {
   const Menu = electron.Menu;
   let tray = new Tray(path.join(__dirname, 'hearth-tray@2x.png'));
 
-  window.on('close', function onWillClose() {
-    fs.writeFileSync(HEARTH_URL_FILE, window.webContents.getURL(), 'utf8');
-  });
-
   resetTray = function () {
     let tpl = trayApps.map(app => {
       return {
@@ -106,16 +100,6 @@ function ready(app, window) {
   };
 
   resetTray();
-
-  fs.stat(HEARTH_URL_FILE, function (err, stats) {
-    if (!err) {
-      if (stats.isFile()) {
-        const lastUrl = fs.readFileSync(HEARTH_URL_FILE, 'utf8');
-        console.log('lasturl', lastUrl);
-        window.loadURL(lastUrl);
-      }
-    }
-  });
 }
 
 function emitProjects(ev) {
