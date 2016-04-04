@@ -142,6 +142,17 @@ function removeProject(ev, project) {
   });
 }
 
+function updateProject(ev, project) {
+  // if we ever need it, we can update the database here
+  // update cli file
+  const cli = project.data.attributes.cli;
+  const cliPath = path.resolve(project.data.attributes.path, '.ember-cli');
+
+  return fs.writeFileAsync(cliPath, JSON.stringify(cli, null, ' ')).then(() => {
+    return emitProjects(ev);
+  });
+}
+
 function addProject(ev, appPath) {
   let searchApp = db.apps.findOneAsync({"data.attributes.path": appPath});
 
@@ -246,11 +257,15 @@ function killAllProcesses() {
 
 module.exports = {
   ready,
-  initProject,
+
   runCmd,
   killCmd,
+
   emitProjects,
+  initProject,
   addProject,
+  updateProject,
   removeProject,
+
   killAllProcesses
 };
