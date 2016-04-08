@@ -56,3 +56,7 @@ body > div > .container > .grid{
 .addon-controls{
 
 }
+.addon-table tbody tr
+{
+  min-height: 47px;
+}
