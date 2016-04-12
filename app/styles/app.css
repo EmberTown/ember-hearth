@@ -60,3 +60,44 @@ body > div > .container > .grid{
 {
   min-height: 47px;
 }
+
+.application-controls{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+@media (min-width: 1200px) and (max-width: 1400px){
+  .application-controls .ui.labeled.icon.button{
+    padding-right: 1.5em!important;
+    padding-left: 1.5em!important;
+  }
+  .application-controls .button .icon{
+    display: none;
+  }
+}
+
+@media (max-width: 991px){
+  .application-controls .buttons{
+    display: block !important;
+  }
+  .application-controls .button{
+    display: block !important;
+    width: 100%;
+  }
+  .application-controls .button.icon.right{
+    padding-left: 4.07142857em!important;
+    padding-right: 1.5em!important;
+    border-bottom-left-radius: .28571429rem;
+    border-top-right-radius: 0;
+  }
+  .application-controls .button.icon:not(.right){
+    border-top-right-radius: .28571429rem;
+    border-bottom-left-radius: 0;
+  }
+  .application-controls .button.icon.right .icon{
+    left: 0 !important;
+    right: auto;
+  }
+}
+
