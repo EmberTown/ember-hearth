@@ -3,6 +3,7 @@ import Ember from 'ember';
 const {computed} = Ember;
 
 export default Ember.Controller.extend({
+  addons: computed.alias('help.addons'),
 
   helpCommand: computed('model.commands.[]', function () {
     return this.get('model.commands')
