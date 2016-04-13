@@ -12,6 +12,8 @@ export default Ember.Component.extend({
   commander: inject.service(),
   store: inject.service(),
 
+  extended: false,
+
   anonymousFields: [],
   options: {},
 
@@ -62,6 +64,10 @@ export default Ember.Component.extend({
   }),
 
   actions: {
+    toggleExtend(){
+      // maybe use ember-composable-helpers instead
+      this.toggleProperty('extended')
+    },
     updateOption(name, ev){
       this.set(`options.${name}`, ev.target.value);
     },

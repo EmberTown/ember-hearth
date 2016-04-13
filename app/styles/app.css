@@ -13,6 +13,24 @@ body {
   word-wrap: break-word;
 }
 
+.cursor-pointer{
+  cursor: pointer;
+}
+.ember-cmd-advanced-toggle{
+  height: 39px;
+  padding-top: 9px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.ember-cmd-advanced-toggle .icon{
+  text-align: left;
+  margin-right: 0 !important;
+}
+.ember-cmd-header-meta{
+  display: inline-block;
+  vertical-align: middle;
+}
+
 body > div > .container > .grid{
   margin: 0 !important;
 }
