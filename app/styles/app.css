@@ -13,6 +13,33 @@ body {
   word-wrap: break-word;
 }
 
+.ui.segment.header{
+  margin-bottom: 0;
+}
+.ui.segment.header+.ui.segment{
+  margin-top: 0;
+}
+
+.ui.filter-segment{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.ui.filter-segment + .ui.header{
+  margin-top: 0;
+}
+.filter-list{
+
+}
+.filter-list-item{
+  padding: 5px;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+}
+.filter-list-item .icon:not(.selected) + span{
+  color: #999;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }

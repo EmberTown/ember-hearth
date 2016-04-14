@@ -3,7 +3,18 @@ import Ember from 'ember';
 const {computed} = Ember;
 
 export default Ember.Controller.extend({
+  queryParams: ['addonsFilter'],
+
   addons: computed.alias('help.addons'),
+  addonsFilter: [],
+  filteredAddons: computed('addons.[]', 'addonsFilter.[]', function(){
+    const filter = this.get('addonsFilter');
+    const addons = this.get('addons');
+
+    return addons.filter((addon) =>
+      // return addons where addon name is not in filter
+      filter.indexOf(addon.name) === -1);
+  }),
 
   helpCommand: computed('model.commands.[]', function () {
     return this.get('model.commands')
@@ -36,5 +47,18 @@ export default Ember.Controller.extend({
         return cmd.works === 'insideProject' && filterCommands.indexOf(cmd.name) === -1;
       });
     }
-  })
+  }),
+
+  actions: {
+    toggleAddonFilter(addon) {
+      const filter = this.get('addonsFilter');
+      const idx = filter.indexOf(addon.name);
+
+      if (idx !== -1) {
+        filter.removeAt(idx);
+      } else {
+        filter.pushObject(addon.name);
+      }
+    }
+  }
 });

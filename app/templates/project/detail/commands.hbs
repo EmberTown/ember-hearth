@@ -5,21 +5,41 @@
         </div>
     </div>
 {{else}}
-    {{#each addons as |addon|}}
-        <h5 class="ui centered top attached header">
+  {{#if addons}}
+      <h5 class="ui centered top attached header">
+          filter addons
+      </h5>
+      <div class="ui basic segment filter-segment">
+          <div class="filter-list">
+            {{#each addons as |addon|}}
+                <div class="filter-list-item" {{action "toggleAddonFilter" addon}}>
+                  {{#if (inArray addonsFilter addon.name)}}
+                      <i class="blue radio icon"></i>
+                  {{else}}
+                      <i class="blue selected radio icon"></i>
+                  {{/if}}
+                    <span>{{addon.name}}</span>
+                </div>
+            {{/each}}
+          </div>
+      </div>
+  {{/if}}
+
+  {{#each filteredAddons as |addon|}}
+      <h5 class="ui centered top attached header">
           <code>{{addon.name}}</code> commands
-        </h5>
-        {{#each addon.commands key='name' as |cmd|}}
-          {{ember-cmd project=model cmd=cmd}}
-        {{/each}}
-    {{/each}}
+      </h5>
+      {{#each addon.commands key='name' as |cmd|}}
+        {{ember-cmd project=model cmd=cmd}}
+      {{/each}}
+  {{/each}}
 
-    <h5 class="ui centered top attached header">default commands</h5>
-    {{#each availableCommands key='name' as |cmd|}}
-      {{ember-cmd project=model cmd=cmd}}
-    {{/each}}
+  <h5 class="ui centered top attached header">default commands</h5>
+  {{#each availableCommands key='name' as |cmd|}}
+    {{ember-cmd project=model cmd=cmd}}
+  {{/each}}
 
-    <br>
+  <br>
 
 {{/unless}}
 {{outlet}}
