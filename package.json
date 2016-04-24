@@ -95,6 +95,7 @@
     "ember-cli": "^2.4.3",
     "jsonminify": "^0.4.1",
     "nedb": "^1.8.0",
+    "node-dir": "^0.1.11",
     "node-uuid": "^1.4.7",
     "npm": "^3.8.6",
     "quick-temp": "^0.1.5",

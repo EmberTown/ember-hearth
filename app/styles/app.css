@@ -3,6 +3,17 @@ body {
   padding: 0;
 }
 
+/*
+Mark invalid form fields red.
+Taken from http://purecss.io/ forms
+*/
+.ui.form input:focus:invalid,
+.ui.form textarea:focus:invalid,
+.ui.form select:focus:invalid {
+  color: #b94a48;
+  border-color: #e9322d;
+}
+
 .stderr, .stdout{
   font-family: monospace;
   font-size: 10px;
