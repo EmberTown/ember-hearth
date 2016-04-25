@@ -27,4 +27,4 @@ install:
   - bower install
 
 script:
-  - npm test
+  - ember electron:test
