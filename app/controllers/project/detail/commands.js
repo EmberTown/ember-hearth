@@ -7,6 +7,11 @@ export default Ember.Controller.extend({
 
   addons: computed.alias('help.addons'),
   addonsFilter: [],
+
+  requiresCliUpdate: computed('addons.@each.name', function(){
+    return this.get('addons.length') && this.get('addons').every(addon => addon.name === 'help');
+  }),
+
   filteredAddons: computed('addons.[]', 'addonsFilter.[]', function(){
     const filter = this.get('addonsFilter');
     const addons = this.get('addons');
