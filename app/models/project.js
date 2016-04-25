@@ -8,6 +8,7 @@ export default DS.Model.extend({
   name: attr('string'),
   path: attr('string'),
   cli: attr(),
+  transforms: attr(),
 
   'package': attr(),
   commands: hasMany('command'),

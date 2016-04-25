@@ -8,6 +8,7 @@ const jsonminify = require("jsonminify");
 const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
 const dialog = require('dialog');
+const files = Promise.promisify(require('node-dir').files);
 const term = require('./models/term').forPlatform();
 
 let processes = {},
@@ -23,6 +24,9 @@ let processes = {},
     npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
   };
 
+function pathIsTransform(path) {
+  return path.indexOf('/app/transforms/') === 0;
+}
 
 function pathToBinary(bin) {
   return binaries[bin];
@@ -51,10 +55,12 @@ function addMetadata(project) {
   console.log('stat', path.resolve(project.data.attributes.path, 'package.json'));
   const packagePath = path.resolve(project.data.attributes.path, 'package.json');
   const cliPath = path.resolve(project.data.attributes.path, '.ember-cli');
+  const appPath = path.resolve(project.data.attributes.path, 'app');
 
   return Promise.props({
     'package': fs.statAsync(packagePath),
-    'cli': fs.statAsync(cliPath)
+    'cli': fs.statAsync(cliPath),
+    'app': files(appPath)
   }).then((stats) => {
     return Promise.props({
       'package': stats.package.isFile() && fs.readFileAsync(packagePath),
@@ -67,6 +73,9 @@ function addMetadata(project) {
       if (!project.data.attributes.cli) project.data.attributes.cli = {};
       if (!project.data.attributes.cli.testPort) project.data.attributes.cli.testPort = 7357;
       if (!project.data.attributes.cli.port) project.data.attributes.cli.port = 4200;
+
+      project.data.attributes.transforms = stats.app.map(path => path.substring(project.data.attributes.path.length))
+        .filter(pathIsTransform);
 
       return project;
     });

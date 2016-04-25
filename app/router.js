@@ -12,6 +12,7 @@ Router.map(function() {
       this.route('commands');
       this.route('log');
       this.route('settings');
+      this.route('model-maker');
 
       this.route('install', function() {
         this.route('addon');
