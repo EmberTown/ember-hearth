@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    saveChanges(ev){
+    saveChanges(/* ev */){
       const cli = this.getProperties(CLI_FIELDS);
       const project = this.get('model');
 

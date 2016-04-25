@@ -1,3 +1,4 @@
+/* global require */
 import Ember from 'ember';
 
 const path = require('path');
