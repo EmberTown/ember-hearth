@@ -5,6 +5,16 @@
         </div>
     </div>
 {{else}}
+  {{#if requiresCliUpdate}}
+      <br>
+      <div class="ui info message">
+          <p>
+              The addons ember-cli version <strong>{{get model.package.devDependencies 'ember-cli'}}</strong> has a bug where all addon names are reported as <code>help</code>.
+              To fix addon filtering, please upgrade ember-cli to <strong>2.4.3+</strong>.
+          </p>
+      </div>
+  {{/if}}
+
   {{#if addons}}
       <h5 class="ui centered top attached header">
           filter addons
