@@ -1,36 +1,36 @@
----
 language: node_js
 node_js:
-  - "4"
+- '4'
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
-
+    - g++-4.8
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
-# via https://docs.travis-ci.com/user/gui-and-headless-browsers/#Using-xvfb-to-Run-Tests-That-Require-a-GUI
+- npm install
+- bower install
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-  - ember electron:test
+- ember electron:test
+deploy:
+  provider: releases
+  api_key:
+    secure: CyS7nyVtFf7dS1sG/2ZszDEk0cUdc+SfMfDIMjbLrT7KYS365BMpFiLQjV6vWmqYpXEdjhC85C2UlD+E8wvZjIRFFfS5uk+T3qXK3UPAuP4+rBtM2pRSGoPI4FGoplUETl+NwuKFVUTO5SIZTyaa22s3wwjyH56I/D9vEWhvkBNA1evLaOZW+97JlDD5PV+LWq4aCtZ9x/XBq1j87ufsKOeIm1zKQb8BUclae3aGnYwzXGYAlpTK4zVJzHath4bQHDgtw94FNWm+Me9qjhWq/sCNsjqNPYnWP1km7pABd/EKlWbq1aN8DZYtOuk0ksNvxrJYIavu4NrTB0cqSAzbVl+CDRQPxU7TMd2Z9lEvUkLYjXf+LMBscioNk9TT0ftkRbqHcQ5gS6qiaUoIG0VTS0JOOiAfK3/7a+HecCTeNE7kC4w9TgDDIeGtUp3Kbcz6aErz9xKxxoHxYlsVb6AG8i/n34wyNoxSEEBoBsOlF6BYY6jr4lqBE4YUW0jQt+nJKiLhNAiYFnSgLO6x3qx38WNOnxEw+fjytvb1zwS8R/Y0m3A/6CfkF/GoQ/8D/gwJop1vYsFZCHow9iFTMh6FXYNOg/CbvE5KHcwMiaIdpGQIfkKgGN3B++aLDk1PQgvzO4KmTR8MxMotgTKJ0T+XJq3t9fUp3EYSMLfIvRLlRpA=
+  file: dist
+  on:
+    repo: EmberTown/ember-hearth
+    branch: electron
