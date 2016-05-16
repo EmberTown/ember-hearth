@@ -7,7 +7,6 @@ const Promise = require('bluebird');
 const jsonminify = require("jsonminify");
 const fs = Promise.promisifyAll(require('fs'));
 const path = require('path');
-const dialog = require('dialog');
 const files = Promise.promisify(require('node-dir').files);
 const term = require('./models/term').forPlatform();
 
