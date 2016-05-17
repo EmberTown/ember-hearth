@@ -52,8 +52,8 @@ export default Ember.Controller.extend({
     },
 
     uninstall(pkg) {
-      const store = this.get('store'),
-        commander = this.get('commander');
+      const store = this.get('store');
+      const commander = this.get('commander');
 
       let command = store.createRecord('command', {
         id: uuid.v4(),
@@ -77,8 +77,8 @@ export default Ember.Controller.extend({
     },
 
     install(pkg) {
-      const store = this.get('store'),
-        commander = this.get('commander');
+      const store = this.get('store');
+      const commander = this.get('commander');
 
       let command = store.createRecord('command', {
         id: uuid.v4(),

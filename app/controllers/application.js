@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
       this.get('store').peekAll('project')
         .filter(project => !projects[project.get('id')])
         .forEach(project => store.unloadRecord(project));
-      
+
       this.set('ready', true);
     });
 
@@ -67,8 +67,8 @@ export default Ember.Controller.extend({
 
   actions: {
     addProject(){
-      let dialog = this.get('electron.remote.dialog'),
-        dirs = dialog.showOpenDialog({properties: ['openDirectory']});
+      const dialog = this.get('electron.remote.dialog');
+      const dirs = dialog.showOpenDialog({properties: ['openDirectory']});
 
       if (dirs.length) {
         this.get('ipc').trigger('hearth-add-project', dirs[0]);

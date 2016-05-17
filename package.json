@@ -10,6 +10,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
+    "lint-electron": "./node_modules/.bin/eslint electron.js cli/**/*.js",
+    "pretest": "npm run lint-electron",
     "test": "ember electron:test"
   },
   "repository": "",
@@ -19,6 +21,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^6.0.0-beta.6",
     "broccoli-asset-rev": "^2.4.2",
     "devtron": "^1.1.0",
     "electron-packager": "7.0.1",
@@ -30,6 +33,7 @@
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-eslint": "1.4.0",
     "ember-cli-htmlbars": "^1.0.3",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.4.0",
@@ -45,6 +49,7 @@
     "ember-resolver": "^2.0.3",
     "ember-run-raf": "1.1.1",
     "ember-truth-helpers": "1.2.0",
+    "eslint": "^2.10.2",
     "loader.js": "^4.0.1",
     "smoke-and-mirrors": "0.5.2"
   },

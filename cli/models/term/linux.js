@@ -2,14 +2,14 @@
 
 const Term = require('./index');
 
-class LinuxTerm extends Term{
+class LinuxTerm extends Term {
   buildTermLaunchArgs(scriptPath) {
     return ['/usr/bin/xterm', ['-e', `bash ${scriptPath}`]];
   }
 
   buildRunScript(bin, args, projectDir) {
-    var scriptContent,
-      suffix = '.sh';
+    let scriptContent;
+    const suffix = '.sh';
 
     scriptContent = `
 #!/usr/bin/env sh

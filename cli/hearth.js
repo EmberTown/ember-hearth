@@ -10,18 +10,18 @@ const path = require('path');
 const files = Promise.promisify(require('node-dir').files);
 const term = require('./models/term').forPlatform();
 
-let processes = {},
-  resetTray,
-  db = {
-    apps: Promise.promisifyAll(new Datastore({
-      filename: path.resolve(__dirname, '..', 'hearth.nedb.json'),
-      autoload: true
-    }))
-  },
-  binaries = {
-    ember: path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember'),
-    npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
-  };
+const processes = {};
+let resetTray;
+const db = {
+  apps: Promise.promisifyAll(new Datastore({
+    filename: path.resolve(__dirname, '..', 'hearth.nedb.json'),
+    autoload: true
+  }))
+};
+const binaries = {
+  ember: path.join(__dirname, '..', 'node_modules', 'ember-cli', 'bin', 'ember'),
+  npm: path.join(__dirname, '..', 'node_modules', 'npm', 'bin', 'npm-cli.js')
+};
 
 function pathIsTransform(path) {
   return path.indexOf('/app/transforms/') === 0;
@@ -197,9 +197,9 @@ function initProject(ev, data) {
 function runCmd(ev, cmd) {
   const cmdData = cmd.data;
   return db.apps.findAsync({'data.id': cmdData.relationships.project.data.id}).then((projects) => {
-    let project = projects[0],
-      args = [cmdData.attributes.name].concat(cmdData.attributes.args),
-      cmdPromise;
+    const project = projects[0];
+    const args = [cmdData.attributes.name].concat(cmdData.attributes.args);
+    let cmdPromise;
 
     if (cmdData.attributes.options) {
       Object.keys(cmdData.attributes.options).forEach(optionName =>

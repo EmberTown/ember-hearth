@@ -16,11 +16,10 @@ class Win32Term extends Term {
   }
 
   buildRunScript(bin, args, projectDir) {
-    var scriptContent,
-      suffix = '.cmd';
+    const suffix = '.cmd';
 
     // based on npm generated bin/command.cmd
-    scriptContent = `
+    const scriptContent = `
 
 cd /d ${projectDir}
 
