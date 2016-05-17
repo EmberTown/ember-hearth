@@ -7,8 +7,8 @@ export default Ember.Component.extend({
   path: '',
   actions: {
     setPath(){
-      let dialog = this.get('electron.remote.dialog'),
-        dirs = dialog.showOpenDialog({properties: ['openDirectory']});
+      const dialog = this.get('electron.remote.dialog');
+      const dirs = dialog.showOpenDialog({properties: ['openDirectory']});
 
       if (dirs.length) {
         this.set('path', dirs[0]);

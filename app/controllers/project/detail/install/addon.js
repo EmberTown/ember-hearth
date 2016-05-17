@@ -32,8 +32,8 @@ export default Ember.Controller.extend({
     'project.model.package.devDependencies',
     'project.model.package.dependencies',
     function () {
-      let devDeps = this.get('project.model.package.devDependencies') || {},
-        deps = this.get('project.model.package.dependencies') || {};
+      const devDeps = this.get('project.model.package.devDependencies') || {};
+      const deps = this.get('project.model.package.dependencies') || {};
 
       return this.get('model.addons').filter((addon) => {
         return devDeps.hasOwnProperty(addon.name) || deps.hasOwnProperty(addon.name);
@@ -47,8 +47,9 @@ export default Ember.Controller.extend({
   }),
 
   pagedAddons: computed('addons.[]', 'page', 'pageSize', function () {
-    const page = this.get('page'),
-      size = this.get('pageSize');
+    const page = this.get('page');
+    const size = this.get('pageSize');
+
     return this.get('addons').slice(0, page * size + size);
   }),
 
@@ -77,8 +78,8 @@ export default Ember.Controller.extend({
       this.incrementProperty('page');
     },
     install(addon) {
-      const store = this.get('store'),
-        commander = this.get('commander');
+      const store = this.get('store');
+      const commander = this.get('commander');
 
       let command = store.createRecord('command', {
         id: uuid.v4(),

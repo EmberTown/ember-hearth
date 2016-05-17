@@ -27,8 +27,8 @@ export default Ember.Component.extend({
     this._super(...arguments);
     if (!this.get('createdCommand')) {
       // restore last command if exists
-      let commands = this.get('project.commands'),
-        command = this.get('cmd');
+      const commands = this.get('project.commands');
+      const command = this.get('cmd');
 
       const createdCommand = commands
         .filter(c => c.get('name') === command.name)
@@ -47,8 +47,8 @@ export default Ember.Component.extend({
   }),
 
   blueprintOptions: computed('cmd.availableBlueprints', function () {
-    let options = [],
-      blueprints = this.get('cmd.availableBlueprints');
+    let options = [];
+    const blueprints = this.get('cmd.availableBlueprints');
 
     if (blueprints) {
       this.get('cmd.availableBlueprints').forEach(blueprint => {
@@ -75,10 +75,10 @@ export default Ember.Component.extend({
       this.get('anonymousFields')[idx] = ev.target.value;
     },
     runCmd(){
-      let store = this.get('store'),
-        blueprint = this.get('selectedBlueprint'),
-        project = this.get('project'),
-        anonymousFields = this.get('anonymousFields');
+      const store = this.get('store');
+      const blueprint = this.get('selectedBlueprint');
+      const project = this.get('project');
+      const anonymousFields = this.get('anonymousFields');
 
       const command = store.createRecord('command', {
         bin: 'ember',

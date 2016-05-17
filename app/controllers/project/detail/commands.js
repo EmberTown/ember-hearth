@@ -7,13 +7,13 @@ export default Ember.Controller.extend({
 
   addons: computed.alias('help.addons'),
   addonsFilter: [],
-  filteredAddons: computed('addons.[]', 'addonsFilter.[]', function(){
+  filteredAddons: computed('addons.[]', 'addonsFilter.[]', function () {
     const filter = this.get('addonsFilter');
     const addons = this.get('addons');
 
     return addons.filter((addon) =>
       // return addons where addon name is not in filter
-      filter.indexOf(addon.name) === -1);
+    filter.indexOf(addon.name) === -1);
   }),
 
   helpCommand: computed('model.commands.[]', function () {
@@ -37,11 +37,11 @@ export default Ember.Controller.extend({
 
   availableCommands: computed('help.commands', function () {
     if (this.get('help')) {
-      const model = this.get('model'),
-        isAddon = model.get('isAddon'),
-        filterCommands = isAddon ?
-          ['addon', 'help', 'init', 'new', 'serve', 'version'] :
-          ['addon', 'help', 'init', 'new', 'serve', 'version'];
+      const model = this.get('model');
+      const isAddon = model.get('isAddon');
+      const filterCommands = isAddon ?
+        ['addon', 'help', 'init', 'new', 'serve', 'version'] :
+        ['addon', 'help', 'init', 'new', 'serve', 'version'];
 
       return this.get('help.commands').filter(cmd => {
         return cmd.works === 'insideProject' && filterCommands.indexOf(cmd.name) === -1;

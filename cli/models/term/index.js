@@ -14,11 +14,11 @@ class Term {
     return spawn(bin, args, spawnOptions);
   }
 
-  buildTermLaunchArgs(scriptPath) {
+  buildTermLaunchArgs(/*scriptPath*/) {
     throw 'not implemented';
   }
 
-  buildRunScript(bin, args, projectDir) {
+  buildRunScript(/*bin, args, projectDir*/) {
     throw 'not implemented';
   }
 
