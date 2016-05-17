@@ -6,7 +6,6 @@ os: unstable
 # Test against these versions of Node.js.
 environment:
   matrix:
-    - nodejs_version: "0.12"
     - nodejs_version: "4.2"
     - nodejs_version: "5.0"
 
@@ -32,7 +31,7 @@ cache:
 test_script:
   # Output useful info for debugging.
   - npm version
-  - cmd: npm test
+  - npm test
 
 # Don't actually build.
 build: off
