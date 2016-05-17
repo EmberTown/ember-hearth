@@ -1,5 +1,8 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
+# see http://help.appveyor.com/discussions/questions/678-gui-unit-testing-in-appveyor#comment_35251292
+os: unstable
+
 # Test against these versions of Node.js.
 environment:
   matrix:
