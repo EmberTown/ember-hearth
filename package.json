@@ -12,7 +12,7 @@
     "start": "ember server",
     "lint-electron": "./node_modules/.bin/eslint electron.js cli/**/*.js",
     "pretest": "npm run lint-electron",
-    "test": "ember electron:test"
+    "test": "ember spy-electron:test"
   },
   "repository": "",
   "engines": {
@@ -106,5 +106,10 @@
     "npm": "^3.8.6",
     "quick-temp": "^0.1.5",
     "temp": "^0.8.3"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/ember-electron-spy"
+    ]
   }
 }
